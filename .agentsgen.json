@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "mode": "safe",
+  "on_missing_markers": "write_generated",
+  "generated_suffix": ".generated",
+  "markers": {
+    "start": "<!-- AGENTSGEN:START section={section} -->",
+    "end": "<!-- AGENTSGEN:END section={section} -->"
+  },
+  "sections": [
+    "guardrails",
+    "workflow",
+    "style",
+    "verification",
+    "stack",
+    "repo_context"
+  ],
+  "presets": {},
+  "defaults": {},
+  "project": {
+    "name": "ABVX Lab",
+    "primary_stack": "static",
+    "repo_root": "."
+  },
+  "paths": {
+    "docs": [
+      "README.md",
+      "docs/index.html",
+      "docs/tools/"
+    ],
+    "scripts": "(none)",
+    "source_dirs": [
+      "docs"
+    ],
+    "config_locations": [
+      "docs/robots.txt",
+      "docs/sitemap.xml"
+    ]
+  },
+  "commands": {
+    "install": "(not needed)",
+    "dev": "python3 -m http.server 8000 --directory docs",
+    "build": "(not needed)",
+    "test": "(not needed)",
+    "lint": "(not needed)"
+  },
+  "evidence": {
+    "python": [],
+    "node": [],
+    "make": [],
+    "ci": []
+  },
+  "pack": {
+    "enabled": true,
+    "llms_format": "txt",
+    "output_dir": "docs/ai",
+    "files": []
+  }
+}

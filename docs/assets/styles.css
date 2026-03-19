@@ -25,6 +25,9 @@
   margin: 0 auto;
 }
 :root[data-style="ascii"] .brand-mark { width: 2.2rem; height: 2.2rem; font-size: 0.94rem; }
+:root[data-style="ascii"] .brand { display: inline-flex; align-items: center; gap: 0.75rem; }
+:root[data-style="ascii"] .brand-logo { width: 38px; height: 38px; object-fit: contain; display: block; }
+:root[data-style="ascii"][data-ascii-mode="dark"] .brand-logo { filter: invert(1); }
 :root[data-style="ascii"] h1,
 :root[data-style="ascii"] h2 { letter-spacing: normal; }
 :root[data-style="ascii"] h1 { font-size: clamp(2rem, 3vw, 3rem); line-height: 1.05; max-width: 22ch; }

@@ -1,5 +1,7 @@
 # ABVX Lab
 
+<img src="docs/assets/logo.png" alt="ABVX Lab logo" width="120" />
+
 Static GitHub Pages hub for ABVX developer tools.
 
 ## Structure

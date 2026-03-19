@@ -12,7 +12,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 A short list of what’s currently in the lab (each tool has a page + links).
 
-New: git-tweet — tweet-sized release notes from git changes.
+New: agentsgen status — read-only repo overview for managed files, markers, generated fallbacks, and drift.
 
 - **agentsgen** — safe repo docs toolchain for coding agents (AGENTS.md/RUNBOOK.md + PR Guard + LLMO Pack)  
   https://lab.abvx.xyz/tools/agentsgen/
@@ -31,6 +31,9 @@ New: git-tweet — tweet-sized release notes from git changes.
 
 - **agentsgen detect** — heuristic repo scan (no execution); JSON output supported  
   https://lab.abvx.xyz/tools/agentsgen-detect/
+
+- **agentsgen status** — instant repo overview: managed files, markers, generated fallbacks, and drift  
+  https://lab.abvx.xyz/tools/agentsgen-status/
 
 - **ABVX Shortener** — minimal URL shortener (Cloudflare Worker + KV)  
   https://lab.abvx.xyz/tools/abvx-shortener/
@@ -60,6 +63,7 @@ New: git-tweet — tweet-sized release notes from git changes.
 - [agentsgen-pack](https://lab.abvx.xyz/tools/agentsgen-pack/)
 - [agentsgen-check](https://lab.abvx.xyz/tools/agentsgen-check/)
 - [agentsgen-detect](https://lab.abvx.xyz/tools/agentsgen-detect/)
+- [agentsgen-status](https://lab.abvx.xyz/tools/agentsgen-status/)
 - [abvx-shortener](https://lab.abvx.xyz/tools/abvx-shortener/)
 - [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/)
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)

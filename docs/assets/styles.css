@@ -172,36 +172,44 @@
 :root[data-style="ascii"] .footer-title { font-weight:700; margin-bottom:.15rem; }
 :root[data-style="ascii"] .footer-note { opacity:.9; }
 
-:root[data-style="ascii"] .social-icons { display:flex; gap:.55rem; align-items:center; flex-wrap:wrap; }
-:root[data-style="ascii"] .social-icons a {
-  display:inline-flex !important;
-  flex: 0 0 auto;
-  width: 30px;
-  min-width: 30px;
-  max-width: 30px;
-  height: 30px;
-  min-height: 30px;
-  max-height: 30px;
+:root[data-style="ascii"] .social-icons {
+  display:flex;
+  gap:.55rem;
   align-items:center;
-  justify-content:center;
+  flex-wrap:wrap;
+}
+:root[data-style="ascii"] footer.footer--lab .social-icons > a {
+  display:inline-flex !important;
+  flex: 0 0 auto !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  align-items:center !important;
+  justify-content:center !important;
   border:1px solid currentColor;
   text-decoration:none;
   opacity:.92;
-  line-height:0;
-  overflow:hidden;
-  padding:0;
+  line-height:0 !important;
+  overflow:hidden !important;
+  padding:0 !important;
+  font-size:0 !important;
 }
-:root[data-style="ascii"] .social-icons svg {
+:root[data-style="ascii"] footer.footer--lab .social-icons > a > svg,
+:root[data-style="ascii"] footer.footer--lab .social-icons > a > svg[viewBox] {
   width: 16px !important;
-  min-width: 16px;
-  max-width: 16px;
+  min-width: 16px !important;
+  max-width: 16px !important;
   height: 16px !important;
-  min-height: 16px;
-  max-height: 16px;
-  display:block;
-  flex: 0 0 auto;
+  min-height: 16px !important;
+  max-height: 16px !important;
+  display:block !important;
+  flex: 0 0 auto !important;
+  aspect-ratio: 1 / 1;
 }
-:root[data-style="ascii"] .social-icons a:hover {
+:root[data-style="ascii"] footer.footer--lab .social-icons > a:hover {
   box-shadow: 0 0 0 2px rgba(24,160,94,.16), 0 0 14px rgba(24,160,94,.16);
   transform: translateY(-1px);
   opacity:1;

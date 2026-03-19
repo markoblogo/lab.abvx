@@ -1,55 +1,48 @@
 :root[data-style="ascii"] {
-  --container: 1000px;
+  --container: 1040px;
   --pad: 0.92rem;
-  --gap: 11px;
+  --gap: 12px;
 }
 
 :root[data-style="ascii"] body { font-size: 15.5px; }
 :root[data-style="ascii"] .site-shell { padding: 0.85rem 0 2rem; }
-:root[data-style="ascii"] .topbar { gap: 0.75rem; margin-bottom: 1.35rem; }
+:root[data-style="ascii"] .container { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
+:root[data-style="ascii"] .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 1.4rem;
+}
+:root[data-style="ascii"] .topbar-left,
+:root[data-style="ascii"] .topbar-right { display: flex; align-items: center; gap: 10px; }
+:root[data-style="ascii"] .topbar-nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
 :root[data-style="ascii"] .brand-mark { width: 2.2rem; height: 2.2rem; font-size: 0.94rem; }
-
 :root[data-style="ascii"] h1,
 :root[data-style="ascii"] h2 { letter-spacing: normal; }
-
-:root[data-style="ascii"] h1 {
-  font-size: clamp(1.9rem, 3.2vw, 3rem);
-  line-height: 1.05;
-}
-
+:root[data-style="ascii"] h1 { font-size: clamp(1.95rem, 3vw, 3rem); line-height: 1.05; max-width: 22ch; }
 :root[data-style="ascii"] h2 { font-size: clamp(1.35rem, 2.2vw, 1.85rem); }
-:root[data-style="ascii"] .hero { padding: 0.55rem 0 1.45rem; }
-:root[data-style="ascii"] .hero-panel { max-width: 780px; }
+:root[data-style="ascii"] .hero { padding: 0.7rem 0 1.6rem; }
+:root[data-style="ascii"] .hero-panel { max-width: 100%; padding: 22px; }
+:root[data-style="ascii"] .lead { max-width: 70ch; }
 :root[data-style="ascii"] .card { padding: 1rem; }
 :root[data-style="ascii"] .tag { font-size: 0.78rem; padding: 0.2rem 0.55rem; }
-
 :root[data-style="ascii"] .button,
 :root[data-style="ascii"] .button-secondary,
-:root[data-style="ascii"] .ascii-theme-toggle-btn {
-  min-height: 2.25rem;
-  padding: 0.55rem 0.85rem;
+:root[data-style="ascii"] .ascii-theme-toggle-btn { min-height: 2.25rem; padding: 0.55rem 0.85rem; }
+:root[data-style="ascii"] .tools-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  align-items: stretch;
 }
-
-:root[data-style="ascii"] .button,
-:root[data-style="ascii"] .button:link,
-:root[data-style="ascii"] .button:visited {
-  color: #ffffff;
-  background: #148f57;
-  border-color: #148f57;
-}
-
-:root[data-style="ascii"] .button:hover,
-:root[data-style="ascii"] .button:focus-visible {
-  color: #ffffff;
-  background: #0f7647;
-  border-color: #0f7647;
-}
-
-:root[data-style="ascii"] :is(.button-secondary, .button-secondary:link, .button-secondary:visited, .ascii-theme-toggle-btn) { color: inherit; }
-:root[data-style="ascii"][data-ascii-mode="light"] :is(.hero-panel, .page-panel, .card) { background: #ffffff; }
-:root[data-style="ascii"][data-ascii-mode="dark"] :is(.hero-panel, .page-panel, .card) { background: #071108; }
-
-:root[data-style="ascii"] .tools-grid { grid-template-columns: 1fr; }
 :root[data-style="ascii"] .card:hover { box-shadow: 0 0 0 1px rgba(24, 160, 94, 0.1), 0 0 16px rgba(24, 160, 94, 0.08); }
 :root[data-style="ascii"] :is(pre, code, a) { overflow-wrap: anywhere; }
 
@@ -57,6 +50,12 @@
   :root[data-style="ascii"] .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (max-width: 860px) {
+  :root[data-style="ascii"] .topbar { align-items: flex-start; }
+  :root[data-style="ascii"] .topbar-nav { margin: 0; }
+}
+
 @media (max-width: 640px) {
   :root[data-style="ascii"] .site-shell { padding-top: 0.6rem; }
+  :root[data-style="ascii"] .container { padding: 0 14px; }
 }

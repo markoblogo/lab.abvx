@@ -1,0 +1,494 @@
+:root[data-style="ascii"] {
+  --bg: #ffffff;
+  --fg: #0b2a7a;
+  --muted: #4b5f89;
+  --border: #0b2a7a;
+  --link: #0b2a7a;
+  --code-bg: #eef2ff;
+  --radius: 2px;
+  --pad: 1rem;
+  --gap: 12px;
+  --container: 1080px;
+  --line: 1.6;
+  --font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --focus: 2px solid var(--border);
+}
+
+:root[data-ascii-mode="light"] {
+  --bg: #ffffff;
+  --fg: #0b2a7a;
+  --muted: #4b5f89;
+  --border: #0b2a7a;
+  --link: #0b2a7a;
+  --code-bg: #eef2ff;
+  color-scheme: light;
+}
+
+:root[data-ascii-mode="dark"] {
+  --bg: #000000;
+  --fg: #39ff14;
+  --muted: #87cc7e;
+  --border: #39ff14;
+  --link: #39ff14;
+  --code-bg: #051305;
+  color-scheme: dark;
+}
+
+:root[data-style="ascii"] *,
+:root[data-style="ascii"] *::before,
+:root[data-style="ascii"] *::after {
+  box-sizing: border-box;
+}
+
+:root[data-style="ascii"] html,
+:root[data-style="ascii"] body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+:root[data-style="ascii"] body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: var(--line);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-style="ascii"] main {
+  display: block;
+}
+
+:root[data-style="ascii"] h1,
+:root[data-style="ascii"] h2,
+:root[data-style="ascii"] h3,
+:root[data-style="ascii"] h4,
+:root[data-style="ascii"] h5,
+:root[data-style="ascii"] h6 {
+  margin: 0 0 0.7rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+:root[data-style="ascii"] h1 {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+:root[data-style="ascii"] h2 {
+  font-size: clamp(1.45rem, 3.2vw, 2.1rem);
+}
+
+:root[data-style="ascii"] h3 {
+  font-size: 1.3rem;
+}
+
+:root[data-style="ascii"] p {
+  margin: 0 0 1rem;
+}
+
+:root[data-style="ascii"] ul,
+:root[data-style="ascii"] ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+:root[data-style="ascii"] ul ul,
+:root[data-style="ascii"] ul ol,
+:root[data-style="ascii"] ol ul,
+:root[data-style="ascii"] ol ol {
+  margin: 0.45rem 0 0.6rem;
+}
+
+:root[data-style="ascii"] li + li {
+  margin-top: 0.2rem;
+}
+
+:root[data-style="ascii"] blockquote {
+  margin: 0 0 1rem;
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  border-left: 2px solid var(--border);
+  color: var(--muted);
+}
+
+:root[data-style="ascii"] small {
+  color: var(--muted);
+}
+
+:root[data-style="ascii"] a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+:root[data-style="ascii"] hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+
+:root[data-style="ascii"] :focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+:root[data-style="ascii"] :is(
+  button,
+  input,
+  textarea,
+  select,
+  a,
+  [role="button"],
+  .a-btn,
+  .a-btn--primary,
+  .a-btn--ghost,
+  .ascii-theme-toggle-btn
+):focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* Layout utilities */
+:root[data-style="ascii"] .a-container,
+:root[data-style="ascii"] .container {
+  width: min(var(--container), 100% - 2rem);
+  margin-inline: auto;
+}
+
+:root[data-style="ascii"] .a-section {
+  padding-block: calc(var(--pad) * 1.25);
+}
+
+:root[data-style="ascii"] .a-stack,
+:root[data-style="ascii"] .stack {
+  --a-gap: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--a-gap);
+}
+
+:root[data-style="ascii"] .a-row,
+:root[data-style="ascii"] .row {
+  --a-gap: var(--gap);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--a-gap);
+}
+
+:root[data-style="ascii"] .a-cluster {
+  --a-gap: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--a-gap);
+}
+
+:root[data-style="ascii"] .a-gap-1 {
+  --a-gap: 8px;
+}
+
+:root[data-style="ascii"] .a-gap-2 {
+  --a-gap: 12px;
+}
+
+:root[data-style="ascii"] .a-gap-3 {
+  --a-gap: 20px;
+}
+
+:root[data-style="ascii"] .a-center {
+  text-align: center;
+}
+
+:root[data-style="ascii"] .a-right {
+  text-align: right;
+}
+
+:root[data-style="ascii"] .a-between {
+  justify-content: space-between;
+}
+
+:root[data-style="ascii"] .a-align-center {
+  align-items: center;
+}
+
+:root[data-style="ascii"] .a-wrap {
+  flex-wrap: wrap;
+}
+
+:root[data-style="ascii"] .a-grid,
+:root[data-style="ascii"] .grid {
+  --a-gap: var(--gap);
+  display: grid;
+  gap: var(--a-gap);
+}
+
+:root[data-style="ascii"] .a-cols-2,
+:root[data-style="ascii"] .a-cols-3 {
+  grid-template-columns: 1fr;
+}
+
+:root[data-style="ascii"] .a-cols-auto {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+:root[data-style="ascii"] .a-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+:root[data-style="ascii"] .a-aside {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+:root[data-style="ascii"] .a-prose {
+  max-width: 65ch;
+  line-height: 1.72;
+}
+
+:root[data-style="ascii"] .a-muted {
+  color: var(--muted);
+}
+
+:root[data-style="ascii"] .a-balance {
+  text-wrap: balance;
+}
+
+@supports not (text-wrap: balance) {
+  :root[data-style="ascii"] .a-balance {
+    text-wrap: normal;
+  }
+}
+
+:root[data-style="ascii"] .a-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Components */
+:root[data-style="ascii"] .a-card,
+:root[data-style="ascii"] .a-panel,
+:root[data-style="ascii"] .card,
+:root[data-style="ascii"] .panel,
+:root[data-style="ascii"] [data-ascii-role="card"],
+:root[data-style="ascii"] .ascii-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  padding: var(--pad);
+}
+
+:root[data-style="ascii"] .a-btn,
+:root[data-style="ascii"] .a-btn--primary,
+:root[data-style="ascii"] .a-btn--ghost,
+:root[data-style="ascii"] button,
+:root[data-style="ascii"] a.button,
+:root[data-style="ascii"] .button,
+:root[data-style="ascii"] [data-ascii-role="cta"],
+:root[data-style="ascii"] [data-ascii-role="cta-secondary"],
+:root[data-style="ascii"] .ascii-btn,
+:root[data-style="ascii"] .ascii-theme-toggle-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font: inherit;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:root[data-style="ascii"] .a-btn,
+:root[data-style="ascii"] .a-btn--ghost,
+:root[data-style="ascii"] button,
+:root[data-style="ascii"] .ascii-theme-toggle-btn {
+  color: var(--fg);
+  background: transparent;
+}
+
+:root[data-style="ascii"] .a-btn--primary {
+  color: var(--bg);
+  background: var(--fg);
+}
+
+:root[data-style="ascii"] .a-btn:hover,
+:root[data-style="ascii"] .a-btn--ghost:hover,
+:root[data-style="ascii"] button:hover,
+:root[data-style="ascii"] .ascii-theme-toggle-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:root[data-style="ascii"] .a-btn--primary:hover {
+  opacity: 0.9;
+}
+
+:root[data-style="ascii"] :is(button, .a-btn, .a-btn--primary, .a-btn--ghost):active {
+  transform: translateY(1px);
+}
+
+:root[data-style="ascii"] :is(button, .a-btn, .a-btn--primary, .a-btn--ghost):disabled,
+:root[data-style="ascii"] :is(button, .a-btn, .a-btn--primary, .a-btn--ghost)[aria-disabled="true"],
+:root[data-style="ascii"] :is(input, textarea, select):disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+:root[data-style="ascii"] label {
+  display: inline-block;
+  margin: 0 0 0.4rem;
+}
+
+:root[data-style="ascii"] input,
+:root[data-style="ascii"] textarea,
+:root[data-style="ascii"] select {
+  width: 100%;
+  font: inherit;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.65rem;
+}
+
+:root[data-style="ascii"] textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+:root[data-style="ascii"] ::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+:root[data-style="ascii"] .a-badge,
+:root[data-style="ascii"] [data-ascii-role="badge"],
+:root[data-style="ascii"] .ascii-pill,
+:root[data-style="ascii"] .ascii-badge {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.1rem 0.45rem;
+}
+
+:root[data-style="ascii"] code,
+:root[data-style="ascii"] kbd {
+  font-family: inherit;
+  font-size: 0.95em;
+  background: var(--code-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.08rem 0.35rem;
+}
+
+:root[data-style="ascii"] kbd {
+  background: transparent;
+}
+
+:root[data-style="ascii"] pre {
+  margin: 0 0 1rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  border: 2px solid var(--border);
+  background: var(--code-bg);
+  border-radius: var(--radius);
+}
+
+:root[data-style="ascii"] pre code {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+:root[data-style="ascii"] table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+}
+
+:root[data-style="ascii"] th,
+:root[data-style="ascii"] td {
+  text-align: left;
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.55rem;
+  vertical-align: top;
+}
+
+:root[data-style="ascii"] .a-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+:root[data-style="ascii"] .ascii-theme-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+:root[data-style="ascii"] .ascii-sticker {
+  margin: 0;
+  white-space: pre;
+  font-family: var(--font);
+  line-height: 1.2;
+  background: transparent;
+  border: 0;
+}
+
+:root[data-style="ascii"] .ascii-footnote {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: normal;
+}
+
+@media (min-width: 768px) {
+  :root[data-style="ascii"] .a-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :root[data-style="ascii"] .a-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  :root[data-style="ascii"] .a-span-2 {
+    grid-column: span 2;
+  }
+
+  :root[data-style="ascii"] .a-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  :root[data-style="ascii"] .a-aside {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+
+  :root[data-style="ascii"] .a-aside--reverse {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-style="ascii"] *,
+  :root[data-style="ascii"] *::before,
+  :root[data-style="ascii"] *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

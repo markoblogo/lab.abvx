@@ -32,7 +32,7 @@ New: agentsgen snippets — canonical README snippet extraction with CI drift ch
 - **agentsgen pack** — generate AI/LLMO docs bundle; supports --check and --print-plan  
   https://lab.abvx.xyz/tools/agentsgen-pack/
 
-- **agentsgen check** — validate docs/config/markers; non-zero exit code on drift (doctor alias)  
+- **agentsgen check** — validate core docs/config/markers and optionally aggregate pack/snippets drift for CI  
   https://lab.abvx.xyz/tools/agentsgen-check/
 
 - **agentsgen detect** — heuristic repo scan (no execution); JSON output supported  

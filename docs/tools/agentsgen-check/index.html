@@ -4,17 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>agentsgen check | ABVX Lab</title>
-    <meta name="description" content="Validate docs, config, and markers with non-zero exit on drift using agentsgen check." />
+    <meta name="description" content="Validate core docs/config/markers and optionally aggregate pack/snippets drift with JSON or CI-friendly summaries." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/agentsgen-check/" />
     <meta property="og:title" content="agentsgen check | ABVX Lab" />
-    <meta property="og:description" content="Validate docs, config, and markers with non-zero exit on drift using agentsgen check." />
+    <meta property="og:description" content="Validate core docs/config/markers and optionally aggregate pack/snippets drift with JSON or CI-friendly summaries." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/agentsgen-check/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/asciitheme.css?v20260319d" />
     <link rel="stylesheet" href="../../assets/styles.css?v20260320a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"agentsgen check","url":"https://lab.abvx.xyz/tools/agentsgen-check/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Validate docs, config, and markers with non-zero exit on drift using agentsgen check."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"agentsgen check","url":"https://lab.abvx.xyz/tools/agentsgen-check/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Validate core docs/config/markers and optionally aggregate pack/snippets drift with JSON or CI-friendly summaries."}</script>
   </head>
   <body>
     <div class="site-shell">
@@ -39,15 +39,15 @@
           <section class="hero-panel">
             <span class="kicker">ABVX tool</span>
             <h1>agentsgen check</h1>
-            <p class="lead">Validate that docs/config/markers are correct — non-zero exit code on drift.</p>
+            <p class="lead">Validate core docs/config/markers and optionally aggregate pack/snippets drift with JSON or CI-friendly summaries.</p>
             <div class="tag-list"><span class="tag">CLI</span><span class="tag">Validation</span><span class="tag">Doctor Alias</span></div>
           </section>
           <section class="page-panel page-meta">
             <h2>What it does</h2>
             <ul class="bullet-list">
-              <li>Checks repo docs and config for expected generated structure.</li>
-              <li>Returns a non-zero exit code when required files or marker regions drift from expected output.</li>
-              <li>Fits CI guard usage where you want validation without rewriting content.</li>
+              <li>Checks core repo docs and config for expected agentsgen-managed structure.</li>
+              <li>Can aggregate pack and README snippets drift checks into one repo-level validation pass.</li>
+              <li>Supports machine-readable JSON and compact CI output without rewriting content.</li>
             </ul>
           </section>
           <section class="page-panel">
@@ -61,7 +61,9 @@
           <section class="page-panel">
             <h2>Quickstart</h2>
             <p class="small-note">Validation pass</p>
-            <pre><code>agentsgen check .</code></pre>
+            <pre><code>agentsgen check .
+agentsgen check . --all --ci
+agentsgen check . --format json</code></pre>
           </section>
         </main>
         <footer class="footer footer--lab">

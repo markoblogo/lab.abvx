@@ -12,7 +12,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 A short list of what’s currently in the lab (each tool has a page + links).
 
-New: agentsgen status — read-only repo overview for managed files, markers, generated fallbacks, and drift.
+New: agentsgen presets — copy-paste repo setup for common stacks with explicit commands.
+
+- **agentsgen presets** — copy-paste repo setup for common stacks (no autodetect, explicit commands)  
+  https://lab.abvx.xyz/tools/agentsgen-presets/
 
 - **agentsgen** — safe repo docs toolchain for coding agents (AGENTS.md/RUNBOOK.md + PR Guard + LLMO Pack)  
   https://lab.abvx.xyz/tools/agentsgen/
@@ -64,6 +67,7 @@ New: agentsgen status — read-only repo overview for managed files, markers, ge
 - [agentsgen-check](https://lab.abvx.xyz/tools/agentsgen-check/)
 - [agentsgen-detect](https://lab.abvx.xyz/tools/agentsgen-detect/)
 - [agentsgen-status](https://lab.abvx.xyz/tools/agentsgen-status/)
+- [agentsgen-presets](https://lab.abvx.xyz/tools/agentsgen-presets/)
 - [abvx-shortener](https://lab.abvx.xyz/tools/abvx-shortener/)
 - [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/)
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)

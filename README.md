@@ -1,13 +1,8 @@
 # ABVX Lab
 
-Principles (why this hub exists):
-- Minimal, maintained, verifiable repo context beats auto-generated “context files”.
-- Instrumented truth > prose (check/status/pack --check).
-Manifest: https://agentsmd.abvx.xyz/
-
-A static hub of ABVX developer tools, with per-tool pages for discovery and links.
-
-This repo contains the published GitHub Pages site, the per-tool landing pages, and the small maintenance workflow for keeping the catalog current.
+A static hub for ABVX developer tools and small product pages.
+It keeps live links, per-tool docs, and lightweight landing pages in one place.
+Multiple agentsgen commands are listed separately for discoverability, but they ship as one package.
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
@@ -15,59 +10,38 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
-A short list of what’s currently in the lab (each tool has a page + links).
+- [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
+- [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic CI drift checks.
+- [agentsgen presets](https://lab.abvx.xyz/tools/agentsgen-presets/) — Copy-paste setup for common stacks (explicit commands, no guesswork).
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents (AGENTS/RUNBOOK + PR Guard + LLMO Pack).
+- [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap .agentsgen.json + AGENTS/RUNBOOK with safe marker sections.
+- [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch marker sections only; never overwrite handwritten docs.
+- [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI/LLMO docs bundle; supports --check and --print-plan.
+- [agentsgen check](https://lab.abvx.xyz/tools/agentsgen-check/) — Validate repo is agentsgen-ready; CI-friendly drift signals.
+- [agentsgen detect](https://lab.abvx.xyz/tools/agentsgen-detect/) — Heuristic repo scan (no execution); emits stable JSON output.
+- [agentsgen status](https://lab.abvx.xyz/tools/agentsgen-status/) — Instant repo overview: managed files, markers, generated fallbacks, and drift.
+- [ABVX Shortener](https://lab.abvx.xyz/tools/abvx-shortener/) — Minimal URL shortener (Cloudflare Worker + KV).
+- [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/) — sitelen-layer rendering plugin (toki pona tooling).
+- [git-tweet](https://lab.abvx.xyz/tools/git-tweet/) — Turn git changes into tweet-sized release notes (with context + links).
+- [AsciiTheme](https://lab.abvx.xyz/tools/asciitheme/) — Tiny CSS theme kit for clean, readable dev pages.
 
-New: agentsgen snippets — canonical README snippet extraction with CI drift checks.
+## Agentsgen family naming
 
-- **agentsgen snippets** — extract canonical README snippets with deterministic CI drift checks  
-  https://lab.abvx.xyz/tools/agentsgen-snippets/
+Agentsgen commands are presented here as separate tool pages for discoverability.
+They still ship together as one package: `agentsgen`.
 
-- **agentsgen presets** — copy-paste repo setup for common stacks (no autodetect, explicit commands)  
-  https://lab.abvx.xyz/tools/agentsgen-presets/
+## Maintenance
 
-- **agentsgen** — safe repo docs toolchain for coding agents (AGENTS.md/RUNBOOK.md + PR Guard + LLMO Pack)  
-  https://lab.abvx.xyz/tools/agentsgen/
-
-- **agentsgen init** — bootstrap AGENTS.md/RUNBOOK.md + .agentsgen.json (safe markers)  
-  https://lab.abvx.xyz/tools/agentsgen-init/
-
-- **agentsgen update** — marker-only updates; never overwrite handwritten docs  
-  https://lab.abvx.xyz/tools/agentsgen-update/
-
-- **agentsgen pack** — generate AI/LLMO docs bundle; supports --check and --print-plan  
-  https://lab.abvx.xyz/tools/agentsgen-pack/
-
-- **agentsgen check** — validate core docs/config/markers and optionally aggregate pack/snippets drift for CI  
-  https://lab.abvx.xyz/tools/agentsgen-check/
-
-- **agentsgen detect** — heuristic repo scan (no execution); JSON output supported  
-  https://lab.abvx.xyz/tools/agentsgen-detect/
-
-- **agentsgen status** — instant repo overview: managed files, markers, generated fallbacks, and drift  
-  https://lab.abvx.xyz/tools/agentsgen-status/
-
-- **ABVX Shortener** — minimal URL shortener (Cloudflare Worker + KV)  
-  https://lab.abvx.xyz/tools/abvx-shortener/
-
-- **sitelen-layer-plugin** — sitelen-layer rendering plugin (toki pona tooling)  
-  https://lab.abvx.xyz/tools/sitelen-layer-plugin/
-
-- **git-tweet** — turn git changes into tweet-sized release notes (with context + links)  
-  https://lab.abvx.xyz/tools/git-tweet/
-
-- **AsciiTheme** — tiny CSS theme kit for clean, readable dev pages  
-  https://lab.abvx.xyz/tools/asciitheme/
-
-
-## What's inside
+### What's inside
 
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
 - Theme assets: `docs/assets/asciitheme.css`, `docs/assets/ascii-theme.js`, `docs/assets/styles.css`
 
-## Tool pages (routing)
+### Tool pages (routing)
 
+- [repomap](https://lab.abvx.xyz/tools/repomap/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)
@@ -82,7 +56,7 @@ New: agentsgen snippets — canonical README snippet extraction with CI drift ch
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)
 - [asciitheme](https://lab.abvx.xyz/tools/asciitheme/)
 
-## Visual system
+### Visual system
 
 ABVX Lab uses a split setup based on AsciiTheme:
 
@@ -91,7 +65,7 @@ ABVX Lab uses a split setup based on AsciiTheme:
 - `docs/assets/styles.css` is the Lab-only override layer
 - Do not rebuild the baseline locally in `styles.css`
 
-## How to add a new tool
+### How to add a new tool
 
 Use this checklist:
 
@@ -103,7 +77,7 @@ Use this checklist:
 - Add the tool URL to `docs/sitemap.xml`
 - If the tool has a live site, add its `Live` link on both the home card and the tool page
 
-## Deploy
+### Deploy
 
 GitHub Pages publishes this site from `/docs` on `main`.
 

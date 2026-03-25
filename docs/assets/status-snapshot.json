@@ -58,6 +58,14 @@
           "slice_files_count": 20
         },
         "slice_source": "artifact-backed"
+      },
+      "proof_snapshot": {
+        "status": "complete",
+        "task_id": "proof-loop-v0",
+        "contract": true,
+        "evidence": true,
+        "verdict": true,
+        "verdict_status": "needs-review"
       }
     },
     {
@@ -98,17 +106,25 @@
           "slice_files_count": 2
         },
         "slice_source": "artifact-backed"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
       }
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23552929318",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23553037410",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T16:47:11Z",
+      "updated_at": "2026-03-25T16:49:28Z",
       "workflow_sync_status": "matches",
       "operator_queue": "ready-now",
       "repomap_snapshot": {
@@ -125,6 +141,14 @@
           "slice_files_count": 0
         },
         "slice_source": "disabled"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
       }
     }
   ]

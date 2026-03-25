@@ -76,6 +76,7 @@ def main() -> int:
         workflow_sync_status = planning.get('workflow_sync_status', 'not-checked')
         operator_queue = planning.get('operator_queue', 'review-later')
         repomap_snapshot = planning.get('repomap_snapshot', {}) if isinstance(planning.get('repomap_snapshot'), dict) else {}
+        proof_snapshot = planning.get('proof_snapshot', {}) if isinstance(planning.get('proof_snapshot'), dict) else {}
         repomap_line = ''
         slice_line = ''
         if repomap_snapshot:
@@ -102,6 +103,9 @@ def main() -> int:
                 if isinstance(item, dict) and item.get('path')
             )
             top_ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{items}</ul>'
+        proof_line = ''
+        if proof_snapshot:
+            proof_line = f'<li>Proof loop: {proof_snapshot.get("status", "disabled")} (task {proof_snapshot.get("task_id") or "n/a"}, verdict {proof_snapshot.get("verdict_status", "none")})</li>'
         sections.append(
             f'''<section class="page-panel">
             <h2>{card['repo']}</h2>
@@ -114,6 +118,7 @@ def main() -> int:
               <li>Workflow: {workflow.get('name', 'n/a')}</li>
               <li>Workflow sync: {workflow_sync_status}</li>
               <li>Operator queue: {operator_queue}</li>
+              {proof_line}
               {repomap_line}
               {slice_line}
             </ul>

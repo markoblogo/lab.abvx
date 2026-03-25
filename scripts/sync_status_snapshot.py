@@ -68,8 +68,9 @@ def fetch_status(repo_name: str, planning_map: dict[str, dict[str, object]]) -> 
     workflow_sync_status = planning.get('workflow_sync_status', 'not-checked') if isinstance(planning, dict) else 'not-checked'
     operator_queue = planning.get('operator_queue', 'review-later') if isinstance(planning, dict) else 'review-later'
     repomap_snapshot = planning.get('repomap_snapshot', {}) if isinstance(planning, dict) else {}
+    proof_snapshot = planning.get('proof_snapshot', {}) if isinstance(planning, dict) else {}
     if not runs:
-        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet', 'workflow_sync_status': workflow_sync_status, 'operator_queue': operator_queue, 'repomap_snapshot': repomap_snapshot}
+        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet', 'workflow_sync_status': workflow_sync_status, 'operator_queue': operator_queue, 'repomap_snapshot': repomap_snapshot, 'proof_snapshot': proof_snapshot}
     run = runs[0]
     return {
         'repo': repo_name,
@@ -83,6 +84,7 @@ def fetch_status(repo_name: str, planning_map: dict[str, dict[str, object]]) -> 
         'workflow_sync_status': workflow_sync_status,
         'operator_queue': operator_queue,
         'repomap_snapshot': repomap_snapshot,
+        'proof_snapshot': proof_snapshot,
     }
 
 
@@ -90,6 +92,7 @@ def build_page(entries: list[dict[str, object]]) -> str:
     cards = []
     for entry in entries:
         repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
+        proof_snapshot = entry.get('proof_snapshot', {}) if isinstance(entry.get('proof_snapshot'), dict) else {}
         repomap_line = ''
         slice_line = ''
         if repomap_snapshot:
@@ -116,6 +119,9 @@ def build_page(entries: list[dict[str, object]]) -> str:
                 if isinstance(item, dict) and item.get('path')
             )
             top_ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{items}</ul>'
+        proof_line = ''
+        if proof_snapshot:
+            proof_line = f'<li>Proof loop: {proof_snapshot.get("status", "disabled")} (task {proof_snapshot.get("task_id") or "n/a"}, verdict {proof_snapshot.get("verdict_status", "none")})</li>'
         cards.append(
             f'''<section class="page-panel">
             <h2>{entry["repo"]}</h2>
@@ -128,6 +134,7 @@ def build_page(entries: list[dict[str, object]]) -> str:
               <li>Updated: {entry.get("updated_at", "") or 'n/a'}</li>
               <li>Workflow sync: {entry.get("workflow_sync_status", "not-checked")}</li>
               <li>Operator queue: {entry.get("operator_queue", "review-later")}</li>
+              {proof_line}
               {repomap_line}
               {slice_line}
             </ul>

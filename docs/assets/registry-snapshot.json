@@ -20,6 +20,10 @@
             "top_ranked_files": 5,
             "focus": "understand",
             "changed": false
+          },
+          "proof_loop": {
+            "enabled": true,
+            "task_id": "proof-loop-v0"
           }
         },
         "git_tweet": {

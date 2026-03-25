@@ -10,7 +10,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
-- [What to review next](https://lab.abvx.xyz/planning/) — Read-only planning queue with status, priority, and workflow-sync hints from SET batch planner.
+- [What to review next](https://lab.abvx.xyz/planning/) — Read-only planning queue with status, priority, and workflow-sync hints, proof-loop status from SET batch planner.
 - [Repo cards](https://lab.abvx.xyz/repos/) — Aggregated view combining registry baselines, latest workflow status, and sync state.
 - [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
 - [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo plus sync state from planning.

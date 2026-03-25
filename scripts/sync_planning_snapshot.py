@@ -129,6 +129,42 @@ def load_repomap_snapshot(
     }
 
 
+
+
+
+def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object] | None) -> dict[str, object]:
+    if not isinstance(proof_loop, dict) or not proof_loop.get('enabled'):
+        return {'status': 'disabled', 'task_id': None, 'contract': False, 'evidence': False, 'verdict': False, 'verdict_status': 'none'}
+    task_id = str(proof_loop.get('task_id') or '').strip()
+    if not task_id:
+        return {'status': 'missing-config', 'task_id': None, 'contract': False, 'evidence': False, 'verdict': False, 'verdict_status': 'none'}
+    if repo_root is None:
+        return {'status': 'not-checked', 'task_id': task_id, 'contract': False, 'evidence': False, 'verdict': False, 'verdict_status': 'none'}
+    task_dir = repo_root / 'docs' / 'ai' / 'tasks' / task_id
+    contract_path = task_dir / 'contract.md'
+    evidence_path = task_dir / 'evidence.json'
+    verdict_path = task_dir / 'verdict.json'
+    verdict_generated_path = task_dir / 'verdict.generated.json'
+    verdict_status = 'none'
+    verdict_source = verdict_path if verdict_path.exists() else verdict_generated_path
+    if verdict_source.exists():
+        try:
+            import json
+            verdict_status = str(json.loads(verdict_source.read_text()).get('status', 'none'))
+        except Exception:
+            verdict_status = 'unknown'
+    present_count = sum([contract_path.exists(), evidence_path.exists(), verdict_source.exists()])
+    status = 'complete' if present_count == 3 else ('partial' if present_count else 'missing')
+    return {
+        'status': status,
+        'task_id': task_id,
+        'contract': contract_path.exists(),
+        'evidence': evidence_path.exists(),
+        'verdict': verdict_source.exists(),
+        'verdict_status': verdict_status,
+    }
+
+
 def run_planner() -> dict[str, object]:
     planner = get_planner_path()
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -159,6 +195,10 @@ def run_planner() -> dict[str, object]:
                         repo_root=repo_root,
                         repomap_enabled=repomap_enabled,
                         repomap_policy=plan.get('repomap_policy'),
+                    ),
+                    'proof_snapshot': load_proof_snapshot(
+                        repo_root=repo_root,
+                        proof_loop=plan.get('proof_loop'),
                     ),
                     'files': [path.name for path in sorted(repo_dir.iterdir())],
                 }
@@ -214,67 +254,73 @@ def build_page(snapshot: dict[str, object]) -> str:
         for entry in entries:
             index = item_index
             item_index += 1
-        plan = entry['plan']
-        card_slug = entry['repo'].replace('/', '-')
-        workflow = plan['proposed_changes'][0]['workflow']
-        review_payload = plan['review_payload']
-        gh_pr = review_payload['gh_pr_create']
-        apply_sim = review_payload['apply_simulation']
-        next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
-        recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
-        next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
-        apply_readiness = entry.get('apply_readiness') or review_payload.get('apply_readiness') or 'unknown'
-        workflow_sync_status = entry.get('workflow_sync_status') or 'not-checked'
-        blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
-        capabilities = plan.get('capabilities', [])
-        wiring_gaps = entry.get('wiring_gaps') or [cap.get('wiring_gap') for cap in capabilities if isinstance(cap, dict) and cap.get('wiring_gap')]
-        repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
-        manual_steps = apply_sim.get('manual_steps', [])
-        full_sequence = '\n'.join(manual_steps)
-        pr_command = manual_steps[-1] if manual_steps else 'n/a'
-        unmapped = plan.get('unmapped', [])
-        blocked_html = ''
-        if blocked_by:
-            items = ''.join(f'<li>{item}</li>' for item in blocked_by)
-            blocked_html = f'<div id="{card_slug}-blocked" class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
-        wiring_gap_html = ''
-        if wiring_gaps:
-            items = ''.join(
-                f'<li><code>{gap.get("capability", "unknown")}</code>: {gap.get("message", "missing orchestrator wiring")}</li>'
-                for gap in wiring_gaps
-                if isinstance(gap, dict)
-            )
-            wiring_gap_html = f'<div class="small-note">Missing in orchestrator:</div><ul class="bullet-list">{items}</ul>'
-        repomap_html = ''
-        if repomap_snapshot:
-            top_ranked = repomap_snapshot.get('top_ranked_files', [])
-            ranked_html = ''
-            if top_ranked:
-                ranked_items = ''.join(
-                    f"<li><code>{item['path']}</code> (score {item['score']})</li>"
-                    for item in top_ranked
-                    if isinstance(item, dict) and item.get('path')
+            plan = entry['plan']
+            card_slug = entry['repo'].replace('/', '-')
+            workflow = plan['proposed_changes'][0]['workflow']
+            review_payload = plan['review_payload']
+            gh_pr = review_payload['gh_pr_create']
+            apply_sim = review_payload['apply_simulation']
+            next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
+            recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
+            next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
+            apply_readiness = entry.get('apply_readiness') or review_payload.get('apply_readiness') or 'unknown'
+            workflow_sync_status = entry.get('workflow_sync_status') or 'not-checked'
+            blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
+            capabilities = plan.get('capabilities', [])
+            wiring_gaps = entry.get('wiring_gaps') or [cap.get('wiring_gap') for cap in capabilities if isinstance(cap, dict) and cap.get('wiring_gap')]
+            repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
+            proof_snapshot = entry.get('proof_snapshot', {}) if isinstance(entry.get('proof_snapshot'), dict) else {}
+            manual_steps = apply_sim.get('manual_steps', [])
+            full_sequence = '\n'.join(manual_steps)
+            pr_command = manual_steps[-1] if manual_steps else 'n/a'
+            blocked_html = ''
+            if blocked_by:
+                items = ''.join(f'<li>{item}</li>' for item in blocked_by)
+                blocked_html = f'<div id="{card_slug}-blocked" class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
+            wiring_gap_html = ''
+            if wiring_gaps:
+                items = ''.join(
+                    f'<li><code>{gap.get("capability", "unknown")}</code>: {gap.get("message", "missing orchestrator wiring")}</li>'
+                    for gap in wiring_gaps
+                    if isinstance(gap, dict)
                 )
-                ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{ranked_items}</ul>'
-            active_slice = repomap_snapshot.get('active_slice', {}) if isinstance(repomap_snapshot.get('active_slice'), dict) else {}
-            focus = active_slice.get('focus')
-            mode = active_slice.get('mode', 'full')
-            files_count = active_slice.get('slice_files_count', 0)
-            slice_source = repomap_snapshot.get('slice_source', 'policy-default')
-            policy_mode = active_slice.get('policy_mode', mode)
-            policy_label = active_slice.get('policy_label', {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(policy_mode, 'Full Repo Slice'))
-            slice_label = mode if not focus else f"{mode} ({focus})"
-            policy_href = {'full': '#policy-full', 'focus': '#policy-focus', 'changed': '#policy-changed', 'focus+changed': '#policy-hybrid'}.get(policy_mode, '#policy-full')
-            repomap_html = (
-                f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
-                f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
-                f"<div class=\"small-note\">Policy mode: <a href=\"{policy_href}\">{policy_mode} ({policy_label})</a></div>"
-                f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
-                f"<div class=\"small-note\">Slice source: {slice_source}</div>"
-                f"{ranked_html}"
-            )
-        cards.append(
-            f'''<section id="{card_slug}" class="page-panel">
+                wiring_gap_html = f'<div class="small-note">Missing in orchestrator:</div><ul class="bullet-list">{items}</ul>'
+            repomap_html = ''
+            if repomap_snapshot:
+                top_ranked = repomap_snapshot.get('top_ranked_files', [])
+                ranked_html = ''
+                if top_ranked:
+                    ranked_items = ''.join(
+                        f"<li><code>{item['path']}</code> (score {item['score']})</li>"
+                        for item in top_ranked
+                        if isinstance(item, dict) and item.get('path')
+                    )
+                    ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{ranked_items}</ul>'
+                active_slice = repomap_snapshot.get('active_slice', {}) if isinstance(repomap_snapshot.get('active_slice'), dict) else {}
+                focus = active_slice.get('focus')
+                mode = active_slice.get('mode', 'full')
+                files_count = active_slice.get('slice_files_count', 0)
+                slice_source = repomap_snapshot.get('slice_source', 'policy-default')
+                policy_mode = active_slice.get('policy_mode', mode)
+                policy_label = active_slice.get('policy_label', {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(policy_mode, 'Full Repo Slice'))
+                slice_label = mode if not focus else f"{mode} ({focus})"
+                policy_href = {'full': '#policy-full', 'focus': '#policy-focus', 'changed': '#policy-changed', 'focus+changed': '#policy-hybrid'}.get(policy_mode, '#policy-full')
+                repomap_html = (
+                    f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
+                    f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
+                    f"<div class=\"small-note\">Policy mode: <a href=\"{policy_href}\">{policy_mode} ({policy_label})</a></div>"
+                    f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
+                    f"<div class=\"small-note\">Slice source: {slice_source}</div>"
+                    f"{ranked_html}"
+                )
+            proof_html = ''
+            if proof_snapshot:
+                proof_html = (
+                    f"<div class=\"small-note\">Proof loop: {proof_snapshot.get('status', 'disabled')}"
+                    f" (task {proof_snapshot.get('task_id') or 'n/a'}, verdict {proof_snapshot.get('verdict_status', 'none')})</div>"
+                )
+            cards.append(
+                f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
             <p class="small-note">Queue: {entry.get('operator_queue', review_payload.get('operator_queue', 'review-later'))} | Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness} | Workflow sync: {workflow_sync_status}</p>
             <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-blocked">Show blockers</a>' if blocked_by or wiring_gaps else ''}</p>
@@ -293,11 +339,12 @@ def build_page(snapshot: dict[str, object]) -> str:
             <div class="small-note">Copy full sequence:</div>
             <pre><code>{full_sequence}</code></pre>
             {repomap_html}
+            {proof_html}
             {blocked_html}
             {wiring_gap_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>'''
-        )
+            )
     cards_html = '\n'.join(cards)
     blocked_link = f'<a class="button-secondary" href="#{first_blocked_slug}-blocked">Show blockers first</a>' if first_blocked_slug else ''
     return f'''<!doctype html>

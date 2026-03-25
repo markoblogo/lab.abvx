@@ -46,7 +46,7 @@
             <h2>What it does</h2>
             <ul class="bullet-list">
               <li>Resolves a preset into a small, explicit <code>SET</code> run plan for a repo.</li>
-              <li>Runs thin agentsgen flows such as init, pack, check, repomap, snippets, analyze, and meta.</li>
+              <li>Runs thin agentsgen flows such as init, pack, check, repomap, snippets, analyze, meta, and optional proof-loop artifacts.</li>
               <li>Exports reviewable planning payloads so registry config and repo workflows stay auditable.</li>
             </ul>
           </section>
@@ -67,7 +67,7 @@
     path: "."
 
 python3 scripts/plan_config_apply.py --all</code></pre>
-            <p class="small-note">Presets: <code>minimal</code>, <code>repo-docs</code>, <code>site-ai</code>.</p>
+            <p class="small-note">Presets: <code>minimal</code>, <code>repo-docs</code>, <code>site-ai</code>. Proof-loop is supported through <code>proof_loop</code> + <code>proof_task_id</code>.</p>
           </section>
         </main>
         <footer class="footer footer--lab">

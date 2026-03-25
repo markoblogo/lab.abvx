@@ -71,8 +71,14 @@ def sort_key(entry: dict[str, object]) -> tuple[int, int, str]:
 def build_page(snapshot: dict[str, object]) -> str:
     cards = []
     repos = sorted(snapshot.get('repos', []), key=sort_key)
+    first_unmapped_slug = None
+    for entry in repos:
+        if entry.get('plan', {}).get('unmapped'):
+            first_unmapped_slug = entry['repo'].replace('/', '-')
+            break
     for index, entry in enumerate(repos, start=1):
         plan = entry['plan']
+        card_slug = entry['repo'].replace('/', '-')
         workflow = plan['proposed_changes'][0]['workflow']
         gh_pr = plan['review_payload']['gh_pr_create']
         apply_sim = plan['review_payload']['apply_simulation']
@@ -81,11 +87,12 @@ def build_page(snapshot: dict[str, object]) -> str:
         unmapped_html = ''
         if unmapped:
             items = ''.join(f'<li>{item}</li>' for item in unmapped)
-            unmapped_html = f'<div class="small-note">Unmapped fields:</div><ul class="bullet-list">{items}</ul>'
+            unmapped_html = f'<div id="{card_slug}-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list">{items}</ul>'
         cards.append(
-            f'''<section class="page-panel">
+            f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
             <p class="small-note">Status: {entry['status_hint']} | Priority: {entry['priority_hint']}</p>
+            <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-unmapped">Show unmapped fields</a>' if unmapped else ''}</p>
             <ul class="bullet-list">
               <li>Workflow preset: {workflow['with'].get('workflow_preset', 'none')}</li>
               <li>Target workflow: {entry['target_workflow']}</li>
@@ -98,6 +105,7 @@ def build_page(snapshot: dict[str, object]) -> str:
           </section>'''
         )
     cards_html = '\n'.join(cards)
+    unmapped_link = f'<a class="button-secondary" href="#{first_unmapped_slug}-unmapped">Show unmapped first</a>' if first_unmapped_slug else ''
     return f'''<!doctype html>
 <html lang="en" data-style="ascii" data-ascii-mode="light">
   <head>
@@ -130,7 +138,17 @@ def build_page(snapshot: dict[str, object]) -> str:
             <h1>What to review next</h1>
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
-            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a>{unmapped_link}</div>
+          </section>
+          <section class="page-panel">
+            <h2>Semantics</h2>
+            <ul class="bullet-list">
+              <li id="status-ready-for-review"><strong>ready-for-review</strong>: no unmapped fields in the current SET contract; manual PR review can start now.</li>
+              <li id="status-needs-wiring"><strong>needs-wiring</strong>: registry asks for capabilities not yet exposed by SET action inputs.</li>
+              <li id="priority-high"><strong>high</strong>: central repo or site-heavy flow worth reviewing first.</li>
+              <li id="priority-medium"><strong>medium</strong>: useful plan, but still blocked by missing wiring or follow-up work.</li>
+              <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
+            </ul>
           </section>
           {cards_html}
         </main>

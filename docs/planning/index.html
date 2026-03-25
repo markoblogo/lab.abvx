@@ -30,11 +30,22 @@
             <h1>What to review next</h1>
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
-            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a><a class="button-secondary" href="#markoblogo-AGENTS.md_generator-unmapped">Show unmapped first</a></div>
           </section>
           <section class="page-panel">
+            <h2>Semantics</h2>
+            <ul class="bullet-list">
+              <li id="status-ready-for-review"><strong>ready-for-review</strong>: no unmapped fields in the current SET contract; manual PR review can start now.</li>
+              <li id="status-needs-wiring"><strong>needs-wiring</strong>: registry asks for capabilities not yet exposed by SET action inputs.</li>
+              <li id="priority-high"><strong>high</strong>: central repo or site-heavy flow worth reviewing first.</li>
+              <li id="priority-medium"><strong>medium</strong>: useful plan, but still blocked by missing wiring or follow-up work.</li>
+              <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
+            </ul>
+          </section>
+          <section id="markoblogo-lab.abvx" class="page-panel">
             <h2>1. markoblogo/lab.abvx</h2>
             <p class="small-note">Status: ready-for-review | Priority: high</p>
+            <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-high">Why high?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: site-ai</li>
               <li>Target workflow: .github/workflows/set.yml</li>
@@ -45,9 +56,10 @@
             
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
-<section class="page-panel">
+<section id="markoblogo-AGENTS.md_generator" class="page-panel">
             <h2>2. markoblogo/AGENTS.md_generator</h2>
             <p class="small-note">Status: needs-wiring | Priority: medium</p>
+            <p class="small-note"><a href="#status-needs-wiring">Why needs-wiring?</a> | <a href="#priority-medium">Why medium?</a> | <a href="#markoblogo-AGENTS.md_generator-unmapped">Show unmapped fields</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>
               <li>Target workflow: .github/workflows/set.yml</li>
@@ -55,7 +67,7 @@
               <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
               <li>Next manual step: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
             </ul>
-            <div class="small-note">Unmapped fields:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
+            <div id="markoblogo-AGENTS.md_generator-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
         </main>

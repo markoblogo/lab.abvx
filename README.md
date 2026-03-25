@@ -15,6 +15,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 - [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
 - [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo.
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
+- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows.
 - [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic CI drift checks.
 - [agentsgen presets](https://lab.abvx.xyz/tools/agentsgen-presets/) — Copy-paste setup for common stacks (explicit commands, no guesswork).
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents (AGENTS/RUNBOOK + PR Guard + AI docs bundle).
@@ -52,6 +53,7 @@ They still ship together as one package: `agentsgen`.
 ### Tool pages (routing)
 
 - [repomap](https://lab.abvx.xyz/tools/repomap/)
+- [set](https://lab.abvx.xyz/tools/set/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)

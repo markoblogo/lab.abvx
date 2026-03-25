@@ -9,29 +9,15 @@
       "head_branch": "codex/set-plan-markoblogo-AGENTS.md_generator",
       "target_workflow": ".github/workflows/set.yml",
       "title": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
-      "status_hint": "needs-wiring",
-      "priority_hint": "medium",
-      "apply_readiness": "blocked",
-      "blocked_by": [
-        "agentsgen.repomap is in registry but not yet wired into SET action inputs",
-        "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-      ],
-      "wiring_gaps": [
-        {
-          "kind": "missing-set-input",
-          "capability": "agentsgen.repomap",
-          "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
-        },
-        {
-          "kind": "missing-set-input",
-          "capability": "agentsgen.snippets",
-          "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-        }
-      ],
-      "next_action_label": "Resolve unmapped fields",
-      "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+      "status_hint": "ready-for-review",
+      "priority_hint": "normal",
+      "apply_readiness": "ready",
+      "blocked_by": [],
+      "wiring_gaps": [],
+      "next_action_label": "Review and apply planned workflow",
+      "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
-      "unmapped_count": 2,
+      "unmapped_count": 0,
       "plan": {
         "version": 1,
         "mode": "planning-only",
@@ -50,7 +36,9 @@
                 "workflow_preset": "repo-docs",
                 "init": "true",
                 "pack": "true",
-                "check": "true"
+                "check": "true",
+                "repomap": "true",
+                "snippets": "true"
               }
             }
           }
@@ -81,23 +69,15 @@
             "tool": "agentsgen",
             "key": "repomap",
             "requested": true,
-            "supported_by_set": false,
-            "wiring_gap": {
-              "kind": "missing-set-input",
-              "capability": "agentsgen.repomap",
-              "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
-            }
+            "supported_by_set": true,
+            "set_input": "repomap"
           },
           {
             "tool": "agentsgen",
             "key": "snippets",
             "requested": true,
-            "supported_by_set": false,
-            "wiring_gap": {
-              "kind": "missing-set-input",
-              "capability": "agentsgen.snippets",
-              "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-            }
+            "supported_by_set": true,
+            "set_input": "snippets"
           }
         ],
         "review_payload": {
@@ -130,40 +110,29 @@
               "tool": "agentsgen",
               "key": "repomap",
               "requested": true,
-              "supported_by_set": false,
-              "wiring_gap": {
-                "kind": "missing-set-input",
-                "capability": "agentsgen.repomap",
-                "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
-              }
+              "supported_by_set": true,
+              "set_input": "repomap"
             },
             {
               "tool": "agentsgen",
               "key": "snippets",
               "requested": true,
-              "supported_by_set": false,
-              "wiring_gap": {
-                "kind": "missing-set-input",
-                "capability": "agentsgen.snippets",
-                "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-              }
+              "supported_by_set": true,
+              "set_input": "snippets"
             }
           ],
-          "apply_readiness": "blocked",
-          "blocked_by": [
-            "agentsgen.repomap is in registry but not yet wired into SET action inputs",
-            "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-          ],
-          "next_action_label": "Resolve unmapped fields",
-          "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+          "apply_readiness": "ready",
+          "blocked_by": [],
+          "next_action_label": "Review and apply planned workflow",
+          "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
           "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
           "target_branch": "main",
           "head_branch": "codex/set-plan-markoblogo-AGENTS.md_generator",
           "target_workflow_path": ".github/workflows/set.yml",
           "title": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
           "suggested_commit_message": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
-          "body": "# Planned SET workflow for `markoblogo/AGENTS.md_generator`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n\n## Unmapped fields\n- agentsgen.repomap is in registry but not yet wired into SET action inputs\n- agentsgen.snippets is in registry but not yet wired into SET action inputs\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n",
+          "body": "# Planned SET workflow for `markoblogo/AGENTS.md_generator`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `true`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"true\"\n",
           "gh_pr_create": {
             "repo": "markoblogo/AGENTS.md_generator",
             "base": "main",
@@ -192,10 +161,7 @@
             ]
           }
         },
-        "unmapped": [
-          "agentsgen.repomap is in registry but not yet wired into SET action inputs",
-          "agentsgen.snippets is in registry but not yet wired into SET action inputs"
-        ],
+        "unmapped": [],
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
@@ -242,6 +208,8 @@
                 "init": "true",
                 "pack": "true",
                 "check": "true",
+                "repomap": "false",
+                "snippets": "false",
                 "site_url": "https://lab.abvx.xyz",
                 "site_pack": "true",
                 "analyze": "true",
@@ -340,8 +308,8 @@
           "target_workflow_path": ".github/workflows/set.yml",
           "title": "chore(set): plan config apply for markoblogo/lab.abvx",
           "suggested_commit_message": "chore(set): plan config apply for markoblogo/lab.abvx",
-          "body": "# Planned SET workflow for `markoblogo/lab.abvx`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `site-ai`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `site_url`: `https://lab.abvx.xyz`\n- `site_pack`: `true`\n- `analyze`: `true`\n- `analyze_url`: `https://lab.abvx.xyz`\n- `meta`: `true`\n- `meta_url`: `https://lab.abvx.xyz`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"site-ai\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          site_url: \"https://lab.abvx.xyz\"\n          site_pack: \"true\"\n          analyze: \"true\"\n          analyze_url: \"https://lab.abvx.xyz\"\n          meta: \"true\"\n          meta_url: \"https://lab.abvx.xyz\"\n",
+          "body": "# Planned SET workflow for `markoblogo/lab.abvx`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `site-ai`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `false`\n- `snippets`: `false`\n- `site_url`: `https://lab.abvx.xyz`\n- `site_pack`: `true`\n- `analyze`: `true`\n- `analyze_url`: `https://lab.abvx.xyz`\n- `meta`: `true`\n- `meta_url`: `https://lab.abvx.xyz`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"site-ai\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"false\"\n          snippets: \"false\"\n          site_url: \"https://lab.abvx.xyz\"\n          site_pack: \"true\"\n          analyze: \"true\"\n          analyze_url: \"https://lab.abvx.xyz\"\n          meta: \"true\"\n          meta_url: \"https://lab.abvx.xyz\"\n",
           "gh_pr_create": {
             "repo": "markoblogo/lab.abvx",
             "base": "main",

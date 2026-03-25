@@ -30,7 +30,7 @@
             <h1>What to review next</h1>
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
-            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a><a class="button-secondary" href="#markoblogo-AGENTS.md_generator-blocked">Show blockers first</a></div>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>
@@ -72,14 +72,14 @@ gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markob
           </section>
 <section id="markoblogo-AGENTS.md_generator" class="page-panel">
             <h2>2. markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Status: needs-wiring | Priority: medium | Apply: blocked</p>
-            <p class="small-note"><a href="#status-needs-wiring">Why needs-wiring?</a> | <a href="#priority-medium">Why medium?</a> | <a href="#markoblogo-AGENTS.md_generator-blocked">Show blockers</a></p>
+            <p class="small-note">Status: ready-for-review | Priority: normal | Apply: ready</p>
+            <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>
               <li>Target workflow: .github/workflows/set.yml</li>
               <li>Suggested branch: codex/set-plan-markoblogo-AGENTS.md_generator</li>
               <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
-              <li>Resolve unmapped fields: agentsgen.repomap is in registry but not yet wired into SET action inputs</li>
+              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</code></pre>
@@ -91,8 +91,8 @@ cp workflow.set.yml .github/workflows/set.yml
 git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/AGENTS.md_generator"
 gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
-            <div id="markoblogo-AGENTS.md_generator-blocked" class="small-note">Blocked by:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
-            <div class="small-note">Missing in orchestrator:</div><ul class="bullet-list"><li><code>agentsgen.repomap</code>: agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li><code>agentsgen.snippets</code>: agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
+            
+            
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
         </main>

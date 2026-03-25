@@ -23,6 +23,11 @@ def get_status_page_path() -> Path:
     return Path(value) if value else LAB_ROOT / 'docs' / 'status' / 'index.html'
 
 
+def get_planning_snapshot_path() -> Path:
+    value = os.environ.get('LAB_PLANNING_SNAPSHOT_PATH', '').strip()
+    return Path(value) if value else LAB_ROOT / 'docs' / 'assets' / 'planning-snapshot.json'
+
+
 def gh_api_json(path: str) -> dict[str, object]:
     proc = subprocess.run(
         ['gh', 'api', path],
@@ -41,11 +46,29 @@ def load_repos() -> list[dict[str, object]]:
     return repos
 
 
-def fetch_status(repo_name: str) -> dict[str, object]:
+def load_planning_map() -> dict[str, dict[str, object]]:
+    path = get_planning_snapshot_path()
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text())
+    repos = data.get('repos', [])
+    if not isinstance(repos, list):
+        return {}
+    result: dict[str, dict[str, object]] = {}
+    for entry in repos:
+        if isinstance(entry, dict) and isinstance(entry.get('repo'), str):
+            result[str(entry['repo'])] = entry
+    return result
+
+
+def fetch_status(repo_name: str, planning_map: dict[str, dict[str, object]]) -> dict[str, object]:
     payload = gh_api_json(f'repos/{repo_name}/actions/runs?per_page=1')
     runs = payload.get('workflow_runs', [])
+    planning = planning_map.get(repo_name, {})
+    workflow_sync_status = planning.get('workflow_sync_status', 'not-checked') if isinstance(planning, dict) else 'not-checked'
+    operator_queue = planning.get('operator_queue', 'review-later') if isinstance(planning, dict) else 'review-later'
     if not runs:
-        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet'}
+        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet', 'workflow_sync_status': workflow_sync_status, 'operator_queue': operator_queue}
     run = runs[0]
     return {
         'repo': repo_name,
@@ -56,6 +79,8 @@ def fetch_status(repo_name: str) -> dict[str, object]:
         'head_branch': run.get('head_branch', ''),
         'event': run.get('event', ''),
         'updated_at': run.get('updated_at', ''),
+        'workflow_sync_status': workflow_sync_status,
+        'operator_queue': operator_queue,
     }
 
 
@@ -72,6 +97,8 @@ def build_page(entries: list[dict[str, object]]) -> str:
               <li>Branch: {entry.get("head_branch", "") or 'n/a'}</li>
               <li>Event: {entry.get("event", "") or 'n/a'}</li>
               <li>Updated: {entry.get("updated_at", "") or 'n/a'}</li>
+              <li>Workflow sync: {entry.get("workflow_sync_status", "not-checked")}</li>
+              <li>Operator queue: {entry.get("operator_queue", "review-later")}</li>
             </ul>
             <div class="link-grid"><a class="button-secondary" href="{entry["html_url"]}">Latest run</a></div>
           </section>'''
@@ -119,7 +146,7 @@ def build_page(entries: list[dict[str, object]]) -> str:
             <span class="kicker">ABVX control plane</span>
             <h1>Workflow status snapshot</h1>
             <p class="lead">Read-only view of the latest GitHub Actions run per registered repo.</p>
-            <p class="small-note">Static snapshot generated via GitHub API. No repo mutation, no write automation.</p>
+            <p class="small-note">Static snapshot generated via GitHub API and local planning snapshot. No repo mutation, no write automation.</p>
             <div class="link-grid"><a class="button" href="../registry/index.html">Registry snapshot</a><a class="button-secondary" href="../assets/status-snapshot.json">JSON snapshot</a></div>
           </section>
           {cards_html}
@@ -158,7 +185,8 @@ def build_page(entries: list[dict[str, object]]) -> str:
 
 def main() -> int:
     repos = load_repos()
-    statuses = [fetch_status(str(entry['repo'])) for entry in repos]
+    planning_map = load_planning_map()
+    statuses = [fetch_status(str(entry['repo']), planning_map) for entry in repos]
     snapshot = {
         'version': 1,
         'source': 'GitHub Actions status snapshot',

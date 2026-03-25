@@ -6,21 +6,25 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23542344702",
-      "name": "CI",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23546543970",
+      "name": "SET",
       "head_branch": "main",
-      "event": "push",
-      "updated_at": "2026-03-25T13:01:59Z"
+      "event": "workflow_dispatch",
+      "updated_at": "2026-03-25T14:34:54Z",
+      "workflow_sync_status": "matches",
+      "operator_queue": "review-later"
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23542862781",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23547996429",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T13:14:49Z"
+      "updated_at": "2026-03-25T15:04:50Z",
+      "workflow_sync_status": "matches",
+      "operator_queue": "ready-now"
     }
   ]
 }

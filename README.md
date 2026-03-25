@@ -42,6 +42,7 @@ They still ship together as one package: `agentsgen`.
 
 - Registry snapshot generator: `scripts/sync_registry_snapshot.py`
 - Workflow status generator: `scripts/sync_status_snapshot.py`
+- Workflow status snapshot also shows registry/planning-derived workflow sync state and operator queue when `planning-snapshot.json` is present
 - Repo cards generator: `scripts/build_repo_cards_snapshot.py`
 - Planning snapshot generator: `scripts/sync_planning_snapshot.py`
 - Planning snapshot now includes workflow sync status when local repo roots are available via `LAB_REPO_ROOTS_JSON` (or built-in defaults for the current workspace)

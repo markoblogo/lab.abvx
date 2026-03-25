@@ -6,11 +6,11 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23550180493",
-      "name": "agentsgen guard + pack check",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23550922910",
+      "name": "CI",
       "head_branch": "main",
       "event": "push",
-      "updated_at": "2026-03-25T15:48:23Z",
+      "updated_at": "2026-03-25T16:03:48Z",
       "workflow_sync_status": "matches",
       "operator_queue": "review-later",
       "repomap_snapshot": {
@@ -22,6 +22,12 @@
             "path": "src/agentsgen/cli.py",
             "score": 45,
             "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "tests/test_understand_cli.py",
+            "score": 45,
+            "changed": true,
             "entrypoint": false
           },
           {
@@ -41,32 +47,38 @@
             "score": 34,
             "changed": false,
             "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/analyze.py",
-            "score": 24,
-            "changed": false,
-            "entrypoint": false
           }
-        ]
+        ],
+        "active_slice": {
+          "mode": "full",
+          "focus": null,
+          "changed_only": false,
+          "slice_files_count": 20
+        }
       }
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23550178906",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23550618201",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T15:48:49Z",
+      "updated_at": "2026-03-25T15:57:49Z",
       "workflow_sync_status": "matches",
       "operator_queue": "ready-now",
       "repomap_snapshot": {
         "status": "disabled",
         "compact_budget": 3000,
         "top_ranked_limit": 3,
-        "top_ranked_files": []
+        "top_ranked_files": [],
+        "active_slice": {
+          "mode": "full",
+          "focus": null,
+          "changed_only": false,
+          "slice_files_count": 0
+        }
       }
     }
   ]

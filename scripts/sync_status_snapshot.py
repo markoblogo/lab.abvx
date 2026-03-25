@@ -91,11 +91,18 @@ def build_page(entries: list[dict[str, object]]) -> str:
     for entry in entries:
         repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
         repomap_line = ''
+        slice_line = ''
         if repomap_snapshot:
             repomap_line = (
                 f'<li>Compact repomap: {repomap_snapshot.get("status", "not-checked")} '
                 f'(budget {repomap_snapshot.get("compact_budget", "n/a")}, top files {repomap_snapshot.get("top_ranked_limit", "n/a")})</li>'
             )
+            active_slice = repomap_snapshot.get('active_slice', {}) if isinstance(repomap_snapshot.get('active_slice'), dict) else {}
+            focus = active_slice.get('focus')
+            mode = active_slice.get('mode', 'full')
+            files_count = active_slice.get('slice_files_count', 0)
+            slice_label = mode if not focus else f"{mode} ({focus})"
+            slice_line = f'<li>Active slice: {slice_label}; ranked files: {files_count}</li>'
         top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
         top_ranked_html = ''
         if top_ranked:
@@ -118,6 +125,7 @@ def build_page(entries: list[dict[str, object]]) -> str:
               <li>Workflow sync: {entry.get("workflow_sync_status", "not-checked")}</li>
               <li>Operator queue: {entry.get("operator_queue", "review-later")}</li>
               {repomap_line}
+              {slice_line}
             </ul>
             {top_ranked_html}
             <div class="link-grid"><a class="button-secondary" href="{entry["html_url"]}">Latest run</a></div>

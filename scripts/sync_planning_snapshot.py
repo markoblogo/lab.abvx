@@ -56,12 +56,19 @@ def load_repomap_snapshot(
         if isinstance(repomap_policy, dict)
         else 5
     )
+    default_slice = {
+        'mode': 'focus+changed' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') and repomap_policy.get('changed') else ('focus' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') else ('changed' if isinstance(repomap_policy, dict) and repomap_policy.get('changed') else 'full')),
+        'focus': repomap_policy.get('focus') if isinstance(repomap_policy, dict) else None,
+        'changed_only': bool(repomap_policy.get('changed', False)) if isinstance(repomap_policy, dict) else False,
+        'slice_files_count': 0,
+    }
     if not repomap_enabled:
         return {
             'status': 'disabled',
             'compact_budget': compact_budget,
             'top_ranked_limit': top_ranked_limit,
             'top_ranked_files': [],
+            'active_slice': default_slice,
         }
     if repo_root is None:
         return {
@@ -69,18 +76,22 @@ def load_repomap_snapshot(
             'compact_budget': compact_budget,
             'top_ranked_limit': top_ranked_limit,
             'top_ranked_files': [],
+            'active_slice': default_slice,
         }
 
     compact_path = repo_root / 'docs' / 'ai' / 'repomap.compact.md'
     knowledge_path = repo_root / 'agents.knowledge.json'
     top_ranked_files: list[dict[str, object]] = []
+    active_slice = dict(default_slice)
     if knowledge_path.exists():
         try:
             knowledge = json.loads(knowledge_path.read_text())
         except Exception:
             knowledge = {}
         relevance = knowledge.get('relevance', [])
+        slice_meta = knowledge.get('slice', {}) if isinstance(knowledge.get('slice'), dict) else {}
         if isinstance(relevance, list):
+            active_slice['slice_files_count'] = len(relevance)
             for item in relevance[:top_ranked_limit]:
                 if not isinstance(item, dict):
                     continue
@@ -92,12 +103,19 @@ def load_repomap_snapshot(
                         'entrypoint': bool(item.get('entrypoint', False)),
                     }
                 )
+        focus = slice_meta.get('focus')
+        changed_only = bool(slice_meta.get('changed_only', False))
+        if focus or changed_only:
+            active_slice['focus'] = focus if isinstance(focus, str) and focus else None
+            active_slice['changed_only'] = changed_only
+            active_slice['mode'] = 'focus+changed' if active_slice['focus'] and changed_only else ('focus' if active_slice['focus'] else ('changed' if changed_only else 'full'))
 
     return {
         'status': 'present' if compact_path.exists() else 'missing',
         'compact_budget': compact_budget,
         'top_ranked_limit': top_ranked_limit,
         'top_ranked_files': top_ranked_files,
+        'active_slice': active_slice,
     }
 
 
@@ -228,9 +246,15 @@ def build_page(snapshot: dict[str, object]) -> str:
                     if isinstance(item, dict) and item.get('path')
                 )
                 ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{ranked_items}</ul>'
+            active_slice = repomap_snapshot.get('active_slice', {}) if isinstance(repomap_snapshot.get('active_slice'), dict) else {}
+            focus = active_slice.get('focus')
+            mode = active_slice.get('mode', 'full')
+            files_count = active_slice.get('slice_files_count', 0)
+            slice_label = mode if not focus else f"{mode} ({focus})"
             repomap_html = (
                 f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
                 f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
+                f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
                 f"{ranked_html}"
             )
         cards.append(

@@ -77,11 +77,18 @@ def main() -> int:
         operator_queue = planning.get('operator_queue', 'review-later')
         repomap_snapshot = planning.get('repomap_snapshot', {}) if isinstance(planning.get('repomap_snapshot'), dict) else {}
         repomap_line = ''
+        slice_line = ''
         if repomap_snapshot:
             repomap_line = (
                 f'<li>Compact repomap: {repomap_snapshot.get("status", "not-checked")} '
                 f'(budget {repomap_snapshot.get("compact_budget", "n/a")}, top files {repomap_snapshot.get("top_ranked_limit", "n/a")})</li>'
             )
+            active_slice = repomap_snapshot.get('active_slice', {}) if isinstance(repomap_snapshot.get('active_slice'), dict) else {}
+            focus = active_slice.get('focus')
+            mode = active_slice.get('mode', 'full')
+            files_count = active_slice.get('slice_files_count', 0)
+            slice_label = mode if not focus else f"{mode} ({focus})"
+            slice_line = f'<li>Active slice: {slice_label}; ranked files: {files_count}</li>'
         top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
         top_ranked_html = ''
         if top_ranked:
@@ -104,6 +111,7 @@ def main() -> int:
               <li>Workflow sync: {workflow_sync_status}</li>
               <li>Operator queue: {operator_queue}</li>
               {repomap_line}
+              {slice_line}
             </ul>
             {top_ranked_html}
             <div class="link-grid"><a class="button" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a>{latest_run_button}</div>

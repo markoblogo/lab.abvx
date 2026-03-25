@@ -6,25 +6,68 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23546543970",
-      "name": "SET",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23550180493",
+      "name": "agentsgen guard + pack check",
       "head_branch": "main",
-      "event": "workflow_dispatch",
-      "updated_at": "2026-03-25T14:34:54Z",
+      "event": "push",
+      "updated_at": "2026-03-25T15:48:23Z",
       "workflow_sync_status": "matches",
-      "operator_queue": "review-later"
+      "operator_queue": "review-later",
+      "repomap_snapshot": {
+        "status": "present",
+        "compact_budget": 4000,
+        "top_ranked_limit": 5,
+        "top_ranked_files": [
+          {
+            "path": "src/agentsgen/cli.py",
+            "score": 45,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/actions.py",
+            "score": 42,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/config.py",
+            "score": 34,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/model.py",
+            "score": 34,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/analyze.py",
+            "score": 24,
+            "changed": false,
+            "entrypoint": false
+          }
+        ]
+      }
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23547996429",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23550178906",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T15:04:50Z",
+      "updated_at": "2026-03-25T15:48:49Z",
       "workflow_sync_status": "matches",
-      "operator_queue": "ready-now"
+      "operator_queue": "ready-now",
+      "repomap_snapshot": {
+        "status": "disabled",
+        "compact_budget": 3000,
+        "top_ranked_limit": 3,
+        "top_ranked_files": []
+      }
     }
   ]
 }

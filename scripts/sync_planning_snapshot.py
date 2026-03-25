@@ -40,6 +40,67 @@ def get_repo_roots() -> dict[str, str]:
     return dict(DEFAULT_REPO_ROOTS)
 
 
+def load_repomap_snapshot(
+    *,
+    repo_root: Path | None,
+    repomap_enabled: bool,
+    repomap_policy: dict[str, object] | None,
+) -> dict[str, object]:
+    compact_budget = (
+        int(repomap_policy.get('compact_budget', 4000))
+        if isinstance(repomap_policy, dict)
+        else 4000
+    )
+    top_ranked_limit = (
+        int(repomap_policy.get('top_ranked_files', 5))
+        if isinstance(repomap_policy, dict)
+        else 5
+    )
+    if not repomap_enabled:
+        return {
+            'status': 'disabled',
+            'compact_budget': compact_budget,
+            'top_ranked_limit': top_ranked_limit,
+            'top_ranked_files': [],
+        }
+    if repo_root is None:
+        return {
+            'status': 'not-checked',
+            'compact_budget': compact_budget,
+            'top_ranked_limit': top_ranked_limit,
+            'top_ranked_files': [],
+        }
+
+    compact_path = repo_root / 'docs' / 'ai' / 'repomap.compact.md'
+    knowledge_path = repo_root / 'agents.knowledge.json'
+    top_ranked_files: list[dict[str, object]] = []
+    if knowledge_path.exists():
+        try:
+            knowledge = json.loads(knowledge_path.read_text())
+        except Exception:
+            knowledge = {}
+        relevance = knowledge.get('relevance', [])
+        if isinstance(relevance, list):
+            for item in relevance[:top_ranked_limit]:
+                if not isinstance(item, dict):
+                    continue
+                top_ranked_files.append(
+                    {
+                        'path': str(item.get('path', '')),
+                        'score': int(item.get('score', 0) or 0),
+                        'changed': bool(item.get('changed', False)),
+                        'entrypoint': bool(item.get('entrypoint', False)),
+                    }
+                )
+
+    return {
+        'status': 'present' if compact_path.exists() else 'missing',
+        'compact_budget': compact_budget,
+        'top_ranked_limit': top_ranked_limit,
+        'top_ranked_files': top_ranked_files,
+    }
+
+
 def run_planner() -> dict[str, object]:
     planner = get_planner_path()
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -59,10 +120,18 @@ def run_planner() -> dict[str, object]:
             repo = repo_entry['repo']
             repo_dir = Path(tmpdir) / repo.replace('/', '-')
             plan = json.loads((repo_dir / 'plan.json').read_text())
+            repo_root = Path(repo_roots[repo]) if repo in repo_roots else None
+            workflow_with = plan['proposed_changes'][0]['workflow']['with']
+            repomap_enabled = workflow_with.get('repomap') == 'true'
             repos.append(
                 {
                     **repo_entry,
                     'plan': plan,
+                    'repomap_snapshot': load_repomap_snapshot(
+                        repo_root=repo_root,
+                        repomap_enabled=repomap_enabled,
+                        repomap_policy=plan.get('repomap_policy'),
+                    ),
                     'files': [path.name for path in sorted(repo_dir.iterdir())],
                 }
             )
@@ -131,6 +200,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
         capabilities = plan.get('capabilities', [])
         wiring_gaps = entry.get('wiring_gaps') or [cap.get('wiring_gap') for cap in capabilities if isinstance(cap, dict) and cap.get('wiring_gap')]
+        repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
         manual_steps = apply_sim.get('manual_steps', [])
         full_sequence = '\n'.join(manual_steps)
         pr_command = manual_steps[-1] if manual_steps else 'n/a'
@@ -147,6 +217,22 @@ def build_page(snapshot: dict[str, object]) -> str:
                 if isinstance(gap, dict)
             )
             wiring_gap_html = f'<div class="small-note">Missing in orchestrator:</div><ul class="bullet-list">{items}</ul>'
+        repomap_html = ''
+        if repomap_snapshot:
+            top_ranked = repomap_snapshot.get('top_ranked_files', [])
+            ranked_html = ''
+            if top_ranked:
+                ranked_items = ''.join(
+                    f"<li><code>{item['path']}</code> (score {item['score']})</li>"
+                    for item in top_ranked
+                    if isinstance(item, dict) and item.get('path')
+                )
+                ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{ranked_items}</ul>'
+            repomap_html = (
+                f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
+                f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
+                f"{ranked_html}"
+            )
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
@@ -166,6 +252,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             <pre><code>{pr_command}</code></pre>
             <div class="small-note">Copy full sequence:</div>
             <pre><code>{full_sequence}</code></pre>
+            {repomap_html}
             {blocked_html}
             {wiring_gap_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>

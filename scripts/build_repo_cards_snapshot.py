@@ -75,6 +75,22 @@ def main() -> int:
         presets = ', '.join(card['presets']) or 'none'
         workflow_sync_status = planning.get('workflow_sync_status', 'not-checked')
         operator_queue = planning.get('operator_queue', 'review-later')
+        repomap_snapshot = planning.get('repomap_snapshot', {}) if isinstance(planning.get('repomap_snapshot'), dict) else {}
+        repomap_line = ''
+        if repomap_snapshot:
+            repomap_line = (
+                f'<li>Compact repomap: {repomap_snapshot.get("status", "not-checked")} '
+                f'(budget {repomap_snapshot.get("compact_budget", "n/a")}, top files {repomap_snapshot.get("top_ranked_limit", "n/a")})</li>'
+            )
+        top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
+        top_ranked_html = ''
+        if top_ranked:
+            items = ''.join(
+                f'<li><code>{item.get("path", "")}</code> (score {item.get("score", 0)})</li>'
+                for item in top_ranked
+                if isinstance(item, dict) and item.get('path')
+            )
+            top_ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{items}</ul>'
         sections.append(
             f'''<section class="page-panel">
             <h2>{card['repo']}</h2>
@@ -87,7 +103,9 @@ def main() -> int:
               <li>Workflow: {workflow.get('name', 'n/a')}</li>
               <li>Workflow sync: {workflow_sync_status}</li>
               <li>Operator queue: {operator_queue}</li>
+              {repomap_line}
             </ul>
+            {top_ranked_html}
             <div class="link-grid"><a class="button" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a>{latest_run_button}</div>
           </section>'''
         )

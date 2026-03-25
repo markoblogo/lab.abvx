@@ -67,8 +67,9 @@ def fetch_status(repo_name: str, planning_map: dict[str, dict[str, object]]) -> 
     planning = planning_map.get(repo_name, {})
     workflow_sync_status = planning.get('workflow_sync_status', 'not-checked') if isinstance(planning, dict) else 'not-checked'
     operator_queue = planning.get('operator_queue', 'review-later') if isinstance(planning, dict) else 'review-later'
+    repomap_snapshot = planning.get('repomap_snapshot', {}) if isinstance(planning, dict) else {}
     if not runs:
-        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet', 'workflow_sync_status': workflow_sync_status, 'operator_queue': operator_queue}
+        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet', 'workflow_sync_status': workflow_sync_status, 'operator_queue': operator_queue, 'repomap_snapshot': repomap_snapshot}
     run = runs[0]
     return {
         'repo': repo_name,
@@ -81,12 +82,29 @@ def fetch_status(repo_name: str, planning_map: dict[str, dict[str, object]]) -> 
         'updated_at': run.get('updated_at', ''),
         'workflow_sync_status': workflow_sync_status,
         'operator_queue': operator_queue,
+        'repomap_snapshot': repomap_snapshot,
     }
 
 
 def build_page(entries: list[dict[str, object]]) -> str:
     cards = []
     for entry in entries:
+        repomap_snapshot = entry.get('repomap_snapshot', {}) if isinstance(entry.get('repomap_snapshot'), dict) else {}
+        repomap_line = ''
+        if repomap_snapshot:
+            repomap_line = (
+                f'<li>Compact repomap: {repomap_snapshot.get("status", "not-checked")} '
+                f'(budget {repomap_snapshot.get("compact_budget", "n/a")}, top files {repomap_snapshot.get("top_ranked_limit", "n/a")})</li>'
+            )
+        top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
+        top_ranked_html = ''
+        if top_ranked:
+            items = ''.join(
+                f'<li><code>{item.get("path", "")}</code> (score {item.get("score", 0)})</li>'
+                for item in top_ranked
+                if isinstance(item, dict) and item.get('path')
+            )
+            top_ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{items}</ul>'
         cards.append(
             f'''<section class="page-panel">
             <h2>{entry["repo"]}</h2>
@@ -99,7 +117,9 @@ def build_page(entries: list[dict[str, object]]) -> str:
               <li>Updated: {entry.get("updated_at", "") or 'n/a'}</li>
               <li>Workflow sync: {entry.get("workflow_sync_status", "not-checked")}</li>
               <li>Operator queue: {entry.get("operator_queue", "review-later")}</li>
+              {repomap_line}
             </ul>
+            {top_ranked_html}
             <div class="link-grid"><a class="button-secondary" href="{entry["html_url"]}">Latest run</a></div>
           </section>'''
         )

@@ -42,6 +42,7 @@
               <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
               <li id="apply-ready"><strong>apply: ready</strong>: no current blockers in the planner contract.</li>
               <li id="apply-blocked"><strong>apply: blocked</strong>: planner sees explicit blockers that should be cleared before apply review.</li>
+              <li><strong>Missing in orchestrator</strong>: requested capabilities that exist in registry config but are not yet wired into SET action inputs.</li>
             </ul>
           </section>
           <section id="markoblogo-lab.abvx" class="page-panel">
@@ -65,6 +66,7 @@ cp workflow.set.yml .github/workflows/set.yml
 git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/lab.abvx"
 gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markoblogo-lab.abvx --title "chore(set): plan config apply for markoblogo/lab.abvx" --body-file pr-body.md</code></pre>
+            
             
             
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
@@ -91,6 +93,7 @@ git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/AGENTS.md_generator"
 gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
             <div class="small-note">Blocked by:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
+            <div class="small-note">Missing in orchestrator:</div><ul class="bullet-list"><li><code>unknown</code>: agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li><code>unknown</code>: agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
             <div id="markoblogo-AGENTS.md_generator-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>

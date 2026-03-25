@@ -16,6 +16,16 @@
         "agentsgen.repomap is in registry but not yet wired into SET action inputs",
         "agentsgen.snippets is in registry but not yet wired into SET action inputs"
       ],
+      "wiring_gaps": [
+        {
+          "kind": "missing-set-input",
+          "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
+        },
+        {
+          "kind": "missing-set-input",
+          "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
+        }
+      ],
       "next_action_label": "Resolve unmapped fields",
       "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
@@ -43,10 +53,96 @@
             }
           }
         ],
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "repomap",
+            "requested": true,
+            "supported_by_set": false,
+            "wiring_gap": {
+              "kind": "missing-set-input",
+              "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
+            }
+          },
+          {
+            "tool": "agentsgen",
+            "key": "snippets",
+            "requested": true,
+            "supported_by_set": false,
+            "wiring_gap": {
+              "kind": "missing-set-input",
+              "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
+            }
+          }
+        ],
         "review_payload": {
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/AGENTS.md_generator",
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "repomap",
+              "requested": true,
+              "supported_by_set": false,
+              "wiring_gap": {
+                "kind": "missing-set-input",
+                "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
+              }
+            },
+            {
+              "tool": "agentsgen",
+              "key": "snippets",
+              "requested": true,
+              "supported_by_set": false,
+              "wiring_gap": {
+                "kind": "missing-set-input",
+                "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
+              }
+            }
+          ],
           "apply_readiness": "blocked",
           "blocked_by": [
             "agentsgen.repomap is in registry but not yet wired into SET action inputs",
@@ -116,6 +212,7 @@
       "priority_hint": "high",
       "apply_readiness": "ready",
       "blocked_by": [],
+      "wiring_gaps": [],
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
@@ -149,10 +246,84 @@
             }
           }
         ],
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "analyze_url",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "analyze"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "meta_url",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "meta"
+          }
+        ],
         "review_payload": {
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/lab.abvx",
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "analyze_url",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "analyze"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "meta_url",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "meta"
+            }
+          ],
           "apply_readiness": "ready",
           "blocked_by": [],
           "next_action_label": "Review and apply planned workflow",

@@ -88,6 +88,8 @@ def build_page(snapshot: dict[str, object]) -> str:
         next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
         apply_readiness = entry.get('apply_readiness') or review_payload.get('apply_readiness') or 'unknown'
         blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
+        capabilities = plan.get('capabilities', [])
+        wiring_gaps = entry.get('wiring_gaps') or [cap.get('wiring_gap') for cap in capabilities if isinstance(cap, dict) and cap.get('wiring_gap')]
         manual_steps = apply_sim.get('manual_steps', [])
         full_sequence = '\n'.join(manual_steps)
         pr_command = manual_steps[-1] if manual_steps else 'n/a'
@@ -100,6 +102,14 @@ def build_page(snapshot: dict[str, object]) -> str:
         if blocked_by:
             items = ''.join(f'<li>{item}</li>' for item in blocked_by)
             blocked_html = f'<div class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
+        wiring_gap_html = ''
+        if wiring_gaps:
+            items = ''.join(
+                f'<li><code>{gap.get("capability", "unknown")}</code>: {gap.get("message", "missing orchestrator wiring")}</li>'
+                for gap in wiring_gaps
+                if isinstance(gap, dict)
+            )
+            wiring_gap_html = f'<div class="small-note">Missing in orchestrator:</div><ul class="bullet-list">{items}</ul>'
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
@@ -119,6 +129,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             <div class="small-note">Copy full sequence:</div>
             <pre><code>{full_sequence}</code></pre>
             {blocked_html}
+            {wiring_gap_html}
             {unmapped_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>'''
@@ -169,6 +180,7 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
               <li id="apply-ready"><strong>apply: ready</strong>: no current blockers in the planner contract.</li>
               <li id="apply-blocked"><strong>apply: blocked</strong>: planner sees explicit blockers that should be cleared before apply review.</li>
+              <li><strong>Missing in orchestrator</strong>: requested capabilities that exist in registry config but are not yet wired into SET action inputs.</li>
             </ul>
           </section>
           {cards_html}

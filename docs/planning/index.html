@@ -51,7 +51,7 @@
               <li>Target workflow: .github/workflows/set.yml</li>
               <li>Suggested branch: codex/set-plan-markoblogo-lab.abvx</li>
               <li>Suggested title: chore(set): plan config apply for markoblogo/lab.abvx</li>
-              <li>Next manual step: git checkout -b codex/set-plan-markoblogo-lab.abvx</li>
+              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-lab.abvx</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>git checkout -b codex/set-plan-markoblogo-lab.abvx</code></pre>
@@ -73,10 +73,10 @@ gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markob
               <li>Target workflow: .github/workflows/set.yml</li>
               <li>Suggested branch: codex/set-plan-markoblogo-AGENTS.md_generator</li>
               <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
-              <li>Next manual step: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
+              <li>Resolve unmapped fields: agentsgen.repomap is in registry but not yet wired into SET action inputs</li>
             </ul>
             <div class="small-note">Copy next command:</div>
-            <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</code></pre>
+            <pre><code>agentsgen.repomap is in registry but not yet wired into SET action inputs</code></pre>
             <div class="small-note">Manual sequence:</div>
             <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator
 cp workflow.set.yml .github/workflows/set.yml

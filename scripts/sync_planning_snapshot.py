@@ -80,10 +80,12 @@ def build_page(snapshot: dict[str, object]) -> str:
         plan = entry['plan']
         card_slug = entry['repo'].replace('/', '-')
         workflow = plan['proposed_changes'][0]['workflow']
-        gh_pr = plan['review_payload']['gh_pr_create']
-        apply_sim = plan['review_payload']['apply_simulation']
-        first_step = apply_sim['manual_steps'][0] if apply_sim.get('manual_steps') else 'n/a'
-        next_command = first_step
+        review_payload = plan['review_payload']
+        gh_pr = review_payload['gh_pr_create']
+        apply_sim = review_payload['apply_simulation']
+        next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
+        recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
+        next_command = recommended_step if isinstance(recommended_step, str) else 'n/a'
         full_sequence = '\n'.join(apply_sim.get('manual_steps', []))
         unmapped = plan.get('unmapped', [])
         unmapped_html = ''
@@ -100,7 +102,7 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li>Target workflow: {entry['target_workflow']}</li>
               <li>Suggested branch: {gh_pr['head']}</li>
               <li>Suggested title: {gh_pr['title']}</li>
-              <li>Next manual step: {first_step}</li>
+              <li>{next_action_label}: {recommended_step}</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>{next_command}</code></pre>

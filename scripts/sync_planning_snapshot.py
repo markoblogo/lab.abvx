@@ -83,6 +83,8 @@ def build_page(snapshot: dict[str, object]) -> str:
         gh_pr = plan['review_payload']['gh_pr_create']
         apply_sim = plan['review_payload']['apply_simulation']
         first_step = apply_sim['manual_steps'][0] if apply_sim.get('manual_steps') else 'n/a'
+        next_command = first_step
+        full_sequence = '\n'.join(apply_sim.get('manual_steps', []))
         unmapped = plan.get('unmapped', [])
         unmapped_html = ''
         if unmapped:
@@ -100,6 +102,10 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li>Suggested title: {gh_pr['title']}</li>
               <li>Next manual step: {first_step}</li>
             </ul>
+            <div class="small-note">Copy next command:</div>
+            <pre><code>{next_command}</code></pre>
+            <div class="small-note">Manual sequence:</div>
+            <pre><code>{full_sequence}</code></pre>
             {unmapped_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>'''

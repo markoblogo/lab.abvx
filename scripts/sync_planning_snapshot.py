@@ -71,10 +71,11 @@ def sort_key(entry: dict[str, object]) -> tuple[int, int, str]:
 def build_page(snapshot: dict[str, object]) -> str:
     cards = []
     repos = sorted(snapshot.get('repos', []), key=sort_key)
-    first_unmapped_slug = None
+    first_blocked_slug = None
     for entry in repos:
-        if entry.get('plan', {}).get('unmapped'):
-            first_unmapped_slug = entry['repo'].replace('/', '-')
+        blocked_by = entry.get('blocked_by') or entry.get('plan', {}).get('review_payload', {}).get('blocked_by') or []
+        if blocked_by:
+            first_blocked_slug = entry['repo'].replace('/', '-')
             break
     for index, entry in enumerate(repos, start=1):
         plan = entry['plan']
@@ -94,14 +95,10 @@ def build_page(snapshot: dict[str, object]) -> str:
         full_sequence = '\n'.join(manual_steps)
         pr_command = manual_steps[-1] if manual_steps else 'n/a'
         unmapped = plan.get('unmapped', [])
-        unmapped_html = ''
-        if unmapped:
-            items = ''.join(f'<li>{item}</li>' for item in unmapped)
-            unmapped_html = f'<div id="{card_slug}-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list">{items}</ul>'
         blocked_html = ''
         if blocked_by:
             items = ''.join(f'<li>{item}</li>' for item in blocked_by)
-            blocked_html = f'<div class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
+            blocked_html = f'<div id="{card_slug}-blocked" class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
         wiring_gap_html = ''
         if wiring_gaps:
             items = ''.join(
@@ -114,7 +111,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
             <p class="small-note">Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness}</p>
-            <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-unmapped">Show unmapped fields</a>' if unmapped else ''}</p>
+            <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-blocked">Show blockers</a>' if blocked_by or wiring_gaps else ''}</p>
             <ul class="bullet-list">
               <li>Workflow preset: {workflow['with'].get('workflow_preset', 'none')}</li>
               <li>Target workflow: {entry['target_workflow']}</li>
@@ -130,12 +127,11 @@ def build_page(snapshot: dict[str, object]) -> str:
             <pre><code>{full_sequence}</code></pre>
             {blocked_html}
             {wiring_gap_html}
-            {unmapped_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>'''
         )
     cards_html = '\n'.join(cards)
-    unmapped_link = f'<a class="button-secondary" href="#{first_unmapped_slug}-unmapped">Show unmapped first</a>' if first_unmapped_slug else ''
+    blocked_link = f'<a class="button-secondary" href="#{first_blocked_slug}-blocked">Show blockers first</a>' if first_blocked_slug else ''
     return f'''<!doctype html>
 <html lang="en" data-style="ascii" data-ascii-mode="light">
   <head>
@@ -168,7 +164,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             <h1>What to review next</h1>
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
-            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a>{unmapped_link}</div>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a>{blocked_link}</div>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>

@@ -31,6 +31,7 @@
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+            <p class="small-note">Queue counts: ready-now=1, blocked-by-orchestrator=0, review-later=1</p>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>
@@ -45,9 +46,10 @@
               <li><strong>Missing in orchestrator</strong>: requested capabilities that exist in registry config but are not yet wired into SET action inputs.</li>
             </ul>
           </section>
-          <section id="markoblogo-lab.abvx" class="page-panel">
+          <section class="page-panel"><h2>Ready now</h2><p class="small-note">Repos that are ready for manual review/apply right now.</p></section>
+<section id="markoblogo-lab.abvx" class="page-panel">
             <h2>1. markoblogo/lab.abvx</h2>
-            <p class="small-note">Status: ready-for-review | Priority: high | Apply: ready</p>
+            <p class="small-note">Queue: ready-now | Status: ready-for-review | Priority: high | Apply: ready</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-high">Why high?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: site-ai</li>
@@ -70,9 +72,10 @@ gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markob
             
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
+<section class="page-panel"><h2>Review later</h2><p class="small-note">Repos that are valid plans, but lower urgency than the ready-now queue.</p></section>
 <section id="markoblogo-AGENTS.md_generator" class="page-panel">
             <h2>2. markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Status: ready-for-review | Priority: normal | Apply: ready</p>
+            <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>

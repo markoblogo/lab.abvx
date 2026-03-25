@@ -58,10 +58,12 @@ def run_planner() -> dict[str, object]:
         }
 
 
-def sort_key(entry: dict[str, object]) -> tuple[int, int, str]:
+def sort_key(entry: dict[str, object]) -> tuple[int, int, int, str]:
+    queue_order = {'ready-now': 0, 'blocked-by-orchestrator': 1, 'review-later': 2}
     priority_order = {'high': 0, 'medium': 1, 'normal': 2}
     status_order = {'ready-for-review': 0, 'needs-wiring': 1}
     return (
+        queue_order.get(str(entry.get('operator_queue')), 9),
         priority_order.get(str(entry.get('priority_hint')), 9),
         status_order.get(str(entry.get('status_hint')), 9),
         str(entry.get('repo')),
@@ -69,15 +71,35 @@ def sort_key(entry: dict[str, object]) -> tuple[int, int, str]:
 
 
 def build_page(snapshot: dict[str, object]) -> str:
-    cards = []
     repos = sorted(snapshot.get('repos', []), key=sort_key)
+    sections = {'ready-now': [], 'blocked-by-orchestrator': [], 'review-later': []}
     first_blocked_slug = None
     for entry in repos:
+        queue = str(entry.get('operator_queue') or entry.get('plan', {}).get('review_payload', {}).get('operator_queue') or 'review-later')
+        sections.setdefault(queue, []).append(entry)
         blocked_by = entry.get('blocked_by') or entry.get('plan', {}).get('review_payload', {}).get('blocked_by') or []
-        if blocked_by:
+        if first_blocked_slug is None and blocked_by:
             first_blocked_slug = entry['repo'].replace('/', '-')
-            break
-    for index, entry in enumerate(repos, start=1):
+    cards = []
+    section_titles = {
+        'ready-now': 'Ready now',
+        'blocked-by-orchestrator': 'Blocked by orchestrator',
+        'review-later': 'Review later',
+    }
+    section_notes = {
+        'ready-now': 'Repos that are ready for manual review/apply right now.',
+        'blocked-by-orchestrator': 'Repos whose requested capabilities still need SET wiring or orchestration support.',
+        'review-later': 'Repos that are valid plans, but lower urgency than the ready-now queue.',
+    }
+    item_index = 1
+    for queue in ('ready-now', 'blocked-by-orchestrator', 'review-later'):
+        entries = sections.get(queue, [])
+        if not entries:
+            continue
+        cards.append(f'''<section class="page-panel"><h2>{section_titles[queue]}</h2><p class="small-note">{section_notes[queue]}</p></section>''')
+        for entry in entries:
+            index = item_index
+            item_index += 1
         plan = entry['plan']
         card_slug = entry['repo'].replace('/', '-')
         workflow = plan['proposed_changes'][0]['workflow']
@@ -110,7 +132,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
-            <p class="small-note">Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness}</p>
+            <p class="small-note">Queue: {entry.get('operator_queue', review_payload.get('operator_queue', 'review-later'))} | Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness}</p>
             <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-blocked">Show blockers</a>' if blocked_by or wiring_gaps else ''}</p>
             <ul class="bullet-list">
               <li>Workflow preset: {workflow['with'].get('workflow_preset', 'none')}</li>
@@ -165,6 +187,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a>{blocked_link}</div>
+            <p class="small-note">Queue counts: ready-now={len(sections.get('ready-now', []))}, blocked-by-orchestrator={len(sections.get('blocked-by-orchestrator', []))}, review-later={len(sections.get('review-later', []))}</p>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>

@@ -13,10 +13,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
 - [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic CI drift checks.
 - [agentsgen presets](https://lab.abvx.xyz/tools/agentsgen-presets/) — Copy-paste setup for common stacks (explicit commands, no guesswork).
-- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents (AGENTS/RUNBOOK + PR Guard + LLMO Pack).
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents (AGENTS/RUNBOOK + PR Guard + AI docs bundle).
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap .agentsgen.json + AGENTS/RUNBOOK with safe marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch marker sections only; never overwrite handwritten docs.
-- [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI/LLMO docs bundle; supports --check and --print-plan.
+- [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle; supports --check, --print-plan, and site mode.
 - [agentsgen check](https://lab.abvx.xyz/tools/agentsgen-check/) — Validate repo is agentsgen-ready; CI-friendly drift signals.
 - [agentsgen detect](https://lab.abvx.xyz/tools/agentsgen-detect/) — Heuristic repo scan (no execution); emits stable JSON output.
 - [agentsgen status](https://lab.abvx.xyz/tools/agentsgen-status/) — Instant repo overview: managed files, markers, generated fallbacks, and drift.

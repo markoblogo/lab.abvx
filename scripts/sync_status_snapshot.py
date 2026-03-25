@@ -2,71 +2,78 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 from pathlib import Path
 
-DEFAULT_SET_REGISTRY = Path('/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos')
 LAB_ROOT = Path(__file__).resolve().parents[1]
 
 
-def get_registry_dir() -> Path:
-    value = os.environ.get('SET_REGISTRY_DIR', '').strip()
-    return Path(value) if value else DEFAULT_SET_REGISTRY
-
-
-def get_snapshot_path() -> Path:
+def get_registry_snapshot_path() -> Path:
     value = os.environ.get('LAB_REGISTRY_SNAPSHOT_PATH', '').strip()
     return Path(value) if value else LAB_ROOT / 'docs' / 'assets' / 'registry-snapshot.json'
 
 
-def get_page_path() -> Path:
-    value = os.environ.get('LAB_REGISTRY_PAGE_PATH', '').strip()
-    return Path(value) if value else LAB_ROOT / 'docs' / 'registry' / 'index.html'
+def get_status_snapshot_path() -> Path:
+    value = os.environ.get('LAB_STATUS_SNAPSHOT_PATH', '').strip()
+    return Path(value) if value else LAB_ROOT / 'docs' / 'assets' / 'status-snapshot.json'
 
 
-def load_registry(registry_dir: Path) -> list[dict[str, object]]:
-    entries: list[dict[str, object]] = []
-    for path in sorted(registry_dir.glob('*.json')):
-        data = json.loads(path.read_text())
-        entries.append(data)
-    return entries
+def get_status_page_path() -> Path:
+    value = os.environ.get('LAB_STATUS_PAGE_PATH', '').strip()
+    return Path(value) if value else LAB_ROOT / 'docs' / 'status' / 'index.html'
 
 
-def format_tools(tools: dict[str, object]) -> list[str]:
-    lines: list[str] = []
-    agentsgen = tools.get('agentsgen') if isinstance(tools, dict) else None
-    if isinstance(agentsgen, dict):
-        enabled = []
-        for key in ('init', 'pack', 'check', 'repomap', 'snippets'):
-            if agentsgen.get(key) is True:
-                enabled.append(key)
-        if agentsgen.get('analyze_url'):
-            enabled.append('analyze')
-        if agentsgen.get('meta_url'):
-            enabled.append('meta')
-        if enabled:
-            lines.append(f"agentsgen: {', '.join(enabled)}")
-    git_tweet = tools.get('git_tweet') if isinstance(tools, dict) else None
-    if isinstance(git_tweet, dict) and git_tweet.get('enabled') is True:
-        lines.append('git_tweet: enabled')
-    return lines
+def gh_api_json(path: str) -> dict[str, object]:
+    proc = subprocess.run(
+        ['gh', 'api', path],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return json.loads(proc.stdout)
+
+
+def load_repos() -> list[dict[str, object]]:
+    data = json.loads(get_registry_snapshot_path().read_text())
+    repos = data.get('repos', [])
+    if not isinstance(repos, list):
+        raise SystemExit('registry snapshot does not contain repos[]')
+    return repos
+
+
+def fetch_status(repo_name: str) -> dict[str, object]:
+    payload = gh_api_json(f'repos/{repo_name}/actions/runs?per_page=1')
+    runs = payload.get('workflow_runs', [])
+    if not runs:
+        return {'repo': repo_name, 'status': 'none', 'conclusion': 'none', 'html_url': '', 'name': 'No runs yet'}
+    run = runs[0]
+    return {
+        'repo': repo_name,
+        'status': run.get('status', 'unknown'),
+        'conclusion': run.get('conclusion') or 'in_progress',
+        'html_url': run.get('html_url', ''),
+        'name': run.get('name', 'workflow'),
+        'head_branch': run.get('head_branch', ''),
+        'event': run.get('event', ''),
+        'updated_at': run.get('updated_at', ''),
+    }
 
 
 def build_page(entries: list[dict[str, object]]) -> str:
     cards = []
     for entry in entries:
-        repo = entry['repo']
-        site = ''
-        site_data = entry.get('site')
-        if isinstance(site_data, dict) and site_data.get('url'):
-            site = f'<div class="small-note">Site: <a href="{site_data["url"]}">{site_data["url"]}</a></div>'
-        presets = ', '.join(entry.get('presets', [])) or 'none'
-        tool_lines = ''.join(f'<li>{line}</li>' for line in format_tools(entry.get('tools', {})))
         cards.append(
             f'''<section class="page-panel">
-            <h2>{repo}</h2>
-            <p class="small-note">Presets: {presets}</p>
-            {site}
-            <ul class="bullet-list">{tool_lines}</ul>
+            <h2>{entry["repo"]}</h2>
+            <p class="small-note">Workflow: {entry["name"]}</p>
+            <ul class="bullet-list">
+              <li>Status: {entry["status"]}</li>
+              <li>Conclusion: {entry["conclusion"]}</li>
+              <li>Branch: {entry.get("head_branch", "") or 'n/a'}</li>
+              <li>Event: {entry.get("event", "") or 'n/a'}</li>
+              <li>Updated: {entry.get("updated_at", "") or 'n/a'}</li>
+            </ul>
+            <div class="link-grid"><a class="button-secondary" href="{entry["html_url"]}">Latest run</a></div>
           </section>'''
         )
     cards_html = '\n'.join(cards)
@@ -75,18 +82,18 @@ def build_page(entries: list[dict[str, object]]) -> str:
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Registry Snapshot | ABVX Lab</title>
-    <meta name="description" content="Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines." />
-    <link rel="canonical" href="https://lab.abvx.xyz/registry/" />
-    <meta property="og:title" content="Registry Snapshot | ABVX Lab" />
-    <meta property="og:description" content="Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines." />
-    <meta property="og:url" content="https://lab.abvx.xyz/registry/" />
+    <title>Workflow Status | ABVX Lab</title>
+    <meta name="description" content="Read-only workflow status snapshot for ABVX repos from GitHub Actions." />
+    <link rel="canonical" href="https://lab.abvx.xyz/status/" />
+    <meta property="og:title" content="Workflow Status | ABVX Lab" />
+    <meta property="og:description" content="Read-only workflow status snapshot for ABVX repos from GitHub Actions." />
+    <meta property="og:url" content="https://lab.abvx.xyz/status/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
     <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
-    <script type="application/ld+json">{{"@context":"https://schema.org","@type":"CollectionPage","name":"Registry Snapshot","url":"https://lab.abvx.xyz/registry/","description":"Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines."}}</script>
+    <script type="application/ld+json">{{"@context":"https://schema.org","@type":"CollectionPage","name":"Workflow Status","url":"https://lab.abvx.xyz/status/","description":"Read-only workflow status snapshot for ABVX repos from GitHub Actions."}}</script>
   </head>
   <body>
     <div class="site-shell">
@@ -110,10 +117,10 @@ def build_page(entries: list[dict[str, object]]) -> str:
         <main class="page-layout">
           <section class="hero-panel">
             <span class="kicker">ABVX control plane</span>
-            <h1>Registry snapshot</h1>
-            <p class="lead">Read-only view of the current SET registry: repo baselines, enabled tool families, and site-aware inputs.</p>
-            <p class="small-note">Static snapshot generated from <a href="https://github.com/markoblogo/SET/tree/main/registry/repos">SET/registry</a>. No write automation yet.</p>
-            <div class="link-grid"><a class="button" href="https://github.com/markoblogo/SET/tree/main/registry/repos">View registry on GitHub</a><a class="button-secondary" href="../assets/registry-snapshot.json">JSON snapshot</a><a class="button-secondary" href="../status/index.html">Workflow status</a></div>
+            <h1>Workflow status snapshot</h1>
+            <p class="lead">Read-only view of the latest GitHub Actions run per registered repo.</p>
+            <p class="small-note">Static snapshot generated via GitHub API. No repo mutation, no write automation.</p>
+            <div class="link-grid"><a class="button" href="../registry/index.html">Registry snapshot</a><a class="button-secondary" href="../assets/status-snapshot.json">JSON snapshot</a></div>
           </section>
           {cards_html}
         </main>
@@ -150,20 +157,19 @@ def build_page(entries: list[dict[str, object]]) -> str:
 
 
 def main() -> int:
-    registry_dir = get_registry_dir()
-    snapshot_path = get_snapshot_path()
-    page_path = get_page_path()
-    entries = load_registry(registry_dir)
+    repos = load_repos()
+    statuses = [fetch_status(str(entry['repo'])) for entry in repos]
     snapshot = {
         'version': 1,
-        'source': 'SET registry snapshot',
-        'registry_dir': str(registry_dir),
-        'repos': entries,
+        'source': 'GitHub Actions status snapshot',
+        'repos': statuses,
     }
+    snapshot_path = get_status_snapshot_path()
+    page_path = get_status_page_path()
     snapshot_path.parent.mkdir(parents=True, exist_ok=True)
     page_path.parent.mkdir(parents=True, exist_ok=True)
     snapshot_path.write_text(json.dumps(snapshot, indent=2) + '\n')
-    page_path.write_text(build_page(entries))
+    page_path.write_text(build_page(statuses))
     print(f'Wrote {snapshot_path}')
     print(f'Wrote {page_path}')
     return 0

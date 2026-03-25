@@ -1,6 +1,7 @@
 {
   "version": 1,
   "source": "SET registry snapshot",
+  "registry_dir": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos",
   "repos": [
     {
       "version": 1,

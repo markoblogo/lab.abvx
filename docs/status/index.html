@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Registry Snapshot | ABVX Lab</title>
-    <meta name="description" content="Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines." />
-    <link rel="canonical" href="https://lab.abvx.xyz/registry/" />
-    <meta property="og:title" content="Registry Snapshot | ABVX Lab" />
-    <meta property="og:description" content="Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines." />
-    <meta property="og:url" content="https://lab.abvx.xyz/registry/" />
+    <title>Workflow Status | ABVX Lab</title>
+    <meta name="description" content="Read-only workflow status snapshot for ABVX repos from GitHub Actions." />
+    <link rel="canonical" href="https://lab.abvx.xyz/status/" />
+    <meta property="og:title" content="Workflow Status | ABVX Lab" />
+    <meta property="og:description" content="Read-only workflow status snapshot for ABVX repos from GitHub Actions." />
+    <meta property="og:url" content="https://lab.abvx.xyz/status/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
     <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Registry Snapshot","url":"https://lab.abvx.xyz/registry/","description":"Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Workflow Status","url":"https://lab.abvx.xyz/status/","description":"Read-only workflow status snapshot for ABVX repos from GitHub Actions."}</script>
   </head>
   <body>
     <div class="site-shell">
@@ -38,22 +38,34 @@
         <main class="page-layout">
           <section class="hero-panel">
             <span class="kicker">ABVX control plane</span>
-            <h1>Registry snapshot</h1>
-            <p class="lead">Read-only view of the current SET registry: repo baselines, enabled tool families, and site-aware inputs.</p>
-            <p class="small-note">Static snapshot generated from <a href="https://github.com/markoblogo/SET/tree/main/registry/repos">SET/registry</a>. No write automation yet.</p>
-            <div class="link-grid"><a class="button" href="https://github.com/markoblogo/SET/tree/main/registry/repos">View registry on GitHub</a><a class="button-secondary" href="../assets/registry-snapshot.json">JSON snapshot</a><a class="button-secondary" href="../status/index.html">Workflow status</a></div>
+            <h1>Workflow status snapshot</h1>
+            <p class="lead">Read-only view of the latest GitHub Actions run per registered repo.</p>
+            <p class="small-note">Static snapshot generated via GitHub API. No repo mutation, no write automation.</p>
+            <div class="link-grid"><a class="button" href="../registry/index.html">Registry snapshot</a><a class="button-secondary" href="../assets/status-snapshot.json">JSON snapshot</a></div>
           </section>
           <section class="page-panel">
             <h2>markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Presets: repo-docs</p>
-            
-            <ul class="bullet-list"><li>agentsgen: init, pack, check, repomap, snippets</li></ul>
+            <p class="small-note">Workflow: CI</p>
+            <ul class="bullet-list">
+              <li>Status: completed</li>
+              <li>Conclusion: success</li>
+              <li>Branch: main</li>
+              <li>Event: push</li>
+              <li>Updated: 2026-03-25T13:01:59Z</li>
+            </ul>
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23542344702">Latest run</a></div>
           </section>
 <section class="page-panel">
             <h2>markoblogo/lab.abvx</h2>
-            <p class="small-note">Presets: repo-docs, site-ai</p>
-            <div class="small-note">Site: <a href="https://lab.abvx.xyz">https://lab.abvx.xyz</a></div>
-            <ul class="bullet-list"><li>agentsgen: init, pack, check, analyze, meta</li></ul>
+            <p class="small-note">Workflow: pages build and deployment</p>
+            <ul class="bullet-list">
+              <li>Status: completed</li>
+              <li>Conclusion: success</li>
+              <li>Branch: main</li>
+              <li>Event: dynamic</li>
+              <li>Updated: 2026-03-25T13:14:49Z</li>
+            </ul>
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/lab.abvx/actions/runs/23542862781">Latest run</a></div>
           </section>
         </main>
         <footer class="footer footer--lab">

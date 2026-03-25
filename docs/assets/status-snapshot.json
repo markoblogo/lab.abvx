@@ -6,11 +6,11 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23550922910",
-      "name": "CI",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23552042347",
+      "name": "agentsgen guard + pack check",
       "head_branch": "main",
       "event": "push",
-      "updated_at": "2026-03-25T16:03:48Z",
+      "updated_at": "2026-03-25T16:27:31Z",
       "workflow_sync_status": "matches",
       "operator_queue": "review-later",
       "repomap_snapshot": {
@@ -59,14 +59,52 @@
       }
     },
     {
+      "repo": "markoblogo/SET",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/markoblogo/SET/actions/runs/23552176982",
+      "name": "SET",
+      "head_branch": "main",
+      "event": "workflow_dispatch",
+      "updated_at": "2026-03-25T16:30:30Z",
+      "workflow_sync_status": "matches",
+      "operator_queue": "review-later",
+      "repomap_snapshot": {
+        "status": "present",
+        "compact_budget": 2500,
+        "top_ranked_limit": 5,
+        "top_ranked_files": [
+          {
+            "path": ".github/workflows/set.yml",
+            "score": 48,
+            "changed": true,
+            "entrypoint": false
+          },
+          {
+            "path": "registry/repos/markoblogo_SET.json",
+            "score": 48,
+            "changed": true,
+            "entrypoint": false
+          }
+        ],
+        "active_slice": {
+          "mode": "changed",
+          "focus": null,
+          "changed_only": true,
+          "slice_files_count": 2
+        },
+        "slice_source": "artifact-backed"
+      }
+    },
+    {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23551216432",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23552040912",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T16:10:29Z",
+      "updated_at": "2026-03-25T16:27:52Z",
       "workflow_sync_status": "matches",
       "operator_queue": "ready-now",
       "repomap_snapshot": {

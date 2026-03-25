@@ -11,6 +11,7 @@ DEFAULT_SET_PLANNER = Path('/Users/antonbiletskiy-volokh/Downloads/Projects/SET/
 DEFAULT_REPO_ROOTS = {
     'markoblogo/lab.abvx': '/Users/antonbiletskiy-volokh/Downloads/Projects/Lab',
     'markoblogo/AGENTS.md_generator': '/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator',
+    'markoblogo/SET': '/Users/antonbiletskiy-volokh/Downloads/Projects/SET',
 }
 
 

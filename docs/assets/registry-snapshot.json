@@ -14,7 +14,40 @@
           "repomap": true,
           "snippets": true,
           "analyze_url": null,
-          "meta_url": null
+          "meta_url": null,
+          "repomap_policy": {
+            "compact_budget": 4000,
+            "top_ranked_files": 5,
+            "focus": "understand",
+            "changed": false
+          }
+        },
+        "git_tweet": {
+          "enabled": false
+        }
+      },
+      "presets": [
+        "repo-docs"
+      ]
+    },
+    {
+      "version": 1,
+      "repo": "markoblogo/SET",
+      "tools": {
+        "agentsgen": {
+          "init": true,
+          "pack": true,
+          "check": true,
+          "repomap": true,
+          "snippets": false,
+          "analyze_url": null,
+          "meta_url": null,
+          "repomap_policy": {
+            "compact_budget": 2500,
+            "top_ranked_files": 5,
+            "focus": null,
+            "changed": true
+          }
         },
         "git_tweet": {
           "enabled": false
@@ -38,7 +71,13 @@
           "repomap": false,
           "snippets": false,
           "analyze_url": "https://lab.abvx.xyz",
-          "meta_url": "https://lab.abvx.xyz"
+          "meta_url": "https://lab.abvx.xyz",
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 3,
+            "focus": null,
+            "changed": false
+          }
         },
         "git_tweet": {
           "enabled": false

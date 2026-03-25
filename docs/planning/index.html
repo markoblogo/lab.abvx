@@ -31,7 +31,7 @@
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
-            <p class="small-note">Queue counts: ready-now=1, blocked-by-orchestrator=0, review-later=1</p>
+            <p class="small-note">Queue counts: ready-now=1, blocked-by-orchestrator=0, review-later=2</p>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>
@@ -75,29 +75,29 @@ gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markob
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
 <section class="page-panel"><h2>Review later</h2><p class="small-note">Repos that are valid plans, but lower urgency than the ready-now queue.</p></section>
-<section id="markoblogo-AGENTS.md_generator" class="page-panel">
-            <h2>2. markoblogo/AGENTS.md_generator</h2>
+<section id="markoblogo-SET" class="page-panel">
+            <h2>3. markoblogo/SET</h2>
             <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: matches</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>
               <li>Target workflow: .github/workflows/set.yml</li>
-              <li>Suggested branch: codex/set-plan-markoblogo-AGENTS.md_generator</li>
-              <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
-              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
+              <li>Suggested branch: codex/set-plan-markoblogo-SET</li>
+              <li>Suggested title: chore(set): plan config apply for markoblogo/SET</li>
+              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-SET</li>
               <li>Workflow sync status: matches</li>
             </ul>
             <div class="small-note">Copy next command:</div>
-            <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</code></pre>
+            <pre><code>git checkout -b codex/set-plan-markoblogo-SET</code></pre>
             <div class="small-note">Copy PR command:</div>
-            <pre><code>gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
+            <pre><code>gh pr create --repo markoblogo/SET --base main --head codex/set-plan-markoblogo-SET --title "chore(set): plan config apply for markoblogo/SET" --body-file pr-body.md</code></pre>
             <div class="small-note">Copy full sequence:</div>
-            <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator
+            <pre><code>git checkout -b codex/set-plan-markoblogo-SET
 cp workflow.set.yml .github/workflows/set.yml
 git add .github/workflows/set.yml
-git commit -m "chore(set): plan config apply for markoblogo/AGENTS.md_generator"
-gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
-            <div class="small-note">Compact repomap: present (budget 4000, top files 5)</div><div class="small-note">Active slice: focus (understand); ranked files: 20</div><div class="small-note">Slice source: artifact-backed</div><div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>src/agentsgen/cli.py</code> (score 85)</li><li><code>docs/ai/repomap.compact.md</code> (score 71)</li><li><code>.github/workflows/set.yml</code> (score 70)</li><li><code>src/agentsgen/understand.py</code> (score 61)</li><li><code>tests/test_understand_cli.py</code> (score 55)</li></ul>
+git commit -m "chore(set): plan config apply for markoblogo/SET"
+gh pr create --repo markoblogo/SET --base main --head codex/set-plan-markoblogo-SET --title "chore(set): plan config apply for markoblogo/SET" --body-file pr-body.md</code></pre>
+            <div class="small-note">Compact repomap: present (budget 2500, top files 5)</div><div class="small-note">Active slice: changed; ranked files: 2</div><div class="small-note">Slice source: artifact-backed</div><div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>.github/workflows/set.yml</code> (score 48)</li><li><code>registry/repos/markoblogo_SET.json</code> (score 48)</li></ul>
             
             
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>

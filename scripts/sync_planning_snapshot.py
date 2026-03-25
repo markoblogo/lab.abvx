@@ -345,6 +345,10 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li id="apply-ready"><strong>apply: ready</strong>: no current blockers in the planner contract.</li>
               <li id="apply-blocked"><strong>apply: blocked</strong>: planner sees explicit blockers that should be cleared before apply review.</li>
               <li><strong>Missing in orchestrator</strong>: requested capabilities that exist in registry config but are not yet wired into SET action inputs.</li>
+              <li id="policy-full"><strong>Full Repo Slice</strong>: no slice narrowing, use the broader repo map.</li>
+              <li id="policy-focus"><strong>Focused Code Slice</strong>: a query-targeted repomap narrowed around one topic or subsystem.</li>
+              <li id="policy-changed"><strong>Changed Files Slice</strong>: a repomap narrowed to changed files and immediate review context.</li>
+              <li id="policy-hybrid"><strong>Hybrid Slice</strong>: both query-focused and change-aware at the same time.</li>
             </ul>
           </section>
           {cards_html}

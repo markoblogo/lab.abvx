@@ -51,6 +51,13 @@
             "top_ranked_files": 5,
             "focus": null,
             "changed": true
+          },
+          "proof_loop": {
+            "enabled": true,
+            "task_id": "proof-loop-blocked",
+            "expected_artifacts": [
+              "docs/ai/proof/manual-review.md"
+            ]
           }
         },
         "git_tweet": {

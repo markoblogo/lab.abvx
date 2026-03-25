@@ -51,26 +51,27 @@
             
             <div class="link-grid"><a class="button" href="../planning/index.html">Planning</a><a class="button-secondary" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/proof-snapshot.json">JSON snapshot</a></div>
           </section>
-<section class="page-panel"><h2>Disabled</h2><p class="small-note">Repos that are not using proof-loop yet.</p></section>
+<section class="page-panel"><h2>Blocked</h2><p class="small-note">Proof bundles with explicit blockers or incomplete evidence that should be cleared first.</p></section>
 <section class="page-panel">
             <h2>markoblogo/SET</h2>
-            <p class="small-note">Proof queue: disabled | Workflow sync: matches | Operator queue: review-later</p>
+            <p class="small-note">Proof queue: blocked | Workflow sync: matches | Operator queue: review-later</p>
             <ul class="bullet-list">
-              <li>Task id: n/a</li>
-              <li>Proof status: disabled</li>
-              <li>Verdict: none</li>
-              <li>Decision: unknown</li>
-              <li>Evidence status: none</li>
+              <li>Task id: proof-loop-blocked</li>
+              <li>Proof status: complete</li>
+              <li>Verdict: needs-review</li>
+              <li>Decision: blocked</li>
+              <li>Evidence status: complete</li>
               <li>Review ready: false</li>
               <li>Ready for apply: false</li>
-              <li>Checks: passed 0, failed 0, pending 0</li>
-              <li>Artifacts: present 0 / total 0</li>
+              <li>Checks: passed 1, failed 0, pending 0</li>
+              <li>Artifacts: present 2 / total 2</li>
               <li>Target workflow: .github/workflows/set.yml</li>
             </ul>
-            
-            
+            <div class="small-note">Recommendation: Resolve blockers, refresh evidence, then re-run verdict.</div>
+            <div class="small-note">Proof blockers:</div><ul class="bullet-list"><li><strong>high</strong>: expected proof artifact is missing: docs/ai/proof/manual-review.md</li></ul>
             <div class="link-grid"><a class="button" href="../planning/index.html">Planning</a><a class="button-secondary" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/proof-snapshot.json">JSON snapshot</a></div>
           </section>
+<section class="page-panel"><h2>Disabled</h2><p class="small-note">Repos that are not using proof-loop yet.</p></section>
 <section class="page-panel">
             <h2>markoblogo/lab.abvx</h2>
             <p class="small-note">Proof queue: disabled | Workflow sync: matches | Operator queue: ready-now</p>

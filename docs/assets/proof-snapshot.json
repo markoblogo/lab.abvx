@@ -39,16 +39,41 @@
     },
     {
       "repo": "markoblogo/SET",
-      "proof_queue": "disabled",
+      "proof_queue": "blocked",
       "workflow_sync_status": "matches",
       "operator_queue": "review-later",
       "proof_snapshot": {
-        "status": "disabled",
-        "task_id": null,
-        "contract": false,
-        "evidence": false,
-        "verdict": false,
-        "verdict_status": "none"
+        "status": "complete",
+        "task_id": "proof-loop-blocked",
+        "contract": true,
+        "evidence": true,
+        "verdict": true,
+        "verdict_status": "needs-review",
+        "decision": "blocked",
+        "recommendation": "Resolve blockers, refresh evidence, then re-run verdict.",
+        "ready_for_apply": false,
+        "review_ready": false,
+        "evidence_status": "complete",
+        "blocking_count": 1,
+        "blocking_details": [
+          {
+            "message": "expected proof artifact is missing: docs/ai/proof/manual-review.md",
+            "severity": "high",
+            "blocks_apply": true
+          }
+        ],
+        "check_summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "recorded": 0
+        },
+        "artifact_summary": {
+          "total": 2,
+          "present": 2,
+          "missing": 0
+        }
       },
       "target_workflow": ".github/workflows/set.yml"
     },

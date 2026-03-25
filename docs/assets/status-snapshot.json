@@ -6,11 +6,11 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23555352883",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23555616061",
       "name": "SET",
       "head_branch": "main",
       "event": "workflow_dispatch",
-      "updated_at": "2026-03-25T17:41:02Z",
+      "updated_at": "2026-03-25T17:46:58Z",
       "workflow_sync_status": "matches",
       "operator_queue": "review-later",
       "repomap_snapshot": {
@@ -127,23 +127,48 @@
         "slice_source": "artifact-backed"
       },
       "proof_snapshot": {
-        "status": "disabled",
-        "task_id": null,
-        "contract": false,
-        "evidence": false,
-        "verdict": false,
-        "verdict_status": "none"
+        "status": "complete",
+        "task_id": "proof-loop-blocked",
+        "contract": true,
+        "evidence": true,
+        "verdict": true,
+        "verdict_status": "needs-review",
+        "decision": "blocked",
+        "recommendation": "Resolve blockers, refresh evidence, then re-run verdict.",
+        "ready_for_apply": false,
+        "review_ready": false,
+        "evidence_status": "complete",
+        "blocking_count": 1,
+        "blocking_details": [
+          {
+            "message": "expected proof artifact is missing: docs/ai/proof/manual-review.md",
+            "severity": "high",
+            "blocks_apply": true
+          }
+        ],
+        "check_summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "recorded": 0
+        },
+        "artifact_summary": {
+          "total": 2,
+          "present": 2,
+          "missing": 0
+        }
       }
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23555343851",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23555609855",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T17:41:09Z",
+      "updated_at": "2026-03-25T17:47:24Z",
       "workflow_sync_status": "matches",
       "operator_queue": "ready-now",
       "repomap_snapshot": {

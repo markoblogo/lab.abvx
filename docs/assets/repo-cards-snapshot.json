@@ -19,11 +19,11 @@
         "repo": "markoblogo/AGENTS.md_generator",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23554171301",
+        "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23555352883",
         "name": "SET",
         "head_branch": "main",
         "event": "workflow_dispatch",
-        "updated_at": "2026-03-25T17:14:33Z",
+        "updated_at": "2026-03-25T17:41:02Z",
         "workflow_sync_status": "matches",
         "operator_queue": "review-later",
         "repomap_snapshot": {
@@ -82,8 +82,10 @@
           "decision": "review-ready",
           "recommendation": "Review the captured evidence bundle before marking the task as pass.",
           "ready_for_apply": false,
+          "review_ready": true,
           "evidence_status": "complete",
           "blocking_count": 0,
+          "blocking_details": [],
           "check_summary": {
             "total": 2,
             "passed": 2,
@@ -141,7 +143,8 @@
           "repomap_policy_mode": "focus",
           "proof_loop": {
             "enabled": true,
-            "task_id": "proof-loop-v0"
+            "task_id": "proof-loop-v0",
+            "expected_artifacts": []
           },
           "proposed_changes": [
             {
@@ -270,7 +273,8 @@
             "repomap_policy_mode": "focus",
             "proof_loop": {
               "enabled": true,
-              "task_id": "proof-loop-v0"
+              "task_id": "proof-loop-v0",
+              "expected_artifacts": []
             },
             "repomap_policy_label": "Focused Code Slice",
             "apply_readiness": "ready",
@@ -510,7 +514,13 @@
             "changed": true
           },
           "repomap_policy_mode": "changed",
-          "proof_loop": null,
+          "proof_loop": {
+            "enabled": true,
+            "task_id": "proof-loop-blocked",
+            "expected_artifacts": [
+              "docs/ai/proof/manual-review.md"
+            ]
+          },
           "proposed_changes": [
             {
               "type": "workflow",
@@ -528,7 +538,10 @@
                   "repomap": "true",
                   "snippets": "false",
                   "repomap_compact_budget": "2500",
-                  "repomap_changed": "true"
+                  "repomap_changed": "true",
+                  "proof_loop": "true",
+                  "proof_task_id": "proof-loop-blocked",
+                  "proof_expected_artifacts": "docs/ai/proof/manual-review.md"
                 }
               }
             }
@@ -561,6 +574,14 @@
               "requested": true,
               "supported_by_set": true,
               "set_input": "repomap"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "proof_loop",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "proof_loop",
+              "task_id": "proof-loop-blocked"
             }
           ],
           "review_payload": {
@@ -595,6 +616,14 @@
                 "requested": true,
                 "supported_by_set": true,
                 "set_input": "repomap"
+              },
+              {
+                "tool": "agentsgen",
+                "key": "proof_loop",
+                "requested": true,
+                "supported_by_set": true,
+                "set_input": "proof_loop",
+                "task_id": "proof-loop-blocked"
               }
             ],
             "repomap_policy": {
@@ -604,7 +633,13 @@
               "changed": true
             },
             "repomap_policy_mode": "changed",
-            "proof_loop": null,
+            "proof_loop": {
+              "enabled": true,
+              "task_id": "proof-loop-blocked",
+              "expected_artifacts": [
+                "docs/ai/proof/manual-review.md"
+              ]
+            },
             "repomap_policy_label": "Changed Files Slice",
             "apply_readiness": "ready",
             "blocked_by": [],
@@ -617,8 +652,8 @@
             "target_workflow_path": ".github/workflows/set.yml",
             "title": "chore(set): plan config apply for markoblogo/SET",
             "suggested_commit_message": "chore(set): plan config apply for markoblogo/SET",
-            "body": "# Planned SET workflow for `markoblogo/SET`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `false`\n- `repomap_compact_budget`: `2500`\n- `repomap_changed`: `true`\n\n## Repomap policy\n- `mode`: `changed`\n- `label`: `Changed Files Slice`\n- `compact_budget`: `2500`\n- `top_ranked_files`: `5`\n- `changed`: `true`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-            "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"false\"\n          repomap_compact_budget: \"2500\"\n          repomap_changed: \"true\"\n",
+            "body": "# Planned SET workflow for `markoblogo/SET`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `false`\n- `repomap_compact_budget`: `2500`\n- `repomap_changed`: `true`\n- `proof_loop`: `true`\n- `proof_task_id`: `proof-loop-blocked`\n- `proof_expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Repomap policy\n- `mode`: `changed`\n- `label`: `Changed Files Slice`\n- `compact_budget`: `2500`\n- `top_ranked_files`: `5`\n- `changed`: `true`\n\n## Proof loop\n- `enabled`: `true`\n- `task_id`: `proof-loop-blocked`\n- `expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
+            "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"false\"\n          repomap_compact_budget: \"2500\"\n          repomap_changed: \"true\"\n          proof_loop: \"true\"\n          proof_task_id: \"proof-loop-blocked\"\n          proof_expected_artifacts: \"docs/ai/proof/manual-review.md\"\n",
             "gh_pr_create": {
               "repo": "markoblogo/SET",
               "base": "main",
@@ -689,12 +724,37 @@
           "slice_source": "artifact-backed"
         },
         "proof_snapshot": {
-          "status": "disabled",
-          "task_id": null,
-          "contract": false,
-          "evidence": false,
-          "verdict": false,
-          "verdict_status": "none"
+          "status": "complete",
+          "task_id": "proof-loop-blocked",
+          "contract": true,
+          "evidence": true,
+          "verdict": true,
+          "verdict_status": "needs-review",
+          "decision": "blocked",
+          "recommendation": "Resolve blockers, refresh evidence, then re-run verdict.",
+          "ready_for_apply": false,
+          "review_ready": false,
+          "evidence_status": "complete",
+          "blocking_count": 1,
+          "blocking_details": [
+            {
+              "message": "expected proof artifact is missing: docs/ai/proof/manual-review.md",
+              "severity": "high",
+              "blocks_apply": true
+            }
+          ],
+          "check_summary": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "pending": 0,
+            "recorded": 0
+          },
+          "artifact_summary": {
+            "total": 2,
+            "present": 2,
+            "missing": 0
+          }
         },
         "files": [
           "apply-simulation.json",
@@ -723,11 +783,11 @@
         "repo": "markoblogo/lab.abvx",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23554096982",
+        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23555343851",
         "name": "pages build and deployment",
         "head_branch": "main",
         "event": "dynamic",
-        "updated_at": "2026-03-25T17:13:16Z",
+        "updated_at": "2026-03-25T17:41:09Z",
         "workflow_sync_status": "matches",
         "operator_queue": "ready-now",
         "repomap_snapshot": {

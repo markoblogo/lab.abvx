@@ -13,6 +13,7 @@
       "priority_hint": "medium",
       "next_action_label": "Resolve unmapped fields",
       "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+      "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
       "unmapped_count": 2,
       "plan": {
         "version": 1,
@@ -43,6 +44,7 @@
           "repo": "markoblogo/AGENTS.md_generator",
           "next_action_label": "Resolve unmapped fields",
           "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+          "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
           "target_branch": "main",
           "head_branch": "codex/set-plan-markoblogo-AGENTS.md_generator",
           "target_workflow_path": ".github/workflows/set.yml",
@@ -104,6 +106,7 @@
       "priority_hint": "high",
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
+      "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
       "unmapped_count": 0,
       "plan": {
         "version": 1,
@@ -140,6 +143,7 @@
           "repo": "markoblogo/lab.abvx",
           "next_action_label": "Review and apply planned workflow",
           "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
+          "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
           "target_branch": "main",
           "head_branch": "codex/set-plan-markoblogo-lab.abvx",
           "target_workflow_path": ".github/workflows/set.yml",

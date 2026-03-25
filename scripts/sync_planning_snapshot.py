@@ -85,7 +85,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         apply_sim = review_payload['apply_simulation']
         next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
         recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
-        next_command = recommended_step if isinstance(recommended_step, str) else 'n/a'
+        next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
         full_sequence = '\n'.join(apply_sim.get('manual_steps', []))
         unmapped = plan.get('unmapped', [])
         unmapped_html = ''

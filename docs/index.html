@@ -264,88 +264,92 @@
         color: var(--home-muted);
       }
 
-      .catalog-featured {
+      .catalog-stage {
         display: grid;
-        gap: 0;
-        border-top: 1px solid var(--home-line);
-        border-bottom: 1px solid var(--home-line);
+        gap: 1.1rem;
       }
 
-      .feature-item {
+      .catalog-tiles {
         display: grid;
-        grid-template-columns: minmax(140px, 170px) minmax(180px, 220px) minmax(0, 1fr) auto;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 1rem;
-        align-items: start;
-        padding: 1rem 0;
-        border-top: 1px solid var(--home-line);
       }
 
-      .feature-item:first-child {
-        border-top: none;
-      }
-
-      .feature-family {
-        color: var(--home-muted);
-      }
-
-      .feature-name {
-        color: var(--home-blue);
-        font-size: 1.12rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-      }
-
-      .feature-name a {
-        text-decoration: none;
-      }
-
-      .feature-name a:hover {
-        text-decoration: underline;
-      }
-
-      .feature-summary {
-        color: var(--home-muted);
-        max-width: 62ch;
-      }
-
-      .feature-links {
-        display: flex;
-        gap: 0.7rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        font-size: 0.88rem;
-      }
-
-      .catalog-secondary {
+      .catalog-card {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.2rem 2rem;
-        padding-top: 1rem;
+        gap: 0.7rem;
+        min-height: 100%;
+        padding: 1.1rem 1.1rem 1rem;
+        border-top: 2px solid var(--home-strong-line);
+        background: linear-gradient(180deg, rgba(245,242,234,0.72), rgba(255,255,255,0));
+      }
+
+      .catalog-card.primary {
+        grid-column: span 12;
+        padding: 1.3rem 1.25rem 1.15rem;
+        border-top-width: 3px;
+      }
+
+      .catalog-card.secondary {
+        grid-column: span 4;
+      }
+
+      .catalog-card .kicker {
+        margin-bottom: 0;
+      }
+
+      .catalog-card h3 {
+        margin: 0;
+        color: var(--home-blue);
+        font-size: clamp(1.35rem, 2vw, 1.9rem);
+        letter-spacing: -0.03em;
+      }
+
+      .catalog-card.primary h3 {
+        font-size: clamp(2.1rem, 4vw, 3rem);
+      }
+
+      .catalog-card p {
+        margin: 0;
+        max-width: 60ch;
+        color: var(--home-ink);
+      }
+
+      .catalog-card.primary p {
+        max-width: 48ch;
+        font-size: 1rem;
+      }
+
+      .catalog-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .catalog-directory {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem 1.5rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--home-line);
       }
 
       .mini-group {
         display: grid;
-        gap: 0.45rem;
-        padding-top: 0.9rem;
-        border-top: 1px dashed var(--home-line);
+        gap: 0.42rem;
+        align-content: start;
       }
 
       .mini-group h3 {
         margin: 0;
         color: var(--home-blue);
-        font-size: 1rem;
+        font-size: 0.95rem;
         letter-spacing: -0.02em;
-      }
-
-      .mini-group p {
-        margin: 0;
-        color: var(--home-muted);
-        font-size: 0.9rem;
       }
 
       .mini-links {
         display: grid;
-        gap: 0.28rem;
+        gap: 0.22rem;
       }
 
       .mini-links a,
@@ -353,15 +357,20 @@
         color: var(--home-ink);
       }
 
-      .mini-links a small,
-      .mini-links span small {
+      .mini-links small {
         color: var(--home-muted);
       }
 
       @media (max-width: 960px) {
         .home-hero-grid,
-        .catalog-secondary {
+        .catalog-tiles,
+        .catalog-directory {
           grid-template-columns: 1fr;
+        }
+
+        .catalog-card.secondary,
+        .catalog-card.primary {
+          grid-column: auto;
         }
 
         .entry-panel {
@@ -374,12 +383,12 @@
 
       @media (max-width: 760px) {
         .snapshot-row,
-        .feature-item {
+        .catalog-card {
           grid-template-columns: 1fr;
           gap: 0.35rem;
         }
 
-        .feature-links {
+        .catalog-card-links {
           justify-content: flex-start;
         }
       }
@@ -515,79 +524,93 @@
             <section class="flow-section" id="tools">
               <div class="section-head">
                 <span class="kicker">ABVX tools</span>
-                <h2>Catalog</h2>
-                <p>The ecosystem has a few real entrypoints and many supporting tools. The front page should show that hierarchy directly instead of flattening everything into one long list.</p>
+                <h2>Tool map</h2>
+                <p>Four products carry most of the ecosystem. Everything else stays visible, but moves into a quieter directory underneath.</p>
               </div>
 
-              <div class="catalog-featured">
-                <div class="feature-item">
-                  <div class="feature-family">Orchestration</div>
-                  <div class="feature-name"><a href="tools/set/index.html">SET</a></div>
-                  <div class="feature-summary">Thin GitHub Action entrypoint for presets, repo-docs, registry review, proof-loop, repomap, and repo-local ID hooks.</div>
-                  <div class="feature-links"><a href="tools/set/index.html">page</a><a href="https://github.com/markoblogo/SET">gh</a><a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">release</a></div>
-                </div>
-                <div class="feature-item">
-                  <div class="feature-family">Repo docs</div>
-                  <div class="feature-name"><a href="tools/agentsgen/index.html">agentsgen</a></div>
-                  <div class="feature-summary">Repo-scoped agent docs runtime for AGENTS.md, RUNBOOK, AI bundles, snippets, repomap, proof artifacts, and drift checks.</div>
-                  <div class="feature-links"><a href="tools/agentsgen/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a><a href="https://agentsmd.abvx.xyz/">live</a></div>
-                </div>
-                <div class="feature-item">
-                  <div class="feature-family">Portable context</div>
-                  <div class="feature-name"><a href="tools/id/index.html">ID</a></div>
-                  <div class="feature-summary">Portable human-AI profile protocol plus repo-local hooks for SET-compatible pre-task validation and weekly review.</div>
-                  <div class="feature-links"><a href="tools/id/index.html">page</a><a href="https://github.com/markoblogo/ID">gh</a></div>
-                </div>
-                <div class="feature-item">
-                  <div class="feature-family">Analysis</div>
-                  <div class="feature-name"><a href="tools/repomap/index.html">repomap</a><span class="tool-tag">new</span></div>
-                  <div class="feature-summary">Token-budgeted repo map with import graph, ranked files, and slice modes for larger codebases and agent handoff.</div>
-                  <div class="feature-links"><a href="tools/repomap/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a></div>
-                </div>
-              </div>
+              <div class="catalog-stage">
+                <div class="catalog-tiles">
+                  <article class="catalog-card primary">
+                    <span class="kicker">Primary orchestrator</span>
+                    <h3>SET</h3>
+                    <p>One entrypoint for repo-docs, repomap, proof-loop, registry review, and repo-local hook orchestration.</p>
+                    <div class="catalog-card-links">
+                      <a href="tools/set/index.html">Tool page</a>
+                      <a href="https://github.com/markoblogo/SET">GitHub</a>
+                      <a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">Release</a>
+                    </div>
+                  </article>
 
-              <div class="catalog-secondary">
-                <section class="mini-group">
-                  <h3>Repo docs workflow</h3>
-                  <p>Setup and maintenance commands around the main agentsgen runtime.</p>
-                  <div class="mini-links">
-                    <a href="tools/agentsgen-init/index.html">agentsgen init <small>bootstrap marker-based repo docs</small></a>
-                    <a href="tools/agentsgen-update/index.html">agentsgen update <small>patch managed sections only</small></a>
-                    <a href="tools/agentsgen-pack/index.html">agentsgen pack <small>generate AI docs bundles</small></a>
-                    <a href="tools/agentsgen-snippets/index.html">agentsgen snippets <small>extract canonical README snippets</small></a>
-                    <a href="tools/agentsgen-presets/index.html">agentsgen presets <small>copy-paste setup for common stacks</small></a>
-                  </div>
-                </section>
+                  <article class="catalog-card secondary">
+                    <span class="kicker">Repo docs runtime</span>
+                    <h3>agentsgen</h3>
+                    <p>Agent docs, AI bundles, snippets, repomap, proof artifacts.</p>
+                    <div class="catalog-card-links">
+                      <a href="tools/agentsgen/index.html">Tool page</a>
+                      <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
+                    </div>
+                  </article>
 
-                <section class="mini-group">
-                  <h3>Validation &amp; CI</h3>
-                  <p>Fast repo readiness and drift signals.</p>
-                  <div class="mini-links">
-                    <a href="tools/agentsgen-check/index.html">agentsgen check <small>validate repo readiness and drift</small></a>
-                    <a href="tools/agentsgen-detect/index.html">agentsgen detect <small>heuristic repo scan with stable JSON</small></a>
-                    <a href="tools/agentsgen-status/index.html">agentsgen status <small>instant overview of markers and fallbacks</small></a>
-                  </div>
-                </section>
+                  <article class="catalog-card secondary">
+                    <span class="kicker">Portable context</span>
+                    <h3>ID</h3>
+                    <p>Portable human-AI profile protocol plus repo-local hooks for SET flows.</p>
+                    <div class="catalog-card-links">
+                      <a href="tools/id/index.html">Tool page</a>
+                      <a href="https://github.com/markoblogo/ID">GitHub</a>
+                    </div>
+                  </article>
 
-                <section class="mini-group">
-                  <h3>Planned public surfaces</h3>
-                  <p>Visible roadmap items that stay adjacent to repomap and LLMO work.</p>
-                  <div class="mini-links">
-                    <span>agentsgen analyze <small>AI-visibility scoring for a public URL</small></span>
-                    <span>agentsgen meta <small>SEO + AI metadata generation for a public URL</small></span>
-                  </div>
-                </section>
+                  <article class="catalog-card secondary">
+                    <span class="kicker">Analysis</span>
+                    <h3>repomap</h3>
+                    <p>Ranked codebase map with token-budgeted slices for larger repos.</p>
+                    <div class="catalog-card-links">
+                      <a href="tools/repomap/index.html">Tool page</a>
+                      <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
+                    </div>
+                  </article>
+                </div>
 
-                <section class="mini-group">
-                  <h3>Publishing &amp; utilities</h3>
-                  <p>Standalone helpers outside the main orchestration path.</p>
-                  <div class="mini-links">
-                    <a href="tools/git-tweet/index.html">git-tweet <small>tweet-sized release notes from git diffs</small></a>
-                    <a href="tools/abvx-shortener/index.html">abvx-shortener <small>minimal Cloudflare Worker shortener</small></a>
-                    <a href="tools/asciitheme/index.html">AsciiTheme <small>tiny CSS theme kit for readable dev pages</small></a>
-                    <a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin <small>rendering plugin for sitelen pona layers</small></a>
-                  </div>
-                </section>
+                <div class="catalog-directory">
+                  <section class="mini-group">
+                    <h3>Repo docs workflow</h3>
+                    <div class="mini-links">
+                      <a href="tools/agentsgen-init/index.html">agentsgen init <small>bootstrap repo docs</small></a>
+                      <a href="tools/agentsgen-update/index.html">agentsgen update <small>patch managed sections</small></a>
+                      <a href="tools/agentsgen-pack/index.html">agentsgen pack <small>generate AI bundles</small></a>
+                      <a href="tools/agentsgen-snippets/index.html">agentsgen snippets <small>extract canonical snippets</small></a>
+                      <a href="tools/agentsgen-presets/index.html">agentsgen presets <small>common stack setups</small></a>
+                    </div>
+                  </section>
+
+                  <section class="mini-group">
+                    <h3>Validation &amp; CI</h3>
+                    <div class="mini-links">
+                      <a href="tools/agentsgen-check/index.html">agentsgen check <small>readiness and drift</small></a>
+                      <a href="tools/agentsgen-detect/index.html">agentsgen detect <small>stable heuristic scan</small></a>
+                      <a href="tools/agentsgen-status/index.html">agentsgen status <small>repo overview</small></a>
+                    </div>
+                  </section>
+
+                  <section class="mini-group">
+                    <h3>Planned public surfaces</h3>
+                    <div class="mini-links">
+                      <span>agentsgen analyze <small>AI visibility score</small></span>
+                      <span>agentsgen meta <small>SEO + AI metadata</small></span>
+                    </div>
+                  </section>
+
+                  <section class="mini-group">
+                    <h3>Publishing &amp; utilities</h3>
+                    <div class="mini-links">
+                      <a href="tools/git-tweet/index.html">git-tweet <small>release notes</small></a>
+                      <a href="tools/abvx-shortener/index.html">abvx-shortener <small>worker shortener</small></a>
+                      <a href="tools/asciitheme/index.html">AsciiTheme <small>tiny CSS kit</small></a>
+                      <a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin <small>rendering plugin</small></a>
+                    </div>
+                  </section>
+                </div>
               </div>
             </section>
         </main>

@@ -28,7 +28,9 @@
         --home-ink: #0f172a;
         --home-muted: #556070;
         --home-line: rgba(23, 63, 150, 0.16);
+        --home-strong-line: rgba(23, 63, 150, 0.28);
         --home-panel: rgba(255, 255, 255, 0.66);
+        --home-soft: rgba(23, 63, 150, 0.05);
       }
 
       [data-ascii-mode="dark"] {
@@ -38,7 +40,9 @@
         --home-ink: #eff4ff;
         --home-muted: #b8c0d1;
         --home-line: rgba(168, 196, 255, 0.18);
+        --home-strong-line: rgba(168, 196, 255, 0.32);
         --home-panel: rgba(255, 255, 255, 0.03);
+        --home-soft: rgba(168, 196, 255, 0.06);
       }
 
       .home-main {
@@ -48,7 +52,7 @@
 
       .home-shell {
         display: grid;
-        gap: 1.35rem;
+        gap: 1.5rem;
       }
 
       .home-hero {
@@ -74,7 +78,7 @@
       .home-hero-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
-        gap: 1.4rem;
+        gap: 1.5rem;
         align-items: start;
       }
 
@@ -127,7 +131,7 @@
       .entry-panel {
         display: grid;
         gap: 0.8rem;
-        padding-left: 1.2rem;
+        padding-left: 1.25rem;
         border-left: 1px solid var(--home-line);
         align-content: start;
       }
@@ -161,63 +165,99 @@
         gap: 0.5rem;
       }
 
-      .cp-panel {
-        display: grid;
-        gap: 0.9rem;
-      }
-
-      .cp-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        align-items: end;
-        flex-wrap: wrap;
-      }
-
-      .cp-head p {
-        max-width: 48ch;
-      }
-
-      .cp-head h2 {
-        margin: 0;
-      }
-
-
-      .cp-table-wrap {
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+      .surface-panel {
         border: 1px solid var(--home-line);
         background: var(--home-panel);
-        padding: 0.5rem 0.9rem;
+        padding: 1.1rem 1.15rem 1.2rem;
       }
 
-      .cp-table {
-        width: 100%;
-        min-width: 40rem;
-        border-collapse: collapse;
-        font-size: 0.94rem;
+      .surface-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.85fr);
+        gap: 1.2rem;
+        align-items: start;
+        margin-bottom: 1rem;
       }
 
-      .cp-table th {
-        text-align: left;
-        font-size: 0.78rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .surface-header h2 {
+        margin: 0.15rem 0 0;
+        color: var(--home-blue);
+        font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+        letter-spacing: -0.04em;
+      }
+
+      .surface-header p {
+        margin: 0.45rem 0 0;
+        max-width: 54ch;
         color: var(--home-muted);
-        padding: 0.55rem 0.8rem 0.65rem 0;
-        border-bottom: 1px solid var(--home-line);
-        font-weight: 400;
       }
 
-      .cp-table td {
-        padding: 0.8rem 0.8rem 0.8rem 0;
-        border-bottom: 1px solid var(--home-line);
-        vertical-align: top;
+      .surface-meta {
+        display: grid;
+        gap: 0.55rem;
       }
 
-      .cp-table tr:last-child td {
-        border-bottom: none;
+      .meta-block {
+        padding: 0.75rem 0.85rem;
+        border: 1px solid var(--home-line);
+        background: var(--home-soft);
+      }
+
+      .meta-label {
+        display: block;
+        margin-bottom: 0.18rem;
+        color: var(--home-muted);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .meta-value {
+        color: var(--home-blue);
+        font-size: 1.35rem;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .surface-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 1rem;
+      }
+
+      .repo-ledger {
+        border: 1px solid var(--home-line);
+        background: rgba(255,255,255,0.3);
+      }
+
+      .ledger-row {
+        display: grid;
+        grid-template-columns: minmax(150px, 1.1fr) 92px 102px 130px 110px;
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.72rem 0.9rem;
+        border-top: 1px solid var(--home-line);
+      }
+
+      .ledger-row:first-child {
+        border-top: none;
+      }
+
+      .ledger-row--head {
+        color: var(--home-muted);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        background: var(--home-soft);
+      }
+
+      .ledger-name {
+        font-weight: 700;
+        color: var(--home-blue);
+      }
+
+      .ledger-muted {
+        color: var(--home-muted);
       }
 
       .status-ok {
@@ -227,11 +267,13 @@
       .queue-pill {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         padding: 0.18rem 0.52rem;
         border: 1px solid var(--home-line);
         border-radius: 999px;
         color: var(--home-muted);
         font-size: 0.78rem;
+        white-space: nowrap;
       }
 
       .queue-pill.ready {
@@ -239,59 +281,96 @@
         border-color: color-mix(in srgb, var(--home-green) 40%, var(--home-line));
       }
 
-      .cp-nav {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-      }
-
-      .home-groups {
-        display: grid;
-        gap: 1.15rem;
-      }
-
-      .tools-surface {
-        display: grid;
-        gap: 1.4rem;
-      }
-
-      .group-panel {
+      .surface-links {
         display: grid;
         gap: 0.7rem;
       }
 
-      .group-header {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        align-items: baseline;
-        flex-wrap: wrap;
-        padding-bottom: 0.15rem;
+      .surface-link {
+        display: grid;
+        gap: 0.12rem;
+        padding: 0.78rem 0.9rem;
+        border: 1px solid var(--home-line);
+        background: rgba(255,255,255,0.32);
+        text-decoration: none;
       }
 
-      .group-header h3 {
-        margin: 0;
-        font-size: 1rem;
+      .surface-link:hover {
+        border-color: var(--home-strong-line);
+        background: rgba(255,255,255,0.52);
+      }
+
+      .surface-link strong {
         color: var(--home-blue);
-        letter-spacing: -0.02em;
       }
 
-      .tool-list {
+      .surface-link span {
+        color: var(--home-muted);
+        font-size: 0.92rem;
+      }
+
+      .catalog-panel {
+        border: 1px solid var(--home-line);
+        background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.18));
+        padding: 1.1rem 1.15rem 1.2rem;
+      }
+
+      .family-list {
         display: grid;
         gap: 0;
       }
 
-      .tool-row {
+      .family-row {
         display: grid;
-        grid-template-columns: minmax(180px, 220px) minmax(0, 1fr) auto;
-        gap: 0.7rem 1rem;
-        padding: 0.75rem 0;
+        grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+        gap: 1.2rem;
+        padding: 1rem 0;
         border-top: 1px solid var(--home-line);
-        align-items: start;
       }
 
-      .tool-row:first-child {
+      .family-row:first-child {
         border-top: none;
+      }
+
+      .family-intro {
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .family-intro h3 {
+        margin: 0;
+        color: var(--home-blue);
+        font-size: 1.12rem;
+        letter-spacing: -0.02em;
+      }
+
+      .family-intro p {
+        margin: 0;
+        color: var(--home-muted);
+        font-size: 0.92rem;
+      }
+
+      .tool-stack {
+        display: grid;
+        gap: 0;
+      }
+
+      .tool-item {
+        display: grid;
+        grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) auto;
+        gap: 0.8rem 1rem;
+        align-items: start;
+        padding: 0.8rem 0;
+        border-top: 1px dashed var(--home-line);
+      }
+
+      .tool-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .tool-item:last-child {
+        padding-bottom: 0;
       }
 
       .tool-name {
@@ -334,17 +413,27 @@
         color: var(--home-muted);
       }
 
-
       @media (max-width: 960px) {
-        .home-hero-grid {
+        .home-hero-grid,
+        .surface-header,
+        .surface-grid,
+        .family-row {
           grid-template-columns: 1fr;
+        }
+
+        .entry-panel {
+          padding-left: 0;
+          border-left: none;
+          border-top: 1px solid var(--home-line);
+          padding-top: 1rem;
         }
       }
 
       @media (max-width: 760px) {
-        .tool-row {
+        .ledger-row,
+        .tool-item {
           grid-template-columns: 1fr;
-          gap: 0.4rem;
+          gap: 0.35rem;
         }
 
         .tool-links {
@@ -414,230 +503,254 @@
               </div>
             </section>
 
-            <section class="page-panel cp-panel" id="control-plane">
-              <div class="cp-head">
+            <section class="surface-panel" id="control-plane">
+              <div class="surface-header">
                 <div>
                   <span class="kicker">ABVX control plane</span>
-                  <h2>Registry snapshot</h2>
+                  <h2>Control plane</h2>
+                  <p>One read-only surface for current repo state: what is registered, what ran last, what needs review next, and where proof or workflow drift is blocking the queue.</p>
                 </div>
-                <p class="small-note">Static summary from SET registry plus planning, status, and proof snapshots.</p>
+                <div class="surface-meta">
+                  <div class="meta-block">
+                    <span class="meta-label">Tracked repos</span>
+                    <span class="meta-value">4</span>
+                  </div>
+                  <div class="meta-block">
+                    <span class="meta-label">Operator queue</span>
+                    <span class="meta-value">1 ready / 1 blocked</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="cp-table-wrap">
-                <table class="cp-table">
-                  <thead>
-                    <tr>
-                      <th>Repo</th>
-                      <th>Preset</th>
-                      <th>Last run</th>
-                      <th>Status</th>
-                      <th>Queue</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><a href="https://github.com/markoblogo/AGENTS.md_generator">AGENTS.md_generator</a></td>
-                      <td>repo-docs</td>
-                      <td>2026-03-25</td>
-                      <td class="status-ok">success · sync matches</td>
-                      <td><span class="queue-pill">review-later</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="https://github.com/markoblogo/SET">SET</a></td>
-                      <td>repo-docs</td>
-                      <td>2026-03-25</td>
-                      <td class="status-ok">success · sync matches</td>
-                      <td><span class="queue-pill">review-later</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="https://github.com/markoblogo/lab.abvx">lab.abvx</a></td>
-                      <td>site-ai</td>
-                      <td>2026-03-25</td>
-                      <td class="status-ok">success · sync matches</td>
-                      <td><span class="queue-pill ready">ready-now</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <div class="surface-grid">
+                <div class="repo-ledger">
+                  <div class="ledger-row ledger-row--head">
+                    <div>Repo</div>
+                    <div>Preset</div>
+                    <div>Last run</div>
+                    <div>Status</div>
+                    <div>Queue</div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="ledger-name"><a href="https://github.com/markoblogo/AGENTS.md_generator">AGENTS.md_generator</a></div>
+                    <div class="ledger-muted">repo-docs</div>
+                    <div class="ledger-muted">2026-03-25</div>
+                    <div class="status-ok">success · sync matches</div>
+                    <div><span class="queue-pill">review-later</span></div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="ledger-name"><a href="https://github.com/markoblogo/ID">ID</a></div>
+                    <div class="ledger-muted">repo-docs</div>
+                    <div class="ledger-muted">2026-04-01</div>
+                    <div class="status-ok">success · id hooks active</div>
+                    <div><span class="queue-pill">review-later</span></div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="ledger-name"><a href="https://github.com/markoblogo/SET">SET</a></div>
+                    <div class="ledger-muted">repo-docs</div>
+                    <div class="ledger-muted">2026-04-01</div>
+                    <div class="status-ok">success · proof blocked case</div>
+                    <div><span class="queue-pill">review-later</span></div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="ledger-name"><a href="https://github.com/markoblogo/lab.abvx">lab.abvx</a></div>
+                    <div class="ledger-muted">site-ai</div>
+                    <div class="ledger-muted">2026-03-25</div>
+                    <div class="status-ok">success · sync matches</div>
+                    <div><span class="queue-pill ready">ready-now</span></div>
+                  </div>
+                </div>
 
-              <div class="cp-nav">
-                <a href="planning/index.html">Planning queue →</a>
-                <a href="repos/index.html">Repo cards →</a>
-                <a href="registry/index.html">Registry →</a>
-                <a href="status/index.html">Workflow status →</a>
-                <a href="proof/index.html">Proof queue →</a>
-                <a href="https://github.com/markoblogo/SET/tree/main/registry/repos">Source →</a>
+                <div class="surface-links">
+                  <a class="surface-link" href="planning/index.html">
+                    <strong>Planning queue</strong>
+                    <span>Operator queue, next action, blockers, workflow sync.</span>
+                  </a>
+                  <a class="surface-link" href="proof/index.html">
+                    <strong>Proof queue</strong>
+                    <span>Evidence quality, verdict state, blocked vs review-ready tasks.</span>
+                  </a>
+                  <a class="surface-link" href="repos/index.html">
+                    <strong>Repo cards</strong>
+                    <span>Joined view of registry baseline, repomap, workflow, and proof state.</span>
+                  </a>
+                  <a class="surface-link" href="registry/index.html">
+                    <strong>Registry snapshot</strong>
+                    <span>The central repo baseline owned by SET.</span>
+                  </a>
+                  <a class="surface-link" href="status/index.html">
+                    <strong>Workflow status</strong>
+                    <span>Latest run status, sync state, and queue hints.</span>
+                  </a>
+                  <a class="surface-link" href="https://github.com/markoblogo/SET/tree/main/registry/repos">
+                    <strong>Source</strong>
+                    <span>Registry files and contracts in the SET repo.</span>
+                  </a>
+                </div>
               </div>
             </section>
 
-            <section class="page-panel tools-surface" id="tools">
-              <div class="cp-head">
+            <section class="catalog-panel" id="tools">
+              <div class="surface-header">
                 <div>
                   <span class="kicker">ABVX tools</span>
-                  <h2>Catalog</h2>
+                  <h2>Tool families</h2>
+                  <p>The catalog is grouped by execution role, not by product marketing. Each family has one job and the tools stay readable even as the ecosystem grows.</p>
                 </div>
-                <p class="small-note">Grouped by role and kept in one surface so the catalog can grow without feeling fragmented.</p>
+                <div class="surface-meta">
+                  <div class="meta-block">
+                    <span class="meta-label">Primary entrypoint</span>
+                    <span class="meta-value">SET</span>
+                  </div>
+                  <div class="meta-block">
+                    <span class="meta-label">Portable context</span>
+                    <span class="meta-value">ID + agentsgen</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="home-groups">
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Orchestration</span>
-                      <h3>SET</h3>
-                    </div>
+              <div class="family-list">
+                <section class="family-row">
+                  <div class="family-intro">
+                    <span class="kicker">Orchestration</span>
+                    <h3>Run the workflow</h3>
+                    <p>Entry layer for repo automation and cross-tool execution.</p>
                   </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                  <div class="tool-stack">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/set/index.html">SET</a></div>
-                      <div class="tool-desc">Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry review, and proof-loop orchestration.</div>
-                      <div class="tool-links"><a href="tools/set/index.html">page</a><a href="https://github.com/markoblogo/SET">gh</a></div>
+                      <div class="tool-desc">Thin GitHub Action entrypoint for presets, repo-docs, site-aware flows, registry review, proof-loop, and repo-local ID hooks.</div>
+                      <div class="tool-links"><a href="tools/set/index.html">page</a><a href="https://github.com/markoblogo/SET">gh</a><a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">release</a></div>
                     </div>
                   </div>
                 </section>
 
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Repo docs &amp; agent context</span>
-                      <h3>agentsgen</h3>
-                    </div>
+                <section class="family-row">
+                  <div class="family-intro">
+                    <span class="kicker">Repo docs &amp; agent context</span>
+                    <h3>Prepare the repo and the human context</h3>
+                    <p>Repo-scoped guidance plus portable human-AI context that can move between tools.</p>
                   </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                  <div class="tool-stack">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen/index.html">agentsgen</a></div>
-                      <div class="tool-desc">Safe repo docs toolchain — AGENTS.md, RUNBOOK.md, PR Guard, AI bundle, and proof artifacts.</div>
+                      <div class="tool-desc">Safe repo docs toolchain for AGENTS.md, RUNBOOK, AI bundle, repomap, snippets, and proof artifacts.</div>
                       <div class="tool-links"><a href="tools/agentsgen/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a><a href="https://agentsmd.abvx.xyz/">live</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/id/index.html">ID</a></div>
-                      <div class="tool-desc">Portable human-AI profile protocol plus repo-local hooks for pre-task validation and weekly review in SET-compatible flows.</div>
+                      <div class="tool-desc">Portable human-AI profile protocol plus repo-local hooks for `SET`-compatible pre-task validation and weekly review.</div>
                       <div class="tool-links"><a href="tools/id/index.html">page</a><a href="https://github.com/markoblogo/ID">gh</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-init/index.html">agentsgen init</a></div>
-                      <div class="tool-desc">Bootstrap `.agentsgen.json` plus AGENTS/RUNBOOK marker sections.</div>
+                      <div class="tool-desc">Bootstrap `.agentsgen.json` and marker-based AGENTS/RUNBOOK sections.</div>
                       <div class="tool-links"><a href="tools/agentsgen-init/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-update/index.html">agentsgen update</a></div>
-                      <div class="tool-desc">Patch marker sections only; never overwrite handwritten docs.</div>
+                      <div class="tool-desc">Patch only managed sections and preserve handwritten repo docs.</div>
                       <div class="tool-links"><a href="tools/agentsgen-update/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-pack/index.html">agentsgen pack</a></div>
-                      <div class="tool-desc">Generate AI docs bundle (`llms.txt`, `docs/ai/`) with repo mode and site mode.</div>
+                      <div class="tool-desc">Generate AI docs bundles in repo mode or site mode.</div>
                       <div class="tool-links"><a href="tools/agentsgen-pack/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-snippets/index.html">agentsgen snippets</a></div>
                       <div class="tool-desc">Canonical README snippet extraction with deterministic drift checks.</div>
                       <div class="tool-links"><a href="tools/agentsgen-snippets/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-presets/index.html">agentsgen presets</a></div>
-                      <div class="tool-desc">Copy-paste setup for common stacks — explicit commands, no guesswork.</div>
+                      <div class="tool-desc">Copy-paste setup for common stacks without hidden magic.</div>
                       <div class="tool-links"><a href="tools/agentsgen-presets/index.html">page</a></div>
                     </div>
                   </div>
                 </section>
 
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Validation &amp; CI</span>
-                      <h3>Readiness and drift</h3>
-                    </div>
+                <section class="family-row">
+                  <div class="family-intro">
+                    <span class="kicker">Validation &amp; CI</span>
+                    <h3>Check readiness and drift</h3>
+                    <p>Fast repo signals for whether the agent-facing surface is actually in shape.</p>
                   </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                  <div class="tool-stack">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-check/index.html">agentsgen check</a></div>
-                      <div class="tool-desc">Validate repo readiness and drift in a CI-friendly way.</div>
+                      <div class="tool-desc">Validate repo readiness and drift in CI-friendly form.</div>
                       <div class="tool-links"><a href="tools/agentsgen-check/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-detect/index.html">agentsgen detect</a></div>
                       <div class="tool-desc">Heuristic repo scan with stable JSON output and no execution.</div>
                       <div class="tool-links"><a href="tools/agentsgen-detect/index.html">page</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/agentsgen-status/index.html">agentsgen status</a></div>
-                      <div class="tool-desc">Instant repo overview for managed files, markers, fallbacks, and drift.</div>
+                      <div class="tool-desc">Instant repo overview for markers, managed files, fallbacks, and drift.</div>
                       <div class="tool-links"><a href="tools/agentsgen-status/index.html">page</a></div>
                     </div>
                   </div>
                 </section>
 
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Analysis &amp; LLMO</span>
-                      <h3>Repomap and AI visibility</h3>
-                    </div>
+                <section class="family-row">
+                  <div class="family-intro">
+                    <span class="kicker">Analysis &amp; LLMO</span>
+                    <h3>Map the repo and the public AI surface</h3>
+                    <p>Read-only visibility layers for large repos and public pages.</p>
                   </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                  <div class="tool-stack">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/repomap/index.html">repomap</a><span class="tool-tag">new</span></div>
-                      <div class="tool-desc">Token-budgeted repo map + import graph with relevance ranking and slice modes.</div>
+                      <div class="tool-desc">Token-budgeted repo map, import graph, ranked files, and slice modes.</div>
                       <div class="tool-links"><a href="tools/repomap/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name">agentsgen analyze<span class="tool-tag">planned</span></div>
-                      <div class="tool-desc">AI-visibility scoring for a public URL — next public surface of the LLMO migration.</div>
+                      <div class="tool-desc">AI-visibility scoring for a public URL.</div>
                       <div class="tool-links"><span>roadmap</span></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name">agentsgen meta<span class="tool-tag">planned</span></div>
-                      <div class="tool-desc">SEO + AI metadata generation for a URL — kept visible as the next public surface.</div>
+                      <div class="tool-desc">SEO + AI metadata generation for a public URL.</div>
                       <div class="tool-links"><span>roadmap</span></div>
                     </div>
                   </div>
                 </section>
 
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Release &amp; publishing</span>
-                      <h3>Publishing helpers</h3>
-                    </div>
+                <section class="family-row">
+                  <div class="family-intro">
+                    <span class="kicker">Release &amp; utilities</span>
+                    <h3>Publish and support small tools</h3>
+                    <p>Smaller public tools that stay useful on their own.</p>
                   </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                  <div class="tool-stack">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/git-tweet/index.html">git-tweet</a></div>
-                      <div class="tool-desc">Turn git diff into tweet-sized release notes with context and links.</div>
+                      <div class="tool-desc">Turn git diffs into tweet-sized release notes with context and links.</div>
                       <div class="tool-links"><a href="tools/git-tweet/index.html">page</a><a href="https://github.com/markoblogo/git-tweet">gh</a><a href="https://git-tweet.abvx.xyz/">live</a></div>
                     </div>
-                  </div>
-                </section>
-
-                <section class="group-panel">
-                  <div class="group-header">
-                    <div>
-                      <span class="kicker">Utilities</span>
-                      <h3>Smaller tools</h3>
-                    </div>
-                  </div>
-                  <div class="tool-list">
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/abvx-shortener/index.html">abvx-shortener</a></div>
-                      <div class="tool-desc">Minimal URL shortener — Cloudflare Worker + KV.</div>
+                      <div class="tool-desc">Minimal URL shortener built on Cloudflare Worker + KV.</div>
                       <div class="tool-links"><a href="tools/abvx-shortener/index.html">page</a><a href="https://go.abvx.xyz">live</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/asciitheme/index.html">AsciiTheme</a></div>
                       <div class="tool-desc">Tiny CSS theme kit for clean, readable dev pages.</div>
                       <div class="tool-links"><a href="tools/asciitheme/index.html">page</a><a href="https://github.com/markoblogo/AsciiTheme">gh</a></div>
                     </div>
-                    <div class="tool-row">
+                    <div class="tool-item">
                       <div class="tool-name"><a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin</a></div>
-                      <div class="tool-desc">Rendering plugin for a sitelen pona layer and adjacent toki pona tooling.</div>
+                      <div class="tool-desc">Rendering plugin for sitelen pona layers and adjacent toki pona tooling.</div>
                       <div class="tool-links"><a href="tools/sitelen-layer-plugin/index.html">page</a><a href="https://github.com/markoblogo/sitelen-layer-plugin">gh</a></div>
                     </div>
                   </div>
                 </section>
               </div>
             </section>
-
         </main>
 
         <footer class="footer footer--lab">

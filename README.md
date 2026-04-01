@@ -28,7 +28,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 ### Repo docs & agent context
 
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents.
-- [ID Protocol](https://github.com/markoblogo/ID) — Portable human-AI profile protocol plus repo-local integration hooks used by SET-compatible flows.
+- [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo and site mode.
@@ -105,7 +105,7 @@ They still ship together as one package: `agentsgen`.
 
 - [repomap](https://lab.abvx.xyz/tools/repomap/)
 - [set](https://lab.abvx.xyz/tools/set/)
-- [id-protocol](https://github.com/markoblogo/ID)
+- [id](https://lab.abvx.xyz/tools/id/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)

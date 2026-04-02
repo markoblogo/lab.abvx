@@ -752,3 +752,52 @@ a:hover { text-decoration: underline; }
     margin-right: 20px;
   }
 }
+
+
+.lab-b-product-summary {
+  margin: 0 0 12px;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--labb-ink);
+}
+
+.lab-b-product-summary--muted {
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-side-tags {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.lab-b-side-tags li {
+  font-size: 17px;
+}
+
+.lab-b-product-panel .bullet-list,
+.lab-b-product-panel p,
+.lab-b-product-panel ul,
+.lab-b-product-panel li {
+  color: var(--labb-ink);
+}
+
+.lab-b-product-panel .bullet-list {
+  margin: 6px 0 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.lab-b-product-panel .bullet-list li,
+.lab-b-product-panel p,
+.lab-b-product-panel ul li {
+  font-size: 22px;
+  line-height: 1.55;
+}
+
+.lab-b-quick-copy {
+  padding: 28px 30px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--labb-ink);
+}

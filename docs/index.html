@@ -1,596 +1,209 @@
 <!doctype html>
-<html lang="en" data-style="ascii" data-ascii-mode="light">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ABVX Lab | Tools for AI-assisted coding</title>
-    <meta name="description" content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET." />
+    <meta name="description" content="ABVX Lab is a catalog for the tool stack around SET, agentsgen, ID, repomap, proof loops, and repo-doc workflows." />
     <link rel="canonical" href="https://lab.abvx.xyz/" />
     <meta property="og:title" content="ABVX Lab | Tools for AI-assisted coding" />
-    <meta property="og:description" content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET." />
+    <meta property="og:description" content="ABVX Lab is a catalog for the tool stack around SET, agentsgen, ID, repomap, proof loops, and repo-doc workflows." />
     <meta property="og:url" content="https://lab.abvx.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="assets/asciitheme.css?v20260319d" />
-    <link rel="stylesheet" href="assets/styles.css?v20260401c" />
-    <style>
-      :root {
-        --home-blue: #173f96;
-        --home-green: #198754;
-        --home-ink: #152a55;
-        --home-muted: #61708d;
-        --home-line: rgba(21, 42, 85, 0.14);
-        --home-line-strong: rgba(21, 42, 85, 0.3);
-        --home-surface: #fcfaf5;
-        --home-surface-strong: #f1ece1;
-      }
-
-      [data-ascii-mode="dark"] {
-        --home-blue: #9ab7ff;
-        --home-green: #58b985;
-        --home-ink: #e6eeff;
-        --home-muted: #9eadc6;
-        --home-line: rgba(154, 183, 255, 0.16);
-        --home-line-strong: rgba(154, 183, 255, 0.3);
-        --home-surface: #111923;
-        --home-surface-strong: #16202b;
-      }
-
-      .home-main {
-        padding-top: 0.35rem;
-        padding-bottom: 2.7rem;
-      }
-
-      .home-shell {
-        display: grid;
-        gap: 1.45rem;
-      }
-
-      .home-hero {
-        padding: 1.3rem 1.35rem 1.25rem;
-        border-top: 3px solid var(--home-line-strong);
-        border-bottom: 1px solid var(--home-line);
-        background: linear-gradient(180deg, var(--home-surface), var(--home-surface-strong));
-      }
-
-      .home-hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.8fr);
-        gap: 1.2rem;
-        align-items: start;
-      }
-
-      .home-kicker {
-        display: flex;
-        gap: 0.55rem;
-        flex-wrap: wrap;
-        color: var(--home-muted);
-        margin-bottom: 0.8rem;
-      }
-
-      .home-kicker .hero-kicker__brand {
-        color: var(--home-blue);
-      }
-
-      .home-kicker .slash {
-        opacity: 0.45;
-      }
-
-      .home-hero h1 {
-        margin: 0;
-        max-width: 9ch;
-        font-size: clamp(2.3rem, 4.6vw, 4rem);
-        line-height: 0.94;
-        color: var(--home-blue);
-      }
-
-      .home-hero .lead {
-        margin-top: 0.8rem;
-        max-width: 46ch;
-        color: var(--home-ink);
-        font-size: 0.98rem;
-      }
-
-      .home-note {
-        margin-top: 0.72rem;
-        max-width: 48ch;
-        color: var(--home-muted);
-      }
-
-      .home-cta {
-        display: flex;
-        gap: 0.65rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-      }
-
-      .entry-panel {
-        display: grid;
-        gap: 0.75rem;
-        padding-left: 1rem;
-        border-left: 1px solid var(--home-line);
-      }
-
-      .entry-panel .kicker {
-        color: var(--home-muted);
-      }
-
-      .entry-panel h2 {
-        margin: 0;
-        color: var(--home-blue);
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-      }
-
-      .entry-panel p {
-        margin: 0;
-        color: var(--home-muted);
-      }
-
-      .entry-panel code {
-        display: inline-block;
-        padding: 0.14rem 0.4rem;
-        border: 1px solid var(--home-line);
-        background: color-mix(in srgb, var(--home-surface-strong) 78%, transparent);
-      }
-
-      .entry-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-      }
-
-      .flow-section {
-        display: grid;
-        gap: 0.95rem;
-      }
-
-      .section-head {
-        display: grid;
-        gap: 0.3rem;
-        max-width: 60ch;
-      }
-
-      .section-head h2 {
-        margin: 0;
-        color: var(--home-blue);
-        font-size: clamp(1.38rem, 2vw, 1.85rem);
-      }
-
-      .section-head p {
-        margin: 0;
-        color: var(--home-muted);
-      }
-
-      .summary-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-      }
-
-      .summary-chip {
-        padding: 0.4rem 0.65rem;
-        border: 1px solid var(--home-line);
-        color: var(--home-muted);
-        background: color-mix(in srgb, var(--home-surface-strong) 75%, transparent);
-      }
-
-      .snapshot-strip {
-        display: grid;
-        border-top: 1px solid var(--home-line);
-        border-bottom: 1px solid var(--home-line);
-      }
-
-      .snapshot-row {
-        display: grid;
-        grid-template-columns: minmax(180px, 1.1fr) minmax(110px, 140px) minmax(100px, 120px) minmax(160px, 1fr) 110px;
-        gap: 1rem;
-        align-items: center;
-        padding: 0.9rem 0;
-        border-top: 1px solid var(--home-line);
-      }
-
-      .snapshot-row:first-child {
-        border-top: none;
-      }
-
-      .snapshot-name {
-        display: grid;
-        gap: 0.12rem;
-      }
-
-      .snapshot-name strong {
-        color: var(--home-blue);
-      }
-
-      .snapshot-name span,
-      .snapshot-cell {
-        color: var(--home-muted);
-      }
-
-      .snapshot-status {
-        color: var(--home-green);
-      }
-
-      .queue-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: fit-content;
-        padding: 0.16rem 0.5rem;
-        border: 1px solid var(--home-line);
-        border-radius: 999px;
-        color: var(--home-muted);
-        font-size: 0.76rem;
-        white-space: nowrap;
-      }
-
-      .queue-pill.ready {
-        color: var(--home-green);
-        border-color: color-mix(in srgb, var(--home-green) 42%, var(--home-line));
-      }
-
-      .control-links {
-        display: flex;
-        gap: 0.65rem 1rem;
-        flex-wrap: wrap;
-      }
-
-      .tool-stage {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .tool-primary {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
-        gap: 1.15rem;
-        padding: 1.15rem 1.2rem 1.05rem;
-        border-top: 3px solid var(--home-line-strong);
-        border-bottom: 1px solid var(--home-line);
-        background: linear-gradient(180deg, var(--home-surface), var(--home-surface-strong));
-      }
-
-      .tool-primary .kicker {
-        margin-bottom: 0.45rem;
-      }
-
-      .tool-primary h3,
-      .tool-card h3 {
-        margin: 0;
-        color: var(--home-blue);
-      }
-
-      .tool-primary h3 {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-      }
-
-      .tool-primary p,
-      .tool-card p {
-        margin: 0;
-        color: var(--home-ink);
-      }
-
-      .tool-primary-links,
-      .tool-card-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-
-      .tool-secondary {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-      }
-
-      .tool-card {
-        display: grid;
-        gap: 0.6rem;
-        padding: 1rem 1rem 0.95rem;
-        border-top: 2px solid var(--home-line-strong);
-        background: color-mix(in srgb, var(--home-surface-strong) 72%, transparent);
-      }
-
-      .tool-directory {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem 1.6rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--home-line);
-      }
-
-      .tool-column {
-        display: grid;
-        gap: 0.4rem;
-        align-content: start;
-      }
-
-      .tool-column h3 {
-        margin: 0;
-        color: var(--home-blue);
-        font-size: 0.96rem;
-      }
-
-      .tool-links-list {
-        display: grid;
-        gap: 0.22rem;
-      }
-
-      .tool-links-list a,
-      .tool-links-list span {
-        color: var(--home-ink);
-      }
-
-      .tool-links-list small {
-        color: var(--home-muted);
-      }
-
-      @media (max-width: 980px) {
-        .home-hero-grid,
-        .tool-primary,
-        .tool-secondary,
-        .tool-directory {
-          grid-template-columns: 1fr;
-        }
-
-        .entry-panel {
-          padding-left: 0;
-          border-left: none;
-          border-top: 1px solid var(--home-line);
-          padding-top: 0.95rem;
-        }
-      }
-
-      @media (max-width: 760px) {
-        .snapshot-row {
-          grid-template-columns: 1fr;
-          gap: 0.3rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="assets/lab-alt-b.css?v20260402a" />
   </head>
   <body>
-    <div class="site-shell">
-      <div class="container">
-        <header class="topbar">
-          <div class="topbar-left">
-            <a class="brand" href="index.html">
-              <img class="brand-logo" src="assets/logo.png?v20260319d" alt="ABVX Lab logo" />
-              <span class="brand-text">ABVX Lab</span>
-            </a>
-          </div>
-          <nav class="topbar-nav" aria-label="Primary">
-            <a href="index.html">Home</a>
-            <a href="index.html#tools">Tools</a>
-            <a href="https://github.com/markoblogo">GitHub profile</a>
-          </nav>
-          <div class="topbar-right">
-            <div class="header-controls"></div>
-          </div>
-        </header>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="index.html">
+          <img src="assets/logo.png?v20260319d" alt="ABVX Lab logo" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="tools/id/index.html">ID</a>
+          <a href="https://github.com/markoblogo">GitHub profile</a>
+        </nav>
+        <div class="lab-b-mode">global catalog</div>
+      </header>
 
-        <main class="home-main">
-          <div class="home-shell">
-            <section class="home-hero">
-              <div class="home-hero-grid">
-                <div>
-                  <div class="home-kicker">
-                    <span class="hero-kicker__brand">ABVX Lab</span>
-                    <span class="slash">/</span>
-                    <span>AI-assisted coding tools</span>
-                    <span class="slash">/</span>
-                    <span>read-only control plane</span>
-                  </div>
-                  <h1>Tools for AI-assisted coding</h1>
-                  <p class="lead">Small, shippable tools that make coding agents safer and workflows faster. One entrypoint, one control-plane view, and one public tool map.</p>
-                  <p class="small-note home-note">The front page should explain the ecosystem quickly, then get out of the way.</p>
-                  <div class="home-cta">
-                    <a class="button" href="#tools">Browse tools</a>
-                    <a class="button-secondary" href="planning/index.html">Planning queue</a>
-                    <a class="button-secondary" href="proof/index.html">Proof queue</a>
-                  </div>
-                </div>
-                <div class="entry-panel">
-                  <span class="kicker">Primary entrypoint</span>
-                  <h2>SET</h2>
-                  <p>Thin GitHub Action orchestrator for repo-docs, repomap, proof-loop, registry review, and repo-local ID hooks.</p>
-                  <p><code>uses: markoblogo/SET@main</code></p>
-                  <p><code>workflow_preset: site-ai</code></p>
-                  <div class="entry-links">
-                    <a class="button-secondary" href="tools/set/index.html">Tool page</a>
-                    <a class="button-secondary" href="https://github.com/markoblogo/SET">GitHub</a>
-                    <a class="button-secondary" href="https://github.com/markoblogo/SET#readme">Docs</a>
-                  </div>
-                </div>
-              </div>
-            </section>
+      <main class="lab-b-frame">
+        <section class="lab-b-hero-grid" id="tools">
+          <div class="lab-b-hero-copy">
+            <p class="lab-b-eyebrow">Open tool infrastructure / ABVX catalog</p>
+            <h1>Tools for building AI-assisted software systems.</h1>
+            <p class="lab-b-lede">A global catalog for the small but serious stack around SET, agentsgen, ID, repomap, proof loops, and repo-doc workflows.</p>
 
-            <section class="flow-section" id="control-plane">
-              <div class="section-head">
-                <span class="kicker">ABVX control plane</span>
-                <h2>Control plane snapshot</h2>
-                <p>Recent read-only state for the repos that actually drive the system.</p>
-              </div>
-
-              <div class="summary-bar">
-                <div class="summary-chip">4 tracked repos</div>
-                <div class="summary-chip">1 ready-now queue item</div>
-                <div class="summary-chip">1 blocked proof-flow case</div>
-              </div>
-
-              <div class="snapshot-strip">
-                <div class="snapshot-row">
-                  <div class="snapshot-name">
-                    <strong><a href="https://github.com/markoblogo/AGENTS.md_generator">AGENTS.md_generator</a></strong>
-                    <span>repo-docs baseline</span>
-                  </div>
-                  <div class="snapshot-cell">repo-docs</div>
-                  <div class="snapshot-cell">2026-03-25</div>
-                  <div class="snapshot-status">success · sync matches</div>
-                  <div><span class="queue-pill">review-later</span></div>
-                </div>
-                <div class="snapshot-row">
-                  <div class="snapshot-name">
-                    <strong><a href="https://github.com/markoblogo/ID">ID</a></strong>
-                    <span>repo-local hook layer</span>
-                  </div>
-                  <div class="snapshot-cell">repo-docs</div>
-                  <div class="snapshot-cell">2026-04-01</div>
-                  <div class="snapshot-status">success · id hooks active</div>
-                  <div><span class="queue-pill">review-later</span></div>
-                </div>
-                <div class="snapshot-row">
-                  <div class="snapshot-name">
-                    <strong><a href="https://github.com/markoblogo/SET">SET</a></strong>
-                    <span>orchestrator and registry owner</span>
-                  </div>
-                  <div class="snapshot-cell">repo-docs</div>
-                  <div class="snapshot-cell">2026-04-01</div>
-                  <div class="snapshot-status">success · proof blocked case</div>
-                  <div><span class="queue-pill">review-later</span></div>
-                </div>
-                <div class="snapshot-row">
-                  <div class="snapshot-name">
-                    <strong><a href="https://github.com/markoblogo/lab.abvx">lab.abvx</a></strong>
-                    <span>public catalog and control plane</span>
-                  </div>
-                  <div class="snapshot-cell">site-ai</div>
-                  <div class="snapshot-cell">2026-03-25</div>
-                  <div class="snapshot-status">success · sync matches</div>
-                  <div><span class="queue-pill ready">ready-now</span></div>
-                </div>
-              </div>
-
-              <div class="control-links">
-                <a href="planning/index.html">Planning queue →</a>
-                <a href="proof/index.html">Proof queue →</a>
-                <a href="repos/index.html">Repo cards →</a>
-                <a href="registry/index.html">Registry →</a>
-                <a href="status/index.html">Workflow status →</a>
-                <a href="https://github.com/markoblogo/SET/tree/main/registry/repos">Source →</a>
-              </div>
-            </section>
-
-            <section class="flow-section" id="tools">
-              <div class="section-head">
-                <span class="kicker">ABVX tools</span>
-                <h2>Tool map</h2>
-                <p>The ecosystem has one orchestrator, three primary companion products, and a smaller public toolkit.</p>
-              </div>
-
-              <div class="tool-stage">
-                <article class="tool-primary">
-                  <div>
-                    <span class="kicker">Primary orchestrator</span>
-                    <h3>SET</h3>
-                    <p>One entrypoint for repo-docs, repomap, proof-loop, registry review, and repo-local hook orchestration.</p>
-                  </div>
-                  <div class="tool-primary-links">
-                    <a href="tools/set/index.html">Tool page</a>
-                    <a href="https://github.com/markoblogo/SET">GitHub</a>
-                    <a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">Release</a>
-                  </div>
-                </article>
-
-                <div class="tool-secondary">
-                  <article class="tool-card">
-                    <span class="kicker">Repo docs runtime</span>
-                    <h3>agentsgen</h3>
-                    <p>Agent docs, AI bundles, snippets, repomap, proof artifacts.</p>
-                    <div class="tool-card-links">
-                      <a href="tools/agentsgen/index.html">Tool page</a>
-                      <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
-                    </div>
-                  </article>
-                  <article class="tool-card">
-                    <span class="kicker">Portable context</span>
-                    <h3>ID</h3>
-                    <p>Portable human-AI profile protocol plus repo-local hooks for SET-compatible flows.</p>
-                    <div class="tool-card-links">
-                      <a href="tools/id/index.html">Tool page</a>
-                      <a href="https://github.com/markoblogo/ID">GitHub</a>
-                    </div>
-                  </article>
-                  <article class="tool-card">
-                    <span class="kicker">Analysis</span>
-                    <h3>repomap</h3>
-                    <p>Ranked codebase map with token-budgeted slices for larger repos.</p>
-                    <div class="tool-card-links">
-                      <a href="tools/repomap/index.html">Tool page</a>
-                      <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="tool-directory">
-                  <section class="tool-column">
-                    <h3>Repo docs workflow</h3>
-                    <div class="tool-links-list">
-                      <a href="tools/agentsgen-init/index.html">agentsgen init <small>bootstrap repo docs</small></a>
-                      <a href="tools/agentsgen-update/index.html">agentsgen update <small>patch managed sections</small></a>
-                      <a href="tools/agentsgen-pack/index.html">agentsgen pack <small>generate AI bundles</small></a>
-                      <a href="tools/agentsgen-snippets/index.html">agentsgen snippets <small>extract canonical snippets</small></a>
-                      <a href="tools/agentsgen-presets/index.html">agentsgen presets <small>common stack setups</small></a>
-                    </div>
-                  </section>
-                  <section class="tool-column">
-                    <h3>Validation &amp; CI</h3>
-                    <div class="tool-links-list">
-                      <a href="tools/agentsgen-check/index.html">agentsgen check <small>readiness and drift</small></a>
-                      <a href="tools/agentsgen-detect/index.html">agentsgen detect <small>stable heuristic scan</small></a>
-                      <a href="tools/agentsgen-status/index.html">agentsgen status <small>repo overview</small></a>
-                    </div>
-                  </section>
-                  <section class="tool-column">
-                    <h3>Planned public surfaces</h3>
-                    <div class="tool-links-list">
-                      <span>agentsgen analyze <small>AI visibility score</small></span>
-                      <span>agentsgen meta <small>SEO + AI metadata</small></span>
-                    </div>
-                  </section>
-                  <section class="tool-column">
-                    <h3>Publishing &amp; utilities</h3>
-                    <div class="tool-links-list">
-                      <a href="tools/git-tweet/index.html">git-tweet <small>release notes</small></a>
-                      <a href="tools/abvx-shortener/index.html">abvx-shortener <small>worker shortener</small></a>
-                      <a href="tools/asciitheme/index.html">AsciiTheme <small>tiny CSS kit</small></a>
-                      <a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin <small>rendering plugin</small></a>
-                    </div>
-                  </section>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
-
-        <footer class="footer footer--lab">
-          <div class="footer-inner">
-            <div class="footer-left">
-              <div class="footer-title">ABVX Lab</div>
-              <div class="footer-note">Small, readable, static pages for ABVX developer tools.</div>
+            <div class="lab-b-catalog-intro">
+              <div class="lab-b-intro-pill">Core stack. Real tools. Live control-plane surfaces.</div>
+              <div class="lab-b-intro-note">The front page should orient the ecosystem immediately instead of flattening everything into a docs index.</div>
             </div>
 
-            <div class="social-icons" aria-label="Elsewhere">
-              <a href="https://abvx.substack.com" aria-label="Substack"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h10v2H9v2h8a3 3 0 0 1 0 6H7v-2h10v-2H9a3 3 0 0 1 0-6h8V6H7z" fill="currentColor"/></svg></a>
-              <a href="https://abvcreative.medium.com" aria-label="Medium"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4 7h3l3.5 8L14 7h3l3 10h-2.5l-1.8-6-2.7 6H11l-2.7-6-1.8 6H4L7 7H4z" fill="currentColor"/></svg></a>
-              <a href="https://x.com/abv_creative" aria-label="X"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h2.6l3 4 3-4H18l-4.2 5.4L18 18h-2.6l-3-4-3 4H7l4.2-6L7 6z" fill="currentColor"/></svg></a>
-              <a href="https://www.linkedin.com/in/abvcreative" aria-label="LinkedIn"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M6 9h3v9H6V9zm1.5-4a1.7 1.7 0 1 1 0 3.4A1.7 1.7 0 0 1 7.5 5zM11 9h3v1.3c.6-.9 1.6-1.6 3.1-1.6 2.2 0 3.8 1.3 3.8 4.3V18h-3v-4.6c0-1.4-.6-2.2-1.8-2.2-1.1 0-2 .7-2 2.2V18h-3V9z" fill="currentColor"/></svg></a>
-              <a href="https://bsky.app/profile/abvx.xyz" aria-label="Bluesky"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 6c2.6-2.4 6-3.4 6-1.1 0 2.5-2.2 4.2-4.6 5.2 2.4 1 4.6 2.7 4.6 5.2 0 2.3-3.4 1.3-6-1.1-2.6 2.4-6 3.4-6 1.1 0-2.5 2.2-4.2 4.6-5.2C8.2 9.1 6 7.4 6 4.9 6 2.6 9.4 3.6 12 6z" fill="currentColor"/></svg></a>
+            <div class="lab-b-catalog-grid">
+              <article class="lab-b-tool-card featured-set">
+                <span class="lab-b-tool-tag">Orchestrator</span>
+                <h2>SET</h2>
+                <p>Thin GitHub Action entrypoint for repo-docs, repomap, proof-loop, registry review, and repo-local hooks.</p>
+                <div class="lab-b-tool-meta">repo-docs · proof-loop · registry</div>
+              </article>
+
+              <article class="lab-b-tool-card">
+                <span class="lab-b-tool-tag">Repo docs</span>
+                <h2>agentsgen</h2>
+                <p>Agent docs, AI bundles, snippets, repomap, proof artifacts, and drift checks.</p>
+                <div class="lab-b-tool-meta">AGENTS.md · llms.txt · docs/ai</div>
+              </article>
+
+              <article class="lab-b-tool-card">
+                <span class="lab-b-tool-tag">Portable context</span>
+                <h2>ID</h2>
+                <p>Portable human-AI profile protocol plus repo-local hooks for SET-compatible flows.</p>
+                <div class="lab-b-tool-meta">hooks · portable context · repo-local profile</div>
+              </article>
+
+              <article class="lab-b-tool-card">
+                <span class="lab-b-tool-tag">Analysis</span>
+                <h2>repomap</h2>
+                <p>Token-budgeted repo map with import graph, ranked files, and slice modes for larger codebases.</p>
+                <div class="lab-b-tool-meta">compact budget · focus · changed</div>
+              </article>
             </div>
           </div>
-        </footer>
-      </div>
+
+          <aside class="lab-b-inventory">
+            <div class="lab-b-inventory-head">
+              <div>
+                <p class="lab-b-inventory-label">Inventory count</p>
+                <div class="lab-b-inventory-number">4</div>
+              </div>
+              <p class="lab-b-inventory-note">Tracked repos and control-plane surfaces currently active in the ecosystem.</p>
+            </div>
+
+            <div class="lab-b-inventory-rails" aria-hidden="true">
+              <div class="lab-b-rail r1"></div>
+              <div class="lab-b-rail r2"></div>
+              <div class="lab-b-rail r3"></div>
+              <div class="lab-b-rail r4"></div>
+            </div>
+
+            <div class="lab-b-inventory-tabs">
+              <div class="lab-b-inventory-tab active">Control plane</div>
+              <div class="lab-b-inventory-tab">Tool map</div>
+              <div class="lab-b-inventory-tab">Proof queue</div>
+              <div class="lab-b-inventory-tab">Registry</div>
+            </div>
+
+            <div class="lab-b-inventory-summary">
+              <div class="lab-b-summary-block">
+                <span>Ready now</span>
+                <strong>1</strong>
+              </div>
+              <div class="lab-b-summary-block">
+                <span>Review later</span>
+                <strong>3</strong>
+              </div>
+              <div class="lab-b-summary-block">
+                <span>Blocked proof case</span>
+                <strong>1</strong>
+              </div>
+            </div>
+
+            <div class="lab-b-inventory-copy">
+              <p><strong>Foundation.</strong> The stack already has a working orchestrator, repo-doc runtime, portable context layer, and ranked repo-analysis layer.</p>
+              <p>The front page should read like a systems catalog, not a README dump.</p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="lab-b-ledger-section">
+          <div class="lab-b-section-head">
+            <p class="lab-b-eyebrow">Control plane snapshot</p>
+            <h2>Tracked repos and current queue state</h2>
+          </div>
+
+          <div class="lab-b-ledger">
+            <div class="lab-b-ledger-row">
+              <div class="lab-b-ledger-name">
+                <strong>AGENTS.md_generator</strong>
+                <span>repo-docs baseline</span>
+              </div>
+              <div class="lab-b-ledger-preset">repo-docs</div>
+              <div class="lab-b-ledger-date">2026-03-25</div>
+              <div class="lab-b-ledger-state">success · sync matches</div>
+              <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill">review-later</span></div>
+            </div>
+            <div class="lab-b-ledger-row">
+              <div class="lab-b-ledger-name">
+                <strong>ID</strong>
+                <span>repo-local hook layer</span>
+              </div>
+              <div class="lab-b-ledger-preset">repo-docs</div>
+              <div class="lab-b-ledger-date">2026-04-01</div>
+              <div class="lab-b-ledger-state">success · id hooks active</div>
+              <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill">review-later</span></div>
+            </div>
+            <div class="lab-b-ledger-row">
+              <div class="lab-b-ledger-name">
+                <strong>SET</strong>
+                <span>orchestrator and registry owner</span>
+              </div>
+              <div class="lab-b-ledger-preset">repo-docs</div>
+              <div class="lab-b-ledger-date">2026-04-01</div>
+              <div class="lab-b-ledger-state">success · proof blocked case</div>
+              <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill">review-later</span></div>
+            </div>
+            <div class="lab-b-ledger-row">
+              <div class="lab-b-ledger-name">
+                <strong>lab.abvx</strong>
+                <span>public catalog and control plane</span>
+              </div>
+              <div class="lab-b-ledger-preset">site-ai</div>
+              <div class="lab-b-ledger-date">2026-03-25</div>
+              <div class="lab-b-ledger-state">success · sync matches</div>
+              <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill ready">ready-now</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="lab-b-directory-section">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Quiet directory</p>
+            <h2>Supporting tools and secondary surfaces</h2>
+          </div>
+
+          <div class="lab-b-directory-grid">
+            <div class="lab-b-directory-column">
+              <h3>Repo docs workflow</h3>
+              <a href="tools/agentsgen-init/index.html">agentsgen init</a>
+              <a href="tools/agentsgen-update/index.html">agentsgen update</a>
+              <a href="tools/agentsgen-pack/index.html">agentsgen pack</a>
+              <a href="tools/agentsgen-snippets/index.html">agentsgen snippets</a>
+              <a href="tools/agentsgen-check/index.html">agentsgen check</a>
+              <a href="tools/agentsgen-status/index.html">agentsgen status</a>
+            </div>
+            <div class="lab-b-directory-column">
+              <h3>Analysis and planned surfaces</h3>
+              <a href="tools/repomap/index.html">repomap</a>
+              <span>agentsgen analyze</span>
+              <span>agentsgen meta</span>
+              <a href="planning/index.html">planning</a>
+              <a href="proof/index.html">proof queue</a>
+              <a href="registry/index.html">registry</a>
+            </div>
+            <div class="lab-b-directory-column">
+              <h3>Publishing and utilities</h3>
+              <a href="tools/git-tweet/index.html">git-tweet</a>
+              <a href="tools/abvx-shortener/index.html">abvx-shortener</a>
+              <a href="tools/asciitheme/index.html">AsciiTheme</a>
+              <a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin</a>
+              <a href="repos/index.html">repo cards</a>
+              <a href="status/index.html">workflow status</a>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-    <script src="assets/ascii-theme.js?v20260319d"></script>
-    <script>
-      AsciiTheme.initAsciiTheme({
-        base: true,
-        managedMode: true,
-        addThemeToggle: true,
-        addStyleToggle: false,
-        mountSelector: ".header-controls",
-      });
-    </script>
   </body>
 </html>

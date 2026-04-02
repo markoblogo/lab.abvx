@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-style="ascii" data-ascii-mode="light">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,86 +12,89 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="../../assets/asciitheme.css?v20260319d" />
-    <link rel="stylesheet" href="../../assets/styles.css?v20260401c" />
+    <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260402a" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ID","url":"https://lab.abvx.xyz/tools/id/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Portable human-AI profile protocol and repo-local hook layer for SET-compatible flows."}</script>
   </head>
   <body>
-    <div class="site-shell">
-      <div class="container page-layout">
-        <header class="topbar">
-          <div class="topbar-left">
-            <a class="brand" href="../../index.html">
-              <img class="brand-logo" src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" />
-              <span class="brand-text">ABVX Lab</span>
-            </a>
-          </div>
-          <nav class="topbar-nav" aria-label="Primary">
-            <a href="../../index.html">Home</a>
-            <a href="../../index.html#tools">Tools</a>
-            <a href="https://github.com/markoblogo">GitHub profile</a>
-          </nav>
-          <div class="topbar-right">
-            <div class="header-controls"></div>
-          </div>
-        </header>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="../../index.html">
+          <img src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#tools">Tools</a>
+          <a href="https://github.com/markoblogo">GitHub profile</a>
+        </nav>
+        <div class="lab-b-mode">portable context layer</div>
+      </header>
 
-        <main class="page-layout">
-          <section class="hero-panel tool-hero">
-            <div>
-              <span class="kicker">ABVX tool</span>
-              <h1>ID</h1>
-              <p class="lead">Portable human-AI profile protocol and repo-local hook layer for SET-compatible flows.</p>
-              <div class="tag-list">
-                <span class="tag">Protocol</span>
-                <span class="tag">Hooks</span>
-                <span class="tag">Portable context</span>
-                <span class="tag">SET-compatible</span>
+      <main class="lab-b-frame">
+        <section class="lab-b-product-hero">
+          <div class="lab-b-product-main">
+            <p class="lab-b-eyebrow">Portable context layer / ABVX tool</p>
+            <h1>ID</h1>
+            <p class="lab-b-product-lede">Portable human-AI profile protocol and repo-local hook layer for SET-compatible flows.</p>
+
+            <div class="lab-b-product-cta">
+              <a class="lab-b-product-link primary" href="https://github.com/markoblogo/ID">GitHub</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/ID#readme">Docs</a>
+              <a class="lab-b-product-link" href="../set/index.html">SET integration</a>
+            </div>
+          </div>
+
+          <aside class="lab-b-product-side">
+            <div class="lab-b-side-band" aria-hidden="true">
+              <div></div><div></div><div></div>
+            </div>
+            <div class="lab-b-side-inner">
+              <div class="lab-b-side-metric">
+                <span class="lab-b-metric-label">Role in stack</span>
+                <strong>Portable context</strong>
+              </div>
+              <div class="lab-b-side-points">
+                <div>
+                  <span class="lab-b-point-label">Where it fits</span>
+                  <p><strong>ID</strong> carries portable human context. <strong>SET</strong> orchestrates repo workflows and hooks. <strong>agentsgen</strong> manages repo-scoped agent docs.</p>
+                </div>
+                <div>
+                  <span class="lab-b-point-label">Current SET support</span>
+                  <p><code>pre_task</code> and <code>weekly_review</code> are orchestrated in CI-safe flows. Mutating hooks stay outside the default action path.</p>
+                </div>
               </div>
             </div>
-            <aside class="tool-hero-rail">
-              <span class="rail-label">Where it fits</span>
-              <ul>
-                <li><strong>ID</strong>: portable human context</li>
-                <li><strong>SET</strong>: orchestrated repo workflow</li>
-                <li><strong>agentsgen</strong>: repo-scoped agent docs</li>
-              </ul>
-              <div class="link-grid">
-                <a class="button" href="https://github.com/markoblogo/ID">GitHub</a>
-                <a class="button-secondary" href="https://github.com/markoblogo/ID#readme">Docs</a>
-                <a class="button-secondary" href="../set/index.html">SET integration</a>
-              </div>
-            </aside>
-          </section>
+          </aside>
+        </section>
 
-          <section class="page-panel page-meta">
-            <h2>What it does</h2>
-            <ul class="bullet-list">
+        <section class="lab-b-product-grid">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">What it does</p>
+            <ul class="lab-b-bullets">
               <li>Defines portable human-AI context artifacts that can move across tools instead of staying trapped in one chat session.</li>
               <li>Ships a lightweight CLI and repo-local integration hooks for practical execution paths.</li>
-              <li>Lets <code>SET</code> run explicit <code>pre_task</code> and <code>weekly_review</code> hooks in ID-compatible repositories.</li>
-              <li>Complements <code>agentsgen</code>: <code>ID</code> carries person/tool context across tools, while <code>agentsgen</code> manages repo-scoped agent docs.</li>
+              <li>Lets <strong>SET</strong> run explicit <code>pre_task</code> and <code>weekly_review</code> hooks in ID-compatible repositories.</li>
+              <li>Complements <strong>agentsgen</strong> by carrying person and workflow context across tools.</li>
             </ul>
-          </section>
+          </article>
 
-          <section class="page-panel">
-            <h2>Portable artifacts</h2>
-            <p>ID is the layer that should travel with the human and the workflow, rather than staying buried in one tool session.</p>
-            <ul class="bullet-list">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Portable artifacts</p>
+            <ul class="lab-b-bullets compact">
               <li>owner / target identity</li>
               <li>repo-local hook configuration</li>
               <li>portable execution context</li>
+              <li>lightweight integration metadata</li>
             </ul>
-          </section>
+          </article>
+        </section>
 
-          <section class="page-panel">
-            <h2>Current SET support</h2>
-            <p><code>pre_task</code> and <code>weekly_review</code> are orchestrated in CI-safe flows. Mutating hooks such as <code>post_task</code> stay outside the default Action path.</p>
-          </section>
-
-          <section class="page-panel">
-            <h2>Quickstart</h2>
-            <p class="small-note">Minimal SET-compatible workflow</p>
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Quickstart</p>
+            <h2>Minimal SET-compatible example</h2>
+          </div>
+          <div class="lab-b-code-shell">
             <pre><code>- uses: markoblogo/SET@v0.1.0
   with:
     workflow_preset: "repo-docs"
@@ -102,35 +105,10 @@
     id_pre_task: "true"
     id_weekly_review: "true"
     path: "."</code></pre>
-          </section>
-        </main>
-
-        <footer class="footer footer--lab">
-          <div class="footer-inner">
-            <div class="footer-left">
-              <div class="footer-title">ABVX Lab</div>
-              <div class="footer-note">Small, readable, static pages for ABVX developer tools.</div>
-            </div>
-            <div class="social-icons" aria-label="Elsewhere">
-              <a href="https://abvx.substack.com" aria-label="Substack"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h10v2H9v2h8a3 3 0 0 1 0 6H7v-2h10v-2H9a3 3 0 0 1 0-6h8V6H7z" fill="currentColor"/></svg></a>
-              <a href="https://abvcreative.medium.com" aria-label="Medium"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4 7h3l3.5 8L14 7h3l3 10h-2.5l-1.8-6-2.7 6H11l-2.7-6-1.8 6H4L7 7H4z" fill="currentColor"/></svg></a>
-              <a href="https://x.com/abv_creative" aria-label="X"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h2.6l3 4 3-4H18l-4.2 5.4L18 18h-2.6l-3-4-3 4H7l4.2-6L7 6z" fill="currentColor"/></svg></a>
-              <a href="https://www.linkedin.com/in/abvcreative" aria-label="LinkedIn"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M6 9h3v9H6V9zm1.5-4a1.7 1.7 0 1 1 0 3.4A1.7 1.7 0 0 1 7.5 5zM11 9h3v1.3c.6-.9 1.6-1.6 3.1-1.6 2.2 0 3.8 1.3 3.8 4.3V18h-3v-4.6c0-1.4-.6-2.2-1.8-2.2-1.1 0-2 .7-2 2.2V18h-3V9z" fill="currentColor"/></svg></a>
-              <a href="https://bsky.app/profile/abvx.xyz" aria-label="Bluesky"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 6c2.6-2.4 6-3.4 6-1.1 0 2.5-2.2 4.2-4.6 5.2 2.4 1 4.6 2.7 4.6 5.2 0 2.3-3.4 1.3-6-1.1-2.6 2.4-6 3.4-6 1.1 0-2.5 2.2-4.2 4.6-5.2C8.2 9.1 6 7.4 6 4.9 6 2.6 9.4 3.6 12 6z" fill="currentColor"/></svg></a>
-            </div>
           </div>
-        </footer>
-      </div>
+          <p class="lab-b-quickstart-note">Current SET support is intentionally CI-safe: <code>pre_task</code> and <code>weekly_review</code> are orchestrated, while mutating hooks such as <code>post_task</code> stay outside the default Actions path.</p>
+        </section>
+      </main>
     </div>
-    <script src="../../assets/ascii-theme.js?v20260319d"></script>
-    <script>
-      AsciiTheme.initAsciiTheme({
-        base: true,
-        managedMode: true,
-        addThemeToggle: true,
-        addStyleToggle: false,
-        mountSelector: ".header-controls",
-      });
-    </script>
   </body>
 </html>

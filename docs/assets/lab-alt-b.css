@@ -1,0 +1,754 @@
+:root {
+  --labb-bg: #eef2fb;
+  --labb-panel: #fbfcff;
+  --labb-panel-soft: #e8eefc;
+  --labb-ink: #24469e;
+  --labb-ink-soft: #6b83bf;
+  --labb-line: rgba(49, 92, 196, 0.14);
+  --labb-accent: #3d61b8;
+  --labb-accent-2: #5f80cf;
+  --labb-accent-3: #89a5e2;
+  --labb-accent-4: #b7c9ef;
+  --labb-success: #4a8d74;
+  --labb-success-soft: #d9eee7;
+  --labb-shadow: 0 18px 48px rgba(61, 97, 184, 0.10);
+  --labb-radius: 28px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: linear-gradient(180deg, #f4f6fd 0%, var(--labb-bg) 100%);
+  color: var(--labb-ink);
+  font-family: "IBM Plex Sans", "Inter", system-ui, sans-serif;
+}
+
+a { color: var(--labb-ink); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.lab-b-shell {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 18px 18px 34px;
+}
+
+.lab-b-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.lab-b-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  color: var(--labb-ink);
+}
+
+.lab-b-brand img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.lab-b-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lab-b-nav a,
+.lab-b-mode {
+  border: 1px solid var(--labb-line);
+  background: rgba(255,255,255,0.72);
+  padding: 11px 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+}
+
+.lab-b-mode { color: var(--labb-ink-soft); }
+
+.lab-b-frame {
+  display: grid;
+  gap: 22px;
+}
+
+.lab-b-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: 16px;
+}
+
+.lab-b-hero-copy,
+.lab-b-inventory,
+.lab-b-ledger-section,
+.lab-b-directory-section,
+.lab-b-product-main,
+.lab-b-product-side,
+.lab-b-product-panel,
+.lab-b-quickstart {
+  background: var(--labb-panel);
+  border: 1px solid var(--labb-line);
+  border-radius: var(--labb-radius);
+  box-shadow: var(--labb-shadow);
+}
+
+.lab-b-hero-copy {
+  padding: 42px 44px 34px;
+}
+
+.lab-b-eyebrow {
+  margin: 0 0 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-hero-copy h1,
+.lab-b-product-main h1 {
+  margin: 0;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  color: var(--labb-ink);
+}
+
+.lab-b-hero-copy h1 {
+  max-width: 8.2ch;
+  font-size: clamp(58px, 6vw, 78px);
+  font-weight: 700;
+}
+
+.lab-b-lede {
+  max-width: 30ch;
+  margin: 26px 0 0;
+  font-size: 28px;
+  line-height: 1.14;
+  color: var(--labb-ink);
+}
+
+.lab-b-catalog-intro {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.92fr) 1fr;
+  align-items: center;
+  gap: 28px;
+  margin: 42px 0 32px;
+}
+
+.lab-b-intro-pill {
+  background: var(--labb-panel-soft);
+  color: #98aff0;
+  border-radius: 999px;
+  padding: 18px 22px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.lab-b-intro-note {
+  justify-self: end;
+  max-width: 24ch;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lab-b-tool-card {
+  min-height: 190px;
+  padding: 24px 24px 22px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #f4f7ff 0%, #eff3ff 100%);
+}
+
+.lab-b-tool-card.featured-set {
+  background: linear-gradient(180deg, #edf2ff 0%, #e7eeff 100%);
+}
+
+.lab-b-tool-tag {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: #bfd1ff;
+  color: var(--labb-accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.lab-b-tool-card h2 {
+  margin: 14px 0 10px;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.lab-b-tool-card p {
+  margin: 0;
+  max-width: 24ch;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-tool-meta {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-inventory {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 38px 34px 46px;
+  background: linear-gradient(90deg, var(--labb-accent) 0%, var(--labb-accent) 70%, var(--labb-accent-2) 70%, var(--labb-accent-2) 82%, var(--labb-accent-3) 82%, var(--labb-accent-3) 92%, var(--labb-accent-4) 92%, var(--labb-accent-4) 100%);
+  color: white;
+  min-height: 100%;
+}
+
+.lab-b-inventory-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.lab-b-inventory-label,
+.lab-b-inventory-tab {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.lab-b-inventory-label {
+  font-size: 15px;
+  opacity: 0.88;
+}
+
+.lab-b-inventory-number {
+  font-size: clamp(108px, 12vw, 150px);
+  line-height: 0.86;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.lab-b-inventory-note {
+  margin: 6px 0 0;
+  align-self: end;
+  max-width: 22ch;
+  font-size: 20px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.86);
+}
+
+.lab-b-inventory-rails {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.lab-b-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0.12;
+  background: white;
+}
+
+.lab-b-rail.r1 { left: 0; width: 18%; }
+.lab-b-rail.r2 { left: 70%; width: 12%; }
+.lab-b-rail.r3 { left: 82%; width: 10%; }
+.lab-b-rail.r4 { right: 0; width: 8%; }
+
+.lab-b-inventory-tabs {
+  position: absolute;
+  left: 30px;
+  bottom: 34px;
+  display: flex;
+  gap: 0;
+  align-items: end;
+  z-index: 1;
+}
+
+.lab-b-inventory-tab {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 0 16px;
+  font-size: 15px;
+  min-height: 164px;
+  display: flex;
+  align-items: end;
+  color: rgba(255,255,255,0.78);
+  border-left: 1px solid rgba(255,255,255,0.18);
+}
+
+.lab-b-inventory-tab.active { color: white; }
+
+.lab-b-inventory-summary {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 42px 0 0 176px;
+}
+
+.lab-b-summary-block {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.lab-b-summary-block span {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2;
+  color: rgba(255,255,255,0.82);
+}
+
+.lab-b-summary-block strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.lab-b-inventory-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 24ch;
+  margin: 156px 0 0 176px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.88);
+}
+
+.lab-b-inventory-copy p { margin: 0 0 14px; }
+
+.lab-b-section-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  padding: 28px 30px 0;
+}
+
+.lab-b-section-head.compact { padding-bottom: 8px; }
+
+.lab-b-section-head h2 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.02;
+  color: var(--labb-ink);
+}
+
+.lab-b-ledger {
+  padding: 14px 30px 30px;
+}
+
+.lab-b-ledger-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.4fr) 120px 120px minmax(180px, 1fr) 120px;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--labb-line);
+}
+
+.lab-b-ledger-name strong {
+  display: block;
+  font-size: 24px;
+}
+
+.lab-b-ledger-name span,
+.lab-b-ledger-preset,
+.lab-b-ledger-date,
+.lab-b-ledger-state,
+.lab-b-directory-column span,
+.lab-b-directory-column a {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.lab-b-ledger-name span,
+.lab-b-ledger-preset,
+.lab-b-ledger-date,
+.lab-b-directory-column span {
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-queue-pill {
+  display: inline-flex;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--labb-line);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--labb-ink-soft);
+  background: white;
+}
+
+.lab-b-queue-pill.ready {
+  border-color: rgba(74,141,116,0.28);
+  color: var(--labb-success);
+  background: var(--labb-success-soft);
+}
+
+.lab-b-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 8px 30px 30px;
+}
+
+.lab-b-directory-column {
+  padding: 16px 22px 10px 0;
+  border-top: 1px solid var(--labb-line);
+}
+
+.lab-b-directory-column:not(:first-child) {
+  padding-left: 22px;
+  border-left: 1px solid var(--labb-line);
+}
+
+.lab-b-directory-column h3 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  line-height: 1.08;
+  color: var(--labb-ink);
+}
+
+.lab-b-directory-column a,
+.lab-b-directory-column span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.lab-b-product-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+  gap: 16px;
+}
+
+.lab-b-product-main {
+  padding: 40px 42px 34px;
+}
+
+.lab-b-product-main h1 {
+  margin-top: 4px;
+  font-size: clamp(76px, 9vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.lab-b-product-lede {
+  max-width: 18ch;
+  margin: 20px 0 0;
+  font-size: 34px;
+  line-height: 1.12;
+  color: var(--labb-ink);
+}
+
+.lab-b-product-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.lab-b-product-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 20px;
+  border: 1px solid var(--labb-line);
+  background: white;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 15px;
+  color: var(--labb-ink);
+}
+
+.lab-b-product-link.primary {
+  background: var(--labb-accent);
+  color: white;
+  border-color: var(--labb-accent);
+}
+
+.lab-b-product-side {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f2f6ff 0%, #e8eefc 100%);
+}
+
+.lab-b-side-band {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 150px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.lab-b-side-band div:nth-child(1) { background: rgba(61,97,184,0.92); }
+.lab-b-side-band div:nth-child(2) { background: rgba(95,128,207,0.92); }
+.lab-b-side-band div:nth-child(3) { background: rgba(137,165,226,0.92); }
+
+.lab-b-side-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  padding: 34px 34px 30px 180px;
+  display: grid;
+  align-content: space-between;
+  gap: 28px;
+}
+
+.lab-b-metric-label,
+.lab-b-point-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-side-metric strong {
+  font-size: 34px;
+  line-height: 1.02;
+}
+
+.lab-b-side-points {
+  display: grid;
+  gap: 22px;
+}
+
+.lab-b-side-points p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.lab-b-product-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
+  gap: 16px;
+}
+
+.lab-b-product-panel {
+  padding: 28px 30px 26px;
+}
+
+.lab-b-bullets {
+  margin: 6px 0 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.lab-b-bullets li {
+  font-size: 22px;
+  line-height: 1.55;
+}
+
+.lab-b-bullets.compact li { font-size: 20px; }
+
+.lab-b-quickstart {
+  padding: 0 0 22px;
+}
+
+.lab-b-code-shell {
+  margin: 12px 30px 0;
+  border: 1px solid var(--labb-line);
+  border-radius: 22px;
+  background: #f5f8ff;
+  overflow: hidden;
+}
+
+.lab-b-code-shell pre {
+  margin: 0;
+  padding: 28px 30px;
+  overflow: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--labb-ink);
+}
+
+.lab-b-quickstart-note {
+  margin: 18px 30px 0;
+  max-width: 72ch;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-side-points code,
+.lab-b-bullets code,
+.lab-b-quickstart-note code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.92em;
+  background: rgba(95,128,207,0.08);
+  padding: 2px 5px;
+  border-radius: 6px;
+}
+
+.lab-b-footer {
+  margin-top: 10px;
+  padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--labb-ink-soft);
+}
+
+.lab-b-footer a { color: var(--labb-ink-soft); }
+
+@media (max-width: 1180px) {
+  .lab-b-hero-grid,
+  .lab-b-catalog-intro,
+  .lab-b-catalog-grid,
+  .lab-b-inventory-head,
+  .lab-b-inventory-summary,
+  .lab-b-section-head,
+  .lab-b-ledger-row,
+  .lab-b-directory-grid,
+  .lab-b-product-hero,
+  .lab-b-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-b-inventory {
+    padding: 28px;
+  }
+
+  .lab-b-inventory-tabs {
+    position: static;
+    margin-top: 26px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .lab-b-inventory-tab {
+    writing-mode: initial;
+    transform: none;
+    min-height: auto;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .lab-b-inventory-summary,
+  .lab-b-inventory-copy {
+    margin-left: 0;
+  }
+
+  .lab-b-intro-note {
+    justify-self: start;
+  }
+
+  .lab-b-directory-column:not(:first-child) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .lab-b-side-inner {
+    padding: 28px 28px 24px 188px;
+  }
+}
+
+@media (max-width: 720px) {
+  .lab-b-shell {
+    padding: 14px 14px 28px;
+  }
+
+  .lab-b-topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-b-hero-copy,
+  .lab-b-inventory,
+  .lab-b-ledger,
+  .lab-b-directory-grid,
+  .lab-b-section-head,
+  .lab-b-product-main,
+  .lab-b-product-panel,
+  .lab-b-quickstart {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .lab-b-hero-copy h1 {
+    font-size: 46px;
+  }
+
+  .lab-b-lede {
+    font-size: 21px;
+  }
+
+  .lab-b-intro-pill {
+    font-size: 22px;
+  }
+
+  .lab-b-tool-card h2 {
+    font-size: 32px;
+  }
+
+  .lab-b-ledger-name strong {
+    font-size: 20px;
+  }
+
+  .lab-b-product-main h1 {
+    font-size: 62px;
+  }
+
+  .lab-b-product-lede {
+    font-size: 24px;
+  }
+
+  .lab-b-side-band {
+    width: 84px;
+  }
+
+  .lab-b-side-inner {
+    padding: 22px 20px 22px 108px;
+  }
+
+  .lab-b-side-metric strong {
+    font-size: 28px;
+  }
+
+  .lab-b-side-points p,
+  .lab-b-bullets li,
+  .lab-b-bullets.compact li,
+  .lab-b-quickstart-note,
+  .lab-b-code-shell pre,
+  .lab-b-ledger-name span,
+  .lab-b-ledger-preset,
+  .lab-b-ledger-date,
+  .lab-b-ledger-state,
+  .lab-b-directory-column span,
+  .lab-b-directory-column a {
+    font-size: 16px;
+  }
+
+  .lab-b-code-shell,
+  .lab-b-quickstart-note {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

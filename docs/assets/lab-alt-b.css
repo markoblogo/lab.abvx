@@ -310,35 +310,6 @@ a:hover { text-decoration: underline; }
 
 .lab-b-inventory-tab.active { color: white; }
 
-.lab-b-inventory-summary {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 42px 0 0 176px;
-}
-
-.lab-b-summary-block {
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 18px;
-  padding: 16px 18px;
-}
-
-.lab-b-summary-block span {
-  display: block;
-  font-size: 14px;
-  line-height: 1.2;
-  color: rgba(255,255,255,0.82);
-}
-
-.lab-b-summary-block strong {
-  display: block;
-  margin-top: 8px;
-  font-size: 34px;
-  line-height: 1;
-}
 
 .lab-b-inventory-copy {
   position: relative;

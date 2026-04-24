@@ -1,7 +1,7 @@
 # ABVX Lab
 
 A static hub and read-only control plane for ABVX developer tools.
-The live site now uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
+The live site now uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, `LWP` is the lightweight desktop execution protocol, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
@@ -9,7 +9,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Home page structure
 
-- `SET`, `agentsgen`, `ID`, and `repomap` are featured first as the visible core stack.
+- `SET`, `agentsgen`, `ID`, `repomap`, and `LWP` are featured first as the visible core stack.
 - The control plane is summarized as a tracked-repos ledger with queue state, then followed by a quieter directory of supporting tools and secondary surfaces.
 - Featured tiles and tracked repo rows are clickable and route to internal tool pages or GitHub where no first-class internal surface exists.
 - Detailed read-only surfaces still live below that summary:
@@ -30,6 +30,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
+- [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo and site mode.
@@ -107,6 +108,7 @@ They still ship together as one package: `agentsgen`.
 - [repomap](https://lab.abvx.xyz/tools/repomap/)
 - [set](https://lab.abvx.xyz/tools/set/)
 - [id](https://lab.abvx.xyz/tools/id/)
+- [lwp](https://lab.abvx.xyz/tools/lwp/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)

@@ -49,6 +49,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 - `agentsgen analyze` — Planned public surface for AI-visibility scoring of a public URL.
 - `agentsgen meta` — Planned public surface for SEO + AI metadata generation.
 
+### Decision & strategy protocols
+
+- [DecisionMap](https://lab.abvx.xyz/tools/decisionmap/) — AI-assisted protocol artifact for turning complex business, product, and market decisions into strategy maps with options, trade-offs, assumptions, breakpoints, and working hypotheses.
+
 ### Release & publishing
 
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/) — Turn git changes into tweet-sized release notes.
@@ -109,6 +113,7 @@ They still ship together as one package: `agentsgen`.
 - [set](https://lab.abvx.xyz/tools/set/)
 - [id](https://lab.abvx.xyz/tools/id/)
 - [lwp](https://lab.abvx.xyz/tools/lwp/)
+- [decisionmap](https://lab.abvx.xyz/tools/decisionmap/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)

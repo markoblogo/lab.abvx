@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="assets/lab-alt-b.css?v20260402a" />
+    <link rel="stylesheet" href="assets/lab-alt-b.css?v20260603b" />
   </head>
   <body>
     <div class="lab-b-shell">
@@ -34,11 +34,11 @@
           <div class="lab-b-hero-copy">
             <p class="lab-b-eyebrow">Open tool infrastructure / ABVX catalog</p>
             <h1>Tools for building AI-assisted software systems.</h1>
-            <p class="lab-b-lede">A global catalog for the small but serious stack around SET, agentsgen, ID, repomap, LWP, agent skills, proof loops, and repo-doc workflows.</p>
+            <p class="lab-b-lede">A working catalog for the ABVX stack around SET, agentsgen, ID, repomap, LWP, agent skills, proof loops, and repo-doc workflows.</p>
 
             <div class="lab-b-catalog-intro">
-              <div class="lab-b-intro-pill">Core stack. Real tools. Live control-plane surfaces.</div>
-              <div class="lab-b-intro-note">The front page should orient the ecosystem immediately instead of flattening everything into a docs index.</div>
+              <div class="lab-b-intro-pill">Core stack. Real tools. One control-plane view.</div>
+              <div class="lab-b-intro-note">The homepage should explain the system at a glance, then let the tool surface carry the detail.</div>
             </div>
 
             <div class="lab-b-catalog-grid">
@@ -98,34 +98,54 @@
             </div>
           </div>
 
-          <aside class="lab-b-inventory">
-            <div class="lab-b-inventory-head">
-              <div>
-                <p class="lab-b-inventory-label">Inventory count</p>
-                <div class="lab-b-inventory-number">5</div>
+          <div class="lab-b-hero-side">
+            <aside class="lab-b-inventory">
+              <div class="lab-b-inventory-head">
+                <div>
+                  <p class="lab-b-inventory-label">Inventory count</p>
+                  <div class="lab-b-inventory-number">5</div>
+                </div>
+                <p class="lab-b-inventory-note">Tracked repos and control-plane surfaces currently active in the ecosystem.</p>
               </div>
-              <p class="lab-b-inventory-note">Tracked repos and control-plane surfaces currently active in the ecosystem.</p>
-            </div>
 
-            <div class="lab-b-inventory-rails" aria-hidden="true">
-              <div class="lab-b-rail r1"></div>
-              <div class="lab-b-rail r2"></div>
-              <div class="lab-b-rail r3"></div>
-              <div class="lab-b-rail r4"></div>
-            </div>
+              <div class="lab-b-inventory-rails" aria-hidden="true">
+                <div class="lab-b-rail r1"></div>
+                <div class="lab-b-rail r2"></div>
+                <div class="lab-b-rail r3"></div>
+                <div class="lab-b-rail r4"></div>
+              </div>
 
-            <div class="lab-b-inventory-tabs">
-              <div class="lab-b-inventory-tab active">Control plane</div>
-              <div class="lab-b-inventory-tab">Tool map</div>
-              <div class="lab-b-inventory-tab">Proof queue</div>
-              <div class="lab-b-inventory-tab">Registry</div>
-            </div>
+              <div class="lab-b-inventory-tabs">
+                <div class="lab-b-inventory-tab active">Control plane</div>
+                <div class="lab-b-inventory-tab">Tool map</div>
+                <div class="lab-b-inventory-tab">Proof queue</div>
+                <div class="lab-b-inventory-tab">Registry</div>
+              </div>
 
-            <div class="lab-b-inventory-copy">
-              <p><strong>Foundation.</strong> The stack already has a working orchestrator, repo-doc runtime, portable context layer, and ranked repo-analysis layer.</p>
-              <p>The front page should read like a systems catalog, not a README dump.</p>
-            </div>
-          </aside>
+              <div class="lab-b-inventory-copy">
+                <p><strong>Foundation.</strong> The stack already has an orchestrator, repo-doc runtime, portable context layer, ranked repo-analysis layer, and public skillpack surface.</p>
+                <p>That means the homepage can be calmer: orient first, then let visitors drill into tools, queue state, and supporting surfaces.</p>
+              </div>
+            </aside>
+
+            <aside class="lab-b-hero-note">
+              <p class="lab-b-eyebrow">Where to start</p>
+              <div class="lab-b-hero-note-grid">
+                <a class="lab-b-hero-note-item" href="tools/set/index.html">
+                  <strong>SET</strong>
+                  <span>Orchestration and registry flow</span>
+                </a>
+                <a class="lab-b-hero-note-item" href="tools/agentsgen/index.html">
+                  <strong>agentsgen</strong>
+                  <span>Repo docs, bundles, checks, and proof artifacts</span>
+                </a>
+                <a class="lab-b-hero-note-item" href="tools/id/index.html">
+                  <strong>ID</strong>
+                  <span>Portable human context for repo-local workflows</span>
+                </a>
+              </div>
+            </aside>
+          </div>
         </section>
 
         <section class="lab-b-ledger-section">

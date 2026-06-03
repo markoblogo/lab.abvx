@@ -92,6 +92,7 @@ a:hover { text-decoration: underline; }
 .lab-b-product-side,
 .lab-b-product-panel,
 .lab-b-quickstart {
+  min-width: 0;
   background: var(--labb-panel);
   border: 1px solid var(--labb-line);
   border-radius: var(--labb-radius);
@@ -432,6 +433,13 @@ a:hover { text-decoration: underline; }
   padding: 40px 42px 34px;
 }
 
+.lab-b-product-logo {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  margin-bottom: 22px;
+}
+
 .lab-b-product-main h1 {
   margin-top: 4px;
   font-size: clamp(76px, 9vw, 132px);
@@ -701,6 +709,7 @@ a:hover { text-decoration: underline; }
 
   .lab-b-product-main h1 {
     font-size: 62px;
+    overflow-wrap: anywhere;
   }
 
   .lab-b-product-lede {

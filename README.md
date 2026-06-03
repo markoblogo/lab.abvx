@@ -9,7 +9,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Home page structure
 
-- `SET`, `agentsgen`, `ID`, `repomap`, and `LWP` are featured first as the visible core stack.
+- `SET`, `agentsgen`, `ID`, `repomap`, `LWP`, and ABVX Agent Skills are featured first as the visible core stack.
 - The control plane is summarized as a tracked-repos ledger with queue state, then followed by a quieter directory of supporting tools and secondary surfaces.
 - Featured tiles and tracked repo rows are clickable and route to internal tool pages or GitHub where no first-class internal surface exists.
 - Detailed read-only surfaces still live below that summary:
@@ -31,6 +31,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills with skill cards for repeatable Codex-style workflows.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo and site mode.
@@ -127,6 +128,7 @@ They still ship together as one package: `agentsgen`.
 - [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/)
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)
 - [asciitheme](https://lab.abvx.xyz/tools/asciitheme/)
+- [abvx-agent-skills](https://lab.abvx.xyz/tools/abvx-agent-skills/)
 
 ### Visual system
 
@@ -160,3 +162,4 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 - SET orchestration: https://github.com/markoblogo/SET
 - ID protocol repo: https://github.com/markoblogo/ID
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
+- ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills

@@ -5,7 +5,7 @@ The live site now uses the `alt-b` production shell: `SET` is the orchestration 
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
-<img src="docs/assets/og.svg" alt="ABVX Lab cover" width="100%" />
+<img src="docs/assets/og.png" alt="ABVX Lab cover" width="100%" />
 
 ## Home page structure
 

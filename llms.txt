@@ -9,6 +9,7 @@ Agent context bundle (LLMO Pack):
 - Data contracts: docs/ai/data-contracts.md
 - Security: SECURITY_AI.md
 - Contributing: CONTRIBUTING_AI.md
+- Agent skills catalog: https://github.com/markoblogo/abvx-agent-skills
 
 Quick commands:
 - install: (not needed)
@@ -19,4 +20,5 @@ Quick commands:
 
 Notes:
 - Keep these files concise and command-accurate. Avoid speculative guidance.
+- ABVX Agent Skills are reusable workflow capabilities; AGENTS.md/pack files remain repo context.
 <!-- AGENTSGEN:END section=llms -->

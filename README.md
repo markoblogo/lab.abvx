@@ -63,7 +63,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Decision & strategy protocols
 
-- [DecisionMap](https://lab.abvx.xyz/tools/decisionmap/) — AI-assisted protocol artifact for turning complex business, product, and market decisions into strategy maps with options, trade-offs, assumptions, breakpoints, and working hypotheses.
+- [DecisionMap](https://lab.abvx.xyz/tools/decisionmap/) — Protocol + prompt toolkit for turning complex business, product, market, and marketing decisions into strategy maps, validated JSON outputs, and cascade-log update loops.
 
 ### Release & publishing
 

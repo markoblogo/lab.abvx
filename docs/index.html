@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ABVX Lab | Tools for AI-assisted coding</title>
-    <meta name="description" content="ABVX Lab is a catalog for the tool stack around SET, agentsgen, ID, repomap, LWP, ABVX Agent Skills, proof loops, and repo-doc workflows." />
+    <title>ABVX Lab | Repo and workflow layer for AI-assisted coding</title>
+    <meta name="description" content="Turn a GitHub repo into an AI-ready workspace with repo docs, agent surfaces, repo maps, workflows, and checks." />
     <link rel="canonical" href="https://lab.abvx.xyz/" />
-    <meta property="og:title" content="ABVX Lab | Tools for AI-assisted coding" />
-    <meta property="og:description" content="ABVX Lab is a catalog for the tool stack around SET, agentsgen, ID, repomap, LWP, ABVX Agent Skills, proof loops, and repo-doc workflows." />
+    <meta property="og:title" content="ABVX Lab | Repo and workflow layer for AI-assisted coding" />
+    <meta property="og:description" content="Turn a GitHub repo into an AI-ready workspace with repo docs, agent surfaces, repo maps, workflows, and checks." />
     <meta property="og:url" content="https://lab.abvx.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="assets/lab-alt-b.css?v20260603b" />
+    <link rel="stylesheet" href="assets/lab-alt-b.css?v20260606a" />
   </head>
   <body>
     <div class="lab-b-shell">
@@ -33,12 +33,18 @@
         <section class="lab-b-hero-grid" id="tools">
           <div class="lab-b-hero-copy">
             <p class="lab-b-eyebrow">Open tool infrastructure / ABVX catalog</p>
-            <h1>Tools for building AI-assisted software systems.</h1>
-            <p class="lab-b-lede">A working catalog for the ABVX stack around SET, agentsgen, ID, repomap, LWP, agent skills, proof loops, and repo-doc workflows.</p>
+            <h1>Turn a GitHub repo into an AI-ready workspace.</h1>
+            <p class="lab-b-lede">Repo docs, agent surfaces, repo maps, workflows, and checks for teams using AI-assisted coding in the real world.</p>
+
+            <div class="lab-b-cta-row" aria-label="Primary actions">
+              <a class="lab-b-product-link primary" href="tools/set/index.html">Start with SET</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/AGENTS.md_generator#readme">Install agentsgen</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/AGENTS.md_generator">See example repo</a>
+            </div>
 
             <div class="lab-b-catalog-intro">
               <div class="lab-b-intro-pill">Core stack. Real tools. One control-plane view.</div>
-              <div class="lab-b-intro-note">The homepage should explain the system at a glance, then let the tool surface carry the detail.</div>
+              <div class="lab-b-intro-note">ABVX is not another coding assistant. It is the repo and workflow layer that keeps Copilot, Cursor, Continue, and similar tools grounded and verifiable.</div>
             </div>
 
             <div class="lab-b-catalog-grid">
@@ -46,7 +52,7 @@
                 <article class="lab-b-tool-card featured-set">
                   <span class="lab-b-tool-tag">Orchestrator</span>
                   <h2>SET</h2>
-                  <p>Thin GitHub Action entrypoint for repo-docs, repomap, proof-loop, registry review, and repo-local hooks.</p>
+                  <p>Runs in CI and keeps repo AI surfaces fresh: docs, maps, checks, proof loops, and registry-driven workflows.</p>
                   <div class="lab-b-tool-meta">repo-docs · proof-loop · registry</div>
                 </article>
               </a>
@@ -55,7 +61,7 @@
                 <article class="lab-b-tool-card">
                   <span class="lab-b-tool-tag">Repo docs</span>
                   <h2>agentsgen</h2>
-                  <p>Agent docs, AI bundles, snippets, repomap, proof artifacts, versioned CLI/MCP contracts, and opt-in LLM enhancement.</p>
+                  <p>Turns a repo AI-ready with AGENTS.md, llms.txt, docs/ai, checks, and machine-readable integration surfaces.</p>
                   <div class="lab-b-tool-meta">AGENTS.md · MCP · llms.txt · docs/ai</div>
                 </article>
               </a>
@@ -64,7 +70,7 @@
                 <article class="lab-b-tool-card">
                   <span class="lab-b-tool-tag">Portable context</span>
                   <h2>ID</h2>
-                  <p>Portable human-AI profile protocol plus repo-local hooks for SET-compatible flows.</p>
+                  <p>Keeps human and operator context portable across repos, tools, and repo-local automation.</p>
                   <div class="lab-b-tool-meta">hooks · portable context · repo-local profile</div>
                 </article>
               </a>
@@ -123,8 +129,8 @@
               </div>
 
               <div class="lab-b-inventory-copy">
-                <p><strong>Foundation.</strong> The stack already has an orchestrator, repo-doc runtime, portable context layer, ranked repo-analysis layer, and public skillpack surface.</p>
-                <p>That means the homepage can be calmer: orient first, then let visitors drill into tools, queue state, and supporting surfaces.</p>
+                <p><strong>Operational view.</strong> The stack exposes one orchestration layer, one repo-doc runtime, one portable context layer, one analysis layer, and a reusable skills surface.</p>
+                <p>Use the primary tools to instrument a repo first, then use the control-plane surfaces to inspect queue state, proof status, and workflow drift.</p>
               </div>
             </aside>
 
@@ -133,25 +139,105 @@
               <div class="lab-b-hero-note-grid">
                 <a class="lab-b-hero-note-item" href="tools/set/index.html">
                   <strong>SET</strong>
-                  <span>Orchestration and registry flow</span>
+                  <span>Start here when you want one CI entrypoint for repo automation</span>
                 </a>
                 <a class="lab-b-hero-note-item" href="tools/agentsgen/index.html">
                   <strong>agentsgen</strong>
-                  <span>Repo docs, bundles, checks, MCP surfaces, and proof artifacts</span>
+                  <span>Start here when you want AGENTS.md, llms.txt, docs/ai, and checks quickly</span>
                 </a>
                 <a class="lab-b-hero-note-item" href="tools/id/index.html">
                   <strong>ID</strong>
-                  <span>Portable human context for repo-local workflows</span>
+                  <span>Start here when human context must travel across repos and tools</span>
                 </a>
               </div>
             </aside>
           </div>
         </section>
 
+        <section class="lab-b-directory-section">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Start here</p>
+            <h2>Pick the first path that matches your job</h2>
+            <p class="lab-b-section-note">The stack is broad on purpose. These three entry paths are the fastest way to understand what to do in the first 5 to 10 minutes.</p>
+          </div>
+          <div class="lab-b-start-grid">
+            <article class="lab-b-start-card">
+              <h3>Solo devs</h3>
+              <p><strong>Human:</strong> Turn one repo into an AI-ready workspace with docs, repo maps, and checks from a single setup path.</p>
+              <p><strong>Technical:</strong> Start with <code>SET</code> for orchestration or go straight to <code>agentsgen</code> for repo-doc generation and validation.</p>
+              <a class="lab-b-product-link primary" href="tools/set/index.html">Start with SET</a>
+            </article>
+            <article class="lab-b-start-card">
+              <h3>Teams</h3>
+              <p><strong>Human:</strong> Keep multiple repos aligned with visible workflows, proof loops, registry baselines, and CI-driven updates.</p>
+              <p><strong>Technical:</strong> Use <code>SET</code> as the control-plane entrypoint for repo-docs, repomap, proof queues, and registry review flows.</p>
+              <a class="lab-b-product-link" href="tools/set/index.html">See SET</a>
+            </article>
+            <article class="lab-b-start-card">
+              <h3>Tool builders</h3>
+              <p><strong>Human:</strong> Build agents and automations on top of portable context plus reusable, validated capabilities.</p>
+              <p><strong>Technical:</strong> Combine <code>ID</code> for operator context with ABVX skills and repo-local hooks that can plug into existing workflows.</p>
+              <a class="lab-b-product-link" href="tools/id/index.html">See ID</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="lab-b-ledger-section">
+          <div class="lab-b-section-head">
+            <p class="lab-b-eyebrow">Stack roles</p>
+            <h2>What each layer is responsible for</h2>
+            <p class="lab-b-section-note">ABVX complements editor assistants. It focuses on repo state, workflow grounding, shared context, and verification surfaces around them.</p>
+          </div>
+          <div class="lab-b-table-wrap">
+            <table class="lab-b-stack-table">
+              <thead>
+                <tr>
+                  <th scope="col">Tool</th>
+                  <th scope="col">Role in the stack</th>
+                  <th scope="col">What the user feels</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="tools/set/index.html">SET</a></td>
+                  <td>CI and workflow orchestrator for repo-docs, proof loops, registry review, and repo hooks.</td>
+                  <td>Your repo AI surfaces stay fresh without hand-running the same maintenance steps.</td>
+                </tr>
+                <tr>
+                  <td><a href="tools/agentsgen/index.html">agentsgen</a></td>
+                  <td>Repo docs and contract generator for AGENTS.md, llms.txt, docs/ai, bundles, and checks.</td>
+                  <td>You get a repo that is easier for humans and agents to read, validate, and update safely.</td>
+                </tr>
+                <tr>
+                  <td><a href="tools/id/index.html">ID</a></td>
+                  <td>Portable human context layer for operator profiles, hooks, and repo-local workflow metadata.</td>
+                  <td>Your context can travel across repos and tools instead of being trapped in one chat session.</td>
+                </tr>
+                <tr>
+                  <td><a href="tools/repomap/index.html">repomap</a></td>
+                  <td>Repo analysis layer with ranked files, import graph, and focused code slices.</td>
+                  <td>You can get to the right files faster instead of handing the whole repo to a model.</td>
+                </tr>
+                <tr>
+                  <td><a href="tools/lwp/index.html">LWP</a></td>
+                  <td>Execution protocol for task briefs, proof loops, and verification structure.</td>
+                  <td>Agent work becomes easier to inspect, retry, and review.</td>
+                </tr>
+                <tr>
+                  <td><a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a></td>
+                  <td>Reusable capabilities layer with validated workflows agents can load on demand.</td>
+                  <td>You get repeatable capabilities instead of rebuilding prompts and checklists every time.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section class="lab-b-ledger-section">
           <div class="lab-b-section-head">
             <p class="lab-b-eyebrow">Control plane snapshot</p>
-            <h2>Tracked repos and current queue state</h2>
+            <h2>Operational visibility across tracked repos</h2>
+            <p class="lab-b-section-note"><strong>What you are seeing:</strong> this is the day-to-day view of how <code>SET</code> and <code>agentsgen</code> keep repos in sync, surface queue state, and expose proof or drift signals for review.</p>
           </div>
 
           <div class="lab-b-ledger">
@@ -161,7 +247,7 @@
                 <span>repo-docs baseline · MCP + LLM shipped</span>
               </div>
               <div class="lab-b-ledger-preset">repo-docs</div>
-              <div class="lab-b-ledger-date">2026-06-06</div>
+              <div class="lab-b-ledger-date">2026-04-02</div>
               <div class="lab-b-ledger-state">success · v0.2.0 candidate</div>
               <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill ready">ready-now</span></div>
             </a>
@@ -171,7 +257,7 @@
                 <span>repo-local hook layer</span>
               </div>
               <div class="lab-b-ledger-preset">repo-docs</div>
-              <div class="lab-b-ledger-date">2026-04-01</div>
+              <div class="lab-b-ledger-date">2026-04-30</div>
               <div class="lab-b-ledger-state">success · id hooks active</div>
               <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill">review-later</span></div>
             </a>
@@ -181,7 +267,7 @@
                 <span>orchestrator and registry owner</span>
               </div>
               <div class="lab-b-ledger-preset">repo-docs</div>
-              <div class="lab-b-ledger-date">2026-04-01</div>
+              <div class="lab-b-ledger-date">2026-04-30</div>
               <div class="lab-b-ledger-state">success · proof blocked case</div>
               <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill">review-later</span></div>
             </a>
@@ -191,7 +277,7 @@
                 <span>public catalog and control plane</span>
               </div>
               <div class="lab-b-ledger-preset">site-ai</div>
-              <div class="lab-b-ledger-date">2026-03-25</div>
+              <div class="lab-b-ledger-date">2026-06-06</div>
               <div class="lab-b-ledger-state">success · sync matches</div>
               <div class="lab-b-ledger-queue"><span class="lab-b-queue-pill ready">ready-now</span></div>
             </a>

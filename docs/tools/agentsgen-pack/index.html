@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>agentsgen pack | ABVX Lab</title>
-    <meta name="description" content="Generate AI docs bundle; supports --check, --print-plan, and site mode." />
+    <meta name="description" content="Generate AI docs bundle with repo/site mode, contract-backed drift checks, entrypoint manifests, and id-context handoff output." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/agentsgen-pack/" />
     <meta property="og:title" content="agentsgen pack | ABVX Lab" />
-    <meta property="og:description" content="Generate AI docs bundle; supports --check, --print-plan, and site mode." />
+    <meta property="og:description" content="Generate AI docs bundle with repo/site mode, contract-backed drift checks, entrypoint manifests, and id-context handoff output." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/agentsgen-pack/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260603b" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"agentsgen pack","url":"https://lab.abvx.xyz/tools/agentsgen-pack/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Generate AI docs bundle; supports --check, --print-plan, and site mode."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"agentsgen pack","url":"https://lab.abvx.xyz/tools/agentsgen-pack/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Generate AI docs bundle with repo/site mode, contract-backed drift checks, entrypoint manifests, and id-context handoff output."}</script>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -35,7 +35,7 @@
           <div class="lab-b-product-main">
             <p class="lab-b-eyebrow">ABVX tool</p>
             <h1>agentsgen pack</h1>
-            <p class="lab-b-product-lede">Generate AI docs bundle; supports --check, --print-plan, and site mode.</p>
+            <p class="lab-b-product-lede">Generate AI docs bundle with repo/site mode, contract-backed drift checks, entrypoint manifests, and id-context handoff output.</p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
@@ -57,7 +57,7 @@
               <div class="lab-b-side-points">
                 <div>
                   <span class="lab-b-point-label">Where it fits</span>
-                  <p>Packaging layer for AI-readable docs bundles, llms.txt output, and docs/ai artifacts.</p>
+                  <p>Packaging layer for AI-readable docs bundles, llms.txt output, entrypoint manifests, id-context handoff, and drift-safe regeneration.</p>
                 </div>
                 <div>
                   <span class="lab-b-point-label">Tags</span>
@@ -79,13 +79,14 @@
               <li>Builds an AI-readable docs bundle for how-to-run, architecture, contracts, and related repo context.</li>
               <li>Outputs <code>agents.entrypoints.json</code> — command manifest for agents/CI (install/test/lint/build/run)</li>
               <li>Supports plan-preview and drift-check workflows without changing the underlying app code.</li>
+              <li>Outputs <code>docs/ai/id-context.json</code> for repo-to-ID handoff and stable machine consumers.</li>
               <li>Uses the same safety model as other docs generation commands around marker-owned content.</li>
             </ul>
           </article>
           <article class="lab-b-product-panel">
             <p class="lab-b-eyebrow">Quick look</p>
-            <p class="lab-b-product-summary">Generate AI docs bundle; supports --check, --print-plan, and site mode.</p>
-            <p class="lab-b-product-summary lab-b-product-summary--muted">Generate AI docs bundle; supports --check, --print-plan, and site mode.</p>
+            <p class="lab-b-product-summary">Generate AI docs bundle with repo/site mode, contract-backed drift checks, entrypoint manifests, and id-context handoff output.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">Primary surface for <code>llms.txt</code>, <code>agents.entrypoints.json</code>, and <code>docs/ai/id-context.json</code>.</p>
           </article>
         </section>
 

@@ -28,13 +28,13 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ### Repo docs & agent context
 
-- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents.
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents, now with versioned CLI/MCP contracts and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
 - [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, grilling, PRDs, issue slicing, triage, handoffs, and browser verification.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
-- [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo and site mode.
+- [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo/site mode, contract-backed drift checks, and machine-readable manifests.
 - [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic drift checks.
 - [agentsgen presets](https://lab.abvx.xyz/tools/agentsgen-presets/) — Copy-paste setup for common stacks.
 
@@ -47,8 +47,8 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 ### Analysis & LLMO
 
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Token-budgeted repo map + import graph artifacts with relevance ranking and slice modes.
-- `agentsgen analyze` — Planned public surface for AI-visibility scoring of a public URL.
-- `agentsgen meta` — Planned public surface for SEO + AI metadata generation.
+- `agentsgen analyze` — Shipped CLI surface for AI-visibility scoring of a public URL.
+- `agentsgen meta` — Shipped CLI surface for SEO + AI metadata generation.
 
 ### Decision & strategy protocols
 

@@ -1,8 +1,8 @@
 # ABVX Lab
 
-A static hub for the ABVX stack: the repo and workflow layer around AI-assisted coding. It helps turn a GitHub repo into an AI-ready workspace with repo docs, agent surfaces, repo maps, workflows, and checks.
+A static hub for the ABVX stack: the repo and workflow layer around AI-assisted coding. It helps turn a GitHub repo into an AI-ready workspace with repo docs, agent surfaces, repo maps, workflows, and checks. ABVX is not another in-editor autocomplete tool; it is the grounding layer around Copilot, Cursor, Continue, and API-driven agents.
 
-ABVX is not another in-editor autocomplete tool. It is the grounding layer around tools like Copilot, Cursor, Continue, or direct API-driven agents: shared repo context, safe docs generation, workflow orchestration, and operational visibility.
+Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Who this is for
 
@@ -12,13 +12,11 @@ ABVX is not another in-editor autocomplete tool. It is the grounding layer aroun
 
 ## Start here
 
-- Start with [SET](https://lab.abvx.xyz/tools/set/) if you want one CI entrypoint that keeps repo AI surfaces up to date.
-- Install [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) if you want a repo to become AI-ready quickly: `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, and checks.
-- Use [ID](https://lab.abvx.xyz/tools/id/) if human and operator context must travel across repos and tools.
+- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date.
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, and checks.
+- [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 
 The live site uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, `LWP` is the lightweight desktop execution protocol, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
-
-Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Home page structure
 

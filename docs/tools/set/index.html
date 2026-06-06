@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SET | ABVX Lab</title>
-    <meta name="description" content="Use SET when you want one CI entrypoint that keeps repo AI surfaces up to date." />
+    <meta name="description" content="SET is the repo control-plane for AI-ready surfaces: docs, maps, checks, proofs, and registry-driven maintenance." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:title" content="SET | ABVX Lab" />
-    <meta property="og:description" content="Use SET when you want one CI entrypoint that keeps repo AI surfaces up to date." />
+    <meta property="og:description" content="SET is the repo control-plane for AI-ready surfaces: docs, maps, checks, proofs, and registry-driven maintenance." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260606a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Use SET when you want one CI entrypoint that keeps repo AI surfaces up to date."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"SET is the repo control-plane for AI-ready surfaces: docs, maps, checks, proofs, and registry-driven maintenance."}</script>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -35,7 +35,7 @@
           <div class="lab-b-product-main">
             <p class="lab-b-eyebrow">ABVX tool</p>
             <h1>SET</h1>
-            <p class="lab-b-product-lede">Use this when you want one CI entrypoint that keeps repo AI surfaces up to date.</p>
+            <p class="lab-b-product-lede">Use this when you want one reliable control-plane entrypoint for AI-readable repo surfaces, with reviewable planning.</p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/SET">GitHub</a>
@@ -84,6 +84,7 @@
               <li>Runs thin agentsgen flows such as init, pack, check, repomap, snippets, analyze, meta, and optional proof-loop artifacts.</li>
               <li>Runs repo-local <code>ID</code> integration hooks for compatible repositories: <code>pre_task</code> before orchestration and <code>weekly_review</code> after it.</li>
               <li>Exports reviewable planning payloads so registry config and repo workflows stay auditable.</li>
+              <li>Supports planning-only drift checks (`--repo-root`) and CI-safe contract outputs in JSON mode.</li>
             </ul>
           </article>
           <article class="lab-b-product-panel">
@@ -99,12 +100,12 @@
             <h2>Primary usage</h2>
           </div>
           <div class="lab-b-code-shell">
-            <pre><code>- uses: markoblogo/SET@main
+            <pre><code>- uses: markoblogo/SET@v0.2.0
   with:
     workflow_preset: "repo-docs"
     path: "."
 
-python3 scripts/plan_config_apply.py --all</code></pre>
+python3 scripts/plan_config_apply.py markoblogo/SET --dry-run --format json</code></pre>
           </div>
           <p class="lab-b-quickstart-note">Example workflow usage</p>
         </section>

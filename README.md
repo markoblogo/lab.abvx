@@ -42,7 +42,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents, now with versioned CLI/MCP contracts and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, grilling, PRDs, issue slicing, triage, handoffs, and browser verification.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, grilling, PRDs, issue slicing, triage, handoffs, and browser verification, now installable from PyPI as `abvx-agent-skills`.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo/site mode, contract-backed drift checks, and machine-readable manifests.
@@ -174,3 +174,4 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 - ID protocol repo: https://github.com/markoblogo/ID
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
 - ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills
+- ABVX Agent Skills on PyPI: https://pypi.org/project/abvx-agent-skills/

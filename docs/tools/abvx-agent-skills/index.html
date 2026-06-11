@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ABVX Agent Skills | ABVX Lab</title>
-    <meta name="description" content="Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, and browser verification." />
+    <meta name="description" content="Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, browser verification, frontend design setup, critique, and SkillSpector-backed security audit." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
     <meta property="og:title" content="ABVX Agent Skills | ABVX Lab" />
-    <meta property="og:description" content="Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, and browser verification." />
+    <meta property="og:description" content="Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, browser verification, frontend design setup, critique, and SkillSpector-backed security audit." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/skillslogo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260603b" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ABVX Agent Skills","url":"https://lab.abvx.xyz/tools/abvx-agent-skills/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, and browser verification."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ABVX Agent Skills","url":"https://lab.abvx.xyz/tools/abvx-agent-skills/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Portable, validation-gated agent skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, browser verification, frontend design setup, critique, and SkillSpector-backed security audit."}</script>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -36,7 +36,7 @@
             <img class="lab-b-product-logo" src="../../assets/skillslogo.png" alt="ABVX Agent Skills logo" width="709" height="352" decoding="async" />
             <p class="lab-b-eyebrow">ABVX tool</p>
             <h1>ABVX Agent Skills</h1>
-            <p class="lab-b-product-lede">Portable, validation-gated skills for Codex-style project work: coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and skill evolution.</p>
+            <p class="lab-b-product-lede">Portable, validation-gated skills for Codex-style project work: coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, browser verification, frontend design setup, critique, polish, and skill evolution.</p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills">GitHub</a>
@@ -76,7 +76,8 @@
             <ul class="lab-b-bullets">
               <li><code>SKILL.md</code> files with trigger-rich descriptions and concise procedural rules.</li>
               <li><code>SKILL_CARD.md</code> files for intended use, attribution, risks, evaluation, and versioning.</li>
-              <li>A validation script, packaged CLI, and CI publish workflow for frontmatter, required files, placeholders, secret-pattern checks, and PyPI releases.</li>
+              <li>A packaged CLI with <code>list</code>, <code>install</code>, <code>validate</code>, and <code>audit-security</code> commands.</li>
+              <li>SkillSpector-backed security audit policy with JSON reports, SARIF upload, baseline support, and publish preflight gating.</li>
             </ul>
           </article>
 
@@ -91,9 +92,12 @@
               <li><code>diagnose</code></li>
               <li><code>doc-grounded-grilling</code></li>
               <li><code>dynamic-workflow-packets</code></li>
+              <li><code>design-critique-polish</code></li>
+              <li><code>design-register-bootstrap</code></li>
               <li><code>designmd-brand-kit</code></li>
               <li><code>evidence-ledger-research</code></li>
               <li><code>frontend-product-builder</code></li>
+              <li><code>frontend-taste-layer</code></li>
               <li><code>graph-guided-code-reading</code></li>
               <li><code>handoff</code></li>
               <li><code>lean-context-layout</code></li>
@@ -131,7 +135,7 @@
 abvx-skills list
 abvx-skills install dynamic-workflow-packets</code></pre>
           </div>
-          <p class="lab-b-quickstart-note">The package is published on both PyPI and TestPyPI. Start a new agent session after installation so the skill description is discovered.</p>
+          <p class="lab-b-quickstart-note">Version <code>0.9.0</code> is published on both PyPI and TestPyPI. Start a new agent session after installation so the skill description is discovered.</p>
         </section>
 
         <section class="lab-b-product-grid">
@@ -139,8 +143,9 @@ abvx-skills install dynamic-workflow-packets</code></pre>
             <p class="lab-b-eyebrow">Package status</p>
             <ul class="lab-b-bullets">
               <li>Published package name: <code>abvx-agent-skills</code></li>
-              <li>CLI entrypoint: <code>abvx-skills</code> with <code>list</code>, <code>install</code>, and <code>validate</code></li>
-              <li>Release path: GitHub Actions trusted publishing to TestPyPI and PyPI</li>
+              <li>Current release: <code>v0.9.0</code></li>
+              <li>CLI entrypoint: <code>abvx-skills</code> with <code>list</code>, <code>install</code>, <code>validate</code>, and <code>audit-security</code></li>
+              <li>Release path: GitHub Actions trusted publishing to TestPyPI and PyPI, with SkillSpector security preflight before publish</li>
             </ul>
           </article>
 

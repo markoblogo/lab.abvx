@@ -35,9 +35,15 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 ## Cleanup status
 
 - `homebrew-core` has been archived after the upstream Homebrew PR was closed.
-- `mn7r-showcase`, `revenue-os`, and `Orbitory` have been archived as paused or unclear public lines.
+- `mn7r-showcase`, `revenue-os`, `Orbitory`, and the old profile repo `markoblogo` have been removed after review.
 - Temporary upstream-contribution forks are still kept while their PRs remain open.
 - The current portfolio classification lives in [docs/repos/repo-matrix.md](docs/repos/repo-matrix.md).
+
+## Portfolio groups
+
+- `AI coding tools stack` with `lab.abvx` as the public hub, backed by `AGENTS.md_generator`, `SET`, `ID`, `abvx-agent-skills`, and `homebrew-tap`.
+- `toki pona / sitelen` with `sitelen-layer-plugin` as the package hub, backed by `sitelen-emoji-truth` and related language/content repos.
+- `commodity systems` with `index` as the public infra hub and `mn7r` as the internal operating workspace.
 
 ## Tool groups
 
@@ -178,9 +184,12 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 
 ## Ecosystem links
 
+- Repo matrix: https://github.com/markoblogo/lab.abvx/blob/main/docs/repos/repo-matrix.md
 - SET orchestration: https://github.com/markoblogo/SET
 - ID protocol repo: https://github.com/markoblogo/ID
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
 - ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills
 - ABVX Agent Skills on PyPI: https://pypi.org/project/abvx-agent-skills/
 - ABVX Homebrew tap: https://github.com/markoblogo/homebrew-tap
+- sitelen-layer-plugin: https://github.com/markoblogo/sitelen-layer-plugin
+- decision-map: https://github.com/markoblogo/decision-map

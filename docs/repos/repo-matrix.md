@@ -12,7 +12,7 @@ It is not a deletion script. It is a categorization pass to reduce repo sprawl a
 - `Archive/delete candidate` — low-current-value repo, abandoned line, or replaced surface.
 - `Temporary fork/remove after PR` — operational fork created for upstream PR work.
 
-## AI coding tools / agent engineering
+## AI coding tools stack
 
 | Repo | Category | Reason |
 | --- | --- | --- |
@@ -20,17 +20,21 @@ It is not a deletion script. It is a categorization pass to reduce repo sprawl a
 | `abvx-agent-skills` | Core | Clear reusable skillpack layer with validation and packaging. |
 | `ID` | Core | Distinct portable human-context layer in the stack. |
 | `SET` | Core | Clear orchestration/control-plane role across the ecosystem. |
-| `lab.abvx` | Core | Best public hub for the ecosystem and repo navigation. |
+| `lab.abvx` | Core | Public hub and navigation layer for the whole tooling stack. |
 | `homebrew-tap` | Core | Official package distribution surface for the tooling stack. |
-| `decision-map` | Satellite | Useful protocol/toolkit, but not a primary ecosystem anchor. |
+| `decision-map` | Satellite | Useful protocol/toolkit, but not a primary stack anchor. |
 | `git-tweet` | Satellite | Small companion publishing tool, not a portfolio center. |
+| `AsciiTheme` | Satellite | Shared visual layer used across several public tooling surfaces. |
+| `-abvx-shortener` | Satellite | Useful utility surface, but not a core identity repo. |
 | `llmo-abvx` | Merge later | Valuable ideas should move into `AGENTS.md_generator`, not stay separate. |
 
-Suggested umbrella direction:
+Hub repo:
 
-- `ai-coding-toolkit`
-- `agent-engineering-kit`
-- `agent-workflow-stack`
+- `lab.abvx`
+
+Final umbrella direction:
+
+- `AI coding tools stack`
 
 ## toki pona / sitelen
 
@@ -44,12 +48,15 @@ Suggested umbrella direction:
 | `stoic-wisdom-series` | Satellite | Another content-led expression of the same cluster. |
 | `pictiq` | Satellite | Paused, but still strategically close to the symbolic language line. |
 
-Suggested umbrella direction:
+Hub repo:
+
+- `sitelen-layer-plugin`
+
+Final umbrella direction:
 
 - `toki pona / sitelen`
-- `symbolic language tools`
 
-## agro / commodity / trading systems
+## commodity systems
 
 | Repo | Category | Reason |
 | --- | --- | --- |
@@ -59,10 +66,14 @@ Suggested umbrella direction:
 | `liqua` | Satellite | Related product-facing surface, but not the infrastructure core. |
 | `cropto-v0` | Merge later | Important idea line, but likely to be restructured rather than continued as-is. |
 
-Suggested umbrella direction:
+Hub repos:
+
+- `index` as the public infrastructure/data hub
+- `mn7r` as the internal operating workspace
+
+Final umbrella direction:
 
 - `commodity systems`
-- `agro trading stack`
 
 ## standalone public sites
 
@@ -97,9 +108,8 @@ Suggested umbrella direction:
 ## Current cleanup order
 
 1. Remove temporary forks after upstream PR outcomes are settled.
-2. Delete on explicit confirmation:
-   `markoblogo`, `mn7r-showcase`, `revenue-os`, `Orbitory`, and later the temporary forks once their upstream PRs are resolved.
+2. Delete later the temporary forks once their upstream PRs are resolved.
 3. Pull the useful `llmo-abvx` pieces into `AGENTS.md_generator`.
-4. Decide and name the top-level AI coding tools umbrella.
-5. Decide and name the top-level agro / commodity umbrella.
+4. Align README links, GitHub descriptions, and topics around the chosen hub repos.
+5. Decide whether `ABVXsite` stays standalone or folds into another public hub.
 6. Revisit whether some satellites should remain separate repos or move into broader hubs.

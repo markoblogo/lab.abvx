@@ -76,9 +76,9 @@ Suggested umbrella direction:
 
 | Repo | Category | Reason |
 | --- | --- | --- |
-| `mn7r-showcase` | Archive/delete candidate | Public showcase for a line that no longer looks primary. |
-| `revenue-os` | Archive/delete candidate | Thin/unclear surface with no strong current identity. |
-| `Orbitory` | Archive/delete candidate | No clear current role and weak naming/positioning signal. |
+| `mn7r-showcase` | Archive/delete candidate | Archived; public showcase for a line that no longer looks primary. |
+| `revenue-os` | Archive/delete candidate | Archived; thin/unclear surface with no strong current identity. |
+| `Orbitory` | Archive/delete candidate | Archived; no clear current role and weak naming/positioning signal. |
 | `markoblogo` | Archive/delete candidate | If only used as profile README, likely replaceable by a better public hub. |
 
 ## operational and temporary forks
@@ -91,13 +91,14 @@ Suggested umbrella direction:
 | `awesome-ui-component-library` | Temporary fork/remove after PR | Upstream contribution fork, not a product repo. |
 | `Awesome-Prompt-Engineering` | Temporary fork/remove after PR | Upstream contribution fork, not a product repo. |
 | `awesome-prompts` | Temporary fork/remove after PR | Upstream contribution fork, not a product repo. |
-| `homebrew-core` | Temporary fork/remove after PR | Operational packaging fork only. |
+| `homebrew-core` | Temporary fork/remove after PR | Archived; upstream PR closed, fork no longer needed as active surface. |
 | `staged-recipes` | Temporary fork/remove after PR | Operational conda-forge submission fork only. |
 
 ## Current cleanup order
 
 1. Remove temporary forks after upstream PR outcomes are settled.
-2. Remove or archive `mn7r-showcase`, `revenue-os`, and `Orbitory`.
+2. Delete on explicit confirmation:
+   `markoblogo`, `mn7r-showcase`, `revenue-os`, `Orbitory`, and later the temporary forks once their upstream PRs are resolved.
 3. Pull the useful `llmo-abvx` pieces into `AGENTS.md_generator`.
 4. Decide and name the top-level AI coding tools umbrella.
 5. Decide and name the top-level agro / commodity umbrella.

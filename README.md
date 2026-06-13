@@ -32,6 +32,13 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
   - [Workflow status snapshot](https://lab.abvx.xyz/status/)
 - Tools are grouped into product families instead of a flat card grid.
 
+## Cleanup status
+
+- `homebrew-core` has been archived after the upstream Homebrew PR was closed.
+- `mn7r-showcase`, `revenue-os`, and `Orbitory` have been archived as paused or unclear public lines.
+- Temporary upstream-contribution forks are still kept while their PRs remain open.
+- The current portfolio classification lives in [docs/repos/repo-matrix.md](docs/repos/repo-matrix.md).
+
 ## Tool groups
 
 ### Orchestration

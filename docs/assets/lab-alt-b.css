@@ -181,8 +181,12 @@ a:hover { text-decoration: underline; }
 
 .lab-b-catalog-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
+}
+
+.lab-b-catalog-wrap {
+  padding: 8px 30px 30px;
 }
 
 .lab-b-tool-card-link {
@@ -706,6 +710,13 @@ a:hover { text-decoration: underline; }
   gap: 16px;
 }
 
+.lab-b-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 8px 30px 0;
+}
+
 .lab-b-product-panel {
   padding: 28px 30px 26px;
 }
@@ -786,7 +797,8 @@ a:hover { text-decoration: underline; }
   .lab-b-section-head,
   .lab-b-ledger-row,
   .lab-b-product-hero,
-  .lab-b-product-grid {
+  .lab-b-product-grid,
+  .lab-b-flow-grid {
     grid-template-columns: 1fr;
   }
 
@@ -834,7 +846,9 @@ a:hover { text-decoration: underline; }
   .lab-b-ledger,
   .lab-b-start-grid,
   .lab-b-table-wrap,
+  .lab-b-catalog-wrap,
   .lab-b-directory-grid,
+  .lab-b-flow-grid,
   .lab-b-section-head,
   .lab-b-product-main,
   .lab-b-product-panel,

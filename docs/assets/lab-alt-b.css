@@ -173,9 +173,9 @@ a:hover { text-decoration: underline; }
 
 .lab-b-intro-note {
   justify-self: end;
-  max-width: 28ch;
-  font-size: 16px;
-  line-height: 1.45;
+  max-width: 24ch;
+  font-size: 15px;
+  line-height: 1.4;
   color: var(--labb-ink-soft);
 }
 
@@ -201,8 +201,8 @@ a:hover { text-decoration: underline; }
 }
 
 .lab-b-tool-card {
-  min-height: 176px;
-  padding: 22px 22px 20px;
+  min-height: 160px;
+  padding: 20px 20px 18px;
   border-radius: 20px;
   border: 1px solid rgba(48, 87, 175, 0.08);
   background: linear-gradient(180deg, #f8faff 0%, #eef3ff 100%);
@@ -226,21 +226,21 @@ a:hover { text-decoration: underline; }
 
 .lab-b-tool-card h2 {
   margin: 14px 0 10px;
-  font-size: 34px;
+  font-size: 31px;
   line-height: 1;
 }
 
 .lab-b-tool-card p {
   margin: 0;
   max-width: 26ch;
-  font-size: 16px;
-  line-height: 1.48;
+  font-size: 15px;
+  line-height: 1.42;
   color: var(--labb-ink-soft);
 }
 
 .lab-b-tool-meta {
-  margin-top: 16px;
-  font-size: 14px;
+  margin-top: 14px;
+  font-size: 13px;
   color: var(--labb-ink-soft);
 }
 
@@ -395,9 +395,9 @@ a:hover { text-decoration: underline; }
 
 .lab-b-section-note {
   margin: 0;
-  max-width: 70ch;
-  font-size: 18px;
-  line-height: 1.5;
+  max-width: 62ch;
+  font-size: 16px;
+  line-height: 1.45;
   color: var(--labb-ink-soft);
 }
 
@@ -426,8 +426,8 @@ a:hover { text-decoration: underline; }
 
 .lab-b-start-card p {
   margin: 0;
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.45;
   color: var(--labb-ink-soft);
 }
 
@@ -478,8 +478,8 @@ a:hover { text-decoration: underline; }
 
 .lab-b-stack-table td {
   padding-right: 18px;
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.38;
   color: var(--labb-ink);
 }
 
@@ -924,8 +924,8 @@ a:hover { text-decoration: underline; }
 
 .lab-b-product-summary {
   margin: 0 0 12px;
-  font-size: 24px;
-  line-height: 1.4;
+  font-size: 21px;
+  line-height: 1.32;
   color: var(--labb-ink);
 }
 

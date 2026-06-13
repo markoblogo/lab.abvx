@@ -99,6 +99,32 @@
           </div>
           <p class="lab-b-quickstart-note">Canonical onboarding command</p>
         </section>
+
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Reflection outputs</p>
+            <h2>Producer side of the reflection loop</h2>
+          </div>
+          <div class="lab-b-product-grid">
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">Commands</p>
+              <div class="lab-b-code-shell">
+                <pre><code>agentsgen reflect sessions .
+agentsgen reflect skills .</code></pre>
+              </div>
+            </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">Artifacts</p>
+              <ul class="lab-b-bullets">
+                <li><code>docs/ai/agent-signals.json</code></li>
+                <li><code>docs/ai/session-patterns.md</code></li>
+                <li><code>docs/ai/skill-usage.json</code></li>
+                <li><code>docs/ai/skill-effectiveness.md</code></li>
+              </ul>
+            </article>
+          </div>
+          <p class="lab-b-quickstart-note">Current consumer-side path: <a href="../abvx-agent-skills/index.html">ABVX Agent Skills</a> reads these artifacts through <code>session-retrospective</code> and <code>skill-effectiveness-audit</code>. See the reciprocal pipeline view on the <a href="../abvx-agent-skills/index.html">ABVX Agent Skills page</a>.</p>
+        </section>
       </main>
       <footer class="footer footer--lab">
         <div class="footer-inner">

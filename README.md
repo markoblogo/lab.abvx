@@ -27,6 +27,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
   - [What to review next](https://lab.abvx.xyz/planning/)
   - [Proof queue](https://lab.abvx.xyz/proof/)
   - [Repo cards](https://lab.abvx.xyz/repos/)
+  - [Repo matrix](docs/repos/repo-matrix.md)
   - [Registry snapshot](https://lab.abvx.xyz/registry/)
   - [Workflow status snapshot](https://lab.abvx.xyz/status/)
 - Tools are grouped into product families instead of a flat card grid.

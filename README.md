@@ -42,7 +42,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents, now with versioned CLI/MCP contracts and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills`.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo/site mode, contract-backed drift checks, and machine-readable manifests.
@@ -175,3 +175,4 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
 - ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills
 - ABVX Agent Skills on PyPI: https://pypi.org/project/abvx-agent-skills/
+- ABVX Homebrew tap: https://github.com/markoblogo/homebrew-tap

@@ -4,6 +4,8 @@ A static hub for the ABVX stack: the repo and workflow layer around AI-assisted 
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
+About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
+
 ## Who this is for
 
 - Solo developers who want one repo setup path that quickly produces AGENTS.md, `llms.txt`, docs, maps, and checks.
@@ -185,6 +187,7 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 ## Ecosystem links
 
 - Repo matrix: https://github.com/markoblogo/lab.abvx/blob/main/docs/repos/repo-matrix.md
+- About page: https://lab.abvx.xyz/about/
 - SET orchestration: https://github.com/markoblogo/SET
 - ID protocol repo: https://github.com/markoblogo/ID
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator

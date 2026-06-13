@@ -244,6 +244,36 @@
 
         <section class="lab-b-ledger-section">
           <div class="lab-b-section-head">
+            <p class="lab-b-eyebrow">Hub flow</p>
+            <h2>How the AI coding tools stack fits together</h2>
+            <p class="lab-b-section-note">One practical reading of the stack: human context starts in <code>ID</code>, repo context gets materialized by <code>AGENTS.md_generator</code>, reusable workflow feedback is consumed by <code>ABVX Agent Skills</code>, and <code>SET</code> operationalizes the loop in CI and multi-repo control-plane work.</p>
+          </div>
+          <div class="lab-b-product-grid">
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">1. Human layer</p>
+              <p class="lab-b-product-summary"><a href="tools/id/index.html">ID</a> keeps portable operator context and preferred bootstrap order.</p>
+            </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">2. Repo layer</p>
+              <p class="lab-b-product-summary"><a href="tools/agentsgen/index.html">AGENTS.md_generator</a> turns a repo into <code>AGENTS.md</code>, <code>llms.txt</code>, and <code>docs/ai/*</code> surfaces.</p>
+            </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">3. Reusable workflow layer</p>
+              <p class="lab-b-product-summary"><a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> consumes reflection and context artifacts as reusable skills such as <code>session-retrospective</code> and <code>skill-effectiveness-audit</code>.</p>
+            </article>
+          </div>
+          <div class="lab-b-code-shell">
+            <pre><code>ID
+  -&gt; AGENTS.md_generator
+  -&gt; docs/ai/*
+  -&gt; abvx-agent-skills
+  -&gt; SET</code></pre>
+          </div>
+          <p class="lab-b-quickstart-note"><a href="tools/id/index.html">ID</a> supplies portable human context, <a href="tools/agentsgen/index.html">AGENTS.md_generator</a> produces repo-local machine-readable surfaces, <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> turns repeated patterns into portable capability, and <a href="tools/set/index.html">SET</a> keeps the whole stack running as an operational control plane.</p>
+        </section>
+
+        <section class="lab-b-ledger-section">
+          <div class="lab-b-section-head">
             <p class="lab-b-eyebrow">Control plane snapshot</p>
             <h2>Operational visibility across tracked repos</h2>
             <p class="lab-b-section-note"><strong>What you are seeing:</strong> this is the day-to-day view of how <code>SET</code> and <code>agentsgen</code> keep repos in sync, surface queue state, and expose proof or drift signals for review.</p>

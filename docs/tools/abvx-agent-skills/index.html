@@ -113,6 +113,8 @@
               <li><code>repo-debugging-ledger</code></li>
               <li><code>repo-issue-triage</code></li>
               <li><code>rtk-assisted-shell</code></li>
+              <li><code>session-retrospective</code></li>
+              <li><code>skill-effectiveness-audit</code></li>
               <li><code>spec-to-prd</code></li>
               <li><code>durable-context-maintenance</code></li>
               <li><code>compaction-survival</code></li>
@@ -182,6 +184,52 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
             <h2>Portable catalog export</h2>
           </div>
           <p class="lab-b-quickstart-note">The repo now also exports an OKF-style skill catalog under <code>catalog/okf/</code>. It is a derived markdown+frontmatter bundle for navigation and future consumers, not a replacement for <code>SKILL.md</code> or <code>SKILL_CARD.md</code>. Open the <a href="../abvx-skills-knowledge/index.html">experimental knowledge page</a> for the current shape.</p>
+        </section>
+
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Reflection pipeline</p>
+            <h2>From repo traces to reusable skill feedback</h2>
+          </div>
+          <div class="lab-b-product-grid">
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">1. Producer</p>
+              <p class="lab-b-product-summary"><a href="../agentsgen/index.html">agentsgen</a> derives reflection artifacts from local Codex sessions.</p>
+              <ul class="lab-b-bullets">
+                <li><code>agentsgen reflect sessions .</code></li>
+                <li><code>agentsgen reflect skills .</code></li>
+              </ul>
+            </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">2. Artifacts</p>
+              <p class="lab-b-product-summary">The handoff surface lives under <code>docs/ai/</code>, not in raw transcript replay.</p>
+              <ul class="lab-b-bullets">
+                <li><code>agent-signals.json</code></li>
+                <li><code>session-patterns.md</code></li>
+                <li><code>skill-usage.json</code></li>
+                <li><code>skill-effectiveness.md</code></li>
+              </ul>
+            </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">3. Consumers</p>
+              <p class="lab-b-product-summary">ABVX Agent Skills turns those artifacts into reusable retrospective and audit behavior.</p>
+              <ul class="lab-b-bullets">
+                <li><code>session-retrospective</code></li>
+                <li><code>skill-effectiveness-audit</code></li>
+              </ul>
+            </article>
+          </div>
+          <div class="lab-b-code-shell">
+            <pre><code>AGENTS.md_generator
+  -&gt; docs/ai/agent-signals.json
+  -&gt; docs/ai/session-patterns.md
+  -&gt; docs/ai/skill-usage.json
+  -&gt; docs/ai/skill-effectiveness.md
+  -&gt; abvx-agent-skills
+     -&gt; session-retrospective
+     -&gt; skill-effectiveness-audit</code></pre>
+          </div>
+          <p class="lab-b-quickstart-note">This is the current public reflection loop: <a href="../agentsgen/index.html">AGENTS.md_generator</a> produces repo-local reflection artifacts, and <a href="index.html">ABVX Agent Skills</a> consumes them as portable workflow skills. The goal is to improve skills from observed session patterns instead of adding more static instruction surface blindly.</p>
         </section>
       </main>
       <footer class="footer footer--lab">

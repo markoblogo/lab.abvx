@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ABVX Skills Knowledge | ABVX Lab</title>
+    <meta name="description" content="Experimental knowledge view for the ABVX Agent Skills catalog, backed by an OKF-style markdown bundle." />
+    <link rel="canonical" href="https://lab.abvx.xyz/tools/abvx-skills-knowledge/" />
+    <meta property="og:title" content="ABVX Skills Knowledge | ABVX Lab" />
+    <meta property="og:description" content="Experimental knowledge view for the ABVX Agent Skills catalog, backed by an OKF-style markdown bundle." />
+    <meta property="og:url" content="https://lab.abvx.xyz/tools/abvx-skills-knowledge/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lab.abvx.xyz/assets/skillslogo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260606a" />
+  </head>
+  <body>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="../../index.html">
+          <img src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#tools">Tools</a>
+          <a href="/about/">About</a>
+        </nav>
+        <div class="lab-b-mode">experimental knowledge</div>
+      </header>
+
+      <main class="lab-b-frame">
+        <section class="lab-b-product-hero">
+          <div class="lab-b-product-main">
+            <p class="lab-b-eyebrow">Experimental surface</p>
+            <h1>ABVX Skills Knowledge</h1>
+            <p class="lab-b-product-lede">A lightweight knowledge entrypoint for the ABVX Agent Skills catalog, derived from an OKF-style markdown bundle. This is not the runtime skill format. It is a portable catalog layer for navigation, grouping, future viewers, and downstream agent consumption.</p>
+
+            <div class="lab-b-product-cta">
+              <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills/tree/main/catalog/okf">OKF bundle</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/blob/main/catalog/okf/index.md">Catalog index</a>
+              <a class="lab-b-product-link" href="../abvx-agent-skills/index.html">ABVX Agent Skills</a>
+            </div>
+          </div>
+
+          <aside class="lab-b-product-side">
+            <div class="lab-b-side-band" aria-hidden="true">
+              <div></div><div></div><div></div>
+            </div>
+            <div class="lab-b-side-inner">
+              <div class="lab-b-side-metric">
+                <span class="lab-b-metric-label">Bundle role</span>
+                <strong>Portable catalog layer</strong>
+              </div>
+              <div class="lab-b-side-points">
+                <div>
+                  <span class="lab-b-point-label">Source of truth</span>
+                  <p><strong>SKILL.md</strong> and <strong>SKILL_CARD.md</strong> remain canonical. The OKF bundle is derived export, not the instruction runtime.</p>
+                </div>
+                <div>
+                  <span class="lab-b-point-label">Why it exists</span>
+                  <p>It gives the skills repo a stable markdown+frontmatter knowledge surface that future viewers, search flows, and agents can consume without custom parsing.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="lab-b-product-grid">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Current bundle shape</p>
+            <ul class="lab-b-bullets">
+              <li><code>catalog/okf/index.md</code> as the root index</li>
+              <li><code>catalog/okf/skills/*.md</code> with one concept per skill</li>
+              <li><code>catalog/okf/groups/*/index.md</code> for grouped navigation</li>
+              <li>Frontmatter with <code>type</code>, <code>title</code>, <code>description</code>, <code>resource</code>, <code>tags</code>, <code>canonical</code>, <code>source</code>, <code>status</code>, and <code>kind</code></li>
+            </ul>
+          </article>
+
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Current groups</p>
+            <ul class="lab-b-bullets compact">
+              <li>Token Economy &amp; Context Control</li>
+              <li>Coding, Debugging &amp; Architecture</li>
+              <li>Frontend, UX &amp; Product Surfaces</li>
+              <li>HTML Artifacts &amp; Visual Deliverables</li>
+              <li>Project Context &amp; Onboarding</li>
+              <li>Discovery, Planning &amp; Delivery</li>
+              <li>Research, Knowledge &amp; Reusable Methods</li>
+              <li>Workflow, Handoffs &amp; Multi-Track Work</li>
+              <li>Long-Run Delivery Control</li>
+              <li>Structured Data &amp; Spreadsheet Work</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">What comes next</p>
+            <h2>Experimental consumer first, richer viewer later</h2>
+          </div>
+          <p class="lab-b-quickstart-note">This page is the first public hook. The next likely step is a proper in-lab consumer that reads exported bundle structure and renders grouped search, graph, and related-skill navigation from the same portable catalog layer.</p>
+        </section>
+      </main>
+      <footer class="footer footer--lab">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <div class="footer-title">ABVX Lab</div>
+            <div class="footer-note">Small, readable, static pages for ABVX developer tools.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

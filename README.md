@@ -42,7 +42,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents, now with versioned CLI/MCP contracts and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` with newer repo-head skills landing before the next publish.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills`.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo/site mode, contract-backed drift checks, and machine-readable manifests.

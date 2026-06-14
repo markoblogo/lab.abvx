@@ -21,6 +21,51 @@
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ABVX Agent Skills","url":"https://lab.abvx.xyz/tools/abvx-agent-skills/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Searchable catalog for portable, validation-gated ABVX agent skills."}</script>
     <style>
+      .catalog-hero {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr);
+        align-items: stretch;
+      }
+      .catalog-logo-lockup {
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+      .catalog-mark {
+        width: min(100%, 180px);
+        height: auto;
+      }
+      .catalog-title {
+        max-width: 11ch;
+        margin: 0;
+        font-size: clamp(44px, 6vw, 78px);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+      .catalog-lede {
+        max-width: 28ch;
+        margin: 0;
+        font-size: clamp(20px, 2vw, 28px);
+        line-height: 1.08;
+        color: #334a97;
+      }
+      .catalog-summary {
+        display: grid;
+        gap: 16px;
+        align-content: space-between;
+      }
+      .catalog-summary-grid {
+        display: grid;
+        gap: 14px;
+      }
+      .catalog-summary-grid div {
+        display: grid;
+        gap: 4px;
+      }
+      .catalog-summary-grid p {
+        margin: 0;
+      }
       .catalog-toolbar {
         display: grid;
         gap: 12px;
@@ -37,14 +82,12 @@
         font: inherit;
       }
       .catalog-meta,
-      .catalog-pills,
       .catalog-links {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
       }
-      .catalog-chip,
-      .catalog-pills span {
+      .catalog-chip {
         padding: 6px 10px;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -53,23 +96,56 @@
       }
       .catalog-grid {
         display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       }
       .catalog-card {
         display: grid;
-        gap: 12px;
+        gap: 14px;
+        align-content: start;
+        min-height: 0;
       }
       .catalog-card h3 {
         margin: 0;
+        font-size: 32px;
+        line-height: 1.04;
+        letter-spacing: -0.04em;
       }
-      .catalog-copy {
-        color: var(--lab-b-muted, #aeb9cc);
+      .catalog-subtitle {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.45;
+        color: #5b6ea8;
+      }
+      .catalog-body {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.58;
+        color: #7d88a3;
+      }
+      .catalog-meta-block {
+        display: grid;
+        gap: 8px;
+      }
+      .catalog-meta-row {
+        display: grid;
+        gap: 4px;
+      }
+      .catalog-meta-label {
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8fa0cf;
+      }
+      .catalog-meta-value {
         font-size: 14px;
-        line-height: 1.55;
+        line-height: 1.45;
+        color: #44588f;
       }
-      .catalog-copy strong {
-        color: #f4f7fb;
+      .catalog-links {
+        margin-top: auto;
+        padding-top: 8px;
       }
       .catalog-empty {
         padding: 18px;
@@ -82,9 +158,22 @@
         color: var(--lab-b-muted, #aeb9cc);
         font-size: 14px;
       }
+      .catalog-panel-tight {
+        padding-top: 22px;
+        padding-bottom: 22px;
+      }
       @media (max-width: 720px) {
+        .catalog-hero {
+          grid-template-columns: 1fr;
+        }
         .catalog-toolbar {
           grid-template-columns: 1fr;
+        }
+        .catalog-title {
+          max-width: none;
+        }
+        .catalog-lede {
+          max-width: none;
         }
       }
     </style>
@@ -105,53 +194,47 @@
       </header>
 
       <main class="lab-b-frame">
-        <section class="lab-b-product-hero">
-          <div class="lab-b-product-main">
-            <img class="lab-b-product-logo" src="../../assets/skillslogo.png" alt="ABVX Agent Skills logo" width="709" height="352" decoding="async" style="width:min(100%, 320px)" />
-            <p class="lab-b-eyebrow">ABVX tool</p>
-            <h1>ABVX Agent Skills Catalog</h1>
-            <p class="lab-b-product-lede">
-              The public navigation layer for the skillpack: search by task language,
-              category, composability, model sensitivity, and anti-patterns without
-              scanning the full repository README.
-            </p>
-
-            <div class="lab-b-product-cta">
-              <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills">GitHub</a>
-              <a class="lab-b-product-link" href="https://pypi.org/project/abvx-agent-skills/">PyPI</a>
-              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/blob/main/docs/loopops-guide.md">LoopOps guide</a>
-              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/releases/tag/v0.11.0">v0.11.0</a>
+        <section class="catalog-hero">
+          <article class="lab-b-product-panel">
+            <div class="catalog-logo-lockup">
+              <img class="catalog-mark" src="../../assets/skillslogo.png" alt="ABVX Agent Skills logo" width="709" height="352" decoding="async" />
+              <p class="lab-b-eyebrow">ABVX tool</p>
+              <h1 class="catalog-title">ABVX skill catalog</h1>
+              <p class="catalog-lede">Find the right skill fast, without scanning a fifty-skill README.</p>
+              <div class="lab-b-product-cta">
+                <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills">GitHub</a>
+                <a class="lab-b-product-link" href="https://pypi.org/project/abvx-agent-skills/">PyPI</a>
+                <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/blob/main/docs/loopops-guide.md">LoopOps</a>
+                <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/releases/tag/v0.11.0">v0.11.0</a>
+              </div>
             </div>
-          </div>
+          </article>
 
-          <aside class="lab-b-product-side">
-            <div class="lab-b-side-band" aria-hidden="true">
-              <div></div><div></div><div></div>
-            </div>
-            <div class="lab-b-side-inner">
+          <article class="lab-b-product-panel catalog-panel-tight">
+            <div class="catalog-summary">
               <div class="lab-b-side-metric">
                 <span class="lab-b-metric-label">Primary role</span>
                 <strong>Searchable skill inventory</strong>
               </div>
-              <div class="lab-b-side-points">
+              <div class="catalog-summary-grid">
                 <div>
                   <span class="lab-b-point-label">Source of truth</span>
-                  <p>Generated from the <code>abvx-agent-skills</code> main branch metadata, not manually maintained on Lab.</p>
+                  <p class="catalog-subtitle">Generated from <code>abvx-agent-skills</code> main. Lab is the published surface, not a manual fork.</p>
                 </div>
                 <div>
-                  <span class="lab-b-point-label">What it indexes</span>
-                  <p><code>SKILL.md</code>, <code>SKILL_CARD.md</code>, <code>agents/openai.yaml</code>, and README category lanes.</p>
+                  <span class="lab-b-point-label">What it keeps visible</span>
+                  <p class="catalog-subtitle">Category, short description, intended use, composability, and direct links to the skill source.</p>
                 </div>
                 <div>
-                  <span class="lab-b-point-label">Why this page exists</span>
-                  <p>The repo outgrew a flat README table. The catalog is the faster path to the right skill.</p>
+                  <span class="lab-b-point-label">Why this version exists</span>
+                  <p class="catalog-subtitle">The old page acted like a product pitch. This one is the working catalog.</p>
                 </div>
               </div>
             </div>
-          </aside>
+          </article>
         </section>
 
-        <section class="lab-b-product-panel">
+        <section class="lab-b-product-panel catalog-panel-tight">
           <p class="lab-b-eyebrow">Search</p>
           <div class="catalog-toolbar">
             <input id="query" type="search" placeholder="Search skills, intended use, anti-patterns, composability" />
@@ -217,8 +300,32 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
 
       let catalog = { skills: [], categories: {}, skill_count: 0 };
 
-      function safeText(value) {
-        return value && String(value).trim() ? String(value).trim() : "Not specified yet.";
+      function nonEmpty(value) {
+        return value && String(value).trim() ? String(value).trim() : "";
+      }
+
+      function truncate(value, maxLength = 170) {
+        if (!value || value.length <= maxLength) return value;
+        return `${value.slice(0, maxLength).trimEnd()}...`;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function renderMetaRow(label, value) {
+        const normalized = nonEmpty(value);
+        if (!normalized) return "";
+        return `
+          <div class="catalog-meta-row">
+            <div class="catalog-meta-label">${label}</div>
+            <div class="catalog-meta-value">${escapeHtml(truncate(normalized, 180))}</div>
+          </div>
+        `;
       }
 
       function skillHaystack(skill) {
@@ -262,15 +369,14 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
           article.className = "lab-b-product-panel catalog-card";
           article.innerHTML = `
             <p class="lab-b-eyebrow">${skill.category}</p>
-            <h3>${skill.display_name}</h3>
-            <div class="catalog-pills">
-              <span>${skill.name}</span>
+            <h3>${skill.name}</h3>
+            <p class="catalog-subtitle">${escapeHtml(skill.short_description || skill.description || "")}</p>
+            <p class="catalog-body">${escapeHtml(truncate(skill.intended_use || skill.description || skill.short_description || "", 240))}</p>
+            <div class="catalog-meta-block">
+              ${renderMetaRow("Composable with", (skill.composable_with || []).join("; "))}
+              ${renderMetaRow("Model sensitivity", skill.model_sensitivity)}
+              ${renderMetaRow("Anti-patterns", (skill.anti_patterns || []).join("; "))}
             </div>
-            <p class="lab-b-product-summary">${skill.short_description || skill.description}</p>
-            <div class="catalog-copy"><strong>Intended use:</strong> ${safeText(skill.intended_use)}</div>
-            <div class="catalog-copy"><strong>Model sensitivity:</strong> ${safeText(skill.model_sensitivity)}</div>
-            <div class="catalog-copy"><strong>Composable with:</strong> ${(skill.composable_with || []).length ? skill.composable_with.join("; ") : "Not specified yet."}</div>
-            <div class="catalog-copy"><strong>Anti-patterns:</strong> ${(skill.anti_patterns || []).length ? skill.anti_patterns.join("; ") : "Not specified yet."}</div>
             <div class="catalog-links">
               <a href="${skill.github_skill_url}">SKILL.md</a>
               <a href="${skill.github_card_url}">SKILL_CARD.md</a>

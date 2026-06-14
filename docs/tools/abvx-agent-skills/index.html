@@ -6,13 +6,13 @@
     <title>ABVX Agent Skills Catalog | ABVX Lab</title>
     <meta
       name="description"
-      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse skills by category, intended use, composability, model sensitivity, and anti-patterns."
+      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse the pack, find starter skills fast, and jump into contribution or skill requests."
     />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
     <meta property="og:title" content="ABVX Agent Skills Catalog | ABVX Lab" />
     <meta
       property="og:description"
-      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse skills by category, intended use, composability, model sensitivity, and anti-patterns."
+      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse the pack, find starter skills fast, and jump into contribution or skill requests."
     />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
     <meta property="og:type" content="website" />
@@ -127,6 +127,39 @@
       .catalog-results {
         display: grid;
         gap: 24px;
+      }
+      .catalog-conversion-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      }
+      .catalog-start-list,
+      .catalog-pack-list,
+      .catalog-cta-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .catalog-start-list li,
+      .catalog-pack-list li,
+      .catalog-cta-list li {
+        display: grid;
+        gap: 5px;
+        padding: 12px 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(135, 157, 225, 0.16);
+      }
+      .catalog-start-list strong,
+      .catalog-pack-list strong,
+      .catalog-cta-list strong {
+        color: #243b81;
+      }
+      .catalog-pack-grid {
+        display: grid;
+        gap: 14px;
       }
       .catalog-group {
         display: grid;
@@ -248,6 +281,63 @@
         background: rgba(240, 244, 255, 0.82);
         border: 1px solid rgba(120, 145, 214, 0.12);
       }
+      .catalog-card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .catalog-card-toggle {
+        appearance: none;
+        border: 1px solid rgba(120, 145, 214, 0.2);
+        background: rgba(240, 244, 255, 0.92);
+        color: #3650a2;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .catalog-card-details {
+        margin-top: 2px;
+      }
+      .catalog-card-details summary {
+        list-style: none;
+      }
+      .catalog-card-details summary::-webkit-details-marker {
+        display: none;
+      }
+      .catalog-card-details[open] .catalog-card-toggle {
+        background: linear-gradient(180deg, rgba(95, 121, 220, 0.16), rgba(95, 121, 220, 0.1));
+        border-color: rgba(95, 121, 220, 0.24);
+      }
+      .catalog-card-detail-panel {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(244, 247, 255, 0.9);
+        border: 1px solid rgba(120, 145, 214, 0.16);
+      }
+      .catalog-card-detail-panel p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #55678f;
+      }
+      .catalog-card-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .catalog-card-cta a {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(120, 145, 214, 0.14);
+      }
       .catalog-empty {
         padding: 18px;
         border-radius: 18px;
@@ -295,6 +385,9 @@
         .catalog-group-head {
           flex-direction: column;
           align-items: flex-start;
+        }
+        .catalog-conversion-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -344,7 +437,7 @@
                 </div>
                 <div>
                   <span class="lab-b-point-label">What it keeps visible</span>
-                  <p class="catalog-subtitle">Category, short description, intended use, composability, and direct links to the skill source.</p>
+                  <p class="catalog-subtitle">Category, short description, starter guidance, direct source links, and on-demand next actions.</p>
                 </div>
                 <div>
                   <span class="lab-b-point-label">Why this version exists</span>
@@ -368,6 +461,68 @@
             This page pulls the generated catalog from the repository and keeps the Lab URL stable:
             <code>/tools/abvx-agent-skills/</code>.
           </p>
+        </section>
+
+        <section class="catalog-conversion-grid">
+          <article class="lab-b-product-panel catalog-panel-tight">
+            <p class="lab-b-eyebrow">Top 5 to start with</p>
+            <ul class="catalog-start-list">
+              <li>
+                <strong><code>minimal-diff-builder</code></strong>
+                <span class="catalog-subtitle">Shortest correct implementation path for real coding work.</span>
+              </li>
+              <li>
+                <strong><code>diagnose</code></strong>
+                <span class="catalog-subtitle">Debug around one signal, one hypothesis ladder, and narrow verification.</span>
+              </li>
+              <li>
+                <strong><code>rtk-assisted-shell</code></strong>
+                <span class="catalog-subtitle">Best early win when shell output is burning your session budget.</span>
+              </li>
+              <li>
+                <strong><code>frontend-product-builder</code></strong>
+                <span class="catalog-subtitle">Product-aware frontend work instead of generic component churn.</span>
+              </li>
+              <li>
+                <strong><code>handoff</code></strong>
+                <span class="catalog-subtitle">Compact continuation briefs when work spans multiple sessions or operators.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="lab-b-product-panel catalog-panel-tight">
+            <p class="lab-b-eyebrow">Starter packs and next actions</p>
+            <div class="catalog-pack-grid">
+              <ul class="catalog-pack-list">
+                <li>
+                  <strong>Solo dev baseline</strong>
+                  <span class="catalog-subtitle"><code>minimal-diff-builder</code>, <code>diagnose</code>, <code>rtk-assisted-shell</code>, <code>token-efficient-execution</code></span>
+                </li>
+                <li>
+                  <strong>Frontend stack</strong>
+                  <span class="catalog-subtitle"><code>frontend-product-builder</code>, <code>design-critique-polish</code>, <code>browser-verification</code>, <code>designmd-brand-kit</code></span>
+                </li>
+                <li>
+                  <strong>Team standardization</strong>
+                  <span class="catalog-subtitle"><code>project-context-bootstrap</code>, <code>durable-context-maintenance</code>, <code>brief-first-execution</code>, <code>handoff</code></span>
+                </li>
+              </ul>
+              <ul class="catalog-cta-list">
+                <li>
+                  <strong>Request a missing skill</strong>
+                  <span class="catalog-subtitle"><a href="https://github.com/markoblogo/abvx-agent-skills/issues/new?template=skill-request.yml">Open Skill Request</a></span>
+                </li>
+                <li>
+                  <strong>Autopsy a weak one</strong>
+                  <span class="catalog-subtitle"><a href="https://github.com/markoblogo/abvx-agent-skills/issues/new?template=skill-autopsy.yml">Open Skill Autopsy</a></span>
+                </li>
+                <li>
+                  <strong>Contribute your own skill</strong>
+                  <span class="catalog-subtitle"><a href="https://github.com/markoblogo/abvx-agent-skills/blob/main/README.md#how-to-contribute-your-own-skills">Read contribution path</a></span>
+                </li>
+              </ul>
+            </div>
+          </article>
         </section>
 
         <section class="catalog-results" id="results"></section>
@@ -452,6 +607,20 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
         return categoryAccents[category] || "#6c83d9";
       }
 
+      function cardCtas(skill) {
+        const requestUrl = "https://github.com/markoblogo/abvx-agent-skills/issues/new?template=skill-request.yml";
+        const autopsyUrl = "https://github.com/markoblogo/abvx-agent-skills/issues/new?template=skill-autopsy.yml";
+        const contributeUrl = "https://github.com/markoblogo/abvx-agent-skills/blob/main/README.md#how-to-contribute-your-own-skills";
+        return `
+          <div class="catalog-card-cta">
+            <a href="${skill.github_skill_url}">Open SKILL.md</a>
+            <a href="${requestUrl}">Request adjacent skill</a>
+            <a href="${autopsyUrl}">Autopsy weak skill</a>
+            <a href="${contributeUrl}">Contribute</a>
+          </div>
+        `;
+      }
+
       function skillHaystack(skill) {
         return [
           skill.name,
@@ -523,6 +692,17 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
                 <a href="${skill.github_skill_url}">SKILL.md</a>
                 <a href="${skill.github_card_url}">SKILL_CARD.md</a>
               </div>
+              <details class="catalog-card-details">
+                <summary>
+                  <span class="catalog-card-actions">
+                    <span class="catalog-card-toggle">Details</span>
+                  </span>
+                </summary>
+                <div class="catalog-card-detail-panel">
+                  <p>${escapeHtml(truncate(skill.description || skill.intended_use || "Portable ABVX skill for repeated project work.", 180))}</p>
+                  ${cardCtas(skill)}
+                </div>
+              </details>
             `;
             grid.appendChild(article);
           }

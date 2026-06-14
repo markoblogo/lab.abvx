@@ -131,6 +131,12 @@
       .catalog-group {
         display: grid;
         gap: 14px;
+        padding: 18px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08)),
+          radial-gradient(circle at top left, color-mix(in srgb, var(--accent, #6c83d9) 12%, transparent), transparent 44%);
+        border: 1px solid rgba(134, 156, 221, 0.12);
       }
       .catalog-group-head {
         display: flex;
@@ -167,27 +173,48 @@
         overflow: hidden;
         border: 1px solid rgba(120, 145, 214, 0.14);
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 255, 0.84)),
+          radial-gradient(circle at top right, color-mix(in srgb, var(--accent, #6c83d9) 12%, transparent), transparent 32%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 255, 0.88)),
           linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 40%);
         box-shadow: 0 18px 32px rgba(142, 166, 226, 0.12);
         transition:
           transform 160ms ease,
           box-shadow 160ms ease,
-          border-color 160ms ease;
+          border-color 160ms ease,
+          background 160ms ease;
+        animation: cardIn 320ms ease both;
+        animation-delay: var(--delay, 0ms);
       }
       .catalog-card::before {
         content: "";
         position: absolute;
         inset: 0 auto auto 0;
         width: 100%;
-        height: 5px;
+        height: 6px;
         background: var(--accent, #6c83d9);
         opacity: 0.85;
+      }
+      .catalog-card::after {
+        content: "";
+        position: absolute;
+        right: -24px;
+        top: -24px;
+        width: 88px;
+        height: 88px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--accent, #6c83d9) 18%, transparent);
+        filter: blur(2px);
+        opacity: 0.9;
+        pointer-events: none;
       }
       .catalog-card:hover {
         transform: translateY(-4px);
         border-color: rgba(95, 123, 212, 0.28);
         box-shadow: 0 26px 42px rgba(112, 138, 214, 0.18);
+        background:
+          radial-gradient(circle at top right, color-mix(in srgb, var(--accent, #6c83d9) 18%, transparent), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(248, 250, 255, 0.92)),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 40%);
       }
       .catalog-card h3 {
         margin: 0;
@@ -208,29 +235,6 @@
         font-size: 15px;
         line-height: 1.56;
         color: #5f6f94;
-      }
-      .catalog-meta-block {
-        display: grid;
-        gap: 8px;
-        padding-top: 2px;
-      }
-      .catalog-meta-row {
-        display: grid;
-        gap: 4px;
-        padding-left: 12px;
-        border-left: 2px solid rgba(124, 147, 216, 0.18);
-      }
-      .catalog-meta-label {
-        font-size: 12px;
-        line-height: 1;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #8697c6;
-      }
-      .catalog-meta-value {
-        font-size: 14px;
-        line-height: 1.45;
-        color: #44588f;
       }
       .catalog-links {
         margin-top: auto;
@@ -261,6 +265,16 @@
       }
       .catalog-panel-tight .lab-b-eyebrow {
         margin-bottom: 10px;
+      }
+      @keyframes cardIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
       @media (max-width: 720px) {
         .catalog-shell {
@@ -421,10 +435,6 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
         "Uncategorized": "#94a3b8",
       };
 
-      function nonEmpty(value) {
-        return value && String(value).trim() ? String(value).trim() : "";
-      }
-
       function truncate(value, maxLength = 170) {
         if (!value || value.length <= maxLength) return value;
         return `${value.slice(0, maxLength).trimEnd()}...`;
@@ -436,17 +446,6 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
           .replaceAll("<", "&lt;")
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;");
-      }
-
-      function renderMetaRow(label, value) {
-        const normalized = nonEmpty(value);
-        if (!normalized) return "";
-        return `
-          <div class="catalog-meta-row">
-            <div class="catalog-meta-label">${label}</div>
-            <div class="catalog-meta-value">${escapeHtml(truncate(normalized, 180))}</div>
-          </div>
-        `;
       }
 
       function categoryAccent(category) {
@@ -498,6 +497,7 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
         for (const [category, categorySkills] of [...grouped.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
           const section = document.createElement("section");
           section.className = "catalog-group";
+          section.style.setProperty("--accent", categoryAccent(category));
 
           const header = document.createElement("div");
           header.className = "catalog-group-head";
@@ -510,19 +510,15 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
           const grid = document.createElement("div");
           grid.className = "catalog-grid";
 
-          for (const skill of categorySkills.sort((a, b) => a.name.localeCompare(b.name))) {
+          for (const [index, skill] of categorySkills.sort((a, b) => a.name.localeCompare(b.name)).entries()) {
             const article = document.createElement("article");
             article.className = "lab-b-product-panel catalog-card";
             article.style.setProperty("--accent", categoryAccent(category));
+            article.style.setProperty("--delay", `${Math.min(index * 24, 220)}ms`);
             article.innerHTML = `
               <p class="lab-b-eyebrow">${skill.name}</p>
               <h3>${escapeHtml(skill.short_description || skill.description || skill.name)}</h3>
               <p class="catalog-body">${escapeHtml(truncate(skill.intended_use || skill.description || skill.short_description || "", 210))}</p>
-              <div class="catalog-meta-block">
-                ${renderMetaRow("Composable with", (skill.composable_with || []).join("; "))}
-                ${renderMetaRow("Model sensitivity", skill.model_sensitivity)}
-                ${renderMetaRow("Anti-patterns", (skill.anti_patterns || []).join("; "))}
-              </div>
               <div class="catalog-links">
                 <a href="${skill.github_skill_url}">SKILL.md</a>
                 <a href="${skill.github_card_url}">SKILL_CARD.md</a>

@@ -3,17 +3,91 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ABVX Agent Skills | ABVX Lab</title>
-    <meta name="description" content="Portable, validation-gated agent skills for coding, audits, frontend work, repo onboarding, reflection loops, and reusable HTML artifact delivery." />
+    <title>ABVX Agent Skills Catalog | ABVX Lab</title>
+    <meta
+      name="description"
+      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse skills by category, intended use, composability, model sensitivity, and anti-patterns."
+    />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
-    <meta property="og:title" content="ABVX Agent Skills | ABVX Lab" />
-    <meta property="og:description" content="Portable, validation-gated agent skills for coding, audits, frontend work, repo onboarding, reflection loops, and reusable HTML artifact delivery." />
+    <meta property="og:title" content="ABVX Agent Skills Catalog | ABVX Lab" />
+    <meta
+      property="og:description"
+      content="Searchable ABVX Agent Skills catalog on ABVX Lab: browse skills by category, intended use, composability, model sensitivity, and anti-patterns."
+    />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/abvx-agent-skills/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/skillslogo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ABVX Agent Skills","url":"https://lab.abvx.xyz/tools/abvx-agent-skills/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Portable, validation-gated agent skills for coding, audits, frontend work, repo onboarding, reflection loops, and reusable HTML artifact delivery."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ABVX Agent Skills","url":"https://lab.abvx.xyz/tools/abvx-agent-skills/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Searchable catalog for portable, validation-gated ABVX agent skills."}</script>
+    <style>
+      .catalog-toolbar {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1.8fr 1fr;
+      }
+      .catalog-toolbar input,
+      .catalog-toolbar select {
+        width: 100%;
+        padding: 13px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(14, 18, 28, 0.72);
+        color: #f4f7fb;
+        font: inherit;
+      }
+      .catalog-meta,
+      .catalog-pills,
+      .catalog-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .catalog-chip,
+      .catalog-pills span {
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        font-size: 13px;
+      }
+      .catalog-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      }
+      .catalog-card {
+        display: grid;
+        gap: 12px;
+      }
+      .catalog-card h3 {
+        margin: 0;
+      }
+      .catalog-copy {
+        color: var(--lab-b-muted, #aeb9cc);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .catalog-copy strong {
+        color: #f4f7fb;
+      }
+      .catalog-empty {
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px dashed rgba(255, 255, 255, 0.18);
+        color: var(--lab-b-muted, #aeb9cc);
+      }
+      .lab-b-inline-note {
+        margin-top: 14px;
+        color: var(--lab-b-muted, #aeb9cc);
+        font-size: 14px;
+      }
+      @media (max-width: 720px) {
+        .catalog-toolbar {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -27,7 +101,7 @@
           <a href="../../index.html#tools">Tools</a>
           <a href="/about/">About</a>
         </nav>
-        <div class="lab-b-mode">agent capabilities</div>
+        <div class="lab-b-mode">skill catalog</div>
       </header>
 
       <main class="lab-b-frame">
@@ -35,15 +109,18 @@
           <div class="lab-b-product-main">
             <img class="lab-b-product-logo" src="../../assets/skillslogo.png" alt="ABVX Agent Skills logo" width="709" height="352" decoding="async" style="width:min(100%, 320px)" />
             <p class="lab-b-eyebrow">ABVX tool</p>
-            <h1>ABVX Agent Skills</h1>
-            <p class="lab-b-product-lede">Portable workflow skills for agent sessions: compact guidance, validation gates, reflection consumers, and reusable one-file deliverables.</p>
+            <h1>ABVX Agent Skills Catalog</h1>
+            <p class="lab-b-product-lede">
+              The public navigation layer for the skillpack: search by task language,
+              category, composability, model sensitivity, and anti-patterns without
+              scanning the full repository README.
+            </p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills">GitHub</a>
               <a class="lab-b-product-link" href="https://pypi.org/project/abvx-agent-skills/">PyPI</a>
-              <a class="lab-b-product-link" href="https://github.com/markoblogo/homebrew-tap">Homebrew tap</a>
-              <a class="lab-b-product-link" href="../abvx-skills-knowledge/index.html">Skills knowledge</a>
-              <a class="lab-b-product-link" href="../agentsgen/index.html">agentsgen</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/blob/main/docs/loopops-guide.md">LoopOps guide</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/releases/tag/v0.11.0">v0.11.0</a>
             </div>
           </div>
 
@@ -54,155 +131,69 @@
             <div class="lab-b-side-inner">
               <div class="lab-b-side-metric">
                 <span class="lab-b-metric-label">Primary role</span>
-                <strong>Reusable agent capabilities</strong>
+                <strong>Searchable skill inventory</strong>
               </div>
               <div class="lab-b-side-points">
                 <div>
-                  <span class="lab-b-point-label">Where it fits</span>
-                  <p><strong>ID</strong> carries human bootstrap, <strong>agentsgen</strong> emits repo surfaces, and this repo packages repeatable workflow behavior the agent can load on demand.</p>
+                  <span class="lab-b-point-label">Source of truth</span>
+                  <p>Generated from the <code>abvx-agent-skills</code> main branch metadata, not manually maintained on Lab.</p>
                 </div>
                 <div>
-                  <span class="lab-b-point-label">Best use case</span>
-                  <p>Sessions that need sharper behavior without inflating every repo-local <code>AGENTS.md</code> with static instruction bulk.</p>
+                  <span class="lab-b-point-label">What it indexes</span>
+                  <p><code>SKILL.md</code>, <code>SKILL_CARD.md</code>, <code>agents/openai.yaml</code>, and README category lanes.</p>
                 </div>
                 <div>
-                  <span class="lab-b-point-label">Install channels</span>
-                  <p>PyPI, TestPyPI, the ABVX Homebrew tap, or raw bundle install into <code>~/.codex/skills/</code>.</p>
-                </div>
-                <div>
-                  <span class="lab-b-point-label">Current extensions</span>
-                  <p>OKF-style catalog export for navigation and a reflection-consumer path fed by <code>agentsgen reflect ...</code>.</p>
+                  <span class="lab-b-point-label">Why this page exists</span>
+                  <p>The repo outgrew a flat README table. The catalog is the faster path to the right skill.</p>
                 </div>
               </div>
             </div>
           </aside>
         </section>
 
-        <section class="lab-b-product-grid">
-          <article class="lab-b-product-panel">
-            <p class="lab-b-eyebrow">What it ships</p>
-            <ul class="lab-b-bullets">
-              <li><code>SKILL.md</code> files with trigger-rich descriptions and concise procedural rules.</li>
-              <li><code>SKILL_CARD.md</code> files for intended use, attribution, risks, evaluation, and versioning.</li>
-              <li>A packaged CLI with <code>list</code>, <code>install</code>, <code>validate</code>, and <code>audit-security</code> commands.</li>
-              <li>SkillSpector-backed security audit policy with JSON reports, SARIF upload, baseline support, and publish preflight gating.</li>
-            </ul>
-          </article>
-
-          <article class="lab-b-product-panel">
-            <p class="lab-b-eyebrow">Capability lanes</p>
-            <ul class="lab-b-bullets compact">
-              <li>Discovery and execution: <code>project-context-bootstrap</code>, <code>graph-guided-code-reading</code>, <code>test-driven-execution</code>, <code>repo-debugging-ledger</code></li>
-              <li>Context and token discipline: <code>lean-context-layout</code>, <code>token-frugal-mode</code>, <code>token-efficient-execution</code>, <code>compaction-survival</code></li>
-              <li>Frontend and artifacts: <code>frontend-taste-layer</code>, <code>browser-verification</code>, <code>html-diagram-artifact</code>, <code>html-brief-artifact</code></li>
-              <li>Reflection and improvement: <code>session-retrospective</code>, <code>skill-effectiveness-audit</code>, <code>skillopt-evolve-skills</code>, <code>web-quality-audit</code></li>
-            </ul>
-            <p class="lab-b-quickstart-note">For the full navigable inventory, use the <a href="../abvx-skills-knowledge/index.html">skills knowledge page</a> and the OKF-style catalog export.</p>
-          </article>
+        <section class="lab-b-product-panel">
+          <p class="lab-b-eyebrow">Search</p>
+          <div class="catalog-toolbar">
+            <input id="query" type="search" placeholder="Search skills, intended use, anti-patterns, composability" />
+            <select id="category">
+              <option value="">All categories</option>
+            </select>
+          </div>
+          <div id="stats" class="catalog-meta" style="margin-top:16px"></div>
+          <p class="lab-b-inline-note">
+            This page pulls the generated catalog from the repository and keeps the Lab URL stable:
+            <code>/tools/abvx-agent-skills/</code>.
+          </p>
         </section>
 
-        <section class="lab-b-quickstart">
-          <div class="lab-b-section-head compact">
-            <p class="lab-b-eyebrow">Quickstart</p>
-            <h2>Install from PyPI</h2>
-          </div>
-          <div class="lab-b-code-shell">
-            <pre><code>python -m pip install abvx-agent-skills
+        <section class="catalog-grid" id="results"></section>
+
+        <section class="lab-b-product-grid">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Install</p>
+            <div class="lab-b-code-shell">
+              <pre><code>python -m pip install abvx-agent-skills
 abvx-skills list
 abvx-skills install dynamic-workflow-packets</code></pre>
-          </div>
-          <p class="lab-b-quickstart-note">As of June 13, 2026, version <code>0.10.0</code> is live on both PyPI and TestPyPI. Start a new agent session after installation so newly installed skill descriptions are discoverable.</p>
-        </section>
-
-        <section class="lab-b-quickstart">
-          <div class="lab-b-section-head compact">
-            <p class="lab-b-eyebrow">Homebrew</p>
-            <h2>Install from the ABVX tap</h2>
-          </div>
-          <div class="lab-b-code-shell">
-            <pre><code>brew tap markoblogo/tap
-brew install abvx-agent-skills</code></pre>
-          </div>
-          <p class="lab-b-quickstart-note">The maintained Homebrew channel is the ABVX tap. <code>homebrew-core</code> is not the install path for this project after the upstream notability rejection.</p>
-        </section>
-
-        <section class="lab-b-product-grid">
-          <article class="lab-b-product-panel">
-            <p class="lab-b-eyebrow">Package status</p>
-            <ul class="lab-b-bullets">
-              <li>Published package name: <code>abvx-agent-skills</code></li>
-              <li>Latest published release on PyPI: <code>v0.10.0</code></li>
-              <li>Repository head version: <code>v0.10.0</code></li>
-              <li>CLI entrypoint: <code>abvx-skills</code> with <code>list</code>, <code>install</code>, <code>validate</code>, and <code>audit-security</code></li>
-              <li>Release path: GitHub Actions trusted publishing to TestPyPI and PyPI, with SkillSpector security preflight before publish</li>
-              <li>Distribution status on June 13, 2026: PyPI and TestPyPI are live, the ABVX Homebrew tap is live, and the conda-forge recipe PR remains open</li>
-            </ul>
+            </div>
+            <p class="lab-b-quickstart-note">
+              Prefer this path when you want packaged install, validation, and CLI support.
+            </p>
           </article>
 
           <article class="lab-b-product-panel">
-            <p class="lab-b-eyebrow">Alternative install</p>
+            <p class="lab-b-eyebrow">Raw bundle</p>
             <div class="lab-b-code-shell">
               <pre><code>git clone https://github.com/markoblogo/abvx-agent-skills
 cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
             </div>
-            <p class="lab-b-quickstart-note">Use this path when you want the raw skill bundle without packaging or when testing local edits before a release.</p>
+            <p class="lab-b-quickstart-note">
+              Use the raw bundle when testing local edits or when packaging is not the point.
+            </p>
           </article>
         </section>
-
-        <section class="lab-b-quickstart">
-          <div class="lab-b-section-head compact">
-            <p class="lab-b-eyebrow">Experimental knowledge layer</p>
-            <h2>Portable catalog export</h2>
-          </div>
-          <p class="lab-b-quickstart-note">The repo also exports an OKF-style catalog under <code>catalog/okf/</code>. It is a derived navigation and integration surface, not a replacement for <code>SKILL.md</code> or <code>SKILL_CARD.md</code>. Open the <a href="../abvx-skills-knowledge/index.html">experimental knowledge page</a> for the current shape.</p>
-        </section>
-
-        <section class="lab-b-quickstart">
-          <div class="lab-b-section-head compact">
-            <p class="lab-b-eyebrow">Reflection pipeline</p>
-            <h2>From repo traces to reusable skill feedback</h2>
-          </div>
-          <div class="lab-b-product-grid">
-            <article class="lab-b-product-panel">
-              <p class="lab-b-eyebrow">1. Producer</p>
-              <p class="lab-b-product-summary"><a href="../agentsgen/index.html">agentsgen</a> derives reflection artifacts from local Codex sessions.</p>
-              <ul class="lab-b-bullets">
-                <li><code>agentsgen reflect sessions .</code></li>
-                <li><code>agentsgen reflect skills .</code></li>
-              </ul>
-            </article>
-            <article class="lab-b-product-panel">
-              <p class="lab-b-eyebrow">2. Artifacts</p>
-              <p class="lab-b-product-summary">The handoff surface lives under <code>docs/ai/</code>, not in raw transcript replay.</p>
-              <ul class="lab-b-bullets">
-                <li><code>agent-signals.json</code></li>
-                <li><code>session-patterns.md</code></li>
-                <li><code>skill-usage.json</code></li>
-                <li><code>skill-effectiveness.md</code></li>
-              </ul>
-            </article>
-            <article class="lab-b-product-panel">
-              <p class="lab-b-eyebrow">3. Consumers</p>
-              <p class="lab-b-product-summary">ABVX Agent Skills turns those artifacts into reusable retrospective and audit behavior.</p>
-              <ul class="lab-b-bullets">
-                <li><code>session-retrospective</code></li>
-                <li><code>skill-effectiveness-audit</code></li>
-              </ul>
-            </article>
-          </div>
-          <div class="lab-b-code-shell">
-            <pre><code>AGENTS.md_generator
-  -&gt; docs/ai/agent-signals.json
-  -&gt; docs/ai/session-patterns.md
-  -&gt; docs/ai/skill-usage.json
-  -&gt; docs/ai/skill-effectiveness.md
-  -&gt; abvx-agent-skills
-     -&gt; session-retrospective
-     -&gt; skill-effectiveness-audit</code></pre>
-          </div>
-          <p class="lab-b-quickstart-note">This is the current public reflection loop: <a href="../agentsgen/index.html">AGENTS.md_generator</a> produces repo-local reflection artifacts, and <a href="index.html">ABVX Agent Skills</a> consumes them as portable workflow skills. The point is to learn from observed session patterns instead of just adding more static instruction surface.</p>
-        </section>
       </main>
+
       <footer class="footer footer--lab">
         <div class="footer-inner">
           <div class="footer-left">
@@ -212,5 +203,129 @@ cp -R abvx-agent-skills/skills/* ~/.codex/skills/</code></pre>
         </div>
       </footer>
     </div>
+
+    <script>
+      const queryEl = document.getElementById("query");
+      const categoryEl = document.getElementById("category");
+      const statsEl = document.getElementById("stats");
+      const resultsEl = document.getElementById("results");
+
+      const catalogSources = [
+        "https://cdn.jsdelivr.net/gh/markoblogo/abvx-agent-skills@main/docs/catalog.json",
+        "https://raw.githubusercontent.com/markoblogo/abvx-agent-skills/main/docs/catalog.json",
+      ];
+
+      let catalog = { skills: [], categories: {}, skill_count: 0 };
+
+      function safeText(value) {
+        return value && String(value).trim() ? String(value).trim() : "Not specified yet.";
+      }
+
+      function skillHaystack(skill) {
+        return [
+          skill.name,
+          skill.display_name,
+          skill.category,
+          skill.description,
+          skill.short_description,
+          skill.intended_use,
+          skill.model_sensitivity,
+          ...(skill.composable_with || []),
+          ...(skill.anti_patterns || []),
+        ].join(" ").toLowerCase();
+      }
+
+      function renderStats(skills) {
+        statsEl.innerHTML = "";
+        const labels = [
+          `${skills.length} shown`,
+          `${catalog.skill_count} total`,
+          categoryEl.value || "All categories",
+        ];
+        for (const label of labels) {
+          const chip = document.createElement("div");
+          chip.className = "catalog-chip";
+          chip.textContent = label;
+          statsEl.appendChild(chip);
+        }
+      }
+
+      function renderSkills(skills) {
+        resultsEl.innerHTML = "";
+        if (!skills.length) {
+          resultsEl.innerHTML = `<article class="lab-b-product-panel catalog-empty">No skills matched this filter. Try broader task language or another category.</article>`;
+          return;
+        }
+
+        for (const skill of skills) {
+          const article = document.createElement("article");
+          article.className = "lab-b-product-panel catalog-card";
+          article.innerHTML = `
+            <p class="lab-b-eyebrow">${skill.category}</p>
+            <h3>${skill.display_name}</h3>
+            <div class="catalog-pills">
+              <span>${skill.name}</span>
+            </div>
+            <p class="lab-b-product-summary">${skill.short_description || skill.description}</p>
+            <div class="catalog-copy"><strong>Intended use:</strong> ${safeText(skill.intended_use)}</div>
+            <div class="catalog-copy"><strong>Model sensitivity:</strong> ${safeText(skill.model_sensitivity)}</div>
+            <div class="catalog-copy"><strong>Composable with:</strong> ${(skill.composable_with || []).length ? skill.composable_with.join("; ") : "Not specified yet."}</div>
+            <div class="catalog-copy"><strong>Anti-patterns:</strong> ${(skill.anti_patterns || []).length ? skill.anti_patterns.join("; ") : "Not specified yet."}</div>
+            <div class="catalog-links">
+              <a href="${skill.github_skill_url}">SKILL.md</a>
+              <a href="${skill.github_card_url}">SKILL_CARD.md</a>
+            </div>
+          `;
+          resultsEl.appendChild(article);
+        }
+      }
+
+      function applyFilters() {
+        const query = queryEl.value.trim().toLowerCase();
+        const category = categoryEl.value;
+        const skills = catalog.skills.filter((skill) => {
+          if (category && skill.category !== category) return false;
+          if (!query) return true;
+          return skillHaystack(skill).includes(query);
+        });
+        renderStats(skills);
+        renderSkills(skills);
+      }
+
+      async function loadCatalog() {
+        let lastError = null;
+        for (const url of catalogSources) {
+          try {
+            const response = await fetch(url, { cache: "no-store" });
+            if (!response.ok) {
+              throw new Error(`${response.status} ${response.statusText}`);
+            }
+            return await response.json();
+          } catch (error) {
+            lastError = error;
+          }
+        }
+        throw lastError || new Error("Unable to load catalog");
+      }
+
+      async function init() {
+        catalog = await loadCatalog();
+
+        for (const category of Object.keys(catalog.categories).sort()) {
+          const option = document.createElement("option");
+          option.value = category;
+          option.textContent = `${category} (${catalog.categories[category]})`;
+          categoryEl.appendChild(option);
+        }
+
+        queryEl.addEventListener("input", applyFilters);
+        categoryEl.addEventListener("change", applyFilters);
+        applyFilters();
+      }
+
+      init().catch((error) => {
+        resultsEl.innerHTML = `<article class="lab-b-product-panel catalog-empty">Failed to load catalog: ${error.message}</article>`;
+      });
+    </script>
   </body>
 </html>

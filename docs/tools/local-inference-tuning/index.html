@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Inference Tuning | ABVX Lab</title>
+    <meta name="description" content="Local Inference Tuning is an ABVX Agent Skills capability for selecting and tuning local LLM engines across MLX, llama.cpp, Ollama, and vLLM." />
+    <link rel="canonical" href="https://lab.abvx.xyz/tools/local-inference-tuning/" />
+    <meta property="og:title" content="Local Inference Tuning | ABVX Lab" />
+    <meta property="og:description" content="Audit hardware, choose an inference engine, tune batching/KV cache flags, set storage policy, smoke-bench, and expose a local OpenAI-compatible endpoint." />
+    <meta property="og:url" content="https://lab.abvx.xyz/tools/local-inference-tuning/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lab.abvx.xyz/assets/skillslogo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Local Inference Tuning","url":"https://lab.abvx.xyz/tools/local-inference-tuning/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Agent skill for selecting and tuning local LLM inference engines, cache policy, KV cache, batching, smoke benchmarks, and OpenAI-compatible endpoints."}</script>
+  </head>
+  <body>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="../../index.html">
+          <img src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#tools">Tools</a>
+          <a href="/about/">About</a>
+        </nav>
+        <div class="lab-b-mode">tool surface</div>
+      </header>
+
+      <main class="lab-b-frame">
+        <section class="lab-b-product-hero">
+          <div class="lab-b-product-main">
+            <p class="lab-b-eyebrow">ABVX Agent Skills capability</p>
+            <h1>Local Inference Tuning</h1>
+            <p class="lab-b-product-lede">Choose and tune the right local LLM engine for the machine in front of you, from Apple Silicon MLX to GGUF and CUDA serving stacks.</p>
+
+            <div class="lab-b-product-cta">
+              <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills/tree/main/skills/local-inference-tuning">GitHub skill</a>
+              <a class="lab-b-product-link" href="https://lab.abvx.xyz/tools/abvx-agent-skills/">Skills catalog</a>
+            </div>
+          </div>
+
+          <aside class="lab-b-product-side">
+            <div class="lab-b-side-band" aria-hidden="true">
+              <div></div><div></div><div></div>
+            </div>
+            <div class="lab-b-side-inner">
+              <div class="lab-b-side-metric">
+                <span class="lab-b-metric-label">Primary role</span>
+                <strong>Inference preflight</strong>
+              </div>
+              <div class="lab-b-side-points">
+                <div>
+                  <span class="lab-b-point-label">Where it fits</span>
+                  <p>Reusable workflow layer inside <a href="../abvx-agent-skills/index.html">ABVX Agent Skills</a>, surfaced here as a lab tool.</p>
+                </div>
+                <div>
+                  <span class="lab-b-point-label">Engines</span>
+                  <ul class="lab-b-bullets compact lab-b-side-tags">
+                    <li>MLX / Rapid-MLX</li>
+                    <li>llama.cpp</li>
+                    <li>Ollama</li>
+                    <li>vLLM</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="lab-b-product-grid">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">What it does</p>
+            <ul class="bullet-list">
+              <li>Audits hardware, accelerators, RAM/VRAM, model inventory, and approved storage volumes.</li>
+              <li>Selects the right engine for the hardware and model format instead of defaulting to one stack.</li>
+              <li>Builds a model-fit estimate before downloading or converting weights.</li>
+              <li>Defines cache location, batching, KV cache, concurrency, memory, and endpoint settings.</li>
+              <li>Verifies with smoke benchmarks and OpenAI-compatible API checks.</li>
+            </ul>
+          </article>
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Positioning</p>
+            <p class="lab-b-product-summary">A practical inference setup checklist for local/private agent fallback work.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">The source of truth lives in <code>markoblogo/abvx-agent-skills</code>; ABVX Lab only catalogs the capability and points to install paths.</p>
+          </article>
+        </section>
+
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Quickstart</p>
+            <h2>Install and use</h2>
+          </div>
+          <div class="lab-b-code-shell">
+            <pre><code>gh skill install markoblogo/abvx-agent-skills local-inference-tuning --agent codex --scope user
+
+Use local-inference-tuning. Audit this machine and design a local LLM inference setup with engine choice, model fit, cache policy, tuned flags, smoke benchmark, and OpenAI-compatible endpoint recipe.</code></pre>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer footer--lab">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <div class="footer-title">ABVX Lab</div>
+            <div class="footer-note">Small, readable, static pages for ABVX developer tools.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

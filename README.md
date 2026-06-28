@@ -60,6 +60,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
 - [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
 - [Goal Loop Designer](https://lab.abvx.xyz/tools/goal-loop-designer/) — ABVX Agent Skills capability for compiling raw `/goal` prompts into bounded loop harnesses with rubrics, judge prompts, budgets, YAML, JSON, and Mermaid.
+- [Local Inference Tuning](https://lab.abvx.xyz/tools/local-inference-tuning/) — ABVX Agent Skills capability for selecting and tuning local LLM engines, cache policy, KV cache, batching, smoke benchmarks, and OpenAI-compatible endpoints.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo/site mode, contract-backed drift checks, and machine-readable manifests.
@@ -158,6 +159,7 @@ They still ship together as one package: `agentsgen`.
 - [asciitheme](https://lab.abvx.xyz/tools/asciitheme/)
 - [abvx-agent-skills](https://lab.abvx.xyz/tools/abvx-agent-skills/)
 - [goal-loop-designer](https://lab.abvx.xyz/tools/goal-loop-designer/)
+- [local-inference-tuning](https://lab.abvx.xyz/tools/local-inference-tuning/)
 
 ### Visual system
 

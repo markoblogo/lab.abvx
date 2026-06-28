@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goal Loop Designer | ABVX Lab</title>
+    <meta name="description" content="Goal Loop Designer compiles raw agent goals into bounded loop harnesses with rubrics, judge prompts, budgets, YAML, JSON, and Mermaid." />
+    <link rel="canonical" href="https://lab.abvx.xyz/tools/goal-loop-designer/" />
+    <meta property="og:title" content="Goal Loop Designer | ABVX Lab" />
+    <meta property="og:description" content="Compile raw Codex, Claude Code, MiMo, or local-LLM goals into bounded loop harnesses before running them." />
+    <meta property="og:url" content="https://lab.abvx.xyz/tools/goal-loop-designer/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lab.abvx.xyz/assets/skillslogo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Goal Loop Designer","url":"https://lab.abvx.xyz/tools/goal-loop-designer/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Agent skill for compiling raw goals into bounded loop harnesses with verification rubrics and judge prompts."}</script>
+  </head>
+  <body>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="../../index.html">
+          <img src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#tools">Tools</a>
+          <a href="/about/">About</a>
+        </nav>
+        <div class="lab-b-mode">tool surface</div>
+      </header>
+
+      <main class="lab-b-frame">
+        <section class="lab-b-product-hero">
+          <div class="lab-b-product-main">
+            <p class="lab-b-eyebrow">ABVX Agent Skills capability</p>
+            <h1>Goal Loop Designer</h1>
+            <p class="lab-b-product-lede">Compile a raw agent goal into a bounded loop harness before launching a long Codex, Claude Code, MiMo, or local-LLM run.</p>
+
+            <div class="lab-b-product-cta">
+              <a class="lab-b-product-link primary" href="https://github.com/markoblogo/abvx-agent-skills/tree/main/skills/goal-loop-designer">GitHub skill</a>
+              <a class="lab-b-product-link" href="https://lab.abvx.xyz/tools/abvx-agent-skills/">Skills catalog</a>
+            </div>
+          </div>
+
+          <aside class="lab-b-product-side">
+            <div class="lab-b-side-band" aria-hidden="true">
+              <div></div><div></div><div></div>
+            </div>
+            <div class="lab-b-side-inner">
+              <div class="lab-b-side-metric">
+                <span class="lab-b-metric-label">Primary role</span>
+                <strong>Goal preflight</strong>
+              </div>
+              <div class="lab-b-side-points">
+                <div>
+                  <span class="lab-b-point-label">Where it fits</span>
+                  <p>Reusable workflow layer inside <a href="../abvx-agent-skills/index.html">ABVX Agent Skills</a>, surfaced here as a lab tool.</p>
+                </div>
+                <div>
+                  <span class="lab-b-point-label">Outputs</span>
+                  <ul class="lab-b-bullets compact lab-b-side-tags">
+                    <li>Improved goal</li>
+                    <li>Verification rubric</li>
+                    <li>Judge prompt</li>
+                    <li>Budget policy</li>
+                    <li>YAML / JSON / Mermaid</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="lab-b-product-grid">
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">What it does</p>
+            <ul class="bullet-list">
+              <li>Critiques a raw <code>/goal</code> before the agent starts spending tokens.</li>
+              <li>Turns vague done criteria into an explicit rubric with evidence requirements.</li>
+              <li>Defines worker, judge, retry, budget, memory, and stop rules.</li>
+              <li>Produces portable artifacts that can be reused across Codex, Claude Code, MiMo Auto, and local OpenAI-compatible models.</li>
+            </ul>
+          </article>
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">Positioning</p>
+            <p class="lab-b-product-summary">This is not a server-side agent runner. It is a preflight compiler for safer agent loops.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">The source of truth lives in <code>markoblogo/abvx-agent-skills</code>; ABVX Lab only catalogs the capability and points to install paths.</p>
+          </article>
+        </section>
+
+        <section class="lab-b-quickstart">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Quickstart</p>
+            <h2>Install and use</h2>
+          </div>
+          <div class="lab-b-code-shell">
+            <pre><code>gh skill install markoblogo/abvx-agent-skills goal-loop-designer --agent codex --scope user
+
+Use goal-loop-designer. Compile this raw goal into a bounded loop harness:
+
+"/goal Prepare this repo for a release, fix blockers, run verification, and stop only when it is ready."</code></pre>
+          </div>
+          <p class="lab-b-quickstart-note">For fallback review, use MiMo Auto as a separate judge when provider access is available. Use local Ollama only after a direct response smoke test passes.</p>
+        </section>
+      </main>
+
+      <footer class="footer footer--lab">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <div class="footer-title">ABVX Lab</div>
+            <div class="footer-note">Small, readable, static pages for ABVX developer tools.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>What Actually Learns In An AI Agent? | ABVX Lab</title>
+    <meta
+      name="description"
+      content="ABVX Lab explainer: model weights rarely change; practical agent learning usually lives in context, memory, skills, scripts, gates, and evals."
+    />
+    <link rel="canonical" href="https://lab.abvx.xyz/tools/agent-learning-layer/" />
+    <meta property="og:title" content="What Actually Learns In An AI Agent? | ABVX Lab" />
+    <meta
+      property="og:description"
+      content="A practical map of where agent learning should live: model layer, context/memory/skills layer, or harness/workflow layer."
+    />
+    <meta property="og:url" content="https://lab.abvx.xyz/tools/agent-learning-layer/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
+    <style>
+      .learning-shell { display: grid; gap: 18px; }
+      .learning-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+      .learning-title { max-width: 12ch; }
+      .learning-claim {
+        display: grid;
+        gap: 16px;
+        align-content: center;
+        padding: 34px;
+        border-radius: var(--labb-radius);
+        border: 1px solid var(--labb-line);
+        background:
+          radial-gradient(circle at top right, rgba(120, 159, 224, 0.22), transparent 42%),
+          linear-gradient(180deg, #fcfdff 0%, #edf3ff 100%);
+        box-shadow: var(--labb-shadow);
+      }
+      .learning-claim strong {
+        display: block;
+        max-width: 16ch;
+        font-size: clamp(34px, 4.2vw, 58px);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+      .learning-claim p {
+        max-width: 35ch;
+        margin: 0;
+        color: var(--labb-ink-soft);
+        font-size: 18px;
+        line-height: 1.45;
+      }
+      .learning-map {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .learning-layer {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        padding: 26px;
+        border-radius: 28px;
+        border: 1px solid rgba(48, 87, 175, 0.12);
+        background: linear-gradient(180deg, #ffffff 0%, #f0f5ff 100%);
+        box-shadow: 0 20px 44px rgba(61, 97, 184, 0.1);
+      }
+      .learning-layer::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 8px;
+        background: var(--layer-color, var(--labb-accent));
+      }
+      .learning-layer .num {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--layer-color, var(--labb-accent)) 15%, white);
+        color: var(--layer-color, var(--labb-accent));
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: 700;
+      }
+      .learning-layer h2 {
+        margin: 22px 0 12px;
+        font-size: clamp(28px, 3vw, 42px);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+      .learning-layer p { color: var(--labb-ink-soft); line-height: 1.45; }
+      .learning-layer ul { display: grid; gap: 9px; margin: 18px 0 0; padding-left: 18px; color: var(--labb-ink); }
+      .learning-decision {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 18px;
+      }
+      .learning-route {
+        display: grid;
+        gap: 10px;
+      }
+      .learning-route div {
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(48, 87, 175, 0.1);
+        background: rgba(255,255,255,0.72);
+      }
+      .learning-route strong { color: var(--labb-ink); }
+      .learning-code {
+        padding: 20px;
+        border-radius: 20px;
+        background: #17213c;
+        color: #f4f7ff;
+        overflow-x: auto;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      @media (max-width: 920px) {
+        .learning-hero,
+        .learning-map,
+        .learning-decision { grid-template-columns: 1fr; }
+        .learning-layer { min-height: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lab-b-shell">
+      <header class="lab-b-topbar">
+        <a class="lab-b-brand" href="../../index.html">
+          <img src="../../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+          <span>ABVX Lab</span>
+        </a>
+        <nav class="lab-b-nav" aria-label="Primary">
+          <a href="../../index.html">Home</a>
+          <a href="../abvx-agent-skills/index.html">Skills</a>
+          <a href="../../about/index.html">About</a>
+        </nav>
+        <div class="lab-b-mode">learning layer</div>
+      </header>
+
+      <main class="learning-shell">
+        <section class="learning-hero">
+          <div class="lab-b-product-main">
+            <p class="lab-b-eyebrow">ABVX explainer / agent learning</p>
+            <h1 class="learning-title">What actually learns in an AI agent?</h1>
+            <p class="lab-b-product-lede">Most practical agent improvement does not mean changing model weights. It means routing lessons into the cheapest auditable layer that will improve the next run.</p>
+            <div class="lab-b-cta-row">
+              <a class="lab-b-product-link primary" href="../abvx-agent-skills/index.html">Browse skills</a>
+              <a class="lab-b-product-link" href="https://github.com/markoblogo/abvx-agent-skills/tree/main/skills/agent-learning-layer-triage">Open skill</a>
+            </div>
+          </div>
+          <aside class="learning-claim">
+            <strong>ABVX builds the learning layer around the model.</strong>
+            <p>Skills, durable context, scripts, gates, and evals stay visible in diffs. That makes them cheaper to inspect, revert, publish, and improve than hidden prompt folklore.</p>
+          </aside>
+        </section>
+
+        <section class="learning-map" aria-label="Agent learning layers">
+          <article class="learning-layer" style="--layer-color:#7c5bd6">
+            <span class="num">01</span>
+            <h2>Model layer</h2>
+            <p>Weights, fine-tunes, adapters, and provider behavior. Powerful, but expensive, slow to audit, and rarely the right first move for workflow learning.</p>
+            <ul>
+              <li>Use for stable capability gaps.</li>
+              <li>Avoid for one-off preferences.</li>
+              <li>Needs stronger evaluation.</li>
+            </ul>
+          </article>
+          <article class="learning-layer" style="--layer-color:#2f73d8">
+            <span class="num">02</span>
+            <h2>Context, memory, skills</h2>
+            <p>The ABVX default: repo facts, operator conventions, checklists, SKILL.md workflows, and progressive-disclosure behavior.</p>
+            <ul>
+              <li>Cheap to read and revise.</li>
+              <li>Reviewable in pull requests.</li>
+              <li>Best for repeated agent work.</li>
+            </ul>
+          </article>
+          <article class="learning-layer" style="--layer-color:#d68022">
+            <span class="num">03</span>
+            <h2>Harness and workflow</h2>
+            <p>Scripts, gates, CI checks, fixtures, judge rubrics, and golden outputs. Use this when prose keeps failing or regressions must be caught.</p>
+            <ul>
+              <li>Turns judgment into checks where possible.</li>
+              <li>Bounds loops with budgets and stop rules.</li>
+              <li>Prevents repeated failures from returning.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="lab-b-ledger-section learning-decision">
+          <div>
+            <p class="lab-b-eyebrow">Routing rule</p>
+            <h2>Promote only when the next layer earns its cost.</h2>
+            <p class="lab-b-section-note">A useful lesson should not automatically become a global prompt or skill. Sometimes it is just a memory note. Sometimes it should become a script. Sometimes it should become an eval.</p>
+          </div>
+          <div class="learning-route">
+            <div><strong>Prompt/session:</strong> one-off correction, no durable value.</div>
+            <div><strong>Memory or durable docs:</strong> stable facts, preferences, repo setup, verification paths.</div>
+            <div><strong>SKILL.md or checklist:</strong> reusable behavior with trigger discipline and anti-patterns.</div>
+            <div><strong>Script/tool or eval:</strong> deterministic repeated work or failures that must not regress.</div>
+          </div>
+        </section>
+
+        <section class="lab-b-ledger-section">
+          <div class="lab-b-section-head compact">
+            <p class="lab-b-eyebrow">Copyable decision record</p>
+            <h2>Use this after an agent run teaches you something.</h2>
+          </div>
+          <pre class="learning-code">Learning candidate: &lt;one sentence&gt;
+Evidence: &lt;trace, PR, review, failure, success pattern&gt;
+Chosen layer: prompt | memory | durable-doc | checklist | skill | script | eval | reject
+Why this layer: &lt;short rationale&gt;
+Artifact to update: &lt;path or destination&gt;
+Verification: &lt;how we know the learning helps&gt;
+Rejected higher layers: &lt;why not skill/script/eval/etc.&gt;
+Next action: &lt;one concrete edit or no-op&gt;</pre>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -17,6 +17,7 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 - [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, and checks.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
+- [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 
 The live site uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, `LWP` is the lightweight desktop execution protocol, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
 
@@ -59,6 +60,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
 - [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
+- [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) — Explainer for routing agent learning into model, context/memory/skills, or harness/workflow layers without pretending every improvement trains the model.
 - [Goal Loop Designer](https://lab.abvx.xyz/tools/goal-loop-designer/) — ABVX Agent Skills capability for compiling raw `/goal` prompts into bounded loop harnesses with rubrics, judge prompts, budgets, YAML, JSON, and Mermaid.
 - [Local Inference Tuning](https://lab.abvx.xyz/tools/local-inference-tuning/) — ABVX Agent Skills capability for selecting and tuning local LLM engines, cache policy, KV cache, batching, smoke benchmarks, and OpenAI-compatible endpoints.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
@@ -158,6 +160,7 @@ They still ship together as one package: `agentsgen`.
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)
 - [asciitheme](https://lab.abvx.xyz/tools/asciitheme/)
 - [abvx-agent-skills](https://lab.abvx.xyz/tools/abvx-agent-skills/)
+- [agent-learning-layer](https://lab.abvx.xyz/tools/agent-learning-layer/)
 - [goal-loop-designer](https://lab.abvx.xyz/tools/goal-loop-designer/)
 - [local-inference-tuning](https://lab.abvx.xyz/tools/local-inference-tuning/)
 
@@ -198,5 +201,3 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 - ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills
 - ABVX Agent Skills on PyPI: https://pypi.org/project/abvx-agent-skills/
 - ABVX Homebrew tap: https://github.com/markoblogo/homebrew-tap
-- sitelen-layer-plugin: https://github.com/markoblogo/sitelen-layer-plugin
-- decision-map: https://github.com/markoblogo/decision-map

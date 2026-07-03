@@ -58,7 +58,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Repo docs & agent context
 
-- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents, now with versioned CLI/MCP contracts and opt-in LLM enhancement.
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Agent contract layer for AI-ready repos, now with readiness reports, safe fixes, fleet scans, versioned CLI/MCP contracts, and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
 - [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, durable context maintenance, loop engineering, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
@@ -73,7 +73,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Validation & CI
 
-- [agentsgen check](https://lab.abvx.xyz/tools/agentsgen-check/) — Validate repo readiness and drift.
+- [agentsgen check](https://lab.abvx.xyz/tools/agentsgen-check/) — Validate repo readiness, drift, and readiness-report remediation.
 - [agentsgen detect](https://lab.abvx.xyz/tools/agentsgen-detect/) — Heuristic repo scan with stable JSON output.
 - [agentsgen status](https://lab.abvx.xyz/tools/agentsgen-status/) — Instant repo overview of markers, managed files, and fallbacks.
 

@@ -1,0 +1,24 @@
+{
+  "name": "ABVX Lab",
+  "domain": "lab.abvx.xyz",
+  "description": "Public catalog and control-plane snapshots for the ABVX agent tooling stack.",
+  "url": "https://lab.abvx.xyz/",
+  "repository": "https://github.com/markoblogo/lab.abvx",
+  "llmsTxt": "https://lab.abvx.xyz/llms.txt",
+  "integrations": "https://lab.abvx.xyz/.well-known/integrations.json",
+  "relatedProducts": [
+    {
+      "name": "agentsgen",
+      "url": "https://agentsmd.abvx.xyz/",
+      "integrations": "https://agentsmd.abvx.xyz/.well-known/integrations.json"
+    },
+    {
+      "name": "SET",
+      "url": "https://lab.abvx.xyz/tools/set/"
+    },
+    {
+      "name": "ABVX Agent Skills",
+      "url": "https://lab.abvx.xyz/tools/abvx-agent-skills/"
+    }
+  ]
+}

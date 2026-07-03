@@ -4,6 +4,8 @@ A static hub for the ABVX stack: the repo and workflow layer around AI-assisted 
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
+Agent discovery: [lab.abvx.xyz/.well-known/integrations.json](https://lab.abvx.xyz/.well-known/integrations.json)
+
 About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 ## Who this is for
@@ -15,7 +17,7 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 ## Start here
 
 - [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date.
-- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, and checks.
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 
@@ -81,6 +83,12 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - `agentsgen analyze` — Shipped CLI surface for AI-visibility scoring of a public URL.
 - `agentsgen meta` — Shipped CLI surface for SEO + AI metadata generation.
 
+### Agent discovery
+
+- Lab publishes hub-level discovery at `https://lab.abvx.xyz/llms.txt`, `https://lab.abvx.xyz/.well-known/integrations.json`, `https://lab.abvx.xyz/.well-known/agent-card.json`, and `https://lab.abvx.xyz/.well-known/agent-skills/index.json`.
+- Product-level discovery for agentsgen lives on `agentsmd.abvx.xyz`: `https://agentsmd.abvx.xyz/.well-known/integrations.json`.
+- Lab should point to product-owned discovery files instead of duplicating runtime claims. For example, agentsgen's public declaration states that `agentsgen mcp` is local stdio, not a hosted remote MCP endpoint.
+
 ### Decision & strategy protocols
 
 - [DecisionMap](https://lab.abvx.xyz/tools/decisionmap/) — Protocol + prompt toolkit for turning complex business, product, market, and marketing decisions into strategy maps, validated JSON outputs, and cascade-log update loops.
@@ -131,6 +139,11 @@ They still ship together as one package: `agentsgen`.
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
+- Agent discovery basics:
+  - `docs/llms.txt`
+  - `docs/.well-known/integrations.json`
+  - `docs/.well-known/agent-card.json`
+  - `docs/.well-known/agent-skills/index.json`
 - Theme assets: `docs/assets/asciitheme.css`, `docs/assets/ascii-theme.js`
 
 ### Snapshot behavior

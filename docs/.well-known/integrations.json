@@ -1,0 +1,103 @@
+{
+  "version": 3,
+  "summary": "ABVX Lab is the public static catalog for ABVX agent tooling. Product-specific runtime surfaces are linked from Lab and declared on their own product domains where available.",
+  "surfaces": [
+    {
+      "slug": "lab-catalog",
+      "name": "ABVX Lab catalog",
+      "type": "http",
+      "docs": "https://lab.abvx.xyz/",
+      "url": "https://lab.abvx.xyz/",
+      "basis": {
+        "via": "declared",
+        "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+      },
+      "auth": {
+        "status": "none",
+        "basis": {
+          "via": "declared",
+          "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+        }
+      }
+    },
+    {
+      "slug": "agentsgen-product",
+      "name": "agentsgen product surface",
+      "type": "http",
+      "docs": "https://lab.abvx.xyz/tools/agentsgen/",
+      "url": "https://agentsmd.abvx.xyz/",
+      "basis": {
+        "via": "declared",
+        "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+      },
+      "auth": {
+        "status": "none",
+        "basis": {
+          "via": "declared",
+          "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+        }
+      },
+      "notes": "Canonical machine-readable product discovery lives at https://agentsmd.abvx.xyz/.well-known/integrations.json."
+    },
+    {
+      "slug": "agentsgen-cli",
+      "name": "agentsgen CLI",
+      "type": "cli",
+      "docs": "https://lab.abvx.xyz/tools/agentsgen/",
+      "command": "agentsgen",
+      "packages": [
+        {
+          "registryType": "brew",
+          "identifier": "markoblogo/tap/agentsgen"
+        },
+        {
+          "registryType": "pypi",
+          "identifier": "agentsgen"
+        },
+        {
+          "registryType": "other",
+          "identifier": "pipx install git+https://github.com/markoblogo/AGENTS.md_generator.git"
+        }
+      ],
+      "basis": {
+        "via": "declared",
+        "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+      },
+      "auth": {
+        "status": "none",
+        "basis": {
+          "via": "declared",
+          "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+        }
+      }
+    },
+    {
+      "slug": "abvx-agent-skills-cli",
+      "name": "ABVX Agent Skills CLI",
+      "type": "cli",
+      "docs": "https://lab.abvx.xyz/tools/abvx-agent-skills/",
+      "command": "abvx-skills",
+      "packages": [
+        {
+          "registryType": "pypi",
+          "identifier": "abvx-agent-skills"
+        },
+        {
+          "registryType": "brew",
+          "identifier": "markoblogo/tap/abvx-agent-skills"
+        }
+      ],
+      "basis": {
+        "via": "declared",
+        "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+      },
+      "auth": {
+        "status": "none",
+        "basis": {
+          "via": "declared",
+          "source": "https://lab.abvx.xyz/.well-known/integrations.json"
+        }
+      }
+    }
+  ]
+}

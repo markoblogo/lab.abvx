@@ -41,6 +41,7 @@
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
               <a class="lab-b-product-link" href="https://github.com/markoblogo/AGENTS.md_generator#readme">Docs</a>
               <a class="lab-b-product-link" href="https://agentsmd.abvx.xyz/">Live</a>
+              <a class="lab-b-product-link" href="https://agentsmd.abvx.xyz/.well-known/integrations.json">Discovery JSON</a>
             </div>
           </div>
 
@@ -72,6 +73,10 @@
                     <li>MCP</li>
                   </ul>
                 </div>
+                <div>
+                  <span class="lab-b-point-label">Agent discovery</span>
+                  <p>Canonical machine-readable product surface: <a href="https://agentsmd.abvx.xyz/.well-known/integrations.json">agentsmd.abvx.xyz/.well-known/integrations.json</a>.</p>
+                </div>
               </div>
             </div>
           </aside>
@@ -83,9 +88,9 @@
             <ul class="bullet-list"><li><code>AGENTS.md</code> and repo docs with safe marker updates.</li><li><code>llms.txt</code> and machine-readable repo surfaces under <code>docs/ai/</code>.</li><li>Checks, snippets, and versioned contracts for CLI and MCP consumers.</li><li>Reflection artifacts that can later feed consumer-side skills.</li></ul>
           </article>
           <article class="lab-b-product-panel">
-            <p class="lab-b-eyebrow">Usage lane</p>
-            <p class="lab-b-product-summary">Initialize once, refresh as the repo changes, then emit reflection artifacts when you want to learn from sessions.</p>
-            <p class="lab-b-product-summary lab-b-product-summary--muted">The tool stays useful even without hosted AI features because the local repo-doc path remains the baseline behavior.</p>
+            <p class="lab-b-eyebrow">Agent discovery</p>
+            <p class="lab-b-product-summary">The product publishes a small discovery layer for agents: <code>/llms.txt</code>, <code>/.well-known/integrations.json</code>, and <code>/.well-known/agent-card.json</code>.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">The local MCP server remains stdio-only via <code>agentsgen mcp</code>, so the public declaration points agents to the CLI instead of pretending a remote MCP endpoint exists.</p>
           </article>
         </section>
 

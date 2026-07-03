@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "domain": "lab.abvx.xyz",
+  "skills": [
+    {
+      "name": "agentsgen",
+      "description": "Generate and validate AGENTS.md, RUNBOOK.md, llms.txt, and docs/ai bundles for repos.",
+      "url": "https://lab.abvx.xyz/tools/agentsgen/",
+      "repository": "https://github.com/markoblogo/AGENTS.md_generator"
+    },
+    {
+      "name": "abvx-agent-skills",
+      "description": "Install portable SKILL.md workflows for coding, research, frontend, audits, debugging, handoffs, and verification.",
+      "url": "https://lab.abvx.xyz/tools/abvx-agent-skills/",
+      "repository": "https://github.com/markoblogo/abvx-agent-skills"
+    },
+    {
+      "name": "goal-loop-designer",
+      "description": "Compile raw goal prompts into bounded loop harnesses with rubrics, budgets, YAML, JSON, and Mermaid.",
+      "url": "https://lab.abvx.xyz/tools/goal-loop-designer/"
+    },
+    {
+      "name": "local-inference-tuning",
+      "description": "Select and tune local LLM engines, cache policy, batching, smoke benchmarks, and OpenAI-compatible endpoints.",
+      "url": "https://lab.abvx.xyz/tools/local-inference-tuning/"
+    }
+  ]
+}

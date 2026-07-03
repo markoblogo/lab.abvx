@@ -1,0 +1,32 @@
+Project: ABVX Lab
+Canonical URL: https://lab.abvx.xyz/
+Repository: https://github.com/markoblogo/lab.abvx
+
+Purpose:
+ABVX Lab is the public hub for the ABVX repo and workflow layer around
+AI-assisted coding. It presents the core stack: SET, agentsgen, ID, repomap,
+LWP, and ABVX Agent Skills.
+
+Primary surfaces:
+- Home: https://lab.abvx.xyz/
+- agentsgen: https://lab.abvx.xyz/tools/agentsgen/
+- SET: https://lab.abvx.xyz/tools/set/
+- ID: https://lab.abvx.xyz/tools/id/
+- ABVX Agent Skills: https://lab.abvx.xyz/tools/abvx-agent-skills/
+- Repo cards: https://lab.abvx.xyz/repos/
+- Planning queue: https://lab.abvx.xyz/planning/
+- Proof queue: https://lab.abvx.xyz/proof/
+- Integration declaration: https://lab.abvx.xyz/.well-known/integrations.json
+- Agent card: https://lab.abvx.xyz/.well-known/agent-card.json
+
+Canonical product discovery:
+- agentsgen product site: https://agentsmd.abvx.xyz/
+- agentsgen integrations: https://agentsmd.abvx.xyz/.well-known/integrations.json
+- agentsgen agent card: https://agentsmd.abvx.xyz/.well-known/agent-card.json
+
+Local run:
+- python3 -m http.server 8000 --directory docs
+
+Notes:
+ABVX Lab is a static GitHub Pages catalog. Product-specific runtime or CLI
+instructions live on the product pages and their own discovery files.

@@ -255,7 +255,7 @@
           <div class="lab-b-section-head">
             <p class="lab-b-eyebrow">Hub flow</p>
             <h2>How the AI coding tools stack fits together</h2>
-            <p class="lab-b-section-note">ABVX does not choose between MCP, Skills, and CLI. It separates the workflow into access, execution, and discipline so agents can connect, act, and prove work without bloating every prompt.</p>
+            <p class="lab-b-section-note">ABVX does not choose between MCP, CLI, Skills, and harnesses. It separates the workflow into access, execution, discipline, and runtime gates so agents can connect, act, prove work, and stay inside explicit safety boundaries.</p>
           </div>
           <div class="lab-b-flow-grid">
             <article class="lab-b-product-panel">
@@ -270,13 +270,18 @@
               <p class="lab-b-eyebrow">3. Discipline</p>
               <p class="lab-b-product-summary"><code>AGENTS.md</code> and <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> define when to use MCP, when to use CLI, and which proof gates are required.</p>
             </article>
+            <article class="lab-b-product-panel">
+              <p class="lab-b-eyebrow">4. Harness gates</p>
+              <p class="lab-b-product-summary">Agent runtimes enforce loop budgets, tool registries, permissions, sandboxing, observability, scheduling, and evals.</p>
+            </article>
           </div>
           <div class="lab-b-code-shell">
             <pre><code>access:     MCP / integrations
 execution:  agentsgen / SET / CLI / CI
-discipline: AGENTS.md / ABVX Agent Skills / proof gates</code></pre>
+discipline: AGENTS.md / ABVX Agent Skills / proof gates
+harness:    loops / permissions / sandbox / evals</code></pre>
           </div>
-          <p class="lab-b-quickstart-note"><a href="tools/id/index.html">ID</a> still supplies human context, while <a href="tools/agentsgen/index.html">agentsgen</a> creates the repo contract and <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> turn repeated operating rules into portable capability.</p>
+          <p class="lab-b-quickstart-note"><a href="tools/id/index.html">ID</a> still supplies human context, while <a href="tools/agentsgen/index.html">agentsgen</a> creates the repo contract, <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> turn repeated operating rules into portable capability, and the harness enforces runtime boundaries.</p>
         </section>
 
         <section class="lab-b-ledger-section">

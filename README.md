@@ -2,6 +2,8 @@
 
 A static hub for the ABVX stack: the repo and workflow layer around AI-assisted coding. It helps turn a GitHub repo into an AI-ready workspace with repo docs, agent surfaces, repo maps, workflows, and checks. ABVX is not another in-editor autocomplete tool; it is the grounding layer around Copilot, Cursor, Continue, and API-driven agents.
 
+ABVX treats MCP, CLI, and Skills as separate layers of one agent workflow: MCP provides access to external systems, CLI handles local and heavy execution, and Skills/AGENTS.md encode project discipline, gates, and reusable operating rules.
+
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 Agent discovery: [lab.abvx.xyz/.well-known/integrations.json](https://lab.abvx.xyz/.well-known/integrations.json)
@@ -18,6 +20,7 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 - [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP, when to use CLI, and which proof gates are required.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 
@@ -88,6 +91,12 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - Lab publishes hub-level discovery at `https://lab.abvx.xyz/llms.txt`, `https://lab.abvx.xyz/.well-known/integrations.json`, `https://lab.abvx.xyz/.well-known/agent-card.json`, and `https://lab.abvx.xyz/.well-known/agent-skills/index.json`.
 - Product-level discovery for agentsgen lives on `agentsmd.abvx.xyz`: `https://agentsmd.abvx.xyz/.well-known/integrations.json`.
 - Lab should point to product-owned discovery files instead of duplicating runtime claims. For example, agentsgen's public declaration states that `agentsgen mcp` is local stdio, not a hosted remote MCP endpoint.
+
+### Agent workflow layers
+
+- **Access:** MCP and integration discovery connect agents to external systems without copying service-specific auth rules into every repo.
+- **Execution:** CLI surfaces such as `agentsgen`, `SET`, GitHub Actions, and local scripts run deterministic, reviewable work.
+- **Discipline:** `AGENTS.md` plus ABVX Agent Skills define when access and execution are allowed, which checks are mandatory, and how repeated workflows become reusable gates.
 
 ### Decision & strategy protocols
 

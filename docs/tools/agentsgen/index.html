@@ -61,7 +61,7 @@
                 </div>
                 <div>
                   <span class="lab-b-point-label">Where it fits</span>
-                  <p>It sits between raw repo structure and downstream tools like <a href="../abvx-agent-skills/index.html">ABVX Agent Skills</a> or <a href="../set/index.html">SET</a>.</p>
+                  <p>It is the CLI and repo-contract layer between raw project files, MCP access, downstream skills, and <a href="../set/index.html">SET</a> orchestration.</p>
                 </div>
                 <div>
                   <span class="lab-b-point-label">Tags</span>
@@ -93,6 +93,11 @@
             <p class="lab-b-eyebrow">Agent discovery</p>
             <p class="lab-b-product-summary">The product publishes a small discovery layer for agents: <code>/llms.txt</code>, <code>/.well-known/integrations.json</code>, and <code>/.well-known/agent-card.json</code>.</p>
             <p class="lab-b-product-summary lab-b-product-summary--muted">The local MCP server remains stdio-only via <code>agentsgen mcp</code>, so the public declaration points agents to the CLI instead of pretending a remote MCP endpoint exists.</p>
+          </article>
+          <article class="lab-b-product-panel">
+            <p class="lab-b-eyebrow">MCP, CLI, Skills</p>
+            <p class="lab-b-product-summary"><code>AGENTS.md</code> does not replace MCP or CLI. It binds them to repo rules: MCP for external access, CLI for deterministic execution, and skills for reusable gates.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">Use <code>agentsgen</code> when the missing layer is the repo contract that tells agents which tools are allowed and which checks prove the result.</p>
           </article>
         </section>
 

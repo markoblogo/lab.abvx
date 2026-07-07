@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>agentsgen | ABVX Lab</title>
-    <meta name="description" content="Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, and checks." />
+    <meta name="description" content="Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, checks, and optional Rabbithole seeds." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/agentsgen/" />
     <meta property="og:title" content="agentsgen | ABVX Lab" />
-    <meta property="og:description" content="Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, and checks." />
+    <meta property="og:description" content="Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, checks, and optional Rabbithole seeds." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/agentsgen/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260613a" />
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "agentsgen", "url": "https://lab.abvx.xyz/tools/agentsgen/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Cross-platform", "description": "Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, and checks."}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "agentsgen", "url": "https://lab.abvx.xyz/tools/agentsgen/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Cross-platform", "description": "Use agentsgen when you want a repo to become AI-ready with AGENTS.md, readiness reports, safe fixes, fleet scans, llms.txt, docs/ai, checks, and optional Rabbithole seeds."}</script>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -35,7 +35,7 @@
           <div class="lab-b-product-main">
             <p class="lab-b-eyebrow">ABVX tool</p>
             <h1>agentsgen</h1>
-            <p class="lab-b-product-lede">Agent contract layer for turning repos into AI-readable, checkable surfaces with readiness reports, safe fixes, and fleet scans.</p>
+            <p class="lab-b-product-lede">Agent contract layer for turning repos into AI-readable, checkable surfaces with readiness reports, safe fixes, fleet scans, and optional local Rabbithole seeds.</p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
@@ -87,7 +87,7 @@
         <section class="lab-b-product-grid">
           <article class="lab-b-product-panel">
             <p class="lab-b-eyebrow">Core outputs</p>
-            <ul class="bullet-list"><li><code>AGENTS.md</code> and repo docs with safe marker updates.</li><li><code>check --report</code> readiness scoring and conservative <code>fix --all</code> remediation.</li><li><code>fleet scan</code> reports for read-only team rollout across many repositories.</li><li><code>llms.txt</code>, <code>docs/ai/</code>, snippets, and versioned contracts for CLI/MCP consumers.</li></ul>
+            <ul class="bullet-list"><li><code>AGENTS.md</code> and repo docs with safe marker updates.</li><li><code>check --report</code> readiness scoring and conservative <code>fix --all</code> remediation.</li><li><code>fleet scan</code> reports for read-only team rollout across many repositories.</li><li><code>llms.txt</code>, <code>docs/ai/</code>, snippets, and versioned contracts for CLI/MCP consumers.</li><li><code>rabbithole-seed</code> creates <code>docs/ai/rabbithole.seed.md</code> for local human-in-the-loop doc exploration.</li></ul>
           </article>
           <article class="lab-b-product-panel">
             <p class="lab-b-eyebrow">Agent discovery</p>
@@ -110,9 +110,10 @@
             <pre><code>agentsgen init . --defaults --autodetect
 agentsgen check . --all --report
 agentsgen fix . --all
+agentsgen rabbithole-seed .
 agentsgen fleet scan ~/code --max-depth 2</code></pre>
           </div>
-          <p class="lab-b-quickstart-note">Use <code>init</code> to establish the repo surface, <code>check --report</code> to score readiness, <code>fix --all</code> to apply safe remediation, and <code>fleet scan</code> for team rollout planning.</p>
+          <p class="lab-b-quickstart-note">Use <code>init</code> to establish the repo surface, <code>check --report</code> to score readiness, <code>fix --all</code> to apply safe remediation, <code>rabbithole-seed</code> for optional local exploration, and <code>fleet scan</code> for team rollout planning.</p>
         </section>
 
         <section class="lab-b-quickstart">

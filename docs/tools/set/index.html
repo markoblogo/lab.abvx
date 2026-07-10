@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SET | ABVX Lab</title>
-    <meta name="description" content="SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, recommended review lenses, and optional local Rabbithole review seeds." />
+    <meta name="description" content="SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, proposal lifecycle contracts, recommended review lenses, and optional local Rabbithole review seeds." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:title" content="SET | ABVX Lab" />
-    <meta property="og:description" content="SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, recommended review lenses, and optional local Rabbithole review seeds." />
+    <meta property="og:description" content="SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, proposal lifecycle contracts, recommended review lenses, and optional local Rabbithole review seeds." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260606a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, recommended review lenses, and optional local Rabbithole review seeds."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"SET is the repo control-plane for AI-ready surfaces, reviewable planning, orchestrator-ready handoff bundles, proposal lifecycle contracts, recommended review lenses, and optional local Rabbithole review seeds."}</script>
   </head>
   <body>
     <div class="lab-b-shell">
@@ -35,7 +35,7 @@
           <div class="lab-b-product-main">
             <p class="lab-b-eyebrow">ABVX tool</p>
             <h1>SET</h1>
-            <p class="lab-b-product-lede">Use this when you want one reliable control-plane entrypoint for AI-readable repo surfaces, reviewable planning, external agent-runner handoffs, recommended review lenses, and optional local plan exploration.</p>
+            <p class="lab-b-product-lede">Use this when you want one reliable control-plane entrypoint for AI-readable repo surfaces, reviewable planning, proposal-first external agent-runner handoffs, recommended review lenses, and optional local plan exploration.</p>
 
             <div class="lab-b-product-cta">
               <a class="lab-b-product-link primary" href="https://github.com/markoblogo/SET">GitHub</a>
@@ -86,6 +86,7 @@
               <li>Runs repo-local <code>ID</code> integration hooks for compatible repositories: <code>pre_task</code> before orchestration and <code>weekly_review</code> after it.</li>
               <li>Exports reviewable planning payloads so registry config and repo workflows stay auditable.</li>
               <li>Exports <code>orchestrator-bundle.json</code> for external agent runners that need stable repo context before spawning agents.</li>
+              <li>Exports <code>proposal-lifecycle.json</code> for proposal-first flows: <code>run</code>, retained output, inspect, then select/apply/discard.</li>
               <li>Recommends review lenses such as <code>assumption-excavation</code>, <code>pipeline-readiness-gate</code>, and <code>confidence-fragility-review</code>.</li>
               <li>Exports <code>rabbithole.seed.md</code> as an optional local review seed for human-in-the-loop plan inspection.</li>
               <li>Supports planning-only drift checks (`--repo-root`) and CI-safe contract outputs in JSON mode.</li>
@@ -94,7 +95,7 @@
           <article class="lab-b-product-panel">
             <p class="lab-b-eyebrow">Quick look</p>
             <p class="lab-b-product-summary">One CI entrypoint and planning contract for keeping repo AI surfaces current, reviewable, and consumable by external orchestrators.</p>
-            <p class="lab-b-product-summary lab-b-product-summary--muted">Technical definition: thin GitHub Action control-plane for repo-docs, repomap, proof loops, registry-driven flows, repo-local integration hooks, orchestrator handoff bundles, optional review lenses, and Rabbithole seeds.</p>
+            <p class="lab-b-product-summary lab-b-product-summary--muted">Technical definition: thin GitHub Action control-plane for repo-docs, repomap, proof loops, registry-driven flows, repo-local integration hooks, orchestrator handoff bundles, proposal lifecycle contracts, optional review lenses, and Rabbithole seeds.</p>
           </article>
         </section>
 

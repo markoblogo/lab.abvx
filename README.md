@@ -18,9 +18,9 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 ## Start here
 
-- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal lifecycle contracts.
+- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal lifecycle contracts plus memory, diversity, context-budget, and loop-readiness hints for external runners.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, reversible-work rules, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP, when to use CLI, when to keep output reversible, and which proof or harness gates are required.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP, when to use CLI, when to keep output reversible, how to enrich durable knowledge, and which proof, review, or loop-readiness gates are required.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 
@@ -57,15 +57,17 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Orchestration
 
-- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, and proposal-first runner handoffs.
+- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, and review-only hints for memory, diversity, context budgets, and loop readiness.
 
 ### Repo docs & agent context
 
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Agent contract layer for AI-ready repos, now with reversible-work rules, readiness reports, safe fixes, fleet scans, versioned CLI/MCP contracts, and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, reversible agent tasks, durable context maintenance, loop engineering, delivery gates from idea to release, social publishing approval gates, grilling, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, reversible agent tasks, knowledge-base enrichment, context degradation review, tool-contract review, bounded evaluation, loop readiness, delivery gates from idea to release, social publishing approval gates, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) — Explainer for routing agent learning into model, context/memory/skills, or harness/workflow layers without pretending every improvement trains the model.
+- `lfnovo/open-notebook` — External reference only for a possible self-hosted research corpus, source-grounded search, and future Cardputer reader preparation; not an ABVX dependency or installed local service.
+- `andyrewlee/awesome-agent-orchestrators` — External discovery catalog for selecting and auditing runners; compare isolation, human gates, persistence, verification, rollback, and provider support before installing anything.
 - [Goal Loop Designer](https://lab.abvx.xyz/tools/goal-loop-designer/) — ABVX Agent Skills capability for compiling raw `/goal` prompts into bounded loop harnesses with rubrics, judge prompts, budgets, YAML, JSON, and Mermaid.
 - [Local Inference Tuning](https://lab.abvx.xyz/tools/local-inference-tuning/) — ABVX Agent Skills capability for selecting and tuning local LLM engines, cache policy, KV cache, batching, smoke benchmarks, and OpenAI-compatible endpoints.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
@@ -97,7 +99,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - **Access:** MCP and integration discovery connect agents to external systems without copying service-specific auth rules into every repo.
 - **Execution:** CLI surfaces such as `agentsgen`, `SET`, GitHub Actions, and local scripts run deterministic, reviewable work.
 - **Discipline:** `AGENTS.md` plus ABVX Agent Skills define when access and execution are allowed, when output must remain a proposal, which checks are mandatory, and how repeated workflows become reusable gates.
-- **Harness gates:** agent runtimes enforce loop budgets, tool registries, permissions, sandbox boundaries, observability, scheduling, and evals.
+- **Harness gates:** agent runtimes enforce loop budgets, tool registries, permissions, sandbox boundaries, observability, scheduling, evals, and inspect/apply/discard settlement for retained outputs.
 
 ### Decision & strategy protocols
 

@@ -268,18 +268,18 @@
             </article>
             <article class="lab-b-product-panel">
               <p class="lab-b-eyebrow">3. Discipline</p>
-              <p class="lab-b-product-summary"><code>AGENTS.md</code> and <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> define when to use MCP, when to use CLI, and which proof gates are required.</p>
+              <p class="lab-b-product-summary"><code>AGENTS.md</code> and <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> define when to use MCP, when to use CLI, when to keep work reversible, and which proof or review gates are required.</p>
             </article>
             <article class="lab-b-product-panel">
               <p class="lab-b-eyebrow">4. Harness gates</p>
-              <p class="lab-b-product-summary">Agent runtimes enforce loop budgets, tool registries, permissions, sandboxing, observability, scheduling, and evals.</p>
+              <p class="lab-b-product-summary">Agent runtimes enforce loop budgets, tool registries, permissions, sandboxing, observability, scheduling, evals, and inspect/apply/discard settlement for retained outputs.</p>
             </article>
           </div>
           <div class="lab-b-code-shell">
             <pre><code>access:     MCP / integrations
 execution:  agentsgen / SET / CLI / CI
-discipline: AGENTS.md / ABVX Agent Skills / proof gates
-harness:    loops / permissions / sandbox / evals</code></pre>
+discipline: AGENTS.md / ABVX Agent Skills / proof and review gates
+harness:    loops / permissions / sandbox / evals / proposal settlement</code></pre>
           </div>
           <p class="lab-b-quickstart-note"><a href="tools/id/index.html">ID</a> still supplies human context, while <a href="tools/agentsgen/index.html">agentsgen</a> creates the repo contract, <a href="tools/abvx-agent-skills/index.html">ABVX Agent Skills</a> turn repeated operating rules into portable capability, and the harness enforces runtime boundaries.</p>
         </section>

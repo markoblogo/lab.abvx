@@ -49,7 +49,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ## Portfolio groups
 
-- `AI coding tools stack` with `lab.abvx` as the public hub, backed by `AGENTS.md_generator`, `SET`, `ID`, `abvx-agent-skills`, and `homebrew-tap`.
+- `AI coding tools stack` with `lab.abvx` as the public hub, backed by `AGENTS.md_generator`, `SET`, `ID`, and `abvx-agent-skills`, distributed through PyPI.
 - `toki pona / sitelen` with `sitelen-layer-plugin` as the package hub, backed by `sitelen-emoji-truth` and related language/content repos.
 - `commodity systems` with `index` as the public infra hub and `mn7r` as the internal operating workspace.
 
@@ -64,7 +64,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Agent contract layer for AI-ready repos, now with reversible-work rules, readiness reports, safe fixes, fleet scans, versioned CLI/MCP contracts, and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, evidence-backed product context, bounded proposal-first growth loops, local agent-friction ledgers, reversible agent tasks, knowledge-base enrichment, context degradation review, tool-contract review, bounded evaluation, loop readiness, delivery gates from idea to release, social publishing approval gates, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills` or from the ABVX Homebrew tap.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, repo onboarding, evidence-backed product context, bounded proposal-first growth loops, local agent-friction ledgers, reversible agent tasks, knowledge-base enrichment, context degradation review, tool-contract review, bounded evaluation, loop readiness, delivery gates from idea to release, social publishing approval gates, PRDs, issue slicing, triage, handoffs, browser verification, and standalone HTML artifact delivery, installable from PyPI as `abvx-agent-skills`.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) — Explainer for routing agent learning into model, context/memory/skills, or harness/workflow layers without pretending every improvement trains the model.
 - `lfnovo/open-notebook` — External reference only for a possible self-hosted research corpus, source-grounded search, and future Cardputer reader preparation; not an ABVX dependency or installed local service.
 - `andyrewlee/awesome-agent-orchestrators` — External discovery catalog for selecting and auditing runners; compare isolation, human gates, persistence, verification, rollback, and provider support before installing anything.
@@ -225,4 +225,3 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 - agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
 - ABVX Agent Skills: https://github.com/markoblogo/abvx-agent-skills
 - ABVX Agent Skills on PyPI: https://pypi.org/project/abvx-agent-skills/
-- ABVX Homebrew tap: https://github.com/markoblogo/homebrew-tap

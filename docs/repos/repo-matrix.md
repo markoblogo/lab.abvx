@@ -21,7 +21,6 @@ It is not a deletion script. It is a categorization pass to reduce repo sprawl a
 | `ID` | Core | Distinct portable human-context layer in the stack. |
 | `SET` | Core | Clear orchestration/control-plane role across the ecosystem. |
 | `lab.abvx` | Core | Public hub and navigation layer for the whole tooling stack. |
-| `homebrew-tap` | Core | Official package distribution surface for the tooling stack. |
 | `decision-map` | Satellite | Useful protocol/toolkit, but not a primary stack anchor. |
 | `git-tweet` | Satellite | Small companion publishing tool, not a portfolio center. |
 | `AsciiTheme` | Satellite | Shared visual layer used across several public tooling surfaces. |
@@ -103,6 +102,7 @@ Final umbrella direction:
 | `Awesome-Prompt-Engineering` | Temporary fork/remove after PR | Upstream contribution fork, not a product repo. |
 | `awesome-prompts` | Temporary fork/remove after PR | Upstream contribution fork, not a product repo. |
 | `homebrew-core` | Temporary fork/remove after PR | Archived; upstream PR closed, fork no longer needed as active surface. |
+| `homebrew-tap` | Remove after local migration | Retired package distribution surface; projects use PyPI user installs. |
 | `staged-recipes` | Temporary fork/remove after PR | Operational conda-forge submission fork only. |
 
 ## Current cleanup order

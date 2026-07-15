@@ -42,9 +42,7 @@ Final umbrella direction:
 | `sitelen-layer-plugin` | Core | Strong standalone frontend package with clear product shape. |
 | `sitelen-emoji-truth` | Core | Canonical mapping/data layer for the language/symbol line. |
 | `toki-pona-translator` | Satellite | Useful app surface, but not the main platform layer. |
-| `dao-toki` | Satellite | Thematic/public-facing content repo within the language line. |
-| `toki-free-kit` | Satellite | Campaign/content repo, useful but not a main pillar. |
-| `stoic-wisdom-series` | Satellite | Another content-led expression of the same cluster. |
+| `book-landings` | Core | Canonical monorepo for the Stoic, Dao Toki, Toki Free Kit, and Ukrainian Modernism editorial landing apps. |
 | `pictiq` | Satellite | Paused, but still strategically close to the symbolic language line. |
 
 Hub repo:
@@ -79,7 +77,6 @@ Final umbrella direction:
 | Repo | Category | Reason |
 | --- | --- | --- |
 | `azurmenton` | Satellite | Clean standalone site with a clear independent audience. |
-| `ukrainian-modernism` | Satellite | Standalone editorial/landing surface with a narrow scope. |
 | `ABVXsite` | Merge later | Personal/public web presence likely overlaps with other hub surfaces. |
 
 ## abandoned or unclear lines

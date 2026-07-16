@@ -137,6 +137,7 @@ They still ship together as one package: `agentsgen`.
 - Repo cards generator: `scripts/build_repo_cards_snapshot.py`
 - Planning snapshot generator: `scripts/sync_planning_snapshot.py`
 - Proof snapshot generator: `scripts/sync_proof_snapshot.py`
+- Home control-plane ledger generator: `scripts/sync_home_ledger.py`
 - Snapshot outputs:
   - `docs/registry/index.html`
   - `docs/assets/registry-snapshot.json`
@@ -148,6 +149,7 @@ They still ship together as one package: `agentsgen`.
   - `docs/assets/planning-snapshot.json`
   - `docs/proof/index.html`
   - `docs/assets/proof-snapshot.json`
+  - `docs/assets/home-ledger-snapshot.v1.json`
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
@@ -163,6 +165,8 @@ They still ship together as one package: `agentsgen`.
 - Planning, repo cards, and status surfaces can include workflow sync state and operator queue when planning artifacts are present.
 - Planning, repo cards, and status surfaces can also show compact repomap status, policy modes, active slices, slice source labels, and top ranked files when local repo artifacts are available.
 - Proof queue and related surfaces remain snapshot-based: they reflect the latest local rebuild, not a browser-side live GitHub read.
+- The home control-plane ledger is sourced from the explicit `docs/assets/home-ledger-sources.v1.json` allowlist. `python3 scripts/sync_home_ledger.py` reads only each listed repository head SHA/date and regenerates the four public update dates plus a provenance snapshot. It does not inspect repository files, modify a source repo, or alter project copy.
+- CortexABV invokes this generator remotely only when ABVXsite has a separately scoped `LAB_REPO_TOKEN` for this repository and `SOURCE_REPOS_TOKEN` can read every allowlisted source. The job may commit only the marked home-ledger block and `home-ledger-snapshot.v1.json`; it cannot alter any source repository, project copy, tool page, links, or Lab navigation.
 
 ### Tool pages (routing)
 

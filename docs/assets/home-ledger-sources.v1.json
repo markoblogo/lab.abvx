@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "CortexABVLabHomeLedgerSources",
+  "authority": "read",
+  "entries": [
+    {
+      "id": "agentsgen",
+      "name": "AGENTS.md_generator",
+      "summary": "repo-docs baseline · MCP + LLM shipped",
+      "preset": "repo-docs",
+      "state": "success · PyPI fallback note published",
+      "queue": "ready-now",
+      "href": "https://github.com/markoblogo/AGENTS.md_generator",
+      "repository": "markoblogo/AGENTS.md_generator",
+      "ref": "main"
+    },
+    {
+      "id": "id",
+      "name": "ID",
+      "summary": "repo-local hook layer",
+      "preset": "repo-docs",
+      "state": "success · id hooks active (refreshed)",
+      "queue": "ready-now",
+      "href": "tools/id/index.html",
+      "repository": "markoblogo/ID",
+      "ref": "main"
+    },
+    {
+      "id": "set",
+      "name": "SET",
+      "summary": "orchestrator and registry owner",
+      "preset": "repo-docs",
+      "state": "success · proof signals synchronized",
+      "queue": "ready-now",
+      "href": "tools/set/index.html",
+      "repository": "markoblogo/SET",
+      "ref": "main"
+    },
+    {
+      "id": "lab",
+      "name": "lab.abvx",
+      "summary": "public catalog and control plane",
+      "preset": "site-ai",
+      "state": "success · local inference page added",
+      "queue": "ready-now",
+      "href": "index.html",
+      "repository": "markoblogo/lab.abvx",
+      "ref": "main"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 ## Start here
 
-- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal lifecycle contracts plus memory, diversity, context-budget, and loop-readiness hints for external runners.
+- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal-lifecycle, review-hint, and optional shadow-first governance contracts for downstream runners.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, reversible-work rules, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
 - [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP, when to use CLI, when to keep output reversible, enrich durable knowledge, establish product context, capture material agent friction locally, and apply proof, review, or loop-readiness gates.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
@@ -57,7 +57,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Orchestration
 
-- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, and review-only hints for memory, diversity, context budgets, and loop readiness.
+- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, review-only context hints, and optional shadow-first policy/telemetry contracts. It is not a policy runtime.
 
 ### Repo docs & agent context
 

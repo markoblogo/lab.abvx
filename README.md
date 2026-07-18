@@ -18,9 +18,9 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 ## Start here
 
-- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal-lifecycle, review-hint, optional shadow-first governance, disabled L1/L2 loop-readiness, and bounded orchestration contracts for downstream runners.
+- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal-lifecycle, review-hint, optional shadow-first governance, loop-readiness, bounded orchestration, and loop-hardening contracts for downstream runners.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, reversible-work rules, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP, when to use CLI, when to keep output reversible, coordinate bounded Planner/Reviewer/Executor work, enrich durable knowledge, establish product context, define L1/L2 loop run contracts, and apply proof, review, or loop-readiness gates.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP or CLI, keep output reversible, coordinate bounded Planner/Reviewer/Executor work, define bounded loops, harden runtime-path sprints without auto-revert, and apply proof or review gates.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 

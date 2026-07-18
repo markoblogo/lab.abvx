@@ -57,7 +57,7 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Orchestration
 
-- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, review-only context hints, optional shadow-first policy/telemetry, disabled L1/L2 loop-readiness, and bounded orchestration contracts. It is not a scheduler, model router, or policy runtime.
+- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, review-only context hints, optional shadow-first policy/telemetry, disabled loop-readiness, bounded orchestration, and loop-hardening contracts. It is not a scheduler, model router, or policy runtime.
 
 ### Repo docs & agent context
 

@@ -4,7 +4,8 @@ import argparse
 import html
 import json
 import os
-import subprocess
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -20,11 +21,23 @@ def path_from_env(name: str, default: Path) -> Path:
 
 def github_json(path: str) -> dict[str, object]:
     token = os.environ.get('SOURCE_REPOS_TOKEN', '').strip()
-    command = ['gh', 'api', path]
-    if token:
-        command.extend(['-H', f'Authorization: Bearer {token}'])
-    result = subprocess.run(command, check=True, capture_output=True, text=True)
-    return json.loads(result.stdout)
+    if not token:
+        raise SystemExit('SOURCE_REPOS_TOKEN is required for Lab home-ledger source reads')
+    request = Request(
+        f'https://api.github.com/{path}',
+        headers={
+            'Accept': 'application/vnd.github+json',
+            'Authorization': f'Bearer {token}',
+            'User-Agent': 'cortex-abv-lab-home-ledger',
+        },
+    )
+    try:
+        with urlopen(request, timeout=20) as response:
+            return json.loads(response.read().decode('utf-8'))
+    except HTTPError as error:
+        raise SystemExit(f'GitHub source read failed for {path}: HTTP {error.code}') from error
+    except URLError as error:
+        raise SystemExit(f'GitHub source read failed for {path}: {error.reason}') from error
 
 
 def commit_for(entry: dict[str, object], offline: dict[str, object] | None) -> dict[str, str]:

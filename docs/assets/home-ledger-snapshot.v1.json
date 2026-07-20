@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "kind": "CortexABVLabHomeLedgerSnapshot",
   "authority": "read",
-  "generatedAt": "2026-07-20T21:24:34Z",
+  "generatedAt": "2026-07-20T21:28:22Z",
   "sources": [
     {
       "id": "agentsgen",
@@ -32,8 +32,8 @@
       "id": "lab",
       "repository": "markoblogo/lab.abvx",
       "ref": "main",
-      "sha": "59c1cf684826eda2e85e70345ed88f307bbaa3c5",
-      "committedAt": "2026-07-20T18:33:27Z",
+      "sha": "de1e0100bf8352129d01d4ad1894d4bf28c3ca50",
+      "committedAt": "2026-07-20T21:24:34Z",
       "date": "2026-07-20"
     }
   ]

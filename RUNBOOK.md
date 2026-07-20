@@ -33,6 +33,23 @@ python3 -m http.server 8000 --directory docs
 - If environment is unclear: ask for the expected OS/tooling versions.
 <!-- AGENTSGEN:END section=troubleshooting -->
 
+<!-- AGENTSGEN:START section=contracts -->
+## Contract checks
+
+- Validate agent docs contract on changed files:
+
+```sh
+python3 -m pip install -q agentsgen
+agentsgen check . --files AGENTS.md,RUNBOOK.md --autodetect
+```
+
+- Validate pack payload:
+
+```sh
+agentsgen pack --check --autodetect --output docs/ai
+```
+<!-- AGENTSGEN:END section=contracts -->
+
 ## Repo-specific notes
 
 - Preview locally: `python3 -m http.server 8000 --directory docs` then open `http://localhost:8000/`.

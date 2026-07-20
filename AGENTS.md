@@ -166,6 +166,24 @@ State:
 - expected outcome.
 <!-- AGENTSGEN:END section=verification -->
 
+<!-- AGENTSGEN:START section=agentsgen_contract -->
+### AGENTSGEN contract
+
+- Scope: this repo keeps the agent contract intentionally compact and machine-readable.
+- Authority rule: only explicitly listed files are auto-updatable by generated sections (`AGENTSGEN` markers).
+- Files with markers: `AGENTS.md`, `RUNBOOK.md`, `docs/ai/task-contract.json`.
+- PR gate: repository must pass agentsgen drift checks for `AGENTS.md`, `RUNBOOK.md`, and `docs/ai/task-contract.json`.
+<!-- AGENTSGEN:END section=agentsgen_contract -->
+
+<!-- AGENTSGEN:START section=task_contract -->
+### Task contract (compact)
+
+- Contract states: `accepted`, `used`, `confirmed`.
+- Before `used`: keep a human-readable reason and expected output in `docs/ai/task-contract.json`.
+- Before `confirmed`: evidence paths must include `docs/ai/how-to-run.md` and `docs/ai/how-to-test.md`.
+- Route states must be explicit in local decisions: `accepted`, `used`, `confirmed`.
+<!-- AGENTSGEN:END section=task_contract -->
+
 <!-- AGENTSGEN:START section=style -->
 ### Style & conventions (static)
 

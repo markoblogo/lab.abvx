@@ -1,0 +1,16 @@
+{
+  "contract_version": "1",
+  "name": "ABVX Lab contract loop",
+  "route_states": ["accepted", "used", "confirmed"],
+  "proof_required": true,
+  "required_artifacts": [
+    "docs/ai/how-to-run.md",
+    "docs/ai/how-to-test.md",
+    "RUNBOOK.md"
+  ],
+  "evidence": {
+    "operator": "repo-maintainer",
+    "approval_boundary": "human-approved",
+    "risk_class": "low"
+  }
+}

@@ -217,6 +217,20 @@ State:
 
 ## Rules Of Engagement
 
+
+
+<!-- AGENTSGEN:START section=motion-review -->
+### Motion safety (animation-focused review)
+
+For any CSS/JS changes that touch animation, transitions, parallax, or scroll effects:
+
+- prefer transform properties (`x`, `y`, `scale`, `rotation`, `opacity`) over layout props (`top`, `left`, `width`, `height`)
+- add `prefers-reduced-motion` fallback (skip/downgrade duration and movement)
+- ensure teardown/cleanup on route change or unmount (`revert`, `kill`, `clearProps` where appropriate)
+- avoid unbounded global selectors in animation setup (scope selectors)
+- include a quick validation note in the related task evidence package
+<!-- AGENTSGEN:END section=motion-review -->
+
 <!-- AGENTSGEN:START section=rules -->
 **DO**
 - Prefer small diffs.

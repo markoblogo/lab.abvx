@@ -28,6 +28,8 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 Design and product context for future UI/copy work is captured in [`PRODUCT.md`](PRODUCT.md) and [`DESIGN.md`](DESIGN.md). These files are a compact local contract for audience, surface types, source boundaries, visual language, detector rules, and explicit waivers.
 
+Post-task closeout is proposal-first: check docs drift, used/skipped agent rules, memory or handoff need, leftovers, green/yellow/red cleanup risk, and a short changed/verified/skipped/follow-up receipt. It is not automatic cleanup or permission to delete generated files.
+
 ## Home page structure
 
 - `SET`, `agentsgen`, `ID`, `repomap`, `LWP`, and ABVX Agent Skills are featured first as the visible core stack.

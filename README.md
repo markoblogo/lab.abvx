@@ -30,6 +30,8 @@ Design and product context for future UI/copy work is captured in [`PRODUCT.md`]
 
 Post-task closeout is proposal-first: check docs drift, used/skipped agent rules, memory or handoff need, leftovers, green/yellow/red cleanup risk, and a short changed/verified/skipped/follow-up receipt. It is not automatic cleanup or permission to delete generated files.
 
+External AI engineering repositories, including broad tutorial catalogs, are treated as implementation references only. They are not ABVX dependencies until a source path, adaptation need, secrets/data-egress risk, allowed pilot, and status are recorded in the owning project.
+
 ## Home page structure
 
 - `SET`, `agentsgen`, `ID`, `repomap`, `LWP`, and ABVX Agent Skills are featured first as the visible core stack.

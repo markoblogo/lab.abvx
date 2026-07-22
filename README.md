@@ -18,9 +18,9 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 ## Start here
 
-- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal-lifecycle, review-hint, optional shadow-first governance, loop-readiness, bounded orchestration, loop-hardening, design-taste-review, and agent-operations contracts for downstream runners.
+- [SET](https://lab.abvx.xyz/tools/set/) for one CI entrypoint that keeps repo AI surfaces up to date and exports proposal-lifecycle, review-hint, optional shadow-first governance, loop-readiness, bounded orchestration, loop-hardening, design-taste-review, agent-operations, and skill-quality pipeline contracts for downstream runners.
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) for `AGENTS.md`, reversible-work rules, `llms.txt`, `docs/ai`, bundles, checks, and the canonical product discovery surface on [agentsmd.abvx.xyz](https://agentsmd.abvx.xyz/).
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP or CLI, keep output reversible, coordinate bounded work, review named-agent authority, async and decision receipts, classify adaptation deltas, trust-grade memory, verify provider/tool routes, and apply proof or review gates.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) for validation-gated workflow rules that decide when to use MCP or CLI, keep output reversible, coordinate bounded work, review named-agent authority, async and decision receipts, classify adaptation deltas, trust-grade memory, verify provider/tool routes, apply proof/review gates, and stage bounded skill-quality improvements.
 - [ID](https://lab.abvx.xyz/tools/id/) when human and operator context must travel across repos and tools.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) for the ABVX position on what actually learns in an agent: model weights rarely change; practical learning usually lives in context, skills, scripts, gates, and evals.
 
@@ -57,14 +57,14 @@ The live site uses the `alt-b` production shell: `SET` is the orchestration entr
 
 ### Orchestration
 
-- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, review-only context hints, optional shadow-first policy/telemetry, and disabled loop, orchestration, design, and agent-operations contracts. It is not a scheduler, model router, memory store, or policy runtime.
+- [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry-driven review, proof-loop orchestration, proposal-first runner handoffs, review-only context hints, optional shadow-first policy/telemetry, disabled loop, orchestration, design, agent-operations, and skill-quality contracts. It is not a scheduler, model router, memory store, SkillOpt runtime, or policy runtime.
 
 ### Repo docs & agent context
 
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Agent contract layer for AI-ready repos, now with reversible-work rules, readiness reports, safe fixes, fleet scans, versioned CLI/MCP contracts, and opt-in LLM enhancement.
 - [ID](https://lab.abvx.xyz/tools/id/) — Portable human-AI profile protocol plus repo-local hooks for SET-compatible orchestration flows.
 - [LWP](https://lab.abvx.xyz/tools/lwp/) — Lightweight Workflow Protocol for desktop-first agent development.
-- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, bounded orchestration, named-agent capability cards, async operation and decision receipts, source-linked adaptation deltas, trust-graded scoped memory, provider/tool route evidence, delivery gates, handoffs, and browser verification, installable from PyPI as `abvx-agent-skills`.
+- [ABVX Agent Skills](https://lab.abvx.xyz/tools/abvx-agent-skills/) — Portable, validation-gated skills for coding, research, frontend, audits, debugging, token economy, bounded orchestration, named-agent capability cards, async operation and decision receipts, source-linked adaptation deltas, trust-graded scoped memory, provider/tool route evidence, delivery gates, handoffs, browser verification, and staged skill-quality evolution, installable from PyPI as `abvx-agent-skills`.
 - [Agent Learning Layer](https://lab.abvx.xyz/tools/agent-learning-layer/) — Explainer for routing agent learning into model, context/memory/skills, or harness/workflow layers without pretending every improvement trains the model.
 - `lfnovo/open-notebook` — External reference only for a possible self-hosted research corpus, source-grounded search, and future Cardputer reader preparation; not an ABVX dependency or installed local service.
 - `andyrewlee/awesome-agent-orchestrators` — External discovery catalog for selecting and auditing runners; compare isolation, human gates, persistence, verification, rollback, and provider support before installing anything.

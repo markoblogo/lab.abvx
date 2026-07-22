@@ -20,6 +20,8 @@ This file is for coding agents (Codex/Claude/Cursor/etc.). Keep it strict and ac
 #### Quick orientation
 - Start here:
   - `README.md`
+  - `PRODUCT.md`
+  - `DESIGN.md`
   - `docs/index.html`
   - `docs/tools/`
 - CI workflows live in: `.github/workflows/`
@@ -190,6 +192,7 @@ State:
 #### 1) Follow the repo
 - Match existing naming, structure, and patterns.
 - Don't introduce new abstractions unless they reduce complexity.
+- For public page, tool-page, or visual-copy work, read `PRODUCT.md` and `DESIGN.md` before editing. Use detector waivers there instead of silently ignoring repeated findings.
 
 #### 2) Readability wins
 - Prefer clear code over clever code.

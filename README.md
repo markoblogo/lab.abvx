@@ -26,6 +26,8 @@ About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
 The live site uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, `LWP` is the lightweight desktop execution protocol, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
 
+Design and product context for future UI/copy work is captured in [`PRODUCT.md`](PRODUCT.md) and [`DESIGN.md`](DESIGN.md). These files are a compact local contract for audience, surface types, source boundaries, visual language, detector rules, and explicit waivers.
+
 ## Home page structure
 
 - `SET`, `agentsgen`, `ID`, `repomap`, `LWP`, and ABVX Agent Skills are featured first as the visible core stack.

@@ -4,8 +4,8 @@ import json
 import os
 from pathlib import Path
 
-DEFAULT_SET_REGISTRY = Path('/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos')
 LAB_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_SET_REGISTRY = LAB_ROOT.parent / 'SET' / 'registry' / 'repos'
 
 
 def get_registry_dir() -> Path:
@@ -24,6 +24,11 @@ def get_page_path() -> Path:
 
 
 def load_registry(registry_dir: Path) -> list[dict[str, object]]:
+    if not registry_dir.is_dir():
+        raise SystemExit(
+            f'SET registry not found at {registry_dir}. '
+            'Set SET_REGISTRY_DIR to a checked-out SET/registry/repos directory.'
+        )
     entries: list[dict[str, object]] = []
     for path in sorted(registry_dir.glob('*.json')):
         data = json.loads(path.read_text())
@@ -157,13 +162,13 @@ def main() -> int:
     snapshot = {
         'version': 1,
         'source': 'SET registry snapshot',
-        'registry_dir': str(registry_dir),
+        'registry_source': 'https://github.com/markoblogo/SET/tree/main/registry/repos',
         'repos': entries,
     }
     snapshot_path.parent.mkdir(parents=True, exist_ok=True)
     page_path.parent.mkdir(parents=True, exist_ok=True)
     snapshot_path.write_text(json.dumps(snapshot, indent=2) + '\n')
-    page_path.write_text(build_page(entries))
+    page_path.write_text('\n'.join(line.rstrip() for line in build_page(entries).splitlines()) + '\n')
     print(f'Wrote {snapshot_path}')
     print(f'Wrote {page_path}')
     return 0

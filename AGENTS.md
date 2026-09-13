@@ -2,6 +2,12 @@
 
 This file is for coding agents (Codex/Claude/Cursor/etc.). Keep it strict and actionable.
 
+## Repo-specific context
+
+- Read `PRODUCT.md` and `DESIGN.md` before changing public pages, tool-page copy, or navigation.
+- Keep catalog claims traceable to the owning repositories and keep snapshot surfaces read-only.
+- Use detector waivers in `DESIGN.md` when a deliberate visual exception is necessary.
+
 ## Overview
 
 <!-- AGENTSGEN:START section=overview -->
@@ -20,8 +26,6 @@ This file is for coding agents (Codex/Claude/Cursor/etc.). Keep it strict and ac
 #### Quick orientation
 - Start here:
   - `README.md`
-  - `PRODUCT.md`
-  - `DESIGN.md`
   - `docs/index.html`
   - `docs/tools/`
 - CI workflows live in: `.github/workflows/`
@@ -29,7 +33,7 @@ This file is for coding agents (Codex/Claude/Cursor/etc.). Keep it strict and ac
 - Planning/spec drafts (if used):
   - Plans: `plans/`
   - Drafts/specs: `drafts/`
-- Useful scripts (if any): `(none)`
+- Useful scripts (if any): `scripts`
 
 #### Commands (copy/paste)
 **Dev / run**
@@ -38,15 +42,15 @@ python3 -m http.server 8000 --directory docs
 ```
 **Build**
 ```bash
-(not needed)
+python3 -m compileall -q scripts
 ```
 **Lint**
 ```bash
-(not needed)
+python3 scripts/verify_site.py
 ```
 **Tests**
 ```bash
-(not needed)
+python3 -m unittest discover -s tests -v
 ```
 
 #### Local environment notes
@@ -57,7 +61,7 @@ python3 -m http.server 8000 --directory docs
 
 #### Where to put new things
 
-- Small scripts/utilities — `(none)`
+- Small scripts/utilities — `scripts`
 - Specs/exec notes — `drafts/`
 - Plans (if requested) — `plans/`
 <!-- AGENTSGEN:END section=repo_context -->
@@ -192,7 +196,6 @@ State:
 #### 1) Follow the repo
 - Match existing naming, structure, and patterns.
 - Don't introduce new abstractions unless they reduce complexity.
-- For public page, tool-page, or visual-copy work, read `PRODUCT.md` and `DESIGN.md` before editing. Use detector waivers there instead of silently ignoring repeated findings.
 
 #### 2) Readability wins
 - Prefer clear code over clever code.
@@ -219,7 +222,6 @@ State:
 <!-- AGENTSGEN:END section=style -->
 
 ## Rules Of Engagement
-
 
 
 <!-- AGENTSGEN:START section=motion-review -->
@@ -257,9 +259,9 @@ For any CSS/JS changes that touch animation, transitions, parallax, or scroll ef
 <!-- AGENTSGEN:START section=commands -->
 - **Install:** `(not needed)`
 - **Dev:** `python3 -m http.server 8000 --directory docs`
-- **Test:** `(not needed)`
-- **Lint:** `(not needed)`
-- **Build:** `(not needed)`
+- **Test:** `python3 -m unittest discover -s tests -v`
+- **Lint:** `python3 scripts/verify_site.py`
+- **Build:** `python3 -m compileall -q scripts`
 
 - **Run a single test:** (not specified)
 - **Where configs live:** `docs/robots.txt`, `docs/sitemap.xml`

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-style="ascii" data-ascii-mode="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="../assets/lab-alt-b.css?v20260603b" />
+    <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
+    <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Workflow Status","url":"https://lab.abvx.xyz/status/","description":"Read-only workflow status snapshot for ABVX repos from GitHub Actions."}</script>
   </head>
   <body>
@@ -21,14 +22,14 @@
         <header class="topbar">
           <div class="topbar-left">
             <a class="brand" href="../index.html">
-              <img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+              <img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" />
               <span class="brand-text">ABVX Lab</span>
             </a>
           </div>
           <nav class="topbar-nav" aria-label="Primary">
             <a href="../index.html">Home</a>
             <a href="../index.html#tools">Tools</a>
-            <a href="/about/">About</a>
+            <a href="https://github.com/markoblogo">GitHub profile</a>
           </nav>
           <div class="topbar-right">
             <div class="header-controls"></div>
@@ -44,31 +45,49 @@
           </section>
           <section class="page-panel">
             <h2>markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Workflow: SET</p>
+            <p class="small-note">Workflow: Publish PyPI</p>
             <ul class="bullet-list">
               <li>Status: completed</li>
               <li>Conclusion: success</li>
               <li>Branch: main</li>
               <li>Event: workflow_dispatch</li>
-              <li>Updated: 2026-03-25T17:46:58Z</li>
-              <li>Workflow sync: matches</li>
+              <li>Updated: 2026-09-11T17:30:58Z</li>
+              <li>Workflow sync: drift</li>
               <li>Operator queue: review-later</li>
               <li>Proof loop: complete (task proof-loop-v0, verdict needs-review, decision review-ready)</li><li>Proof evidence: complete; review ready: true; ready for apply: false; blockers: 0</li><li>Proof checks: passed 2, failed 0, pending 0</li><li>Proof artifacts: present 2 / total 2</li><li>Proof recommendation: Review the captured evidence bundle before marking the task as pass.</li>
               <li>Compact repomap: present (budget 4000, top files 5)</li>
               <li>Policy mode: <a href="../planning/index.html#policy-focus">focus (Focused Code Slice)</a></li><li>Active slice: focus (understand); ranked files: 20</li><li>Slice source: artifact-backed</li>
             </ul>
-            <div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>src/agentsgen/cli.py</code> (score 85)</li><li><code>docs/ai/repomap.compact.md</code> (score 71)</li><li><code>.github/workflows/set.yml</code> (score 70)</li><li><code>src/agentsgen/understand.py</code> (score 61)</li><li><code>tests/test_understand_cli.py</code> (score 55)</li></ul>
-            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23555616061">Latest run</a></div>
+            <div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>src/agentsgen/validators.py</code> (score 73)</li><li><code>src/agentsgen/config.py</code> (score 68)</li><li><code>src/agentsgen/cli.py</code> (score 57)</li><li><code>src/agentsgen/patch_engine.py</code> (score 45)</li><li><code>src/agentsgen/result_types.py</code> (score 45)</li></ul>
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/AGENTS.md_generator/actions/runs/34628024783">Latest run</a></div>
           </section>
 <section class="page-panel">
-            <h2>markoblogo/SET</h2>
-            <p class="small-note">Workflow: SET</p>
+            <h2>markoblogo/ID</h2>
+            <p class="small-note">Workflow: id-protocol-ci</p>
             <ul class="bullet-list">
               <li>Status: completed</li>
               <li>Conclusion: success</li>
-              <li>Branch: main</li>
-              <li>Event: workflow_dispatch</li>
-              <li>Updated: 2026-03-25T16:30:30Z</li>
+              <li>Branch: dependabot/pip/setuptools-gte-84.0.0</li>
+              <li>Event: pull_request</li>
+              <li>Updated: 2026-09-11T16:15:59Z</li>
+              <li>Workflow sync: drift</li>
+              <li>Operator queue: review-later</li>
+              <li>Proof loop: disabled (task n/a, verdict none, decision unknown)</li><li>Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</li><li>Proof checks: passed 0, failed 0, pending 0</li><li>Proof artifacts: present 0 / total 0</li>
+              <li>Compact repomap: missing (budget 3000, top files 5)</li>
+              <li>Policy mode: <a href="../planning/index.html#policy-focus">focus (Focused Code Slice)</a></li><li>Active slice: focus (protocol); ranked files: 0</li><li>Slice source: policy-default</li>
+            </ul>
+
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/ID/actions/runs/34620896761">Latest run</a></div>
+          </section>
+<section class="page-panel">
+            <h2>markoblogo/SET</h2>
+            <p class="small-note">Workflow: Release</p>
+            <ul class="bullet-list">
+              <li>Status: completed</li>
+              <li>Conclusion: success</li>
+              <li>Branch: v0.4.0</li>
+              <li>Event: push</li>
+              <li>Updated: 2026-09-08T18:52:48Z</li>
               <li>Workflow sync: matches</li>
               <li>Operator queue: review-later</li>
               <li>Proof loop: complete (task proof-loop-blocked, verdict needs-review, decision blocked)</li><li>Proof evidence: complete; review ready: false; ready for apply: false; blockers: 1</li><li>Proof checks: passed 1, failed 0, pending 0</li><li>Proof artifacts: present 2 / total 2</li><li>Proof recommendation: Resolve blockers, refresh evidence, then re-run verdict.</li><li>Proof blocker (high): expected proof artifact is missing: docs/ai/proof/manual-review.md</li>
@@ -76,7 +95,25 @@
               <li>Policy mode: <a href="../planning/index.html#policy-changed">changed (Changed Files Slice)</a></li><li>Active slice: changed; ranked files: 2</li><li>Slice source: artifact-backed</li>
             </ul>
             <div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>.github/workflows/set.yml</code> (score 48)</li><li><code>registry/repos/markoblogo_SET.json</code> (score 48)</li></ul>
-            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/SET/actions/runs/23552176982">Latest run</a></div>
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/SET/actions/runs/34265575834">Latest run</a></div>
+          </section>
+<section class="page-panel">
+            <h2>markoblogo/decision-map</h2>
+            <p class="small-note">Workflow: Configured Graph Update: pip in /. #1571524987</p>
+            <ul class="bullet-list">
+              <li>Status: completed</li>
+              <li>Conclusion: success</li>
+              <li>Branch: main</li>
+              <li>Event: dynamic</li>
+              <li>Updated: 2026-09-11T14:27:49Z</li>
+              <li>Workflow sync: missing</li>
+              <li>Operator queue: review-later</li>
+              <li>Proof loop: disabled (task n/a, verdict none, decision unknown)</li><li>Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</li><li>Proof checks: passed 0, failed 0, pending 0</li><li>Proof artifacts: present 0 / total 0</li>
+              <li>Compact repomap: disabled (budget 3000, top files 3)</li>
+              <li>Policy mode: <a href="../planning/index.html#policy-focus">focus (Focused Code Slice)</a></li><li>Active slice: focus (protocol); ranked files: 0</li><li>Slice source: disabled</li>
+            </ul>
+
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/decision-map/actions/runs/34610179327">Latest run</a></div>
           </section>
 <section class="page-panel">
             <h2>markoblogo/lab.abvx</h2>
@@ -86,15 +123,15 @@
               <li>Conclusion: success</li>
               <li>Branch: main</li>
               <li>Event: dynamic</li>
-              <li>Updated: 2026-03-25T17:47:24Z</li>
-              <li>Workflow sync: matches</li>
+              <li>Updated: 2026-09-07T14:17:16Z</li>
+              <li>Workflow sync: drift</li>
               <li>Operator queue: ready-now</li>
               <li>Proof loop: disabled (task n/a, verdict none, decision unknown)</li><li>Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</li><li>Proof checks: passed 0, failed 0, pending 0</li><li>Proof artifacts: present 0 / total 0</li>
               <li>Compact repomap: disabled (budget 3000, top files 3)</li>
               <li>Policy mode: <a href="../planning/index.html#policy-full">full (Full Repo Slice)</a></li><li>Active slice: full; ranked files: 0</li><li>Slice source: disabled</li>
             </ul>
-            
-            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/lab.abvx/actions/runs/23555609855">Latest run</a></div>
+
+            <div class="link-grid"><a class="button-secondary" href="https://github.com/markoblogo/lab.abvx/actions/runs/34132090240">Latest run</a></div>
           </section>
         </main>
         <footer class="footer footer--lab">
@@ -114,5 +151,15 @@
         </footer>
       </div>
     </div>
+    <script src="../assets/ascii-theme.js?v20260319d"></script>
+    <script>
+      AsciiTheme.initAsciiTheme({
+        base: true,
+        managedMode: true,
+        addThemeToggle: true,
+        addStyleToggle: false,
+        mountSelector: '.header-controls',
+      });
+    </script>
   </body>
 </html>

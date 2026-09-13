@@ -6,10 +6,19 @@ from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parents[1]
 
+WORKFLOW_FIELDS = ('repo', 'status', 'conclusion', 'html_url', 'name', 'head_branch', 'event', 'updated_at')
+PLANNING_FIELDS = ('workflow_sync_status', 'operator_queue', 'repomap_snapshot', 'proof_snapshot')
+
 
 def _path(env_name: str, default: Path) -> Path:
     value = os.environ.get(env_name, '').strip()
     return Path(value) if value else default
+
+
+def compact_fields(value: object, fields: tuple[str, ...]) -> dict[str, object]:
+    if not isinstance(value, dict):
+        return {}
+    return {field: value[field] for field in fields if field in value}
 
 
 def main() -> int:
@@ -48,8 +57,8 @@ def main() -> int:
                 'presets': presets,
                 'site_url': site,
                 'agentsgen_enabled': enabled,
-                'workflow': workflow,
-                'planning': planning_entry,
+                'workflow': compact_fields(workflow, WORKFLOW_FIELDS),
+                'planning': compact_fields(planning_entry, PLANNING_FIELDS),
             }
         )
 
@@ -193,7 +202,7 @@ def main() -> int:
   </body>
 </html>
 '''
-    output_html.write_text(html)
+    output_html.write_text('\n'.join(line.rstrip() for line in html.splitlines()) + '\n')
     print(f'Wrote {output_json}')
     print(f'Wrote {output_html}')
     return 0

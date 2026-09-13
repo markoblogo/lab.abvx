@@ -10,6 +10,6 @@
 ## Minimal flow
 1. Reproduce / understand task.
 2. Implement small change.
-3. Run checks (`(not needed)`, `(not needed)`).
+3. Run checks (`python3 -m unittest discover -s tests -v`, `python3 scripts/verify_site.py`).
 4. Summarize: changed files + verification + risks.
 <!-- AGENTSGEN:END section=contributing_ai -->

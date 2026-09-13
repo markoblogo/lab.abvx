@@ -1,12 +1,12 @@
 {
   "version": 1,
   "source": "Lab proof snapshot",
-  "repo_count": 3,
+  "repo_count": 5,
   "repos": [
     {
       "repo": "markoblogo/AGENTS.md_generator",
       "proof_queue": "review-ready",
-      "workflow_sync_status": "matches",
+      "workflow_sync_status": "drift",
       "operator_queue": "review-later",
       "proof_snapshot": {
         "status": "complete",
@@ -78,9 +78,39 @@
       "target_workflow": ".github/workflows/set.yml"
     },
     {
+      "repo": "markoblogo/ID",
+      "proof_queue": "disabled",
+      "workflow_sync_status": "drift",
+      "operator_queue": "review-later",
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "target_workflow": ".github/workflows/set.yml"
+    },
+    {
+      "repo": "markoblogo/decision-map",
+      "proof_queue": "disabled",
+      "workflow_sync_status": "missing",
+      "operator_queue": "review-later",
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "target_workflow": ".github/workflows/set.yml"
+    },
+    {
       "repo": "markoblogo/lab.abvx",
       "proof_queue": "disabled",
-      "workflow_sync_status": "matches",
+      "workflow_sync_status": "drift",
       "operator_queue": "ready-now",
       "proof_snapshot": {
         "status": "disabled",

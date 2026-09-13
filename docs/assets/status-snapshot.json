@@ -6,12 +6,12 @@
       "repo": "markoblogo/AGENTS.md_generator",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23555616061",
-      "name": "SET",
+      "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/34628024783",
+      "name": "Publish PyPI",
       "head_branch": "main",
       "event": "workflow_dispatch",
-      "updated_at": "2026-03-25T17:46:58Z",
-      "workflow_sync_status": "matches",
+      "updated_at": "2026-09-11T17:30:58Z",
+      "workflow_sync_status": "drift",
       "operator_queue": "review-later",
       "repomap_snapshot": {
         "status": "present",
@@ -19,32 +19,32 @@
         "top_ranked_limit": 5,
         "top_ranked_files": [
           {
+            "path": "src/agentsgen/validators.py",
+            "score": 73,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/config.py",
+            "score": 68,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
             "path": "src/agentsgen/cli.py",
-            "score": 85,
+            "score": 57,
             "changed": false,
             "entrypoint": false
           },
           {
-            "path": "docs/ai/repomap.compact.md",
-            "score": 71,
-            "changed": true,
-            "entrypoint": false
-          },
-          {
-            "path": ".github/workflows/set.yml",
-            "score": 70,
-            "changed": true,
-            "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/understand.py",
-            "score": 61,
+            "path": "src/agentsgen/patch_engine.py",
+            "score": 45,
             "changed": false,
             "entrypoint": false
           },
           {
-            "path": "tests/test_understand_cli.py",
-            "score": 55,
+            "path": "src/agentsgen/result_types.py",
+            "score": 45,
             "changed": false,
             "entrypoint": false
           }
@@ -88,14 +88,49 @@
       }
     },
     {
+      "repo": "markoblogo/ID",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/markoblogo/ID/actions/runs/34620896761",
+      "name": "id-protocol-ci",
+      "head_branch": "dependabot/pip/setuptools-gte-84.0.0",
+      "event": "pull_request",
+      "updated_at": "2026-09-11T16:15:59Z",
+      "workflow_sync_status": "drift",
+      "operator_queue": "review-later",
+      "repomap_snapshot": {
+        "status": "missing",
+        "compact_budget": 3000,
+        "top_ranked_limit": 5,
+        "top_ranked_files": [],
+        "active_slice": {
+          "mode": "focus",
+          "policy_mode": "focus",
+          "policy_label": "Focused Code Slice",
+          "focus": "protocol",
+          "changed_only": false,
+          "slice_files_count": 0
+        },
+        "slice_source": "policy-default"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      }
+    },
+    {
       "repo": "markoblogo/SET",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/SET/actions/runs/23552176982",
-      "name": "SET",
-      "head_branch": "main",
-      "event": "workflow_dispatch",
-      "updated_at": "2026-03-25T16:30:30Z",
+      "html_url": "https://github.com/markoblogo/SET/actions/runs/34265575834",
+      "name": "Release",
+      "head_branch": "v0.4.0",
+      "event": "push",
+      "updated_at": "2026-09-08T18:52:48Z",
       "workflow_sync_status": "matches",
       "operator_queue": "review-later",
       "repomap_snapshot": {
@@ -161,15 +196,50 @@
       }
     },
     {
+      "repo": "markoblogo/decision-map",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/markoblogo/decision-map/actions/runs/34610179327",
+      "name": "Configured Graph Update: pip in /. #1571524987",
+      "head_branch": "main",
+      "event": "dynamic",
+      "updated_at": "2026-09-11T14:27:49Z",
+      "workflow_sync_status": "missing",
+      "operator_queue": "review-later",
+      "repomap_snapshot": {
+        "status": "disabled",
+        "compact_budget": 3000,
+        "top_ranked_limit": 3,
+        "top_ranked_files": [],
+        "active_slice": {
+          "mode": "focus",
+          "policy_mode": "focus",
+          "policy_label": "Focused Code Slice",
+          "focus": "protocol",
+          "changed_only": false,
+          "slice_files_count": 0
+        },
+        "slice_source": "disabled"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      }
+    },
+    {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23555609855",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/34132090240",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T17:47:24Z",
-      "workflow_sync_status": "matches",
+      "updated_at": "2026-09-07T14:17:16Z",
+      "workflow_sync_status": "drift",
       "operator_queue": "ready-now",
       "repomap_snapshot": {
         "status": "disabled",

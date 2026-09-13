@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "SET registry snapshot",
-  "registry_dir": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos",
+  "registry_source": "https://github.com/markoblogo/SET/tree/main/registry/repos",
   "repos": [
     {
       "version": 1,
@@ -36,7 +36,47 @@
     },
     {
       "version": 1,
+      "repo": "markoblogo/ID",
+      "tools": {
+        "agentsgen": {
+          "init": true,
+          "pack": true,
+          "check": true,
+          "repomap": true,
+          "snippets": false,
+          "analyze_url": null,
+          "meta_url": null,
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 5,
+            "focus": "protocol",
+            "changed": false
+          },
+          "proof_loop": {
+            "enabled": false,
+            "task_id": null,
+            "expected_artifacts": []
+          }
+        },
+        "git_tweet": {
+          "enabled": false
+        },
+        "id": {
+          "enabled": true,
+          "owner_id": "markoblogo",
+          "target": "set",
+          "pre_task": true,
+          "weekly_review": true
+        }
+      },
+      "presets": [
+        "repo-docs"
+      ]
+    },
+    {
+      "version": 1,
       "repo": "markoblogo/SET",
+      "capability_profile": "governed-runner",
       "tools": {
         "agentsgen": {
           "init": true,
@@ -58,6 +98,38 @@
             "expected_artifacts": [
               "docs/ai/proof/manual-review.md"
             ]
+          }
+        },
+        "git_tweet": {
+          "enabled": false
+        }
+      },
+      "presets": [
+        "repo-docs"
+      ]
+    },
+    {
+      "version": 1,
+      "repo": "markoblogo/decision-map",
+      "tools": {
+        "agentsgen": {
+          "init": true,
+          "pack": true,
+          "check": true,
+          "repomap": false,
+          "snippets": false,
+          "analyze_url": null,
+          "meta_url": null,
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 3,
+            "focus": "protocol",
+            "changed": false
+          },
+          "proof_loop": {
+            "enabled": false,
+            "task_id": null,
+            "expected_artifacts": []
           }
         },
         "git_tweet": {

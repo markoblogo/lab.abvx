@@ -184,7 +184,7 @@ def main() -> int:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_html.parent.mkdir(parents=True, exist_ok=True)
     output_json.write_text(json.dumps(snapshot, indent=2) + '\n')
-    output_html.write_text(build_page(snapshot))
+    output_html.write_text('\n'.join(line.rstrip() for line in build_page(snapshot).splitlines()) + '\n')
     print(f'Wrote {output_json}')
     print(f'Wrote {output_html}')
     return 0

@@ -7,11 +7,14 @@ import tempfile
 from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SET_PLANNER = Path('/Users/antonbiletskiy-volokh/Downloads/Projects/SET/scripts/plan_config_apply.py')
+WORKSPACE_ROOT = LAB_ROOT.parent
+DEFAULT_SET_PLANNER = WORKSPACE_ROOT / 'SET' / 'scripts' / 'plan_config_apply.py'
 DEFAULT_REPO_ROOTS = {
-    'markoblogo/lab.abvx': '/Users/antonbiletskiy-volokh/Downloads/Projects/Lab',
-    'markoblogo/AGENTS.md_generator': '/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator',
-    'markoblogo/SET': '/Users/antonbiletskiy-volokh/Downloads/Projects/SET',
+    'markoblogo/lab.abvx': str(LAB_ROOT),
+    'markoblogo/AGENTS.md_generator': str(WORKSPACE_ROOT / 'AGENTS.md_generator'),
+    'markoblogo/ID': str(WORKSPACE_ROOT / 'ID'),
+    'markoblogo/SET': str(WORKSPACE_ROOT / 'SET'),
+    'markoblogo/decision-map': str(WORKSPACE_ROOT / 'decision-map'),
 }
 
 
@@ -38,7 +41,25 @@ def get_repo_roots() -> dict[str, str]:
         loaded = json.loads(raw)
         if isinstance(loaded, dict):
             return {str(key): str(value) for key, value in loaded.items()}
-    return dict(DEFAULT_REPO_ROOTS)
+    return {repo: path for repo, path in DEFAULT_REPO_ROOTS.items() if Path(path).is_dir()}
+
+
+def sanitize_public_payload(value: object, repo_roots: dict[str, str]) -> object:
+    if isinstance(value, dict):
+        return {key: sanitize_public_payload(item, repo_roots) for key, item in value.items()}
+    if isinstance(value, list):
+        return [sanitize_public_payload(item, repo_roots) for item in value]
+    if not isinstance(value, str) or not value.startswith('/'):
+        return value
+    path = Path(value)
+    for repo, root in sorted(repo_roots.items(), key=lambda item: len(item[1]), reverse=True):
+        try:
+            relative = path.relative_to(Path(root))
+        except ValueError:
+            continue
+        suffix = relative.as_posix()
+        return f'repo://{repo}/{suffix}' if suffix != '.' else f'repo://{repo}'
+    return '<local-path>'
 
 
 def load_repomap_snapshot(
@@ -216,6 +237,11 @@ def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object]
 
 def run_planner() -> dict[str, object]:
     planner = get_planner_path()
+    if not planner.is_file():
+        raise SystemExit(
+            f'SET planner not found at {planner}. '
+            'Set SET_PLANNER_SCRIPT to SET/scripts/plan_config_apply.py.'
+        )
     with tempfile.TemporaryDirectory() as tmpdir:
         repo_roots = get_repo_roots()
         command = ['python3', str(planner), '--all', '--export-dir', tmpdir, '--format', 'json']
@@ -252,13 +278,14 @@ def run_planner() -> dict[str, object]:
                     'files': [path.name for path in sorted(repo_dir.iterdir())],
                 }
             )
-        return {
+        payload = {
             'version': 1,
             'source': 'SET planning snapshot',
-            'planner': str(planner),
+            'planner': 'repo://markoblogo/SET/scripts/plan_config_apply.py',
             'repo_count': len(repos),
             'repos': repos,
         }
+        return sanitize_public_payload(payload, repo_roots)
 
 
 def sort_key(entry: dict[str, object]) -> tuple[int, int, int, str]:
@@ -490,7 +517,7 @@ def main() -> int:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_html.parent.mkdir(parents=True, exist_ok=True)
     output_json.write_text(json.dumps(snapshot, indent=2) + '\n')
-    output_html.write_text(build_page(snapshot))
+    output_html.write_text('\n'.join(line.rstrip() for line in build_page(snapshot).splitlines()) + '\n')
     print(f'Wrote {output_json}')
     print(f'Wrote {output_html}')
     return 0

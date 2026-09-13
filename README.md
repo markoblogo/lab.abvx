@@ -10,6 +10,21 @@ Agent discovery: [lab.abvx.xyz/.well-known/integrations.json](https://lab.abvx.x
 
 About the builder: [lab.abvx.xyz/about/](https://lab.abvx.xyz/about/)
 
+## Run and verify locally
+
+No package installation or build step is required:
+
+```sh
+python3 -m http.server 8000 --directory docs
+```
+
+Before publishing, run the same dependency-free checks used by CI:
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 scripts/verify_site.py
+```
+
 ## Who this is for
 
 - Solo developers who want one repo setup path that quickly produces AGENTS.md, `llms.txt`, docs, maps, and checks.
@@ -56,7 +71,7 @@ External AI engineering repositories, including broad tutorial catalogs, are tre
 ## Portfolio groups
 
 - `AI coding tools stack` with `lab.abvx` as the public hub, backed by `AGENTS.md_generator`, `SET`, `ID`, and `abvx-agent-skills`, distributed through PyPI.
-- `toki pona / sitelen` with `sitelen-layer-plugin` as the package hub, backed by `sitelen-emoji-truth` and related language/content repos.
+- `toki pona / sitelen` with the consolidated `sitelen-layer-plugin` monorepo as the package and language-tool hub.
 - `commodity systems` with `index` as the public infra hub and `mn7r` as the internal operating workspace.
 
 ## Tool groups
@@ -144,6 +159,8 @@ They still ship together as one package: `agentsgen`.
 - Planning snapshot generator: `scripts/sync_planning_snapshot.py`
 - Proof snapshot generator: `scripts/sync_proof_snapshot.py`
 - Home control-plane ledger generator: `scripts/sync_home_ledger.py`
+- Static-site verifier: `scripts/verify_site.py`
+- Public deployment verifier: `scripts/verify_live.py`
 - Snapshot outputs:
   - `docs/registry/index.html`
   - `docs/assets/registry-snapshot.json`
@@ -167,6 +184,9 @@ They still ship together as one package: `agentsgen`.
 - Theme assets: `docs/assets/asciitheme.css`, `docs/assets/ascii-theme.js`
 
 ### Snapshot behavior
+
+- Snapshot tools expect `SET`, `AGENTS.md_generator`, `ID`, and `decision-map` as sibling checkouts by default. Use `SET_REGISTRY_DIR`, `SET_PLANNER_SCRIPT`, or `LAB_REPO_ROOTS_JSON` when your workspace differs.
+- Generated public JSON uses stable `repo://` references and never publishes workstation paths.
 
 - Planning, repo cards, and status surfaces can include workflow sync state and operator queue when planning artifacts are present.
 - Planning, repo cards, and status surfaces can also show compact repomap status, policy modes, active slices, slice source labels, and top ranked files when local repo artifacts are available.

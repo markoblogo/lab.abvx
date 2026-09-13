@@ -10,8 +10,6 @@
 ## Commands
 - Install: `(not needed)`
 - Dev: `python3 -m http.server 8000 --directory docs`
-- Build: `(not needed)`
-
-## TODO (maintainer)
-- If dev/build are not detected, set explicit commands in `.agentsgen.json -> commands`.
+- Build/check scripts: `python3 -m compileall -q scripts`
+- Verify site: `python3 scripts/verify_site.py`
 <!-- AGENTSGEN:END section=how_to_run -->

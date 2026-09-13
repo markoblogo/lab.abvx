@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-style="ascii" data-ascii-mode="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="../assets/lab-alt-b.css?v20260603b" />
+    <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
+    <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Registry Snapshot","url":"https://lab.abvx.xyz/registry/","description":"Read-only snapshot of the SET central registry for ABVX repos and enabled tool baselines."}</script>
   </head>
   <body>
@@ -21,14 +22,14 @@
         <header class="topbar">
           <div class="topbar-left">
             <a class="brand" href="../index.html">
-              <img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" />
+              <img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" />
               <span class="brand-text">ABVX Lab</span>
             </a>
           </div>
           <nav class="topbar-nav" aria-label="Primary">
             <a href="../index.html">Home</a>
             <a href="../index.html#tools">Tools</a>
-            <a href="/about/">About</a>
+            <a href="https://github.com/markoblogo">GitHub profile</a>
           </nav>
           <div class="topbar-right">
             <div class="header-controls"></div>
@@ -45,14 +46,26 @@
           <section class="page-panel">
             <h2>markoblogo/AGENTS.md_generator</h2>
             <p class="small-note">Presets: repo-docs</p>
-            
+
             <ul class="bullet-list"><li>agentsgen: init, pack, check, repomap, snippets</li></ul>
+          </section>
+<section class="page-panel">
+            <h2>markoblogo/ID</h2>
+            <p class="small-note">Presets: repo-docs</p>
+
+            <ul class="bullet-list"><li>agentsgen: init, pack, check, repomap</li></ul>
           </section>
 <section class="page-panel">
             <h2>markoblogo/SET</h2>
             <p class="small-note">Presets: repo-docs</p>
-            
+
             <ul class="bullet-list"><li>agentsgen: init, pack, check, repomap</li></ul>
+          </section>
+<section class="page-panel">
+            <h2>markoblogo/decision-map</h2>
+            <p class="small-note">Presets: repo-docs</p>
+
+            <ul class="bullet-list"><li>agentsgen: init, pack, check</li></ul>
           </section>
 <section class="page-panel">
             <h2>markoblogo/lab.abvx</h2>
@@ -78,5 +91,15 @@
         </footer>
       </div>
     </div>
+    <script src="../assets/ascii-theme.js?v20260319d"></script>
+    <script>
+      AsciiTheme.initAsciiTheme({
+        base: true,
+        managedMode: true,
+        addThemeToggle: true,
+        addStyleToggle: false,
+        mountSelector: '.header-controls',
+      });
+    </script>
   </body>
 </html>

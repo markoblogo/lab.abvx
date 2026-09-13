@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-style="ascii" data-ascii-mode="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,15 +12,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="../assets/lab-alt-b.css?v20260603b" />
+    <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
+    <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Planning Snapshot","url":"https://lab.abvx.xyz/planning/","description":"Read-only planning queue for SET config-apply review across registered repos."}</script>
   </head>
   <body>
     <div class="site-shell">
       <div class="container page-layout">
         <header class="topbar">
-          <div class="topbar-left"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" width="278" height="390" decoding="async" /><span class="brand-text">ABVX Lab</span></a></div>
-          <nav class="topbar-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../index.html#tools">Tools</a><a href="/about/">About</a></nav>
+          <div class="topbar-left"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" /><span class="brand-text">ABVX Lab</span></a></div>
+          <nav class="topbar-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../index.html#tools">Tools</a><a href="https://github.com/markoblogo">GitHub profile</a></nav>
           <div class="topbar-right"><div class="header-controls"></div></div>
         </header>
         <main class="page-layout">
@@ -30,7 +31,7 @@
             <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
             <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
-            <p class="small-note">Queue counts: ready-now=1, blocked-by-orchestrator=0, review-later=2</p>
+            <p class="small-note">Queue counts: ready-now=1, blocked-by-orchestrator=0, review-later=4</p>
           </section>
           <section class="page-panel">
             <h2>Semantics</h2>
@@ -52,7 +53,7 @@
           <section class="page-panel"><h2>Ready now</h2><p class="small-note">Repos that are ready for manual review/apply right now.</p></section>
 <section id="markoblogo-lab.abvx" class="page-panel">
             <h2>1. markoblogo/lab.abvx</h2>
-            <p class="small-note">Queue: ready-now | Status: ready-for-review | Priority: high | Apply: ready | Workflow sync: matches</p>
+            <p class="small-note">Queue: ready-now | Status: ready-for-review | Priority: high | Apply: ready | Workflow sync: drift</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-high">Why high?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: site-ai</li>
@@ -60,7 +61,7 @@
               <li>Suggested branch: codex/set-plan-markoblogo-lab.abvx</li>
               <li>Suggested title: chore(set): plan config apply for markoblogo/lab.abvx</li>
               <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-lab.abvx</li>
-              <li>Workflow sync status: matches</li>
+              <li>Workflow sync status: drift</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>git checkout -b codex/set-plan-markoblogo-lab.abvx</code></pre>
@@ -74,14 +75,14 @@ git commit -m "chore(set): plan config apply for markoblogo/lab.abvx"
 gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markoblogo-lab.abvx --title "chore(set): plan config apply for markoblogo/lab.abvx" --body-file pr-body.md</code></pre>
             <div class="small-note">Compact repomap: disabled (budget 3000, top files 3)</div><div class="small-note">Policy mode: <a href="#policy-full">full (Full Repo Slice)</a></div><div class="small-note">Active slice: full; ranked files: 0</div><div class="small-note">Slice source: disabled</div>
             <div class="small-note">Proof loop: disabled (task n/a, verdict none, decision unknown)</div><div class="small-note">Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</div><div class="small-note">Proof checks: passed 0, failed 0, pending 0</div><div class="small-note">Proof artifacts: present 0 / total 0</div>
-            
-            
+
+
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
 <section class="page-panel"><h2>Review later</h2><p class="small-note">Repos that are valid plans, but lower urgency than the ready-now queue.</p></section>
 <section id="markoblogo-AGENTS.md_generator" class="page-panel">
             <h2>2. markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: matches</p>
+            <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: drift</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>
@@ -89,7 +90,7 @@ gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markob
               <li>Suggested branch: codex/set-plan-markoblogo-AGENTS.md_generator</li>
               <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
               <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
-              <li>Workflow sync status: matches</li>
+              <li>Workflow sync status: drift</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</code></pre>
@@ -101,14 +102,42 @@ cp workflow.set.yml .github/workflows/set.yml
 git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/AGENTS.md_generator"
 gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
-            <div class="small-note">Compact repomap: present (budget 4000, top files 5)</div><div class="small-note">Policy mode: <a href="#policy-focus">focus (Focused Code Slice)</a></div><div class="small-note">Active slice: focus (understand); ranked files: 20</div><div class="small-note">Slice source: artifact-backed</div><div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>src/agentsgen/cli.py</code> (score 85)</li><li><code>docs/ai/repomap.compact.md</code> (score 71)</li><li><code>.github/workflows/set.yml</code> (score 70)</li><li><code>src/agentsgen/understand.py</code> (score 61)</li><li><code>tests/test_understand_cli.py</code> (score 55)</li></ul>
+            <div class="small-note">Compact repomap: present (budget 4000, top files 5)</div><div class="small-note">Policy mode: <a href="#policy-focus">focus (Focused Code Slice)</a></div><div class="small-note">Active slice: focus (understand); ranked files: 20</div><div class="small-note">Slice source: artifact-backed</div><div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>src/agentsgen/validators.py</code> (score 73)</li><li><code>src/agentsgen/config.py</code> (score 68)</li><li><code>src/agentsgen/cli.py</code> (score 57)</li><li><code>src/agentsgen/patch_engine.py</code> (score 45)</li><li><code>src/agentsgen/result_types.py</code> (score 45)</li></ul>
             <div class="small-note">Proof loop: complete (task proof-loop-v0, verdict needs-review, decision review-ready)</div><div class="small-note">Proof evidence: complete; review ready: true; ready for apply: false; blockers: 0</div><div class="small-note">Proof checks: passed 2, failed 0, pending 0</div><div class="small-note">Proof artifacts: present 2 / total 2</div><div class="small-note">Recommendation: Review the captured evidence bundle before marking the task as pass.</div>
-            
-            
+
+
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+          </section>
+<section id="markoblogo-ID" class="page-panel">
+            <h2>3. markoblogo/ID</h2>
+            <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: drift</p>
+            <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
+            <ul class="bullet-list">
+              <li>Workflow preset: repo-docs</li>
+              <li>Target workflow: .github/workflows/set.yml</li>
+              <li>Suggested branch: codex/set-plan-markoblogo-ID</li>
+              <li>Suggested title: chore(set): plan config apply for markoblogo/ID</li>
+              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-ID</li>
+              <li>Workflow sync status: drift</li>
+            </ul>
+            <div class="small-note">Copy next command:</div>
+            <pre><code>git checkout -b codex/set-plan-markoblogo-ID</code></pre>
+            <div class="small-note">Copy PR command:</div>
+            <pre><code>gh pr create --repo markoblogo/ID --base main --head codex/set-plan-markoblogo-ID --title "chore(set): plan config apply for markoblogo/ID" --body-file pr-body.md</code></pre>
+            <div class="small-note">Copy full sequence:</div>
+            <pre><code>git checkout -b codex/set-plan-markoblogo-ID
+cp workflow.set.yml .github/workflows/set.yml
+git add .github/workflows/set.yml
+git commit -m "chore(set): plan config apply for markoblogo/ID"
+gh pr create --repo markoblogo/ID --base main --head codex/set-plan-markoblogo-ID --title "chore(set): plan config apply for markoblogo/ID" --body-file pr-body.md</code></pre>
+            <div class="small-note">Compact repomap: missing (budget 3000, top files 5)</div><div class="small-note">Policy mode: <a href="#policy-focus">focus (Focused Code Slice)</a></div><div class="small-note">Active slice: focus (protocol); ranked files: 0</div><div class="small-note">Slice source: policy-default</div>
+            <div class="small-note">Proof loop: disabled (task n/a, verdict none, decision unknown)</div><div class="small-note">Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</div><div class="small-note">Proof checks: passed 0, failed 0, pending 0</div><div class="small-note">Proof artifacts: present 0 / total 0</div>
+
+
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
 <section id="markoblogo-SET" class="page-panel">
-            <h2>3. markoblogo/SET</h2>
+            <h2>4. markoblogo/SET</h2>
             <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: matches</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
             <ul class="bullet-list">
@@ -131,13 +160,45 @@ git commit -m "chore(set): plan config apply for markoblogo/SET"
 gh pr create --repo markoblogo/SET --base main --head codex/set-plan-markoblogo-SET --title "chore(set): plan config apply for markoblogo/SET" --body-file pr-body.md</code></pre>
             <div class="small-note">Compact repomap: present (budget 2500, top files 5)</div><div class="small-note">Policy mode: <a href="#policy-changed">changed (Changed Files Slice)</a></div><div class="small-note">Active slice: changed; ranked files: 2</div><div class="small-note">Slice source: artifact-backed</div><div class="small-note">Top ranked files:</div><ul class="bullet-list"><li><code>.github/workflows/set.yml</code> (score 48)</li><li><code>registry/repos/markoblogo_SET.json</code> (score 48)</li></ul>
             <div class="small-note">Proof loop: complete (task proof-loop-blocked, verdict needs-review, decision blocked)</div><div class="small-note">Proof evidence: complete; review ready: false; ready for apply: false; blockers: 1</div><div class="small-note">Proof checks: passed 1, failed 0, pending 0</div><div class="small-note">Proof artifacts: present 2 / total 2</div><div class="small-note">Recommendation: Resolve blockers, refresh evidence, then re-run verdict.</div><div class="small-note">Proof blockers:</div><ul class="bullet-list"><li><strong>high</strong>: expected proof artifact is missing: docs/ai/proof/manual-review.md</li></ul>
-            
-            
+
+
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+          </section>
+<section id="markoblogo-decision-map" class="page-panel">
+            <h2>5. markoblogo/decision-map</h2>
+            <p class="small-note">Queue: review-later | Status: ready-for-review | Priority: normal | Apply: ready | Workflow sync: missing</p>
+            <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-normal">Why normal?</a></p>
+            <ul class="bullet-list">
+              <li>Workflow preset: repo-docs</li>
+              <li>Target workflow: .github/workflows/set.yml</li>
+              <li>Suggested branch: codex/set-plan-markoblogo-decision-map</li>
+              <li>Suggested title: chore(set): plan config apply for markoblogo/decision-map</li>
+              <li>Review and apply planned workflow: git checkout -b codex/set-plan-markoblogo-decision-map</li>
+              <li>Workflow sync status: missing</li>
+            </ul>
+            <div class="small-note">Copy next command:</div>
+            <pre><code>git checkout -b codex/set-plan-markoblogo-decision-map</code></pre>
+            <div class="small-note">Copy PR command:</div>
+            <pre><code>gh pr create --repo markoblogo/decision-map --base main --head codex/set-plan-markoblogo-decision-map --title "chore(set): plan config apply for markoblogo/decision-map" --body-file pr-body.md</code></pre>
+            <div class="small-note">Copy full sequence:</div>
+            <pre><code>git checkout -b codex/set-plan-markoblogo-decision-map
+cp workflow.set.yml .github/workflows/set.yml
+git add .github/workflows/set.yml
+git commit -m "chore(set): plan config apply for markoblogo/decision-map"
+gh pr create --repo markoblogo/decision-map --base main --head codex/set-plan-markoblogo-decision-map --title "chore(set): plan config apply for markoblogo/decision-map" --body-file pr-body.md</code></pre>
+            <div class="small-note">Compact repomap: disabled (budget 3000, top files 3)</div><div class="small-note">Policy mode: <a href="#policy-focus">focus (Focused Code Slice)</a></div><div class="small-note">Active slice: focus (protocol); ranked files: 0</div><div class="small-note">Slice source: disabled</div>
+            <div class="small-note">Proof loop: disabled (task n/a, verdict none, decision unknown)</div><div class="small-note">Proof evidence: none; review ready: false; ready for apply: false; blockers: 0</div><div class="small-note">Proof checks: passed 0, failed 0, pending 0</div><div class="small-note">Proof artifacts: present 0 / total 0</div>
+
+
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
         </main>
         <footer class="footer footer--lab"><div class="footer-inner"><div class="footer-left"><div class="footer-title">ABVX Lab</div><div class="footer-note">Small, readable, static pages for ABVX developer tools.</div></div></div></footer>
       </div>
     </div>
+    <script src="../assets/ascii-theme.js?v20260319d"></script>
+    <script>
+      AsciiTheme.initAsciiTheme({ base: true, managedMode: true, addThemeToggle: true, addStyleToggle: false, mountSelector: '.header-controls' });
+    </script>
   </body>
 </html>

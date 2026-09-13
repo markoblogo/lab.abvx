@@ -255,7 +255,7 @@ def main() -> int:
     snapshot_path.parent.mkdir(parents=True, exist_ok=True)
     page_path.parent.mkdir(parents=True, exist_ok=True)
     snapshot_path.write_text(json.dumps(snapshot, indent=2) + '\n')
-    page_path.write_text(build_page(statuses))
+    page_path.write_text('\n'.join(line.rstrip() for line in build_page(statuses).splitlines()) + '\n')
     print(f'Wrote {snapshot_path}')
     print(f'Wrote {page_path}')
     return 0

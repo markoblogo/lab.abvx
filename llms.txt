@@ -7,18 +7,20 @@ Agent context bundle (LLMO Pack):
 - Test guide: docs/ai/how-to-test.md
 - Architecture: docs/ai/architecture.md
 - Data contracts: docs/ai/data-contracts.md
+- ID handoff: docs/ai/id-context.json
 - Security: SECURITY_AI.md
 - Contributing: CONTRIBUTING_AI.md
-- Agent skills catalog: https://github.com/markoblogo/abvx-agent-skills
 
 Quick commands:
 - install: (not needed)
 - dev: python3 -m http.server 8000 --directory docs
-- test: (not needed)
-- lint: (not needed)
-- build: (not needed)
+- test: python3 -m unittest discover -s tests -v
+- lint: python3 scripts/verify_site.py
+- build: python3 -m compileall -q scripts
 
 Notes:
 - Keep these files concise and command-accurate. Avoid speculative guidance.
-- ABVX Agent Skills are reusable workflow capabilities; AGENTS.md/pack files remain repo context.
 <!-- AGENTSGEN:END section=llms -->
+
+Related capability catalog:
+- https://github.com/markoblogo/abvx-agent-skills

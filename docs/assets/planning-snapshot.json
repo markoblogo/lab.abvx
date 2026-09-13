@@ -1,8 +1,8 @@
 {
   "version": 1,
   "source": "SET planning snapshot",
-  "planner": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/scripts/plan_config_apply.py",
-  "repo_count": 3,
+  "planner": "repo://markoblogo/SET/scripts/plan_config_apply.py",
+  "repo_count": 5,
   "repos": [
     {
       "repo": "markoblogo/AGENTS.md_generator",
@@ -18,26 +18,348 @@
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
-      "workflow_sync_status": "matches",
+      "workflow_sync_status": "drift",
       "repomap_policy": {
         "compact_budget": 4000,
         "top_ranked_files": 5,
         "focus": "understand",
         "changed": false
       },
+      "id_integration": null,
       "workflow_check": {
-        "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator",
+        "repo_root": "repo://markoblogo/AGENTS.md_generator",
         "workflow_path": ".github/workflows/set.yml",
-        "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator/.github/workflows/set.yml",
-        "status": "matches",
-        "diff_preview": []
+        "actual_path": "repo://markoblogo/AGENTS.md_generator/.github/workflows/set.yml",
+        "status": "drift",
+        "diff_preview": [
+          "--- expected/.github/workflows/set.yml",
+          "+++ .github/workflows/set.yml",
+          "@@ -3,11 +3,14 @@",
+          " on:",
+          "   workflow_dispatch:",
+          " ",
+          "+permissions:",
+          "+  contents: read",
+          "+",
+          " jobs:",
+          "   set:",
+          "     runs-on: ubuntu-latest",
+          "     steps:",
+          "-      - uses: actions/checkout@v4",
+          "+      - uses: actions/checkout@v7",
+          "       - uses: markoblogo/SET@v0.4.0",
+          "         with:",
+          "           agentsgen: \"true\"",
+          "@@ -21,6 +24,5 @@",
+          "           snippets: \"true\"",
+          "           repomap_compact_budget: \"4000\"",
+          "           repomap_focus: \"understand\"",
+          "-          repomap_changed: \"false\"",
+          "           proof_loop: \"true\"",
+          "           proof_task_id: \"proof-loop-v0\""
+        ]
+      },
+      "orchestrator_bundle": {
+        "version": 1,
+        "kind": "set-orchestrator-bundle",
+        "repo": "markoblogo/AGENTS.md_generator",
+        "mode": "planning-only",
+        "dry_run": true,
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_AGENTS.md_generator.json",
+        "compatible_with": [
+          "issue-to-agent-runners",
+          "parallel-agent-runners",
+          "proof-of-work-review-loops",
+          "agent-coordination-protocols"
+        ],
+        "target_workflow": {
+          "path": ".github/workflows/set.yml",
+          "uses": "markoblogo/SET@v0.4.0",
+          "preset": "repo-docs",
+          "with": {
+            "agentsgen": "true",
+            "autodetect": "true",
+            "path": ".",
+            "workflow_preset": "repo-docs",
+            "init": "true",
+            "pack": "true",
+            "check": "true",
+            "repomap": "true",
+            "snippets": "true",
+            "repomap_compact_budget": "4000",
+            "repomap_focus": "understand",
+            "repomap_changed": "false",
+            "proof_loop": "true",
+            "proof_task_id": "proof-loop-v0"
+          }
+        },
+        "context_package": {
+          "repomap_policy": {
+            "compact_budget": 4000,
+            "top_ranked_files": 5,
+            "focus": "understand",
+            "changed": false
+          },
+          "repomap_policy_mode": "focus",
+          "repomap_policy_label": "Focused Code Slice",
+          "capability_profile": {
+            "kind": "set-capability-profile",
+            "selected": "baseline",
+            "description": "Planning and review hints suitable for every SET handoff.",
+            "exports": [
+              "context_budget_hint",
+              "context_degradation_review",
+              "loop_readiness_hint"
+            ],
+            "selection_scope": "planning-only context package",
+            "non_goals": [
+              "profiles do not install dependencies or enable a runtime",
+              "profiles do not grant tool, mutation, or enforcement authority",
+              "profiles only select exported contracts and review hints"
+            ]
+          },
+          "context_budget_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "pattern": "context-budget-review",
+            "budget_surfaces": [
+              "system and developer instructions",
+              "user request",
+              "repo-local durable docs",
+              "memory or handoff summaries",
+              "retrieved files and tool output",
+              "orchestrator bundle fields"
+            ],
+            "workflow": [
+              "identify authoritative sources",
+              "demote stale or supporting-only context",
+              "keep decisive constraints close to the active plan",
+              "move bulky evidence into files or artifacts",
+              "preserve only source-backed durable lessons"
+            ],
+            "non_goals": [
+              "SET does not manage model context windows",
+              "SET does not choose or rewrite runner prompts",
+              "SET does not persist memory"
+            ]
+          },
+          "context_degradation_review": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "failure_modes": [
+              "context-poisoning",
+              "lost-in-the-middle",
+              "distraction",
+              "context-clash",
+              "stale-carryover"
+            ],
+            "review_before": [
+              "external runner handoff",
+              "proposal apply",
+              "memory write",
+              "large generated documentation update"
+            ],
+            "non_goals": [
+              "SET does not run context repair automatically",
+              "SET does not override the current user message with memory or prior task history"
+            ]
+          },
+          "loop_readiness_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "loop-readiness-review",
+            "pattern": "abvx-loop-readiness",
+            "readiness_levels": {
+              "L0": "not loop-ready",
+              "L1": "report-only",
+              "L2": "proposal-first",
+              "L3": "governed loop"
+            },
+            "checks": [
+              "cadence and stop rule",
+              "durable state outside the model",
+              "scope and denied targets",
+              "worktree, branch, sandbox, or retained-output isolation",
+              "verifier or maker-checker gate",
+              "token, time, retry, and spend budget",
+              "run log and failure record",
+              "rollback or discard path",
+              "human gate for writes, merges, releases, destructive actions, and external side effects"
+            ],
+            "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+            "non_goals": [
+              "SET does not schedule loops",
+              "SET does not spawn recurring agents",
+              "SET does not manage worktrees",
+              "SET does not auto-fix, auto-merge, deploy, or release"
+            ]
+          },
+          "id_bootstrap": {
+            "enabled": false,
+            "owner_id": null,
+            "target": null,
+            "artifacts": []
+          },
+          "rabbithole_seed": {
+            "enabled": true,
+            "artifact": "rabbithole.seed.md",
+            "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+            "suggested_sources": [
+              "plan.json",
+              "orchestrator-bundle.json",
+              "workflow.set.yml",
+              "pr-body.md"
+            ]
+          }
+        },
+        "task_contract": {
+          "proof_loop": {
+            "enabled": true,
+            "task_id": "proof-loop-v0",
+            "expected_artifacts": []
+          },
+          "expected_artifacts": [],
+          "recommended_review_lenses": [
+            {
+              "name": "assumption-excavation",
+              "phase": "pre-implementation",
+              "purpose": "surface hidden assumptions before implementation or runner handoff"
+            },
+            {
+              "name": "pipeline-readiness-gate",
+              "phase": "pre/post/ship",
+              "purpose": "choose the smallest useful review gate for the current phase"
+            },
+            {
+              "name": "confidence-fragility-review",
+              "phase": "ship",
+              "purpose": "check whether confident claims are backed by evidence"
+            },
+            {
+              "name": "hypothesis-diversification",
+              "phase": "research/adversarial-review",
+              "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+            },
+            {
+              "name": "context-degradation-review",
+              "phase": "handoff/context-review",
+              "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+            },
+            {
+              "name": "agent-tool-contract-review",
+              "phase": "contract-design",
+              "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+            },
+            {
+              "name": "loop-readiness-review",
+              "phase": "pre-schedule/pre-runner",
+              "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+            }
+          ],
+          "proposal_lifecycle": {
+            "states": [
+              "run",
+              "retained_output",
+              "inspect",
+              "select",
+              "apply",
+              "discard"
+            ],
+            "default_policy": "proposal-first",
+            "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+            "settlement_actions": [
+              {
+                "name": "select",
+                "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+              },
+              {
+                "name": "apply",
+                "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+              },
+              {
+                "name": "discard",
+                "meaning": "reject the retained output and leave the target workspace unchanged"
+              }
+            ]
+          },
+          "review_ready_when": [
+            "SET workflow plan is reviewed",
+            "unmapped is empty",
+            "expected artifacts are present or explicitly waived",
+            "retained output has been inspected before select/apply"
+          ],
+          "blocked_by": []
+        },
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "repomap",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "repomap"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "snippets",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "snippets"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "proof_loop",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "proof_loop",
+            "task_id": "proof-loop-v0"
+          }
+        ],
+        "handoff": {
+          "recommended_runner_role": "consume this bundle before spawning coding agents",
+          "stable_inputs": [
+            "repo",
+            "target_workflow",
+            "context_package",
+            "task_contract"
+          ],
+          "non_goals": [
+            "SET does not spawn coding agents",
+            "SET does not own external runner state",
+            "SET does not create branches or PRs in planning mode",
+            "SET does not apply retained outputs without an external review/settlement step"
+          ]
+        }
       },
       "unmapped_count": 0,
       "plan": {
         "version": 1,
+        "dry_run": true,
         "mode": "planning-only",
         "repo": "markoblogo/AGENTS.md_generator",
-        "source_config": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos/markoblogo_AGENTS.md_generator.json",
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_AGENTS.md_generator.json",
         "repomap_policy": {
           "compact_budget": 4000,
           "top_ranked_files": 5,
@@ -50,12 +372,13 @@
           "task_id": "proof-loop-v0",
           "expected_artifacts": []
         },
+        "id_integration": null,
         "proposed_changes": [
           {
             "type": "workflow",
             "workflow": {
               "path": ".github/workflows/set.yml",
-              "uses": "markoblogo/SET@main",
+              "uses": "markoblogo/SET@v0.4.0",
               "with": {
                 "agentsgen": "true",
                 "autodetect": "true",
@@ -68,6 +391,7 @@
                 "snippets": "true",
                 "repomap_compact_budget": "4000",
                 "repomap_focus": "understand",
+                "repomap_changed": "false",
                 "proof_loop": "true",
                 "proof_task_id": "proof-loop-v0"
               }
@@ -123,6 +447,7 @@
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/AGENTS.md_generator",
+          "dry_run": true,
           "capabilities": [
             {
               "tool": "agentsgen",
@@ -192,8 +517,8 @@
           "target_workflow_path": ".github/workflows/set.yml",
           "title": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
           "suggested_commit_message": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
-          "body": "# Planned SET workflow for `markoblogo/AGENTS.md_generator`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `true`\n- `repomap_compact_budget`: `4000`\n- `repomap_focus`: `understand`\n- `proof_loop`: `true`\n- `proof_task_id`: `proof-loop-v0`\n\n## Repomap policy\n- `mode`: `focus`\n- `label`: `Focused Code Slice`\n- `compact_budget`: `4000`\n- `top_ranked_files`: `5`\n- `focus`: `understand`\n- `changed`: `false`\n\n## Proof loop\n- `enabled`: `true`\n- `task_id`: `proof-loop-v0`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"true\"\n          repomap_compact_budget: \"4000\"\n          repomap_focus: \"understand\"\n          proof_loop: \"true\"\n          proof_task_id: \"proof-loop-v0\"\n",
+          "body": "# Planned SET workflow for `markoblogo/AGENTS.md_generator`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@v0.4.0`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `true`\n- `repomap_compact_budget`: `4000`\n- `repomap_focus`: `understand`\n- `repomap_changed`: `false`\n- `proof_loop`: `true`\n- `proof_task_id`: `proof-loop-v0`\n\n## Repomap policy\n- `mode`: `focus`\n- `label`: `Focused Code Slice`\n- `compact_budget`: `4000`\n- `top_ranked_files`: `5`\n- `focus`: `understand`\n- `changed`: `false`\n\n## Proof loop\n- `enabled`: `true`\n- `task_id`: `proof-loop-v0`\n\n## Proposal lifecycle\n- `run`: execute in an isolated proposal/worktree context.\n- `retained_output`: keep generated files outside the target workspace.\n- `inspect`: review diffs, artifacts, proof-loop outputs, and review lenses.\n- `select`: mark the proposal as the candidate result.\n- `apply`: merge/copy selected output only after review.\n- `discard`: reject the proposal and leave the target workspace unchanged.\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n- Dry-run mode: proposed changes are explicit and would only be written with a manual apply flow.\n- Would write: `.github/workflows/set.yml`\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@v0.4.0\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"true\"\n          repomap_compact_budget: \"4000\"\n          repomap_focus: \"understand\"\n          repomap_changed: \"false\"\n          proof_loop: \"true\"\n          proof_task_id: \"proof-loop-v0\"\n",
           "gh_pr_create": {
             "repo": "markoblogo/AGENTS.md_generator",
             "base": "main",
@@ -222,17 +547,337 @@
             ]
           }
         },
+        "orchestrator_bundle": {
+          "version": 1,
+          "kind": "set-orchestrator-bundle",
+          "repo": "markoblogo/AGENTS.md_generator",
+          "mode": "planning-only",
+          "dry_run": true,
+          "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_AGENTS.md_generator.json",
+          "compatible_with": [
+            "issue-to-agent-runners",
+            "parallel-agent-runners",
+            "proof-of-work-review-loops",
+            "agent-coordination-protocols"
+          ],
+          "target_workflow": {
+            "path": ".github/workflows/set.yml",
+            "uses": "markoblogo/SET@v0.4.0",
+            "preset": "repo-docs",
+            "with": {
+              "agentsgen": "true",
+              "autodetect": "true",
+              "path": ".",
+              "workflow_preset": "repo-docs",
+              "init": "true",
+              "pack": "true",
+              "check": "true",
+              "repomap": "true",
+              "snippets": "true",
+              "repomap_compact_budget": "4000",
+              "repomap_focus": "understand",
+              "repomap_changed": "false",
+              "proof_loop": "true",
+              "proof_task_id": "proof-loop-v0"
+            }
+          },
+          "context_package": {
+            "repomap_policy": {
+              "compact_budget": 4000,
+              "top_ranked_files": 5,
+              "focus": "understand",
+              "changed": false
+            },
+            "repomap_policy_mode": "focus",
+            "repomap_policy_label": "Focused Code Slice",
+            "capability_profile": {
+              "kind": "set-capability-profile",
+              "selected": "baseline",
+              "description": "Planning and review hints suitable for every SET handoff.",
+              "exports": [
+                "context_budget_hint",
+                "context_degradation_review",
+                "loop_readiness_hint"
+              ],
+              "selection_scope": "planning-only context package",
+              "non_goals": [
+                "profiles do not install dependencies or enable a runtime",
+                "profiles do not grant tool, mutation, or enforcement authority",
+                "profiles only select exported contracts and review hints"
+              ]
+            },
+            "context_budget_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "pattern": "context-budget-review",
+              "budget_surfaces": [
+                "system and developer instructions",
+                "user request",
+                "repo-local durable docs",
+                "memory or handoff summaries",
+                "retrieved files and tool output",
+                "orchestrator bundle fields"
+              ],
+              "workflow": [
+                "identify authoritative sources",
+                "demote stale or supporting-only context",
+                "keep decisive constraints close to the active plan",
+                "move bulky evidence into files or artifacts",
+                "preserve only source-backed durable lessons"
+              ],
+              "non_goals": [
+                "SET does not manage model context windows",
+                "SET does not choose or rewrite runner prompts",
+                "SET does not persist memory"
+              ]
+            },
+            "context_degradation_review": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "failure_modes": [
+                "context-poisoning",
+                "lost-in-the-middle",
+                "distraction",
+                "context-clash",
+                "stale-carryover"
+              ],
+              "review_before": [
+                "external runner handoff",
+                "proposal apply",
+                "memory write",
+                "large generated documentation update"
+              ],
+              "non_goals": [
+                "SET does not run context repair automatically",
+                "SET does not override the current user message with memory or prior task history"
+              ]
+            },
+            "loop_readiness_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "loop-readiness-review",
+              "pattern": "abvx-loop-readiness",
+              "readiness_levels": {
+                "L0": "not loop-ready",
+                "L1": "report-only",
+                "L2": "proposal-first",
+                "L3": "governed loop"
+              },
+              "checks": [
+                "cadence and stop rule",
+                "durable state outside the model",
+                "scope and denied targets",
+                "worktree, branch, sandbox, or retained-output isolation",
+                "verifier or maker-checker gate",
+                "token, time, retry, and spend budget",
+                "run log and failure record",
+                "rollback or discard path",
+                "human gate for writes, merges, releases, destructive actions, and external side effects"
+              ],
+              "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+              "non_goals": [
+                "SET does not schedule loops",
+                "SET does not spawn recurring agents",
+                "SET does not manage worktrees",
+                "SET does not auto-fix, auto-merge, deploy, or release"
+              ]
+            },
+            "id_bootstrap": {
+              "enabled": false,
+              "owner_id": null,
+              "target": null,
+              "artifacts": []
+            },
+            "rabbithole_seed": {
+              "enabled": true,
+              "artifact": "rabbithole.seed.md",
+              "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+              "suggested_sources": [
+                "plan.json",
+                "orchestrator-bundle.json",
+                "workflow.set.yml",
+                "pr-body.md"
+              ]
+            }
+          },
+          "task_contract": {
+            "proof_loop": {
+              "enabled": true,
+              "task_id": "proof-loop-v0",
+              "expected_artifacts": []
+            },
+            "expected_artifacts": [],
+            "recommended_review_lenses": [
+              {
+                "name": "assumption-excavation",
+                "phase": "pre-implementation",
+                "purpose": "surface hidden assumptions before implementation or runner handoff"
+              },
+              {
+                "name": "pipeline-readiness-gate",
+                "phase": "pre/post/ship",
+                "purpose": "choose the smallest useful review gate for the current phase"
+              },
+              {
+                "name": "confidence-fragility-review",
+                "phase": "ship",
+                "purpose": "check whether confident claims are backed by evidence"
+              },
+              {
+                "name": "hypothesis-diversification",
+                "phase": "research/adversarial-review",
+                "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+              },
+              {
+                "name": "context-degradation-review",
+                "phase": "handoff/context-review",
+                "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+              },
+              {
+                "name": "agent-tool-contract-review",
+                "phase": "contract-design",
+                "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+              },
+              {
+                "name": "loop-readiness-review",
+                "phase": "pre-schedule/pre-runner",
+                "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+              }
+            ],
+            "proposal_lifecycle": {
+              "states": [
+                "run",
+                "retained_output",
+                "inspect",
+                "select",
+                "apply",
+                "discard"
+              ],
+              "default_policy": "proposal-first",
+              "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+              "settlement_actions": [
+                {
+                  "name": "select",
+                  "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+                },
+                {
+                  "name": "apply",
+                  "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+                },
+                {
+                  "name": "discard",
+                  "meaning": "reject the retained output and leave the target workspace unchanged"
+                }
+              ]
+            },
+            "review_ready_when": [
+              "SET workflow plan is reviewed",
+              "unmapped is empty",
+              "expected artifacts are present or explicitly waived",
+              "retained output has been inspected before select/apply"
+            ],
+            "blocked_by": []
+          },
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "repomap",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "repomap"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "snippets",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "snippets"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "proof_loop",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "proof_loop",
+              "task_id": "proof-loop-v0"
+            }
+          ],
+          "handoff": {
+            "recommended_runner_role": "consume this bundle before spawning coding agents",
+            "stable_inputs": [
+              "repo",
+              "target_workflow",
+              "context_package",
+              "task_contract"
+            ],
+            "non_goals": [
+              "SET does not spawn coding agents",
+              "SET does not own external runner state",
+              "SET does not create branches or PRs in planning mode",
+              "SET does not apply retained outputs without an external review/settlement step"
+            ]
+          }
+        },
         "unmapped": [],
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
         ],
         "workflow_check": {
-          "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator",
+          "repo_root": "repo://markoblogo/AGENTS.md_generator",
           "workflow_path": ".github/workflows/set.yml",
-          "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator/.github/workflows/set.yml",
-          "status": "matches",
-          "diff_preview": []
+          "actual_path": "repo://markoblogo/AGENTS.md_generator/.github/workflows/set.yml",
+          "status": "drift",
+          "diff_preview": [
+            "--- expected/.github/workflows/set.yml",
+            "+++ .github/workflows/set.yml",
+            "@@ -3,11 +3,14 @@",
+            " on:",
+            "   workflow_dispatch:",
+            " ",
+            "+permissions:",
+            "+  contents: read",
+            "+",
+            " jobs:",
+            "   set:",
+            "     runs-on: ubuntu-latest",
+            "     steps:",
+            "-      - uses: actions/checkout@v4",
+            "+      - uses: actions/checkout@v7",
+            "       - uses: markoblogo/SET@v0.4.0",
+            "         with:",
+            "           agentsgen: \"true\"",
+            "@@ -21,6 +24,5 @@",
+            "           snippets: \"true\"",
+            "           repomap_compact_budget: \"4000\"",
+            "           repomap_focus: \"understand\"",
+            "-          repomap_changed: \"false\"",
+            "           proof_loop: \"true\"",
+            "           proof_task_id: \"proof-loop-v0\""
+          ]
         }
       },
       "repomap_snapshot": {
@@ -241,32 +886,32 @@
         "top_ranked_limit": 5,
         "top_ranked_files": [
           {
+            "path": "src/agentsgen/validators.py",
+            "score": 73,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/config.py",
+            "score": 68,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
             "path": "src/agentsgen/cli.py",
-            "score": 85,
+            "score": 57,
             "changed": false,
             "entrypoint": false
           },
           {
-            "path": "docs/ai/repomap.compact.md",
-            "score": 71,
-            "changed": true,
-            "entrypoint": false
-          },
-          {
-            "path": ".github/workflows/set.yml",
-            "score": 70,
-            "changed": true,
-            "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/understand.py",
-            "score": 61,
+            "path": "src/agentsgen/patch_engine.py",
+            "score": 45,
             "changed": false,
             "entrypoint": false
           },
           {
-            "path": "tests/test_understand_cli.py",
-            "score": 55,
+            "path": "src/agentsgen/result_types.py",
+            "score": 45,
             "changed": false,
             "entrypoint": false
           }
@@ -311,8 +956,954 @@
       "files": [
         "apply-simulation.json",
         "gh-pr-create.json",
+        "orchestrator-bundle.json",
         "plan.json",
         "pr-body.md",
+        "proposal-lifecycle.json",
+        "rabbithole.seed.md",
+        "workflow.set.yml"
+      ]
+    },
+    {
+      "repo": "markoblogo/ID",
+      "head_branch": "codex/set-plan-markoblogo-ID",
+      "target_workflow": ".github/workflows/set.yml",
+      "title": "chore(set): plan config apply for markoblogo/ID",
+      "status_hint": "ready-for-review",
+      "priority_hint": "normal",
+      "apply_readiness": "ready",
+      "operator_queue": "review-later",
+      "blocked_by": [],
+      "wiring_gaps": [],
+      "next_action_label": "Review and apply planned workflow",
+      "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-ID",
+      "next_shell_command": "git checkout -b codex/set-plan-markoblogo-ID",
+      "workflow_sync_status": "drift",
+      "repomap_policy": {
+        "compact_budget": 3000,
+        "top_ranked_files": 5,
+        "focus": "protocol",
+        "changed": false
+      },
+      "id_integration": {
+        "enabled": true,
+        "owner_id": "markoblogo",
+        "target": "set",
+        "pre_task": true,
+        "weekly_review": true
+      },
+      "workflow_check": {
+        "repo_root": "repo://markoblogo/ID",
+        "workflow_path": ".github/workflows/set.yml",
+        "actual_path": "repo://markoblogo/ID/.github/workflows/set.yml",
+        "status": "drift",
+        "diff_preview": [
+          "--- expected/.github/workflows/set.yml",
+          "+++ .github/workflows/set.yml",
+          "@@ -1,4 +1,7 @@",
+          " name: SET",
+          "+",
+          "+permissions:",
+          "+  contents: read",
+          " ",
+          " on:",
+          "   workflow_dispatch:",
+          "@@ -7,7 +10,7 @@",
+          "   set:",
+          "     runs-on: ubuntu-latest",
+          "     steps:",
+          "-      - uses: actions/checkout@v4",
+          "+      - uses: actions/checkout@v7",
+          "       - uses: markoblogo/SET@v0.4.0",
+          "         with:",
+          "           agentsgen: \"true\"",
+          "@@ -21,7 +24,6 @@",
+          "           snippets: \"false\"",
+          "           repomap_compact_budget: \"3000\"",
+          "           repomap_focus: \"protocol\"",
+          "-          repomap_changed: \"false\"",
+          "           id_enabled: \"true\"",
+          "           id_owner_id: \"markoblogo\"",
+          "           id_target: \"set\""
+        ]
+      },
+      "orchestrator_bundle": {
+        "version": 1,
+        "kind": "set-orchestrator-bundle",
+        "repo": "markoblogo/ID",
+        "mode": "planning-only",
+        "dry_run": true,
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_ID.json",
+        "compatible_with": [
+          "issue-to-agent-runners",
+          "parallel-agent-runners",
+          "proof-of-work-review-loops",
+          "agent-coordination-protocols"
+        ],
+        "target_workflow": {
+          "path": ".github/workflows/set.yml",
+          "uses": "markoblogo/SET@v0.4.0",
+          "preset": "repo-docs",
+          "with": {
+            "agentsgen": "true",
+            "autodetect": "true",
+            "path": ".",
+            "workflow_preset": "repo-docs",
+            "init": "true",
+            "pack": "true",
+            "check": "true",
+            "repomap": "true",
+            "snippets": "false",
+            "repomap_compact_budget": "3000",
+            "repomap_focus": "protocol",
+            "repomap_changed": "false",
+            "id_enabled": "true",
+            "id_owner_id": "markoblogo",
+            "id_target": "set",
+            "id_pre_task": "true",
+            "id_weekly_review": "true"
+          }
+        },
+        "context_package": {
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 5,
+            "focus": "protocol",
+            "changed": false
+          },
+          "repomap_policy_mode": "focus",
+          "repomap_policy_label": "Focused Code Slice",
+          "capability_profile": {
+            "kind": "set-capability-profile",
+            "selected": "baseline",
+            "description": "Planning and review hints suitable for every SET handoff.",
+            "exports": [
+              "context_budget_hint",
+              "context_degradation_review",
+              "loop_readiness_hint"
+            ],
+            "selection_scope": "planning-only context package",
+            "non_goals": [
+              "profiles do not install dependencies or enable a runtime",
+              "profiles do not grant tool, mutation, or enforcement authority",
+              "profiles only select exported contracts and review hints"
+            ]
+          },
+          "context_budget_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "pattern": "context-budget-review",
+            "budget_surfaces": [
+              "system and developer instructions",
+              "user request",
+              "repo-local durable docs",
+              "memory or handoff summaries",
+              "retrieved files and tool output",
+              "orchestrator bundle fields"
+            ],
+            "workflow": [
+              "identify authoritative sources",
+              "demote stale or supporting-only context",
+              "keep decisive constraints close to the active plan",
+              "move bulky evidence into files or artifacts",
+              "preserve only source-backed durable lessons"
+            ],
+            "non_goals": [
+              "SET does not manage model context windows",
+              "SET does not choose or rewrite runner prompts",
+              "SET does not persist memory"
+            ]
+          },
+          "context_degradation_review": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "failure_modes": [
+              "context-poisoning",
+              "lost-in-the-middle",
+              "distraction",
+              "context-clash",
+              "stale-carryover"
+            ],
+            "review_before": [
+              "external runner handoff",
+              "proposal apply",
+              "memory write",
+              "large generated documentation update"
+            ],
+            "non_goals": [
+              "SET does not run context repair automatically",
+              "SET does not override the current user message with memory or prior task history"
+            ]
+          },
+          "loop_readiness_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "loop-readiness-review",
+            "pattern": "abvx-loop-readiness",
+            "readiness_levels": {
+              "L0": "not loop-ready",
+              "L1": "report-only",
+              "L2": "proposal-first",
+              "L3": "governed loop"
+            },
+            "checks": [
+              "cadence and stop rule",
+              "durable state outside the model",
+              "scope and denied targets",
+              "worktree, branch, sandbox, or retained-output isolation",
+              "verifier or maker-checker gate",
+              "token, time, retry, and spend budget",
+              "run log and failure record",
+              "rollback or discard path",
+              "human gate for writes, merges, releases, destructive actions, and external side effects"
+            ],
+            "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+            "non_goals": [
+              "SET does not schedule loops",
+              "SET does not spawn recurring agents",
+              "SET does not manage worktrees",
+              "SET does not auto-fix, auto-merge, deploy, or release"
+            ]
+          },
+          "id_bootstrap": {
+            "enabled": true,
+            "owner_id": "markoblogo",
+            "target": "set",
+            "artifacts": [
+              "docs/ai/id-bootstrap.json",
+              "docs/ai/id-bootstrap.prompt.md"
+            ]
+          },
+          "rabbithole_seed": {
+            "enabled": true,
+            "artifact": "rabbithole.seed.md",
+            "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+            "suggested_sources": [
+              "plan.json",
+              "orchestrator-bundle.json",
+              "workflow.set.yml",
+              "pr-body.md"
+            ]
+          }
+        },
+        "task_contract": {
+          "proof_loop": null,
+          "expected_artifacts": [
+            "docs/ai/id-bootstrap.json",
+            "docs/ai/id-bootstrap.prompt.md"
+          ],
+          "recommended_review_lenses": [
+            {
+              "name": "assumption-excavation",
+              "phase": "pre-implementation",
+              "purpose": "surface hidden assumptions before implementation or runner handoff"
+            },
+            {
+              "name": "pipeline-readiness-gate",
+              "phase": "pre/post/ship",
+              "purpose": "choose the smallest useful review gate for the current phase"
+            },
+            {
+              "name": "confidence-fragility-review",
+              "phase": "ship",
+              "purpose": "check whether confident claims are backed by evidence"
+            },
+            {
+              "name": "hypothesis-diversification",
+              "phase": "research/adversarial-review",
+              "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+            },
+            {
+              "name": "context-degradation-review",
+              "phase": "handoff/context-review",
+              "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+            },
+            {
+              "name": "agent-tool-contract-review",
+              "phase": "contract-design",
+              "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+            },
+            {
+              "name": "loop-readiness-review",
+              "phase": "pre-schedule/pre-runner",
+              "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+            }
+          ],
+          "proposal_lifecycle": {
+            "states": [
+              "run",
+              "retained_output",
+              "inspect",
+              "select",
+              "apply",
+              "discard"
+            ],
+            "default_policy": "proposal-first",
+            "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+            "settlement_actions": [
+              {
+                "name": "select",
+                "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+              },
+              {
+                "name": "apply",
+                "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+              },
+              {
+                "name": "discard",
+                "meaning": "reject the retained output and leave the target workspace unchanged"
+              }
+            ]
+          },
+          "review_ready_when": [
+            "SET workflow plan is reviewed",
+            "unmapped is empty",
+            "expected artifacts are present or explicitly waived",
+            "retained output has been inspected before select/apply"
+          ],
+          "blocked_by": []
+        },
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "repomap",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "repomap"
+          },
+          {
+            "tool": "id",
+            "key": "pre_task",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "id_pre_task",
+            "owner_id": "markoblogo",
+            "target": "set"
+          },
+          {
+            "tool": "id",
+            "key": "weekly_review",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "id_weekly_review",
+            "owner_id": "markoblogo",
+            "target": "set"
+          }
+        ],
+        "handoff": {
+          "recommended_runner_role": "consume this bundle before spawning coding agents",
+          "stable_inputs": [
+            "repo",
+            "target_workflow",
+            "context_package",
+            "task_contract"
+          ],
+          "non_goals": [
+            "SET does not spawn coding agents",
+            "SET does not own external runner state",
+            "SET does not create branches or PRs in planning mode",
+            "SET does not apply retained outputs without an external review/settlement step"
+          ]
+        }
+      },
+      "unmapped_count": 0,
+      "plan": {
+        "version": 1,
+        "dry_run": true,
+        "mode": "planning-only",
+        "repo": "markoblogo/ID",
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_ID.json",
+        "repomap_policy": {
+          "compact_budget": 3000,
+          "top_ranked_files": 5,
+          "focus": "protocol",
+          "changed": false
+        },
+        "repomap_policy_mode": "focus",
+        "proof_loop": null,
+        "id_integration": {
+          "enabled": true,
+          "owner_id": "markoblogo",
+          "target": "set",
+          "pre_task": true,
+          "weekly_review": true
+        },
+        "proposed_changes": [
+          {
+            "type": "workflow",
+            "workflow": {
+              "path": ".github/workflows/set.yml",
+              "uses": "markoblogo/SET@v0.4.0",
+              "with": {
+                "agentsgen": "true",
+                "autodetect": "true",
+                "path": ".",
+                "workflow_preset": "repo-docs",
+                "init": "true",
+                "pack": "true",
+                "check": "true",
+                "repomap": "true",
+                "snippets": "false",
+                "repomap_compact_budget": "3000",
+                "repomap_focus": "protocol",
+                "repomap_changed": "false",
+                "id_enabled": "true",
+                "id_owner_id": "markoblogo",
+                "id_target": "set",
+                "id_pre_task": "true",
+                "id_weekly_review": "true"
+              }
+            }
+          }
+        ],
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "repomap",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "repomap"
+          },
+          {
+            "tool": "id",
+            "key": "pre_task",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "id_pre_task",
+            "owner_id": "markoblogo",
+            "target": "set"
+          },
+          {
+            "tool": "id",
+            "key": "weekly_review",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "id_weekly_review",
+            "owner_id": "markoblogo",
+            "target": "set"
+          }
+        ],
+        "review_payload": {
+          "version": 1,
+          "kind": "set-pr-payload",
+          "repo": "markoblogo/ID",
+          "dry_run": true,
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "repomap",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "repomap"
+            },
+            {
+              "tool": "id",
+              "key": "pre_task",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "id_pre_task",
+              "owner_id": "markoblogo",
+              "target": "set"
+            },
+            {
+              "tool": "id",
+              "key": "weekly_review",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "id_weekly_review",
+              "owner_id": "markoblogo",
+              "target": "set"
+            }
+          ],
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 5,
+            "focus": "protocol",
+            "changed": false
+          },
+          "repomap_policy_mode": "focus",
+          "proof_loop": null,
+          "repomap_policy_label": "Focused Code Slice",
+          "apply_readiness": "ready",
+          "blocked_by": [],
+          "operator_queue": "review-later",
+          "next_action_label": "Review and apply planned workflow",
+          "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-ID",
+          "next_shell_command": "git checkout -b codex/set-plan-markoblogo-ID",
+          "target_branch": "main",
+          "head_branch": "codex/set-plan-markoblogo-ID",
+          "target_workflow_path": ".github/workflows/set.yml",
+          "title": "chore(set): plan config apply for markoblogo/ID",
+          "suggested_commit_message": "chore(set): plan config apply for markoblogo/ID",
+          "body": "# Planned SET workflow for `markoblogo/ID`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@v0.4.0`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `false`\n- `repomap_compact_budget`: `3000`\n- `repomap_focus`: `protocol`\n- `repomap_changed`: `false`\n- `id_enabled`: `true`\n- `id_owner_id`: `markoblogo`\n- `id_target`: `set`\n- `id_pre_task`: `true`\n- `id_weekly_review`: `true`\n\n## Repomap policy\n- `mode`: `focus`\n- `label`: `Focused Code Slice`\n- `compact_budget`: `3000`\n- `top_ranked_files`: `5`\n- `focus`: `protocol`\n- `changed`: `false`\n\n## ID integration\n- `enabled`: `true`\n- `owner_id`: `markoblogo`\n- `target`: `set`\n- `pre_task`: `true`\n- `weekly_review`: `true`\n\n## Proposal lifecycle\n- `run`: execute in an isolated proposal/worktree context.\n- `retained_output`: keep generated files outside the target workspace.\n- `inspect`: review diffs, artifacts, proof-loop outputs, and review lenses.\n- `select`: mark the proposal as the candidate result.\n- `apply`: merge/copy selected output only after review.\n- `discard`: reject the proposal and leave the target workspace unchanged.\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n- Dry-run mode: proposed changes are explicit and would only be written with a manual apply flow.\n- Would write: `.github/workflows/set.yml`\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@v0.4.0\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"false\"\n          repomap_compact_budget: \"3000\"\n          repomap_focus: \"protocol\"\n          repomap_changed: \"false\"\n          id_enabled: \"true\"\n          id_owner_id: \"markoblogo\"\n          id_target: \"set\"\n          id_pre_task: \"true\"\n          id_weekly_review: \"true\"\n",
+          "gh_pr_create": {
+            "repo": "markoblogo/ID",
+            "base": "main",
+            "head": "codex/set-plan-markoblogo-ID",
+            "title": "chore(set): plan config apply for markoblogo/ID",
+            "body_file": "pr-body.md"
+          },
+          "apply_simulation": {
+            "repo": "markoblogo/ID",
+            "base_branch": "main",
+            "head_branch": "codex/set-plan-markoblogo-ID",
+            "target_files": [
+              {
+                "path": ".github/workflows/set.yml",
+                "source_export": "workflow.set.yml",
+                "action": "write"
+              }
+            ],
+            "suggested_commit_message": "chore(set): plan config apply for markoblogo/ID",
+            "manual_steps": [
+              "git checkout -b codex/set-plan-markoblogo-ID",
+              "cp workflow.set.yml .github/workflows/set.yml",
+              "git add .github/workflows/set.yml",
+              "git commit -m \"chore(set): plan config apply for markoblogo/ID\"",
+              "gh pr create --repo markoblogo/ID --base main --head codex/set-plan-markoblogo-ID --title \"chore(set): plan config apply for markoblogo/ID\" --body-file pr-body.md"
+            ]
+          }
+        },
+        "orchestrator_bundle": {
+          "version": 1,
+          "kind": "set-orchestrator-bundle",
+          "repo": "markoblogo/ID",
+          "mode": "planning-only",
+          "dry_run": true,
+          "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_ID.json",
+          "compatible_with": [
+            "issue-to-agent-runners",
+            "parallel-agent-runners",
+            "proof-of-work-review-loops",
+            "agent-coordination-protocols"
+          ],
+          "target_workflow": {
+            "path": ".github/workflows/set.yml",
+            "uses": "markoblogo/SET@v0.4.0",
+            "preset": "repo-docs",
+            "with": {
+              "agentsgen": "true",
+              "autodetect": "true",
+              "path": ".",
+              "workflow_preset": "repo-docs",
+              "init": "true",
+              "pack": "true",
+              "check": "true",
+              "repomap": "true",
+              "snippets": "false",
+              "repomap_compact_budget": "3000",
+              "repomap_focus": "protocol",
+              "repomap_changed": "false",
+              "id_enabled": "true",
+              "id_owner_id": "markoblogo",
+              "id_target": "set",
+              "id_pre_task": "true",
+              "id_weekly_review": "true"
+            }
+          },
+          "context_package": {
+            "repomap_policy": {
+              "compact_budget": 3000,
+              "top_ranked_files": 5,
+              "focus": "protocol",
+              "changed": false
+            },
+            "repomap_policy_mode": "focus",
+            "repomap_policy_label": "Focused Code Slice",
+            "capability_profile": {
+              "kind": "set-capability-profile",
+              "selected": "baseline",
+              "description": "Planning and review hints suitable for every SET handoff.",
+              "exports": [
+                "context_budget_hint",
+                "context_degradation_review",
+                "loop_readiness_hint"
+              ],
+              "selection_scope": "planning-only context package",
+              "non_goals": [
+                "profiles do not install dependencies or enable a runtime",
+                "profiles do not grant tool, mutation, or enforcement authority",
+                "profiles only select exported contracts and review hints"
+              ]
+            },
+            "context_budget_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "pattern": "context-budget-review",
+              "budget_surfaces": [
+                "system and developer instructions",
+                "user request",
+                "repo-local durable docs",
+                "memory or handoff summaries",
+                "retrieved files and tool output",
+                "orchestrator bundle fields"
+              ],
+              "workflow": [
+                "identify authoritative sources",
+                "demote stale or supporting-only context",
+                "keep decisive constraints close to the active plan",
+                "move bulky evidence into files or artifacts",
+                "preserve only source-backed durable lessons"
+              ],
+              "non_goals": [
+                "SET does not manage model context windows",
+                "SET does not choose or rewrite runner prompts",
+                "SET does not persist memory"
+              ]
+            },
+            "context_degradation_review": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "failure_modes": [
+                "context-poisoning",
+                "lost-in-the-middle",
+                "distraction",
+                "context-clash",
+                "stale-carryover"
+              ],
+              "review_before": [
+                "external runner handoff",
+                "proposal apply",
+                "memory write",
+                "large generated documentation update"
+              ],
+              "non_goals": [
+                "SET does not run context repair automatically",
+                "SET does not override the current user message with memory or prior task history"
+              ]
+            },
+            "loop_readiness_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "loop-readiness-review",
+              "pattern": "abvx-loop-readiness",
+              "readiness_levels": {
+                "L0": "not loop-ready",
+                "L1": "report-only",
+                "L2": "proposal-first",
+                "L3": "governed loop"
+              },
+              "checks": [
+                "cadence and stop rule",
+                "durable state outside the model",
+                "scope and denied targets",
+                "worktree, branch, sandbox, or retained-output isolation",
+                "verifier or maker-checker gate",
+                "token, time, retry, and spend budget",
+                "run log and failure record",
+                "rollback or discard path",
+                "human gate for writes, merges, releases, destructive actions, and external side effects"
+              ],
+              "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+              "non_goals": [
+                "SET does not schedule loops",
+                "SET does not spawn recurring agents",
+                "SET does not manage worktrees",
+                "SET does not auto-fix, auto-merge, deploy, or release"
+              ]
+            },
+            "id_bootstrap": {
+              "enabled": true,
+              "owner_id": "markoblogo",
+              "target": "set",
+              "artifacts": [
+                "docs/ai/id-bootstrap.json",
+                "docs/ai/id-bootstrap.prompt.md"
+              ]
+            },
+            "rabbithole_seed": {
+              "enabled": true,
+              "artifact": "rabbithole.seed.md",
+              "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+              "suggested_sources": [
+                "plan.json",
+                "orchestrator-bundle.json",
+                "workflow.set.yml",
+                "pr-body.md"
+              ]
+            }
+          },
+          "task_contract": {
+            "proof_loop": null,
+            "expected_artifacts": [
+              "docs/ai/id-bootstrap.json",
+              "docs/ai/id-bootstrap.prompt.md"
+            ],
+            "recommended_review_lenses": [
+              {
+                "name": "assumption-excavation",
+                "phase": "pre-implementation",
+                "purpose": "surface hidden assumptions before implementation or runner handoff"
+              },
+              {
+                "name": "pipeline-readiness-gate",
+                "phase": "pre/post/ship",
+                "purpose": "choose the smallest useful review gate for the current phase"
+              },
+              {
+                "name": "confidence-fragility-review",
+                "phase": "ship",
+                "purpose": "check whether confident claims are backed by evidence"
+              },
+              {
+                "name": "hypothesis-diversification",
+                "phase": "research/adversarial-review",
+                "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+              },
+              {
+                "name": "context-degradation-review",
+                "phase": "handoff/context-review",
+                "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+              },
+              {
+                "name": "agent-tool-contract-review",
+                "phase": "contract-design",
+                "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+              },
+              {
+                "name": "loop-readiness-review",
+                "phase": "pre-schedule/pre-runner",
+                "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+              }
+            ],
+            "proposal_lifecycle": {
+              "states": [
+                "run",
+                "retained_output",
+                "inspect",
+                "select",
+                "apply",
+                "discard"
+              ],
+              "default_policy": "proposal-first",
+              "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+              "settlement_actions": [
+                {
+                  "name": "select",
+                  "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+                },
+                {
+                  "name": "apply",
+                  "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+                },
+                {
+                  "name": "discard",
+                  "meaning": "reject the retained output and leave the target workspace unchanged"
+                }
+              ]
+            },
+            "review_ready_when": [
+              "SET workflow plan is reviewed",
+              "unmapped is empty",
+              "expected artifacts are present or explicitly waived",
+              "retained output has been inspected before select/apply"
+            ],
+            "blocked_by": []
+          },
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "repomap",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "repomap"
+            },
+            {
+              "tool": "id",
+              "key": "pre_task",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "id_pre_task",
+              "owner_id": "markoblogo",
+              "target": "set"
+            },
+            {
+              "tool": "id",
+              "key": "weekly_review",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "id_weekly_review",
+              "owner_id": "markoblogo",
+              "target": "set"
+            }
+          ],
+          "handoff": {
+            "recommended_runner_role": "consume this bundle before spawning coding agents",
+            "stable_inputs": [
+              "repo",
+              "target_workflow",
+              "context_package",
+              "task_contract"
+            ],
+            "non_goals": [
+              "SET does not spawn coding agents",
+              "SET does not own external runner state",
+              "SET does not create branches or PRs in planning mode",
+              "SET does not apply retained outputs without an external review/settlement step"
+            ]
+          }
+        },
+        "unmapped": [],
+        "notes": [
+          "This planner does not open a PR or write files to the target repo.",
+          "Use the output to review the intended SET workflow before any future apply step."
+        ],
+        "workflow_check": {
+          "repo_root": "repo://markoblogo/ID",
+          "workflow_path": ".github/workflows/set.yml",
+          "actual_path": "repo://markoblogo/ID/.github/workflows/set.yml",
+          "status": "drift",
+          "diff_preview": [
+            "--- expected/.github/workflows/set.yml",
+            "+++ .github/workflows/set.yml",
+            "@@ -1,4 +1,7 @@",
+            " name: SET",
+            "+",
+            "+permissions:",
+            "+  contents: read",
+            " ",
+            " on:",
+            "   workflow_dispatch:",
+            "@@ -7,7 +10,7 @@",
+            "   set:",
+            "     runs-on: ubuntu-latest",
+            "     steps:",
+            "-      - uses: actions/checkout@v4",
+            "+      - uses: actions/checkout@v7",
+            "       - uses: markoblogo/SET@v0.4.0",
+            "         with:",
+            "           agentsgen: \"true\"",
+            "@@ -21,7 +24,6 @@",
+            "           snippets: \"false\"",
+            "           repomap_compact_budget: \"3000\"",
+            "           repomap_focus: \"protocol\"",
+            "-          repomap_changed: \"false\"",
+            "           id_enabled: \"true\"",
+            "           id_owner_id: \"markoblogo\"",
+            "           id_target: \"set\""
+          ]
+        }
+      },
+      "repomap_snapshot": {
+        "status": "missing",
+        "compact_budget": 3000,
+        "top_ranked_limit": 5,
+        "top_ranked_files": [],
+        "active_slice": {
+          "mode": "focus",
+          "policy_mode": "focus",
+          "policy_label": "Focused Code Slice",
+          "focus": "protocol",
+          "changed_only": false,
+          "slice_files_count": 0
+        },
+        "slice_source": "policy-default"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "files": [
+        "apply-simulation.json",
+        "gh-pr-create.json",
+        "orchestrator-bundle.json",
+        "plan.json",
+        "pr-body.md",
+        "proposal-lifecycle.json",
+        "rabbithole.seed.md",
         "workflow.set.yml"
       ]
     },
@@ -337,19 +1928,408 @@
         "focus": null,
         "changed": true
       },
+      "id_integration": null,
       "workflow_check": {
-        "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET",
+        "repo_root": "repo://markoblogo/SET",
         "workflow_path": ".github/workflows/set.yml",
-        "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/.github/workflows/set.yml",
+        "actual_path": "repo://markoblogo/SET/.github/workflows/set.yml",
         "status": "matches",
         "diff_preview": []
+      },
+      "orchestrator_bundle": {
+        "version": 1,
+        "kind": "set-orchestrator-bundle",
+        "repo": "markoblogo/SET",
+        "mode": "planning-only",
+        "dry_run": true,
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_SET.json",
+        "compatible_with": [
+          "issue-to-agent-runners",
+          "parallel-agent-runners",
+          "proof-of-work-review-loops",
+          "agent-coordination-protocols"
+        ],
+        "target_workflow": {
+          "path": ".github/workflows/set.yml",
+          "uses": "markoblogo/SET@v0.4.0",
+          "preset": "repo-docs",
+          "with": {
+            "agentsgen": "true",
+            "autodetect": "true",
+            "path": ".",
+            "workflow_preset": "repo-docs",
+            "init": "true",
+            "pack": "true",
+            "check": "true",
+            "repomap": "true",
+            "snippets": "false",
+            "repomap_compact_budget": "2500",
+            "repomap_changed": "true",
+            "proof_loop": "true",
+            "proof_task_id": "proof-loop-blocked",
+            "proof_expected_artifacts": "docs/ai/proof/manual-review.md"
+          }
+        },
+        "context_package": {
+          "repomap_policy": {
+            "compact_budget": 2500,
+            "top_ranked_files": 5,
+            "focus": null,
+            "changed": true
+          },
+          "repomap_policy_mode": "changed",
+          "repomap_policy_label": "Changed Files Slice",
+          "capability_profile": {
+            "kind": "set-capability-profile",
+            "selected": "governed-runner",
+            "description": "Baseline plus optional memory and shadow-first governance contracts.",
+            "exports": [
+              "context_budget_hint",
+              "context_degradation_review",
+              "loop_readiness_hint",
+              "memory_capability",
+              "agent_governance_capability"
+            ],
+            "selection_scope": "planning-only context package",
+            "non_goals": [
+              "profiles do not install dependencies or enable a runtime",
+              "profiles do not grant tool, mutation, or enforcement authority",
+              "profiles only select exported contracts and review hints"
+            ]
+          },
+          "context_budget_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "pattern": "context-budget-review",
+            "budget_surfaces": [
+              "system and developer instructions",
+              "user request",
+              "repo-local durable docs",
+              "memory or handoff summaries",
+              "retrieved files and tool output",
+              "orchestrator bundle fields"
+            ],
+            "workflow": [
+              "identify authoritative sources",
+              "demote stale or supporting-only context",
+              "keep decisive constraints close to the active plan",
+              "move bulky evidence into files or artifacts",
+              "preserve only source-backed durable lessons"
+            ],
+            "non_goals": [
+              "SET does not manage model context windows",
+              "SET does not choose or rewrite runner prompts",
+              "SET does not persist memory"
+            ]
+          },
+          "context_degradation_review": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "failure_modes": [
+              "context-poisoning",
+              "lost-in-the-middle",
+              "distraction",
+              "context-clash",
+              "stale-carryover"
+            ],
+            "review_before": [
+              "external runner handoff",
+              "proposal apply",
+              "memory write",
+              "large generated documentation update"
+            ],
+            "non_goals": [
+              "SET does not run context repair automatically",
+              "SET does not override the current user message with memory or prior task history"
+            ]
+          },
+          "loop_readiness_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "loop-readiness-review",
+            "pattern": "abvx-loop-readiness",
+            "readiness_levels": {
+              "L0": "not loop-ready",
+              "L1": "report-only",
+              "L2": "proposal-first",
+              "L3": "governed loop"
+            },
+            "checks": [
+              "cadence and stop rule",
+              "durable state outside the model",
+              "scope and denied targets",
+              "worktree, branch, sandbox, or retained-output isolation",
+              "verifier or maker-checker gate",
+              "token, time, retry, and spend budget",
+              "run log and failure record",
+              "rollback or discard path",
+              "human gate for writes, merges, releases, destructive actions, and external side effects"
+            ],
+            "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+            "non_goals": [
+              "SET does not schedule loops",
+              "SET does not spawn recurring agents",
+              "SET does not manage worktrees",
+              "SET does not auto-fix, auto-merge, deploy, or release"
+            ]
+          },
+          "memory_capability": {
+            "enabled": false,
+            "kind": "optional-memory-capability",
+            "scope": {
+              "model": "per-project",
+              "key": "repo",
+              "cross_project_reads": false
+            },
+            "retrieval": {
+              "modes": [
+                "full_text",
+                "semantic"
+              ],
+              "policy": "hybrid-when-available",
+              "fallback": "full_text"
+            },
+            "operations": {
+              "search": {
+                "purpose": "find relevant project memory before planning or changing code",
+                "required_before_mutation": true
+              },
+              "read": {
+                "purpose": "inspect the full source document after a relevant search hit",
+                "requires_search_reference": true
+              },
+              "write": {
+                "purpose": "retain a reviewed decision, constraint, or durable lesson",
+                "policy": "audit-gated-proposal-first",
+                "raw_sources_read_only": true,
+                "backup_or_snapshot_required": true
+              }
+            },
+            "non_goals": [
+              "SET does not store memory",
+              "SET does not provide an MCP server",
+              "memory writes are not implicit completion evidence"
+            ]
+          },
+          "agent_governance_capability": {
+            "enabled": false,
+            "kind": "optional-agent-governance-capability",
+            "mode": "shadow-first",
+            "decision": {
+              "when": "before a significant tool call or external side effect",
+              "outcomes": [
+                "allow",
+                "deny",
+                "require_approval"
+              ],
+              "required_record": [
+                "task_id",
+                "correlation_id",
+                "action_kind",
+                "action_fingerprint",
+                "short_operational_reason",
+                "decision"
+              ]
+            },
+            "policy": {
+              "recommended_controls": [
+                "allowlist or denylist for action classes",
+                "path and protected-data boundaries",
+                "per-intent rate and spend limits",
+                "one-shot human approval for the exact deferred action",
+                "circuit breaker for repeated denials or failures"
+              ],
+              "protected_evidence_rule": "protected evidence and secrets stay outside public outputs and public ledgers"
+            },
+            "telemetry": {
+              "fields": [
+                "tool_calls",
+                "tokens",
+                "estimated_cost",
+                "latency_ms"
+              ],
+              "evaluation_dimensions": [
+                "factual_safety",
+                "unnecessary_tool_calls",
+                "cost",
+                "latency",
+                "stopping_correctness",
+                "abstention_quality"
+              ]
+            },
+            "audit": {
+              "storage": "append-only provider-owned ledger",
+              "reasoning_policy": "retain short operational reasons, never hidden chain-of-thought"
+            },
+            "non_goals": [
+              "SET does not execute or proxy tool calls",
+              "SET does not store secrets, protected evidence, or hidden chain-of-thought",
+              "SET does not enable enforcement or promotion without measured shadow results"
+            ]
+          },
+          "id_bootstrap": {
+            "enabled": false,
+            "owner_id": null,
+            "target": null,
+            "artifacts": []
+          },
+          "rabbithole_seed": {
+            "enabled": true,
+            "artifact": "rabbithole.seed.md",
+            "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+            "suggested_sources": [
+              "plan.json",
+              "orchestrator-bundle.json",
+              "workflow.set.yml",
+              "pr-body.md"
+            ]
+          }
+        },
+        "task_contract": {
+          "proof_loop": {
+            "enabled": true,
+            "task_id": "proof-loop-blocked",
+            "expected_artifacts": [
+              "docs/ai/proof/manual-review.md"
+            ]
+          },
+          "expected_artifacts": [
+            "docs/ai/proof/manual-review.md"
+          ],
+          "recommended_review_lenses": [
+            {
+              "name": "assumption-excavation",
+              "phase": "pre-implementation",
+              "purpose": "surface hidden assumptions before implementation or runner handoff"
+            },
+            {
+              "name": "pipeline-readiness-gate",
+              "phase": "pre/post/ship",
+              "purpose": "choose the smallest useful review gate for the current phase"
+            },
+            {
+              "name": "confidence-fragility-review",
+              "phase": "ship",
+              "purpose": "check whether confident claims are backed by evidence"
+            },
+            {
+              "name": "hypothesis-diversification",
+              "phase": "research/adversarial-review",
+              "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+            },
+            {
+              "name": "context-degradation-review",
+              "phase": "handoff/context-review",
+              "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+            },
+            {
+              "name": "agent-tool-contract-review",
+              "phase": "contract-design",
+              "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+            },
+            {
+              "name": "loop-readiness-review",
+              "phase": "pre-schedule/pre-runner",
+              "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+            }
+          ],
+          "proposal_lifecycle": {
+            "states": [
+              "run",
+              "retained_output",
+              "inspect",
+              "select",
+              "apply",
+              "discard"
+            ],
+            "default_policy": "proposal-first",
+            "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+            "settlement_actions": [
+              {
+                "name": "select",
+                "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+              },
+              {
+                "name": "apply",
+                "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+              },
+              {
+                "name": "discard",
+                "meaning": "reject the retained output and leave the target workspace unchanged"
+              }
+            ]
+          },
+          "review_ready_when": [
+            "SET workflow plan is reviewed",
+            "unmapped is empty",
+            "expected artifacts are present or explicitly waived",
+            "retained output has been inspected before select/apply"
+          ],
+          "blocked_by": []
+        },
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "repomap",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "repomap"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "proof_loop",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "proof_loop",
+            "task_id": "proof-loop-blocked"
+          }
+        ],
+        "handoff": {
+          "recommended_runner_role": "consume this bundle before spawning coding agents",
+          "stable_inputs": [
+            "repo",
+            "target_workflow",
+            "context_package",
+            "task_contract"
+          ],
+          "non_goals": [
+            "SET does not spawn coding agents",
+            "SET does not own external runner state",
+            "SET does not create branches or PRs in planning mode",
+            "SET does not apply retained outputs without an external review/settlement step"
+          ]
+        }
       },
       "unmapped_count": 0,
       "plan": {
         "version": 1,
+        "dry_run": true,
         "mode": "planning-only",
         "repo": "markoblogo/SET",
-        "source_config": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos/markoblogo_SET.json",
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_SET.json",
         "repomap_policy": {
           "compact_budget": 2500,
           "top_ranked_files": 5,
@@ -364,12 +2344,13 @@
             "docs/ai/proof/manual-review.md"
           ]
         },
+        "id_integration": null,
         "proposed_changes": [
           {
             "type": "workflow",
             "workflow": {
               "path": ".github/workflows/set.yml",
-              "uses": "markoblogo/SET@main",
+              "uses": "markoblogo/SET@v0.4.0",
               "with": {
                 "agentsgen": "true",
                 "autodetect": "true",
@@ -431,6 +2412,7 @@
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/SET",
+          "dry_run": true,
           "capabilities": [
             {
               "tool": "agentsgen",
@@ -495,8 +2477,8 @@
           "target_workflow_path": ".github/workflows/set.yml",
           "title": "chore(set): plan config apply for markoblogo/SET",
           "suggested_commit_message": "chore(set): plan config apply for markoblogo/SET",
-          "body": "# Planned SET workflow for `markoblogo/SET`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `false`\n- `repomap_compact_budget`: `2500`\n- `repomap_changed`: `true`\n- `proof_loop`: `true`\n- `proof_task_id`: `proof-loop-blocked`\n- `proof_expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Repomap policy\n- `mode`: `changed`\n- `label`: `Changed Files Slice`\n- `compact_budget`: `2500`\n- `top_ranked_files`: `5`\n- `changed`: `true`\n\n## Proof loop\n- `enabled`: `true`\n- `task_id`: `proof-loop-blocked`\n- `expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"false\"\n          repomap_compact_budget: \"2500\"\n          repomap_changed: \"true\"\n          proof_loop: \"true\"\n          proof_task_id: \"proof-loop-blocked\"\n          proof_expected_artifacts: \"docs/ai/proof/manual-review.md\"\n",
+          "body": "# Planned SET workflow for `markoblogo/SET`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@v0.4.0`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `true`\n- `snippets`: `false`\n- `repomap_compact_budget`: `2500`\n- `repomap_changed`: `true`\n- `proof_loop`: `true`\n- `proof_task_id`: `proof-loop-blocked`\n- `proof_expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Repomap policy\n- `mode`: `changed`\n- `label`: `Changed Files Slice`\n- `compact_budget`: `2500`\n- `top_ranked_files`: `5`\n- `changed`: `true`\n\n## Proof loop\n- `enabled`: `true`\n- `task_id`: `proof-loop-blocked`\n- `expected_artifacts`: `docs/ai/proof/manual-review.md`\n\n## Proposal lifecycle\n- `run`: execute in an isolated proposal/worktree context.\n- `retained_output`: keep generated files outside the target workspace.\n- `inspect`: review diffs, artifacts, proof-loop outputs, and review lenses.\n- `select`: mark the proposal as the candidate result.\n- `apply`: merge/copy selected output only after review.\n- `discard`: reject the proposal and leave the target workspace unchanged.\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n- Dry-run mode: proposed changes are explicit and would only be written with a manual apply flow.\n- Would write: `.github/workflows/set.yml`\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@v0.4.0\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"true\"\n          snippets: \"false\"\n          repomap_compact_budget: \"2500\"\n          repomap_changed: \"true\"\n          proof_loop: \"true\"\n          proof_task_id: \"proof-loop-blocked\"\n          proof_expected_artifacts: \"docs/ai/proof/manual-review.md\"\n",
           "gh_pr_create": {
             "repo": "markoblogo/SET",
             "base": "main",
@@ -525,15 +2507,402 @@
             ]
           }
         },
+        "orchestrator_bundle": {
+          "version": 1,
+          "kind": "set-orchestrator-bundle",
+          "repo": "markoblogo/SET",
+          "mode": "planning-only",
+          "dry_run": true,
+          "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_SET.json",
+          "compatible_with": [
+            "issue-to-agent-runners",
+            "parallel-agent-runners",
+            "proof-of-work-review-loops",
+            "agent-coordination-protocols"
+          ],
+          "target_workflow": {
+            "path": ".github/workflows/set.yml",
+            "uses": "markoblogo/SET@v0.4.0",
+            "preset": "repo-docs",
+            "with": {
+              "agentsgen": "true",
+              "autodetect": "true",
+              "path": ".",
+              "workflow_preset": "repo-docs",
+              "init": "true",
+              "pack": "true",
+              "check": "true",
+              "repomap": "true",
+              "snippets": "false",
+              "repomap_compact_budget": "2500",
+              "repomap_changed": "true",
+              "proof_loop": "true",
+              "proof_task_id": "proof-loop-blocked",
+              "proof_expected_artifacts": "docs/ai/proof/manual-review.md"
+            }
+          },
+          "context_package": {
+            "repomap_policy": {
+              "compact_budget": 2500,
+              "top_ranked_files": 5,
+              "focus": null,
+              "changed": true
+            },
+            "repomap_policy_mode": "changed",
+            "repomap_policy_label": "Changed Files Slice",
+            "capability_profile": {
+              "kind": "set-capability-profile",
+              "selected": "governed-runner",
+              "description": "Baseline plus optional memory and shadow-first governance contracts.",
+              "exports": [
+                "context_budget_hint",
+                "context_degradation_review",
+                "loop_readiness_hint",
+                "memory_capability",
+                "agent_governance_capability"
+              ],
+              "selection_scope": "planning-only context package",
+              "non_goals": [
+                "profiles do not install dependencies or enable a runtime",
+                "profiles do not grant tool, mutation, or enforcement authority",
+                "profiles only select exported contracts and review hints"
+              ]
+            },
+            "context_budget_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "pattern": "context-budget-review",
+              "budget_surfaces": [
+                "system and developer instructions",
+                "user request",
+                "repo-local durable docs",
+                "memory or handoff summaries",
+                "retrieved files and tool output",
+                "orchestrator bundle fields"
+              ],
+              "workflow": [
+                "identify authoritative sources",
+                "demote stale or supporting-only context",
+                "keep decisive constraints close to the active plan",
+                "move bulky evidence into files or artifacts",
+                "preserve only source-backed durable lessons"
+              ],
+              "non_goals": [
+                "SET does not manage model context windows",
+                "SET does not choose or rewrite runner prompts",
+                "SET does not persist memory"
+              ]
+            },
+            "context_degradation_review": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "failure_modes": [
+                "context-poisoning",
+                "lost-in-the-middle",
+                "distraction",
+                "context-clash",
+                "stale-carryover"
+              ],
+              "review_before": [
+                "external runner handoff",
+                "proposal apply",
+                "memory write",
+                "large generated documentation update"
+              ],
+              "non_goals": [
+                "SET does not run context repair automatically",
+                "SET does not override the current user message with memory or prior task history"
+              ]
+            },
+            "loop_readiness_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "loop-readiness-review",
+              "pattern": "abvx-loop-readiness",
+              "readiness_levels": {
+                "L0": "not loop-ready",
+                "L1": "report-only",
+                "L2": "proposal-first",
+                "L3": "governed loop"
+              },
+              "checks": [
+                "cadence and stop rule",
+                "durable state outside the model",
+                "scope and denied targets",
+                "worktree, branch, sandbox, or retained-output isolation",
+                "verifier or maker-checker gate",
+                "token, time, retry, and spend budget",
+                "run log and failure record",
+                "rollback or discard path",
+                "human gate for writes, merges, releases, destructive actions, and external side effects"
+              ],
+              "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+              "non_goals": [
+                "SET does not schedule loops",
+                "SET does not spawn recurring agents",
+                "SET does not manage worktrees",
+                "SET does not auto-fix, auto-merge, deploy, or release"
+              ]
+            },
+            "memory_capability": {
+              "enabled": false,
+              "kind": "optional-memory-capability",
+              "scope": {
+                "model": "per-project",
+                "key": "repo",
+                "cross_project_reads": false
+              },
+              "retrieval": {
+                "modes": [
+                  "full_text",
+                  "semantic"
+                ],
+                "policy": "hybrid-when-available",
+                "fallback": "full_text"
+              },
+              "operations": {
+                "search": {
+                  "purpose": "find relevant project memory before planning or changing code",
+                  "required_before_mutation": true
+                },
+                "read": {
+                  "purpose": "inspect the full source document after a relevant search hit",
+                  "requires_search_reference": true
+                },
+                "write": {
+                  "purpose": "retain a reviewed decision, constraint, or durable lesson",
+                  "policy": "audit-gated-proposal-first",
+                  "raw_sources_read_only": true,
+                  "backup_or_snapshot_required": true
+                }
+              },
+              "non_goals": [
+                "SET does not store memory",
+                "SET does not provide an MCP server",
+                "memory writes are not implicit completion evidence"
+              ]
+            },
+            "agent_governance_capability": {
+              "enabled": false,
+              "kind": "optional-agent-governance-capability",
+              "mode": "shadow-first",
+              "decision": {
+                "when": "before a significant tool call or external side effect",
+                "outcomes": [
+                  "allow",
+                  "deny",
+                  "require_approval"
+                ],
+                "required_record": [
+                  "task_id",
+                  "correlation_id",
+                  "action_kind",
+                  "action_fingerprint",
+                  "short_operational_reason",
+                  "decision"
+                ]
+              },
+              "policy": {
+                "recommended_controls": [
+                  "allowlist or denylist for action classes",
+                  "path and protected-data boundaries",
+                  "per-intent rate and spend limits",
+                  "one-shot human approval for the exact deferred action",
+                  "circuit breaker for repeated denials or failures"
+                ],
+                "protected_evidence_rule": "protected evidence and secrets stay outside public outputs and public ledgers"
+              },
+              "telemetry": {
+                "fields": [
+                  "tool_calls",
+                  "tokens",
+                  "estimated_cost",
+                  "latency_ms"
+                ],
+                "evaluation_dimensions": [
+                  "factual_safety",
+                  "unnecessary_tool_calls",
+                  "cost",
+                  "latency",
+                  "stopping_correctness",
+                  "abstention_quality"
+                ]
+              },
+              "audit": {
+                "storage": "append-only provider-owned ledger",
+                "reasoning_policy": "retain short operational reasons, never hidden chain-of-thought"
+              },
+              "non_goals": [
+                "SET does not execute or proxy tool calls",
+                "SET does not store secrets, protected evidence, or hidden chain-of-thought",
+                "SET does not enable enforcement or promotion without measured shadow results"
+              ]
+            },
+            "id_bootstrap": {
+              "enabled": false,
+              "owner_id": null,
+              "target": null,
+              "artifacts": []
+            },
+            "rabbithole_seed": {
+              "enabled": true,
+              "artifact": "rabbithole.seed.md",
+              "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+              "suggested_sources": [
+                "plan.json",
+                "orchestrator-bundle.json",
+                "workflow.set.yml",
+                "pr-body.md"
+              ]
+            }
+          },
+          "task_contract": {
+            "proof_loop": {
+              "enabled": true,
+              "task_id": "proof-loop-blocked",
+              "expected_artifacts": [
+                "docs/ai/proof/manual-review.md"
+              ]
+            },
+            "expected_artifacts": [
+              "docs/ai/proof/manual-review.md"
+            ],
+            "recommended_review_lenses": [
+              {
+                "name": "assumption-excavation",
+                "phase": "pre-implementation",
+                "purpose": "surface hidden assumptions before implementation or runner handoff"
+              },
+              {
+                "name": "pipeline-readiness-gate",
+                "phase": "pre/post/ship",
+                "purpose": "choose the smallest useful review gate for the current phase"
+              },
+              {
+                "name": "confidence-fragility-review",
+                "phase": "ship",
+                "purpose": "check whether confident claims are backed by evidence"
+              },
+              {
+                "name": "hypothesis-diversification",
+                "phase": "research/adversarial-review",
+                "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+              },
+              {
+                "name": "context-degradation-review",
+                "phase": "handoff/context-review",
+                "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+              },
+              {
+                "name": "agent-tool-contract-review",
+                "phase": "contract-design",
+                "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+              },
+              {
+                "name": "loop-readiness-review",
+                "phase": "pre-schedule/pre-runner",
+                "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+              }
+            ],
+            "proposal_lifecycle": {
+              "states": [
+                "run",
+                "retained_output",
+                "inspect",
+                "select",
+                "apply",
+                "discard"
+              ],
+              "default_policy": "proposal-first",
+              "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+              "settlement_actions": [
+                {
+                  "name": "select",
+                  "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+                },
+                {
+                  "name": "apply",
+                  "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+                },
+                {
+                  "name": "discard",
+                  "meaning": "reject the retained output and leave the target workspace unchanged"
+                }
+              ]
+            },
+            "review_ready_when": [
+              "SET workflow plan is reviewed",
+              "unmapped is empty",
+              "expected artifacts are present or explicitly waived",
+              "retained output has been inspected before select/apply"
+            ],
+            "blocked_by": []
+          },
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "repomap",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "repomap"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "proof_loop",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "proof_loop",
+              "task_id": "proof-loop-blocked"
+            }
+          ],
+          "handoff": {
+            "recommended_runner_role": "consume this bundle before spawning coding agents",
+            "stable_inputs": [
+              "repo",
+              "target_workflow",
+              "context_package",
+              "task_contract"
+            ],
+            "non_goals": [
+              "SET does not spawn coding agents",
+              "SET does not own external runner state",
+              "SET does not create branches or PRs in planning mode",
+              "SET does not apply retained outputs without an external review/settlement step"
+            ]
+          }
+        },
         "unmapped": [],
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
         ],
         "workflow_check": {
-          "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET",
+          "repo_root": "repo://markoblogo/SET",
           "workflow_path": ".github/workflows/set.yml",
-          "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/.github/workflows/set.yml",
+          "actual_path": "repo://markoblogo/SET/.github/workflows/set.yml",
           "status": "matches",
           "diff_preview": []
         }
@@ -602,8 +2971,750 @@
       "files": [
         "apply-simulation.json",
         "gh-pr-create.json",
+        "orchestrator-bundle.json",
         "plan.json",
         "pr-body.md",
+        "proposal-lifecycle.json",
+        "rabbithole.seed.md",
+        "workflow.set.yml"
+      ]
+    },
+    {
+      "repo": "markoblogo/decision-map",
+      "head_branch": "codex/set-plan-markoblogo-decision-map",
+      "target_workflow": ".github/workflows/set.yml",
+      "title": "chore(set): plan config apply for markoblogo/decision-map",
+      "status_hint": "ready-for-review",
+      "priority_hint": "normal",
+      "apply_readiness": "ready",
+      "operator_queue": "review-later",
+      "blocked_by": [],
+      "wiring_gaps": [],
+      "next_action_label": "Review and apply planned workflow",
+      "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-decision-map",
+      "next_shell_command": "git checkout -b codex/set-plan-markoblogo-decision-map",
+      "workflow_sync_status": "missing",
+      "repomap_policy": {
+        "compact_budget": 3000,
+        "top_ranked_files": 3,
+        "focus": "protocol",
+        "changed": false
+      },
+      "id_integration": null,
+      "workflow_check": {
+        "repo_root": "repo://markoblogo/decision-map",
+        "workflow_path": ".github/workflows/set.yml",
+        "actual_path": "repo://markoblogo/decision-map/.github/workflows/set.yml",
+        "status": "missing",
+        "diff_preview": []
+      },
+      "orchestrator_bundle": {
+        "version": 1,
+        "kind": "set-orchestrator-bundle",
+        "repo": "markoblogo/decision-map",
+        "mode": "planning-only",
+        "dry_run": true,
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_decision-map.json",
+        "compatible_with": [
+          "issue-to-agent-runners",
+          "parallel-agent-runners",
+          "proof-of-work-review-loops",
+          "agent-coordination-protocols"
+        ],
+        "target_workflow": {
+          "path": ".github/workflows/set.yml",
+          "uses": "markoblogo/SET@v0.4.0",
+          "preset": "repo-docs",
+          "with": {
+            "agentsgen": "true",
+            "autodetect": "true",
+            "path": ".",
+            "workflow_preset": "repo-docs",
+            "init": "true",
+            "pack": "true",
+            "check": "true",
+            "repomap": "false",
+            "snippets": "false"
+          }
+        },
+        "context_package": {
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 3,
+            "focus": "protocol",
+            "changed": false
+          },
+          "repomap_policy_mode": "focus",
+          "repomap_policy_label": "Focused Code Slice",
+          "capability_profile": {
+            "kind": "set-capability-profile",
+            "selected": "baseline",
+            "description": "Planning and review hints suitable for every SET handoff.",
+            "exports": [
+              "context_budget_hint",
+              "context_degradation_review",
+              "loop_readiness_hint"
+            ],
+            "selection_scope": "planning-only context package",
+            "non_goals": [
+              "profiles do not install dependencies or enable a runtime",
+              "profiles do not grant tool, mutation, or enforcement authority",
+              "profiles only select exported contracts and review hints"
+            ]
+          },
+          "context_budget_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "pattern": "context-budget-review",
+            "budget_surfaces": [
+              "system and developer instructions",
+              "user request",
+              "repo-local durable docs",
+              "memory or handoff summaries",
+              "retrieved files and tool output",
+              "orchestrator bundle fields"
+            ],
+            "workflow": [
+              "identify authoritative sources",
+              "demote stale or supporting-only context",
+              "keep decisive constraints close to the active plan",
+              "move bulky evidence into files or artifacts",
+              "preserve only source-backed durable lessons"
+            ],
+            "non_goals": [
+              "SET does not manage model context windows",
+              "SET does not choose or rewrite runner prompts",
+              "SET does not persist memory"
+            ]
+          },
+          "context_degradation_review": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "failure_modes": [
+              "context-poisoning",
+              "lost-in-the-middle",
+              "distraction",
+              "context-clash",
+              "stale-carryover"
+            ],
+            "review_before": [
+              "external runner handoff",
+              "proposal apply",
+              "memory write",
+              "large generated documentation update"
+            ],
+            "non_goals": [
+              "SET does not run context repair automatically",
+              "SET does not override the current user message with memory or prior task history"
+            ]
+          },
+          "loop_readiness_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "loop-readiness-review",
+            "pattern": "abvx-loop-readiness",
+            "readiness_levels": {
+              "L0": "not loop-ready",
+              "L1": "report-only",
+              "L2": "proposal-first",
+              "L3": "governed loop"
+            },
+            "checks": [
+              "cadence and stop rule",
+              "durable state outside the model",
+              "scope and denied targets",
+              "worktree, branch, sandbox, or retained-output isolation",
+              "verifier or maker-checker gate",
+              "token, time, retry, and spend budget",
+              "run log and failure record",
+              "rollback or discard path",
+              "human gate for writes, merges, releases, destructive actions, and external side effects"
+            ],
+            "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+            "non_goals": [
+              "SET does not schedule loops",
+              "SET does not spawn recurring agents",
+              "SET does not manage worktrees",
+              "SET does not auto-fix, auto-merge, deploy, or release"
+            ]
+          },
+          "id_bootstrap": {
+            "enabled": false,
+            "owner_id": null,
+            "target": null,
+            "artifacts": []
+          },
+          "rabbithole_seed": {
+            "enabled": true,
+            "artifact": "rabbithole.seed.md",
+            "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+            "suggested_sources": [
+              "plan.json",
+              "orchestrator-bundle.json",
+              "workflow.set.yml",
+              "pr-body.md"
+            ]
+          }
+        },
+        "task_contract": {
+          "proof_loop": null,
+          "expected_artifacts": [],
+          "recommended_review_lenses": [
+            {
+              "name": "assumption-excavation",
+              "phase": "pre-implementation",
+              "purpose": "surface hidden assumptions before implementation or runner handoff"
+            },
+            {
+              "name": "pipeline-readiness-gate",
+              "phase": "pre/post/ship",
+              "purpose": "choose the smallest useful review gate for the current phase"
+            },
+            {
+              "name": "confidence-fragility-review",
+              "phase": "ship",
+              "purpose": "check whether confident claims are backed by evidence"
+            },
+            {
+              "name": "hypothesis-diversification",
+              "phase": "research/adversarial-review",
+              "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+            },
+            {
+              "name": "context-degradation-review",
+              "phase": "handoff/context-review",
+              "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+            },
+            {
+              "name": "agent-tool-contract-review",
+              "phase": "contract-design",
+              "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+            },
+            {
+              "name": "loop-readiness-review",
+              "phase": "pre-schedule/pre-runner",
+              "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+            }
+          ],
+          "proposal_lifecycle": {
+            "states": [
+              "run",
+              "retained_output",
+              "inspect",
+              "select",
+              "apply",
+              "discard"
+            ],
+            "default_policy": "proposal-first",
+            "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+            "settlement_actions": [
+              {
+                "name": "select",
+                "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+              },
+              {
+                "name": "apply",
+                "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+              },
+              {
+                "name": "discard",
+                "meaning": "reject the retained output and leave the target workspace unchanged"
+              }
+            ]
+          },
+          "review_ready_when": [
+            "SET workflow plan is reviewed",
+            "unmapped is empty",
+            "expected artifacts are present or explicitly waived",
+            "retained output has been inspected before select/apply"
+          ],
+          "blocked_by": []
+        },
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          }
+        ],
+        "handoff": {
+          "recommended_runner_role": "consume this bundle before spawning coding agents",
+          "stable_inputs": [
+            "repo",
+            "target_workflow",
+            "context_package",
+            "task_contract"
+          ],
+          "non_goals": [
+            "SET does not spawn coding agents",
+            "SET does not own external runner state",
+            "SET does not create branches or PRs in planning mode",
+            "SET does not apply retained outputs without an external review/settlement step"
+          ]
+        }
+      },
+      "unmapped_count": 0,
+      "plan": {
+        "version": 1,
+        "dry_run": true,
+        "mode": "planning-only",
+        "repo": "markoblogo/decision-map",
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_decision-map.json",
+        "repomap_policy": {
+          "compact_budget": 3000,
+          "top_ranked_files": 3,
+          "focus": "protocol",
+          "changed": false
+        },
+        "repomap_policy_mode": "focus",
+        "proof_loop": null,
+        "id_integration": null,
+        "proposed_changes": [
+          {
+            "type": "workflow",
+            "workflow": {
+              "path": ".github/workflows/set.yml",
+              "uses": "markoblogo/SET@v0.4.0",
+              "with": {
+                "agentsgen": "true",
+                "autodetect": "true",
+                "path": ".",
+                "workflow_preset": "repo-docs",
+                "init": "true",
+                "pack": "true",
+                "check": "true",
+                "repomap": "false",
+                "snippets": "false"
+              }
+            }
+          }
+        ],
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          }
+        ],
+        "review_payload": {
+          "version": 1,
+          "kind": "set-pr-payload",
+          "repo": "markoblogo/decision-map",
+          "dry_run": true,
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            }
+          ],
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 3,
+            "focus": "protocol",
+            "changed": false
+          },
+          "repomap_policy_mode": "focus",
+          "proof_loop": null,
+          "repomap_policy_label": "Focused Code Slice",
+          "apply_readiness": "ready",
+          "blocked_by": [],
+          "operator_queue": "review-later",
+          "next_action_label": "Review and apply planned workflow",
+          "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-decision-map",
+          "next_shell_command": "git checkout -b codex/set-plan-markoblogo-decision-map",
+          "target_branch": "main",
+          "head_branch": "codex/set-plan-markoblogo-decision-map",
+          "target_workflow_path": ".github/workflows/set.yml",
+          "title": "chore(set): plan config apply for markoblogo/decision-map",
+          "suggested_commit_message": "chore(set): plan config apply for markoblogo/decision-map",
+          "body": "# Planned SET workflow for `markoblogo/decision-map`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@v0.4.0`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `repo-docs`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `false`\n- `snippets`: `false`\n\n## Repomap policy\n- `mode`: `focus`\n- `label`: `Focused Code Slice`\n- `compact_budget`: `3000`\n- `top_ranked_files`: `3`\n- `focus`: `protocol`\n- `changed`: `false`\n\n## Proposal lifecycle\n- `run`: execute in an isolated proposal/worktree context.\n- `retained_output`: keep generated files outside the target workspace.\n- `inspect`: review diffs, artifacts, proof-loop outputs, and review lenses.\n- `select`: mark the proposal as the candidate result.\n- `apply`: merge/copy selected output only after review.\n- `discard`: reject the proposal and leave the target workspace unchanged.\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n- Dry-run mode: proposed changes are explicit and would only be written with a manual apply flow.\n- Would write: `.github/workflows/set.yml`\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@v0.4.0\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"repo-docs\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"false\"\n          snippets: \"false\"\n",
+          "gh_pr_create": {
+            "repo": "markoblogo/decision-map",
+            "base": "main",
+            "head": "codex/set-plan-markoblogo-decision-map",
+            "title": "chore(set): plan config apply for markoblogo/decision-map",
+            "body_file": "pr-body.md"
+          },
+          "apply_simulation": {
+            "repo": "markoblogo/decision-map",
+            "base_branch": "main",
+            "head_branch": "codex/set-plan-markoblogo-decision-map",
+            "target_files": [
+              {
+                "path": ".github/workflows/set.yml",
+                "source_export": "workflow.set.yml",
+                "action": "write"
+              }
+            ],
+            "suggested_commit_message": "chore(set): plan config apply for markoblogo/decision-map",
+            "manual_steps": [
+              "git checkout -b codex/set-plan-markoblogo-decision-map",
+              "cp workflow.set.yml .github/workflows/set.yml",
+              "git add .github/workflows/set.yml",
+              "git commit -m \"chore(set): plan config apply for markoblogo/decision-map\"",
+              "gh pr create --repo markoblogo/decision-map --base main --head codex/set-plan-markoblogo-decision-map --title \"chore(set): plan config apply for markoblogo/decision-map\" --body-file pr-body.md"
+            ]
+          }
+        },
+        "orchestrator_bundle": {
+          "version": 1,
+          "kind": "set-orchestrator-bundle",
+          "repo": "markoblogo/decision-map",
+          "mode": "planning-only",
+          "dry_run": true,
+          "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_decision-map.json",
+          "compatible_with": [
+            "issue-to-agent-runners",
+            "parallel-agent-runners",
+            "proof-of-work-review-loops",
+            "agent-coordination-protocols"
+          ],
+          "target_workflow": {
+            "path": ".github/workflows/set.yml",
+            "uses": "markoblogo/SET@v0.4.0",
+            "preset": "repo-docs",
+            "with": {
+              "agentsgen": "true",
+              "autodetect": "true",
+              "path": ".",
+              "workflow_preset": "repo-docs",
+              "init": "true",
+              "pack": "true",
+              "check": "true",
+              "repomap": "false",
+              "snippets": "false"
+            }
+          },
+          "context_package": {
+            "repomap_policy": {
+              "compact_budget": 3000,
+              "top_ranked_files": 3,
+              "focus": "protocol",
+              "changed": false
+            },
+            "repomap_policy_mode": "focus",
+            "repomap_policy_label": "Focused Code Slice",
+            "capability_profile": {
+              "kind": "set-capability-profile",
+              "selected": "baseline",
+              "description": "Planning and review hints suitable for every SET handoff.",
+              "exports": [
+                "context_budget_hint",
+                "context_degradation_review",
+                "loop_readiness_hint"
+              ],
+              "selection_scope": "planning-only context package",
+              "non_goals": [
+                "profiles do not install dependencies or enable a runtime",
+                "profiles do not grant tool, mutation, or enforcement authority",
+                "profiles only select exported contracts and review hints"
+              ]
+            },
+            "context_budget_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "pattern": "context-budget-review",
+              "budget_surfaces": [
+                "system and developer instructions",
+                "user request",
+                "repo-local durable docs",
+                "memory or handoff summaries",
+                "retrieved files and tool output",
+                "orchestrator bundle fields"
+              ],
+              "workflow": [
+                "identify authoritative sources",
+                "demote stale or supporting-only context",
+                "keep decisive constraints close to the active plan",
+                "move bulky evidence into files or artifacts",
+                "preserve only source-backed durable lessons"
+              ],
+              "non_goals": [
+                "SET does not manage model context windows",
+                "SET does not choose or rewrite runner prompts",
+                "SET does not persist memory"
+              ]
+            },
+            "context_degradation_review": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "failure_modes": [
+                "context-poisoning",
+                "lost-in-the-middle",
+                "distraction",
+                "context-clash",
+                "stale-carryover"
+              ],
+              "review_before": [
+                "external runner handoff",
+                "proposal apply",
+                "memory write",
+                "large generated documentation update"
+              ],
+              "non_goals": [
+                "SET does not run context repair automatically",
+                "SET does not override the current user message with memory or prior task history"
+              ]
+            },
+            "loop_readiness_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "loop-readiness-review",
+              "pattern": "abvx-loop-readiness",
+              "readiness_levels": {
+                "L0": "not loop-ready",
+                "L1": "report-only",
+                "L2": "proposal-first",
+                "L3": "governed loop"
+              },
+              "checks": [
+                "cadence and stop rule",
+                "durable state outside the model",
+                "scope and denied targets",
+                "worktree, branch, sandbox, or retained-output isolation",
+                "verifier or maker-checker gate",
+                "token, time, retry, and spend budget",
+                "run log and failure record",
+                "rollback or discard path",
+                "human gate for writes, merges, releases, destructive actions, and external side effects"
+              ],
+              "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+              "non_goals": [
+                "SET does not schedule loops",
+                "SET does not spawn recurring agents",
+                "SET does not manage worktrees",
+                "SET does not auto-fix, auto-merge, deploy, or release"
+              ]
+            },
+            "id_bootstrap": {
+              "enabled": false,
+              "owner_id": null,
+              "target": null,
+              "artifacts": []
+            },
+            "rabbithole_seed": {
+              "enabled": true,
+              "artifact": "rabbithole.seed.md",
+              "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+              "suggested_sources": [
+                "plan.json",
+                "orchestrator-bundle.json",
+                "workflow.set.yml",
+                "pr-body.md"
+              ]
+            }
+          },
+          "task_contract": {
+            "proof_loop": null,
+            "expected_artifacts": [],
+            "recommended_review_lenses": [
+              {
+                "name": "assumption-excavation",
+                "phase": "pre-implementation",
+                "purpose": "surface hidden assumptions before implementation or runner handoff"
+              },
+              {
+                "name": "pipeline-readiness-gate",
+                "phase": "pre/post/ship",
+                "purpose": "choose the smallest useful review gate for the current phase"
+              },
+              {
+                "name": "confidence-fragility-review",
+                "phase": "ship",
+                "purpose": "check whether confident claims are backed by evidence"
+              },
+              {
+                "name": "hypothesis-diversification",
+                "phase": "research/adversarial-review",
+                "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+              },
+              {
+                "name": "context-degradation-review",
+                "phase": "handoff/context-review",
+                "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+              },
+              {
+                "name": "agent-tool-contract-review",
+                "phase": "contract-design",
+                "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+              },
+              {
+                "name": "loop-readiness-review",
+                "phase": "pre-schedule/pre-runner",
+                "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+              }
+            ],
+            "proposal_lifecycle": {
+              "states": [
+                "run",
+                "retained_output",
+                "inspect",
+                "select",
+                "apply",
+                "discard"
+              ],
+              "default_policy": "proposal-first",
+              "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+              "settlement_actions": [
+                {
+                  "name": "select",
+                  "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+                },
+                {
+                  "name": "apply",
+                  "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+                },
+                {
+                  "name": "discard",
+                  "meaning": "reject the retained output and leave the target workspace unchanged"
+                }
+              ]
+            },
+            "review_ready_when": [
+              "SET workflow plan is reviewed",
+              "unmapped is empty",
+              "expected artifacts are present or explicitly waived",
+              "retained output has been inspected before select/apply"
+            ],
+            "blocked_by": []
+          },
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            }
+          ],
+          "handoff": {
+            "recommended_runner_role": "consume this bundle before spawning coding agents",
+            "stable_inputs": [
+              "repo",
+              "target_workflow",
+              "context_package",
+              "task_contract"
+            ],
+            "non_goals": [
+              "SET does not spawn coding agents",
+              "SET does not own external runner state",
+              "SET does not create branches or PRs in planning mode",
+              "SET does not apply retained outputs without an external review/settlement step"
+            ]
+          }
+        },
+        "unmapped": [],
+        "notes": [
+          "This planner does not open a PR or write files to the target repo.",
+          "Use the output to review the intended SET workflow before any future apply step."
+        ],
+        "workflow_check": {
+          "repo_root": "repo://markoblogo/decision-map",
+          "workflow_path": ".github/workflows/set.yml",
+          "actual_path": "repo://markoblogo/decision-map/.github/workflows/set.yml",
+          "status": "missing",
+          "diff_preview": []
+        }
+      },
+      "repomap_snapshot": {
+        "status": "disabled",
+        "compact_budget": 3000,
+        "top_ranked_limit": 3,
+        "top_ranked_files": [],
+        "active_slice": {
+          "mode": "focus",
+          "policy_mode": "focus",
+          "policy_label": "Focused Code Slice",
+          "focus": "protocol",
+          "changed_only": false,
+          "slice_files_count": 0
+        },
+        "slice_source": "disabled"
+      },
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "files": [
+        "apply-simulation.json",
+        "gh-pr-create.json",
+        "orchestrator-bundle.json",
+        "plan.json",
+        "pr-body.md",
+        "proposal-lifecycle.json",
+        "rabbithole.seed.md",
         "workflow.set.yml"
       ]
     },
@@ -621,26 +3732,323 @@
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
-      "workflow_sync_status": "matches",
+      "workflow_sync_status": "drift",
       "repomap_policy": {
         "compact_budget": 3000,
         "top_ranked_files": 3,
         "focus": null,
         "changed": false
       },
+      "id_integration": null,
       "workflow_check": {
-        "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab",
+        "repo_root": "repo://markoblogo/lab.abvx",
         "workflow_path": ".github/workflows/set.yml",
-        "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab/.github/workflows/set.yml",
-        "status": "matches",
-        "diff_preview": []
+        "actual_path": "repo://markoblogo/lab.abvx/.github/workflows/set.yml",
+        "status": "drift",
+        "diff_preview": [
+          "--- expected/.github/workflows/set.yml",
+          "+++ .github/workflows/set.yml",
+          "@@ -8,7 +8,7 @@",
+          "     runs-on: ubuntu-latest",
+          "     steps:",
+          "       - uses: actions/checkout@v4",
+          "-      - uses: markoblogo/SET@v0.4.0",
+          "+      - uses: markoblogo/SET@main",
+          "         with:",
+          "           agentsgen: \"true\"",
+          "           autodetect: \"true\""
+        ]
+      },
+      "orchestrator_bundle": {
+        "version": 1,
+        "kind": "set-orchestrator-bundle",
+        "repo": "markoblogo/lab.abvx",
+        "mode": "planning-only",
+        "dry_run": true,
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_lab.abvx.json",
+        "compatible_with": [
+          "issue-to-agent-runners",
+          "parallel-agent-runners",
+          "proof-of-work-review-loops",
+          "agent-coordination-protocols"
+        ],
+        "target_workflow": {
+          "path": ".github/workflows/set.yml",
+          "uses": "markoblogo/SET@v0.4.0",
+          "preset": "site-ai",
+          "with": {
+            "agentsgen": "true",
+            "autodetect": "true",
+            "path": ".",
+            "workflow_preset": "site-ai",
+            "init": "true",
+            "pack": "true",
+            "check": "true",
+            "repomap": "false",
+            "snippets": "false",
+            "site_url": "https://lab.abvx.xyz",
+            "site_pack": "true",
+            "analyze": "true",
+            "analyze_url": "https://lab.abvx.xyz",
+            "meta": "true",
+            "meta_url": "https://lab.abvx.xyz"
+          }
+        },
+        "context_package": {
+          "repomap_policy": {
+            "compact_budget": 3000,
+            "top_ranked_files": 3,
+            "focus": null,
+            "changed": false
+          },
+          "repomap_policy_mode": "full",
+          "repomap_policy_label": "Full Repo Slice",
+          "capability_profile": {
+            "kind": "set-capability-profile",
+            "selected": "baseline",
+            "description": "Planning and review hints suitable for every SET handoff.",
+            "exports": [
+              "context_budget_hint",
+              "context_degradation_review",
+              "loop_readiness_hint"
+            ],
+            "selection_scope": "planning-only context package",
+            "non_goals": [
+              "profiles do not install dependencies or enable a runtime",
+              "profiles do not grant tool, mutation, or enforcement authority",
+              "profiles only select exported contracts and review hints"
+            ]
+          },
+          "context_budget_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "pattern": "context-budget-review",
+            "budget_surfaces": [
+              "system and developer instructions",
+              "user request",
+              "repo-local durable docs",
+              "memory or handoff summaries",
+              "retrieved files and tool output",
+              "orchestrator bundle fields"
+            ],
+            "workflow": [
+              "identify authoritative sources",
+              "demote stale or supporting-only context",
+              "keep decisive constraints close to the active plan",
+              "move bulky evidence into files or artifacts",
+              "preserve only source-backed durable lessons"
+            ],
+            "non_goals": [
+              "SET does not manage model context windows",
+              "SET does not choose or rewrite runner prompts",
+              "SET does not persist memory"
+            ]
+          },
+          "context_degradation_review": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "context-degradation-review",
+            "failure_modes": [
+              "context-poisoning",
+              "lost-in-the-middle",
+              "distraction",
+              "context-clash",
+              "stale-carryover"
+            ],
+            "review_before": [
+              "external runner handoff",
+              "proposal apply",
+              "memory write",
+              "large generated documentation update"
+            ],
+            "non_goals": [
+              "SET does not run context repair automatically",
+              "SET does not override the current user message with memory or prior task history"
+            ]
+          },
+          "loop_readiness_hint": {
+            "enabled": true,
+            "kind": "review-hint",
+            "recommended_skill": "loop-readiness-review",
+            "pattern": "abvx-loop-readiness",
+            "readiness_levels": {
+              "L0": "not loop-ready",
+              "L1": "report-only",
+              "L2": "proposal-first",
+              "L3": "governed loop"
+            },
+            "checks": [
+              "cadence and stop rule",
+              "durable state outside the model",
+              "scope and denied targets",
+              "worktree, branch, sandbox, or retained-output isolation",
+              "verifier or maker-checker gate",
+              "token, time, retry, and spend budget",
+              "run log and failure record",
+              "rollback or discard path",
+              "human gate for writes, merges, releases, destructive actions, and external side effects"
+            ],
+            "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+            "non_goals": [
+              "SET does not schedule loops",
+              "SET does not spawn recurring agents",
+              "SET does not manage worktrees",
+              "SET does not auto-fix, auto-merge, deploy, or release"
+            ]
+          },
+          "id_bootstrap": {
+            "enabled": false,
+            "owner_id": null,
+            "target": null,
+            "artifacts": []
+          },
+          "rabbithole_seed": {
+            "enabled": true,
+            "artifact": "rabbithole.seed.md",
+            "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+            "suggested_sources": [
+              "plan.json",
+              "orchestrator-bundle.json",
+              "workflow.set.yml",
+              "pr-body.md"
+            ]
+          }
+        },
+        "task_contract": {
+          "proof_loop": null,
+          "expected_artifacts": [],
+          "recommended_review_lenses": [
+            {
+              "name": "assumption-excavation",
+              "phase": "pre-implementation",
+              "purpose": "surface hidden assumptions before implementation or runner handoff"
+            },
+            {
+              "name": "pipeline-readiness-gate",
+              "phase": "pre/post/ship",
+              "purpose": "choose the smallest useful review gate for the current phase"
+            },
+            {
+              "name": "confidence-fragility-review",
+              "phase": "ship",
+              "purpose": "check whether confident claims are backed by evidence"
+            },
+            {
+              "name": "hypothesis-diversification",
+              "phase": "research/adversarial-review",
+              "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+            },
+            {
+              "name": "context-degradation-review",
+              "phase": "handoff/context-review",
+              "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+            },
+            {
+              "name": "agent-tool-contract-review",
+              "phase": "contract-design",
+              "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+            },
+            {
+              "name": "loop-readiness-review",
+              "phase": "pre-schedule/pre-runner",
+              "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+            }
+          ],
+          "proposal_lifecycle": {
+            "states": [
+              "run",
+              "retained_output",
+              "inspect",
+              "select",
+              "apply",
+              "discard"
+            ],
+            "default_policy": "proposal-first",
+            "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+            "settlement_actions": [
+              {
+                "name": "select",
+                "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+              },
+              {
+                "name": "apply",
+                "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+              },
+              {
+                "name": "discard",
+                "meaning": "reject the retained output and leave the target workspace unchanged"
+              }
+            ]
+          },
+          "review_ready_when": [
+            "SET workflow plan is reviewed",
+            "unmapped is empty",
+            "expected artifacts are present or explicitly waived",
+            "retained output has been inspected before select/apply"
+          ],
+          "blocked_by": []
+        },
+        "capabilities": [
+          {
+            "tool": "agentsgen",
+            "key": "init",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "init"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "pack",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "pack"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "check",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "check"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "analyze_url",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "analyze"
+          },
+          {
+            "tool": "agentsgen",
+            "key": "meta_url",
+            "requested": true,
+            "supported_by_set": true,
+            "set_input": "meta"
+          }
+        ],
+        "handoff": {
+          "recommended_runner_role": "consume this bundle before spawning coding agents",
+          "stable_inputs": [
+            "repo",
+            "target_workflow",
+            "context_package",
+            "task_contract"
+          ],
+          "non_goals": [
+            "SET does not spawn coding agents",
+            "SET does not own external runner state",
+            "SET does not create branches or PRs in planning mode",
+            "SET does not apply retained outputs without an external review/settlement step"
+          ]
+        }
       },
       "unmapped_count": 0,
       "plan": {
         "version": 1,
+        "dry_run": true,
         "mode": "planning-only",
         "repo": "markoblogo/lab.abvx",
-        "source_config": "/Users/antonbiletskiy-volokh/Downloads/Projects/SET/registry/repos/markoblogo_lab.abvx.json",
+        "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_lab.abvx.json",
         "repomap_policy": {
           "compact_budget": 3000,
           "top_ranked_files": 3,
@@ -649,12 +4057,13 @@
         },
         "repomap_policy_mode": "full",
         "proof_loop": null,
+        "id_integration": null,
         "proposed_changes": [
           {
             "type": "workflow",
             "workflow": {
               "path": ".github/workflows/set.yml",
-              "uses": "markoblogo/SET@main",
+              "uses": "markoblogo/SET@v0.4.0",
               "with": {
                 "agentsgen": "true",
                 "autodetect": "true",
@@ -716,6 +4125,7 @@
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/lab.abvx",
+          "dry_run": true,
           "capabilities": [
             {
               "tool": "agentsgen",
@@ -773,8 +4183,8 @@
           "target_workflow_path": ".github/workflows/set.yml",
           "title": "chore(set): plan config apply for markoblogo/lab.abvx",
           "suggested_commit_message": "chore(set): plan config apply for markoblogo/lab.abvx",
-          "body": "# Planned SET workflow for `markoblogo/lab.abvx`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@main`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `site-ai`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `false`\n- `snippets`: `false`\n- `site_url`: `https://lab.abvx.xyz`\n- `site_pack`: `true`\n- `analyze`: `true`\n- `analyze_url`: `https://lab.abvx.xyz`\n- `meta`: `true`\n- `meta_url`: `https://lab.abvx.xyz`\n\n## Repomap policy\n- `mode`: `full`\n- `label`: `Full Repo Slice`\n- `compact_budget`: `3000`\n- `top_ranked_files`: `3`\n- `changed`: `false`\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n",
-          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@main\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"site-ai\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"false\"\n          snippets: \"false\"\n          site_url: \"https://lab.abvx.xyz\"\n          site_pack: \"true\"\n          analyze: \"true\"\n          analyze_url: \"https://lab.abvx.xyz\"\n          meta: \"true\"\n          meta_url: \"https://lab.abvx.xyz\"\n",
+          "body": "# Planned SET workflow for `markoblogo/lab.abvx`\n\nThis is a planning-only export generated from the central SET registry.\n\n## Proposed workflow target\n- Path: `.github/workflows/set.yml`\n- Uses: `markoblogo/SET@v0.4.0`\n\n## Resolved inputs\n- `agentsgen`: `true`\n- `autodetect`: `true`\n- `path`: `.`\n- `workflow_preset`: `site-ai`\n- `init`: `true`\n- `pack`: `true`\n- `check`: `true`\n- `repomap`: `false`\n- `snippets`: `false`\n- `site_url`: `https://lab.abvx.xyz`\n- `site_pack`: `true`\n- `analyze`: `true`\n- `analyze_url`: `https://lab.abvx.xyz`\n- `meta`: `true`\n- `meta_url`: `https://lab.abvx.xyz`\n\n## Repomap policy\n- `mode`: `full`\n- `label`: `Full Repo Slice`\n- `compact_budget`: `3000`\n- `top_ranked_files`: `3`\n- `changed`: `false`\n\n## Proposal lifecycle\n- `run`: execute in an isolated proposal/worktree context.\n- `retained_output`: keep generated files outside the target workspace.\n- `inspect`: review diffs, artifacts, proof-loop outputs, and review lenses.\n- `select`: mark the proposal as the candidate result.\n- `apply`: merge/copy selected output only after review.\n- `discard`: reject the proposal and leave the target workspace unchanged.\n\n## Notes\n- Generated by `python3 scripts/plan_config_apply.py`.\n- Planning only: no branch, no PR, no write to target repo.\n- Dry-run mode: proposed changes are explicit and would only be written with a manual apply flow.\n- Would write: `.github/workflows/set.yml`\n",
+          "workflow_yaml": "name: SET\n\non:\n  workflow_dispatch:\n\njobs:\n  set:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: markoblogo/SET@v0.4.0\n        with:\n          agentsgen: \"true\"\n          autodetect: \"true\"\n          path: \".\"\n          workflow_preset: \"site-ai\"\n          init: \"true\"\n          pack: \"true\"\n          check: \"true\"\n          repomap: \"false\"\n          snippets: \"false\"\n          site_url: \"https://lab.abvx.xyz\"\n          site_pack: \"true\"\n          analyze: \"true\"\n          analyze_url: \"https://lab.abvx.xyz\"\n          meta: \"true\"\n          meta_url: \"https://lab.abvx.xyz\"\n",
           "gh_pr_create": {
             "repo": "markoblogo/lab.abvx",
             "base": "main",
@@ -803,17 +4213,312 @@
             ]
           }
         },
+        "orchestrator_bundle": {
+          "version": 1,
+          "kind": "set-orchestrator-bundle",
+          "repo": "markoblogo/lab.abvx",
+          "mode": "planning-only",
+          "dry_run": true,
+          "source_config": "repo://markoblogo/SET/registry/repos/markoblogo_lab.abvx.json",
+          "compatible_with": [
+            "issue-to-agent-runners",
+            "parallel-agent-runners",
+            "proof-of-work-review-loops",
+            "agent-coordination-protocols"
+          ],
+          "target_workflow": {
+            "path": ".github/workflows/set.yml",
+            "uses": "markoblogo/SET@v0.4.0",
+            "preset": "site-ai",
+            "with": {
+              "agentsgen": "true",
+              "autodetect": "true",
+              "path": ".",
+              "workflow_preset": "site-ai",
+              "init": "true",
+              "pack": "true",
+              "check": "true",
+              "repomap": "false",
+              "snippets": "false",
+              "site_url": "https://lab.abvx.xyz",
+              "site_pack": "true",
+              "analyze": "true",
+              "analyze_url": "https://lab.abvx.xyz",
+              "meta": "true",
+              "meta_url": "https://lab.abvx.xyz"
+            }
+          },
+          "context_package": {
+            "repomap_policy": {
+              "compact_budget": 3000,
+              "top_ranked_files": 3,
+              "focus": null,
+              "changed": false
+            },
+            "repomap_policy_mode": "full",
+            "repomap_policy_label": "Full Repo Slice",
+            "capability_profile": {
+              "kind": "set-capability-profile",
+              "selected": "baseline",
+              "description": "Planning and review hints suitable for every SET handoff.",
+              "exports": [
+                "context_budget_hint",
+                "context_degradation_review",
+                "loop_readiness_hint"
+              ],
+              "selection_scope": "planning-only context package",
+              "non_goals": [
+                "profiles do not install dependencies or enable a runtime",
+                "profiles do not grant tool, mutation, or enforcement authority",
+                "profiles only select exported contracts and review hints"
+              ]
+            },
+            "context_budget_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "pattern": "context-budget-review",
+              "budget_surfaces": [
+                "system and developer instructions",
+                "user request",
+                "repo-local durable docs",
+                "memory or handoff summaries",
+                "retrieved files and tool output",
+                "orchestrator bundle fields"
+              ],
+              "workflow": [
+                "identify authoritative sources",
+                "demote stale or supporting-only context",
+                "keep decisive constraints close to the active plan",
+                "move bulky evidence into files or artifacts",
+                "preserve only source-backed durable lessons"
+              ],
+              "non_goals": [
+                "SET does not manage model context windows",
+                "SET does not choose or rewrite runner prompts",
+                "SET does not persist memory"
+              ]
+            },
+            "context_degradation_review": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "context-degradation-review",
+              "failure_modes": [
+                "context-poisoning",
+                "lost-in-the-middle",
+                "distraction",
+                "context-clash",
+                "stale-carryover"
+              ],
+              "review_before": [
+                "external runner handoff",
+                "proposal apply",
+                "memory write",
+                "large generated documentation update"
+              ],
+              "non_goals": [
+                "SET does not run context repair automatically",
+                "SET does not override the current user message with memory or prior task history"
+              ]
+            },
+            "loop_readiness_hint": {
+              "enabled": true,
+              "kind": "review-hint",
+              "recommended_skill": "loop-readiness-review",
+              "pattern": "abvx-loop-readiness",
+              "readiness_levels": {
+                "L0": "not loop-ready",
+                "L1": "report-only",
+                "L2": "proposal-first",
+                "L3": "governed loop"
+              },
+              "checks": [
+                "cadence and stop rule",
+                "durable state outside the model",
+                "scope and denied targets",
+                "worktree, branch, sandbox, or retained-output isolation",
+                "verifier or maker-checker gate",
+                "token, time, retry, and spend budget",
+                "run log and failure record",
+                "rollback or discard path",
+                "human gate for writes, merges, releases, destructive actions, and external side effects"
+              ],
+              "safe_default": "L1 report-only until state, verifier, budget, run log, rollback, and human gate are explicit",
+              "non_goals": [
+                "SET does not schedule loops",
+                "SET does not spawn recurring agents",
+                "SET does not manage worktrees",
+                "SET does not auto-fix, auto-merge, deploy, or release"
+              ]
+            },
+            "id_bootstrap": {
+              "enabled": false,
+              "owner_id": null,
+              "target": null,
+              "artifacts": []
+            },
+            "rabbithole_seed": {
+              "enabled": true,
+              "artifact": "rabbithole.seed.md",
+              "purpose": "optional local human-in-the-loop review seed for SET planner exports",
+              "suggested_sources": [
+                "plan.json",
+                "orchestrator-bundle.json",
+                "workflow.set.yml",
+                "pr-body.md"
+              ]
+            }
+          },
+          "task_contract": {
+            "proof_loop": null,
+            "expected_artifacts": [],
+            "recommended_review_lenses": [
+              {
+                "name": "assumption-excavation",
+                "phase": "pre-implementation",
+                "purpose": "surface hidden assumptions before implementation or runner handoff"
+              },
+              {
+                "name": "pipeline-readiness-gate",
+                "phase": "pre/post/ship",
+                "purpose": "choose the smallest useful review gate for the current phase"
+              },
+              {
+                "name": "confidence-fragility-review",
+                "phase": "ship",
+                "purpose": "check whether confident claims are backed by evidence"
+              },
+              {
+                "name": "hypothesis-diversification",
+                "phase": "research/adversarial-review",
+                "purpose": "generate distinct alternatives before evidence review when first-answer mode collapse is risky"
+              },
+              {
+                "name": "context-degradation-review",
+                "phase": "handoff/context-review",
+                "purpose": "check for context poisoning, lost-in-the-middle failures, distraction, context clash, and stale carryover"
+              },
+              {
+                "name": "agent-tool-contract-review",
+                "phase": "contract-design",
+                "purpose": "review SET inputs, CLI/MCP tools, and generated agent instructions as explicit tool contracts"
+              },
+              {
+                "name": "loop-readiness-review",
+                "phase": "pre-schedule/pre-runner",
+                "purpose": "check recurring agent loops for cadence, state, isolation, verifier, budget, run log, rollback, and human gate"
+              }
+            ],
+            "proposal_lifecycle": {
+              "states": [
+                "run",
+                "retained_output",
+                "inspect",
+                "select",
+                "apply",
+                "discard"
+              ],
+              "default_policy": "proposal-first",
+              "mutation_rule": "runner output is retained separately and must not mutate the target workspace until apply",
+              "settlement_actions": [
+                {
+                  "name": "select",
+                  "meaning": "accept the proposal as the candidate output for the task without applying it to the target workspace"
+                },
+                {
+                  "name": "apply",
+                  "meaning": "merge or copy the selected proposal into the target workspace after review gates pass"
+                },
+                {
+                  "name": "discard",
+                  "meaning": "reject the retained output and leave the target workspace unchanged"
+                }
+              ]
+            },
+            "review_ready_when": [
+              "SET workflow plan is reviewed",
+              "unmapped is empty",
+              "expected artifacts are present or explicitly waived",
+              "retained output has been inspected before select/apply"
+            ],
+            "blocked_by": []
+          },
+          "capabilities": [
+            {
+              "tool": "agentsgen",
+              "key": "init",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "init"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "pack",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "pack"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "check",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "check"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "analyze_url",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "analyze"
+            },
+            {
+              "tool": "agentsgen",
+              "key": "meta_url",
+              "requested": true,
+              "supported_by_set": true,
+              "set_input": "meta"
+            }
+          ],
+          "handoff": {
+            "recommended_runner_role": "consume this bundle before spawning coding agents",
+            "stable_inputs": [
+              "repo",
+              "target_workflow",
+              "context_package",
+              "task_contract"
+            ],
+            "non_goals": [
+              "SET does not spawn coding agents",
+              "SET does not own external runner state",
+              "SET does not create branches or PRs in planning mode",
+              "SET does not apply retained outputs without an external review/settlement step"
+            ]
+          }
+        },
         "unmapped": [],
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
         ],
         "workflow_check": {
-          "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab",
+          "repo_root": "repo://markoblogo/lab.abvx",
           "workflow_path": ".github/workflows/set.yml",
-          "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab/.github/workflows/set.yml",
-          "status": "matches",
-          "diff_preview": []
+          "actual_path": "repo://markoblogo/lab.abvx/.github/workflows/set.yml",
+          "status": "drift",
+          "diff_preview": [
+            "--- expected/.github/workflows/set.yml",
+            "+++ .github/workflows/set.yml",
+            "@@ -8,7 +8,7 @@",
+            "     runs-on: ubuntu-latest",
+            "     steps:",
+            "       - uses: actions/checkout@v4",
+            "-      - uses: markoblogo/SET@v0.4.0",
+            "+      - uses: markoblogo/SET@main",
+            "         with:",
+            "           agentsgen: \"true\"",
+            "           autodetect: \"true\""
+          ]
         }
       },
       "repomap_snapshot": {
@@ -842,8 +4547,11 @@
       "files": [
         "apply-simulation.json",
         "gh-pr-create.json",
+        "orchestrator-bundle.json",
         "plan.json",
         "pr-body.md",
+        "proposal-lifecycle.json",
+        "rabbithole.seed.md",
         "workflow.set.yml"
       ]
     }

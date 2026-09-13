@@ -30,7 +30,7 @@
       "docs/index.html",
       "docs/tools/"
     ],
-    "scripts": "(none)",
+    "scripts": "scripts",
     "source_dirs": [
       "docs"
     ],
@@ -42,15 +42,20 @@
   "commands": {
     "install": "(not needed)",
     "dev": "python3 -m http.server 8000 --directory docs",
-    "build": "(not needed)",
-    "test": "(not needed)",
-    "lint": "(not needed)"
+    "build": "python3 -m compileall -q scripts",
+    "test": "python3 -m unittest discover -s tests -v",
+    "lint": "python3 scripts/verify_site.py"
   },
   "evidence": {
-    "python": [],
+    "python": [
+      "scripts/verify_site.py",
+      "tests/test_verify_site.py"
+    ],
     "node": [],
     "make": [],
-    "ci": []
+    "ci": [
+      ".github/workflows/ci.yml"
+    ]
   },
   "pack": {
     "enabled": true,

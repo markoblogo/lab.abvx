@@ -13,9 +13,10 @@
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/lab-alt-b.css?v20260603b" />
+    <link rel="stylesheet" href="../../assets/framewright.css" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Framewright","url":"https://lab.abvx.xyz/tools/framewright/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Evidence-led video production methods, workflow routing skills, and tested software-promo and narrated book-trailer recipes."}</script>
   </head>
-  <body>
+  <body class="framewright-page">
     <div class="lab-b-shell">
       <header class="lab-b-topbar">
         <a class="lab-b-brand" href="../../index.html">
@@ -53,38 +54,43 @@
             </div>
           </aside>
         </section>
-        <section class="lab-b-product-grid">
-          <article class="lab-b-product-panel">
-            <h2>Methods, selected by task</h2>
-            <ul class="bullet-list">
-              <li>Brag full + Hyperframes for short software launch introductions.</li>
-              <li>Existing artwork + local Kokoro narration + sound-layer QA for voiced book trailers.</li>
-              <li>A separate six-second teaser derived from an established composition.</li>
+        <div class="framewright-content">
+          <section aria-labelledby="methods-heading">
+            <h2 id="methods-heading">Methods, selected by task</h2>
+            <ol class="framewright-methods">
+              <li><strong>Software launch.</strong> Brag full + Hyperframes for a short introduction grounded in the working project.</li>
+              <li><strong>Narrated book trailer.</strong> Existing artwork + local Kokoro narration + sound-layer checks for the final encoded file.</li>
+              <li><strong>Short teaser.</strong> A separate six-second edit derived from an established composition.</li>
+            </ol>
+          </section>
+          <aside class="framewright-evidence" aria-labelledby="limits-heading">
+            <h2 id="limits-heading">What the evidence does not prove</h2>
+            <p>Anatomy's visual prototype passed, but its combined sound experiment failed QA. Historical reconstruction and calibrated physics remain untested.</p>
+            <p>Framewright is a methods library, not a hosted renderer. Automated QA, human listening, user preference, publication and audience performance are separate claims.</p>
+          </aside>
+          <section aria-labelledby="videos-heading">
+            <h2 id="videos-heading">Watch the book tests</h2>
+            <ul class="framewright-videos">
+              <li><a href="https://youtu.be/PmhWa-V00zc">Jeanne la bataillonneuse — French trailer</a><span>Local narrated montage · approximately 28 seconds</span></li>
+              <li><a href="https://youtu.be/89kTx1LhEP0">Good Dogs of the Apocalypse — English series trailer</a><span>Three-book sequence · approximately 34 seconds</span></li>
             </ul>
-          </article>
-          <article class="lab-b-product-panel">
-            <h2>What the evidence does not prove</h2>
-            <p class="lab-b-product-summary">Anatomy's visual prototype passed, but its combined sound experiment failed QA. Historical reconstruction and calibrated physics remain untested.</p>
-            <p class="lab-b-product-summary lab-b-product-summary--muted">Framewright is a methods library, not a hosted renderer. Automated QA, human listening, user preference, publication and audience performance are separate claims.</p>
-          </article>
-          <article class="lab-b-product-panel">
-            <h2>Watch the book tests</h2>
-            <ul class="bullet-list">
-              <li><a href="https://youtu.be/PmhWa-V00zc">Jeanne la bataillonneuse — French trailer</a></li>
-              <li><a href="https://youtu.be/89kTx1LhEP0">Good Dogs of the Apocalypse — English series trailer</a></li>
-              <li><a href="https://abvx.xyz/writing/brag-ai-agent-skill-launch-videos-review">Earlier experiment: Brag on AsciiTheme and AMI</a></li>
-            </ul>
-          </article>
-          <article class="lab-b-product-panel">
-            <h2>Part of the ABVX ecosystem</h2>
-            <p class="lab-b-product-summary"><a href="../abvx-agent-skills/">Agent Skills</a> provides general workflows; <a href="../set/">SET</a> can organise the plan; <a href="../agentsgen/">agentsgen</a> maintains repository context. Framewright owns video methods and evidence.</p>
-            <p class="lab-b-product-summary lab-b-product-summary--muted">Optional links, no default installation, publishing hook or video job. New tools enter through bounded experiments.</p>
-          </article>
-        </section>
-        <section class="lab-b-quickstart">
-          <div class="lab-b-section-head compact"><p class="lab-b-eyebrow">Start here</p><h2>Choose, produce, record</h2></div>
-          <div class="lab-b-code-shell"><div class="lab-b-quick-copy"><p>Read the <a href="https://github.com/markoblogo/framewright#readme">canonical README</a>, install only the workflow router if useful, and follow the selected recipe. Model weights, media and upstream tools are not bundled.</p></div></div>
-        </section>
+            <p><a href="https://abvx.xyz/writing/brag-ai-agent-skill-launch-videos-review">Read the earlier Brag experiment on AsciiTheme and AMI.</a></p>
+          </section>
+          <section aria-labelledby="ecosystem-heading">
+            <h2 id="ecosystem-heading">Part of the ABVX ecosystem</h2>
+            <dl class="framewright-roles">
+              <dt><a href="../abvx-agent-skills/">Agent Skills</a></dt><dd>General reusable workflows; Framewright stays an external companion.</dd>
+              <dt><a href="../set/">SET</a></dt><dd>Optional planning around the selected recipe.</dd>
+              <dt><a href="../agentsgen/">agentsgen</a></dt><dd>Lean repository context, not a video runtime.</dd>
+              <dt>Framewright</dt><dd>Source of truth for video methods and retained experiment evidence.</dd>
+            </dl>
+            <p>No default installation, publishing hook or video job. New tools enter through bounded experiments.</p>
+          </section>
+          <section class="framewright-next" aria-labelledby="next-heading">
+            <h2 id="next-heading">Choose, produce, record</h2>
+            <p>Read the <a href="https://github.com/markoblogo/framewright#readme">canonical README</a>, install only the workflow router if useful, and follow the selected recipe. Model weights, media and upstream tools are not bundled.</p>
+          </section>
+        </div>
       </main>
       <footer class="footer footer--lab">
         <div class="footer-inner">

@@ -196,6 +196,7 @@ They still ship together as one package: `agentsgen`.
 
 ### Tool pages (routing)
 
+- [framewright](https://lab.abvx.xyz/tools/framewright/)
 - [repomap](https://lab.abvx.xyz/tools/repomap/)
 - [set](https://lab.abvx.xyz/tools/set/)
 - [id](https://lab.abvx.xyz/tools/id/)

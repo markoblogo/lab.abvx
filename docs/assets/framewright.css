@@ -1,0 +1,24 @@
+/* Framewright-only editorial sections; preserve the shared Lab shell. */
+.framewright-page .lab-b-point-label,
+.framewright-page .lab-b-metric-label { color: #33447b; }
+.framewright-content { max-width: 70rem; margin: 0 auto; color: #1d2d64; }
+.framewright-content > section { padding: 2rem 0; border-bottom: 1px solid #c7d1e6; }
+.framewright-content h2 { margin: 0 0 1rem; font-size: clamp(1.35rem, 3vw, 1.8rem); line-height: 1.25; }
+.framewright-content p, .framewright-content li, .framewright-content dd { line-height: 1.65; }
+.framewright-methods { padding-left: 1.5rem; }
+.framewright-methods li + li { margin-top: .8rem; }
+.framewright-evidence { margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 4px solid #8a5b18; background: #faf4e7; color: #24315b; }
+.framewright-evidence p:last-child { margin-bottom: 0; }
+.framewright-videos { list-style: none; padding: 0; }
+.framewright-videos li + li { margin-top: 1.25rem; }
+.framewright-videos a { font-weight: 700; }
+.framewright-videos span { display: block; color: #33447b; font-size: .9rem; }
+.framewright-roles { display: grid; grid-template-columns: minmax(8rem, 1fr) 3fr; gap: .75rem 1.5rem; }
+.framewright-roles dt { font-weight: 700; }
+.framewright-roles dd { margin: 0; }
+.framewright-next a { font-weight: 700; }
+@media (max-width: 600px) {
+  .framewright-roles { display: block; }
+  .framewright-roles dd { margin: .25rem 0 1rem; }
+  .framewright-content > section { padding: 1.5rem 0; }
+}

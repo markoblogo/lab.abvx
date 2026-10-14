@@ -279,7 +279,7 @@ video workflow selection, recipes and experiment evidence. Its public product
 page is [tools/framewright](https://lab.abvx.xyz/tools/framewright/). This static
 publication does not install or run video-production tools.
 
-Framewright's experimental v0.1.0 source release adds scene/layer tool selection,
+Framewright's experimental v0.1.1 source release adds scene/layer tool selection,
 an eight-tool feature matrix and an open Remotion reference route. The Lab page
 links four owner-supplied videos and keeps technical QA distinct from agent behaviour
 evaluation, human review and audience results. Canonical release and evidence remain

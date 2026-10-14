@@ -270,3 +270,10 @@ If you change asset URLs or ship a static asset that browsers may cache aggressi
 
 _This block is generated from the reviewed ABVX ecosystem registry._
 <!-- ABVX:ECOSYSTEM:END -->
+
+## Framewright video methods lab
+
+[Framewright](https://github.com/markoblogo/framewright) is the source of truth for
+video workflow selection, recipes and experiment evidence. Its public product
+page is [tools/framewright](https://lab.abvx.xyz/tools/framewright/). This static
+publication does not install or run video-production tools.

@@ -24,3 +24,6 @@ Notes:
 
 Related capability catalog:
 - https://github.com/markoblogo/abvx-agent-skills
+
+- Framewright: https://lab.abvx.xyz/tools/framewright/
+  Source-owned video methods and experiment evidence: https://github.com/markoblogo/framewright

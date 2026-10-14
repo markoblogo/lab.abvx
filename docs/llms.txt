@@ -32,4 +32,5 @@ ABVX Lab is a static GitHub Pages catalog. Product-specific runtime or CLI
 instructions live on the product pages and their own discovery files.
 
 - Framewright: https://lab.abvx.xyz/tools/framewright/
-  Source-owned video methods and experiment evidence: https://github.com/markoblogo/framewright
+  Scene/layer pipeline selection; experimental v0.1.0; router structural_only: https://github.com/markoblogo/framewright
+  Open first-film route: https://github.com/markoblogo/framewright/blob/main/docs/first-video.md

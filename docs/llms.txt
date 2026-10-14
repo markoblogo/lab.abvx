@@ -30,3 +30,6 @@ Local run:
 Notes:
 ABVX Lab is a static GitHub Pages catalog. Product-specific runtime or CLI
 instructions live on the product pages and their own discovery files.
+
+- Framewright: https://lab.abvx.xyz/tools/framewright/
+  Source-owned video methods and experiment evidence: https://github.com/markoblogo/framewright
